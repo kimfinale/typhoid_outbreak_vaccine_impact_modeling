@@ -1,0 +1,136 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+Load libraries
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(data.table)
+library(janitor)
+```
+
+```{r}
+dat <- read_xlsx("data/Typhoid_outbreak_TS_datasheet_SciData_submission_final.xlsx", 
+                       sheet = "Typhoid outbreaks summary")
+ts <- read_xlsx("data/Typhoid_outbreak_TS_datasheet_SciData_submission_final.xlsx", 
+                       sheet = "Time-series data")
+```
+
+```{r}
+ts <- janitor::clean_names(ts)
+names(ts)
+# ts |> 
+#   ggplot(aes(start_date, no_of_patients))+
+#   geom_line()+
+#   facet_wrap(~study_id, scales = "free")
+
+ts$unit_time <- as.integer(as.Date(ts$end_date) - as.Date(ts$start_date)) + 1
+
+# ts[!(ts$unit_time %in% c(1,7,30,31)),] -> d
+# unique(d$study_id)
+ts |> 
+  group_by(study_id) |>
+  mutate(time_since_outbreak = cumsum(unit_time)) -> ts
+  
+```
+
+```{r}
+dat <- janitor::clean_names(dat)
+dat$amr_status <- ifelse(dat$amr_status == "-", NA, dat$amr_status)
+```
+
+```{r}
+table(dat$who_region)
+table(dat$country)
+table(dat$attack_rate_percent)
+sum(as.numeric(dat$total_suspected_cases), na.rm=T)
+sum(as.numeric(dat$total_confirmed_cases), na.rm=T)
+```
+
+```{r}
+dat$intervention <- ifelse(dat$intervention == "-", NA, dat$intervention)
+table(dat$intervention)
+```
+
+outbreak size
+
+```{r}
+ts |> 
+  group_by(study_id) |>
+  summarize(outbreak_size = sum(no_of_patients)) -> d
+
+ggplot(d)+
+  geom_histogram(aes(x=outbreak_size), 
+                 breaks = seq(0, max(d$outbreak_size), by = 100))
+```
+
+outbreak duration
+
+```{r}
+ts |>
+  group_by(study_id) |> 
+  summarize(outbreak_size = sum(no_of_patients),
+            outbreak_duration = as.integer(max(end_date) - min(start_date))) -> d
+
+ggplot(d)+
+  geom_histogram(aes(x=as.integer(outbreak_duration)), 
+                 breaks = seq(0, max(d$outbreak_duration), by = 30))
+# summarize(num_case = sum(suspected, na.rm=T))
+
+```
+
+outbreak time series by study
+
+```{r}
+ts |>
+  group_by(study_id) |> 
+  mutate(id = cur_group_id()) -> ts
+ 
+ggplot(ts)+
+  geom_line(aes(x=time_since_outbreak/7, y=suspected, group=study_id, 
+                color=as.factor(id)))
+ts |> 
+  group_by(study_id) |> 
+  summarize(outbreak_duration = as.integer(max(end_date) - min(start_date))) |>
+  ggplot(aes(outbreak_duration/7)) +
+  stat_ecdf(geom = "step")
+```
+
+
+
+```{r}
+# 340 - Lewis 2005
+d <- ts[ts$study_id == "#340 - Lewis 2005",]
+```
+
+Exclude the studies for modeling based on the following criteria
+
+
+Studies 
+
+1. #24 - Al-Sanouri 2008
+2. #257 – Imanishi 2014, Dzivaresekwa
+3. #27 - Ali 2017
+_4. #276 - Kabwama 2017_
+5. #293 – Keddy 2011
+6. #340 - Lewis 2005
+7. #353 - Lutterloh 2012
+8. #414 - Muti 2014
+9. #417 - N'Cho 2019
+10. #458 - Polonsky 2014, Dzivaresekwa
+11. #470 - Qamar 2018
+12. #52 - Aye 2004
+13. #619 – Yousafzai 2019
+14. #67 – Bano-Zaidi 2018
+
+1. Kabwama SN, Bulage L, Nsubuga F, Pande G, Oguttu DW, Mafigiri R, et al. A large and persistent outbreak of typhoid fever caused by consuming contaminated water and street-vended beverages: Kampala, Uganda, January – June 2015. BMC Public Health. 2017 Jan 5;17(1):23. 
+
+1. Nimonkar RA, Goyal AK, Ahmed S, Pardal MPS, Singh S. Clinico-epidemiological study of an outbreak of typhoid in North India. J Family Med Prim Care. 2022;11(7):3570–4. 
+
+1. Srinivasan M, Sindhu KN, Kumar JS, Ramasamy RK, Pragasam AK, Aasaithampi P, et al. Outbreak of Typhoid Fever in Children of Urban Vellore: A Report from the Surveillance for Enteric Fever in India Cohort. Am J Trop Med Hyg. 2022;107(1):82–5. 
+

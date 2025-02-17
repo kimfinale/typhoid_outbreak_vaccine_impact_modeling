@@ -1,0 +1,165 @@
+---
+title: "Vaccine impact"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+### Load packages
+
+```{r}
+# devtools::load_all() # works only for me who is writing a package
+set.seed(42)
+library(Cairo)
+library(data.table)
+library(tidyverse)
+library(readxl)
+source("R/functions.R") # utility functions
+
+# figure size
+fgw1 <- figure_size[figure_size$journal =="Lancet",]$single
+fgw2 <- figure_size[figure_size$journal =="Lancet",]$double
+```
+
+### Load outbreak datasets
+
+```{r}
+ts <- read_xlsx("data/Typhoid_outbreak_TS_datasheet_SciData_submission_final.xlsx", 
+                       sheet = "Time-series data")
+# 340 - Lewis 2005
+d <- ts[ts$study_id == "#340 - Lewis 2005",]
+# extract ids for the outbreaks not affected by OCV campaigns
+```
+
+## Vaccine impact compuatation
+
+### Dynamic model computation
+Indirect vaccine effectiveness is a function of effective vaccine coverage
+and was estimated by running dynamic models that were fitted to 
+outbreaks whose time series show typical outbreak.
+
+
+Additional data sets need to compute the vaccine impact
+```{r}
+params <- as.data.frame(data.table::fread("outputs/params_20240529.csv"))
+ive_data <- as.data.frame(data.table::fread("outputs/ive_pred_20240529.csv"))
+age_dist <- as.data.frame(fread("data/wpp_africa_ageprop.csv"))
+```
+
+## Vaccine impact simulation
+
+#### Test run
+
+For the static model, we only need to run the vaccination week 1. The impact by the vaccination on Week 2 will be just one week delayed.
+
+```{r, eval=FALSE}
+vacc_cov <- seq(0.1, 0.9, by=0.1)
+vacc_week <- 1:16
+
+test_run <- run_vacc_impact(
+  outbreak_data = ts824_wk_cumsum,
+  outbreak_data2 = ds,
+  ive_data = ive_data,
+  parameters = params,
+  age_dist = age_dist,
+  vacc_week = vacc_week,
+  vacc_cov = vacc_cov,
+  runid = 1)
+
+(nrow(test_run))
+# (nrow(test_run) == length(vacc_cov) * nrow(ts824_wk_cumsum))
+(nrow(test_run) == length(vacc_week) * length(vacc_cov) * length(unique(ts824_wk_cumsum$id)))
+
+test_run |> group_by(week_vaccination) |> reframe(ve_wk = week_delay_to_vacc_eff[1])
+```
+
+#### Sequential runs
+```{r, eval=FALSE}
+nruns <- 30 # number of simulation runs
+# UN data on country- and year-specific age distribution (< 5 yo and 5+ yo)
+age_dist <- as.data.frame(fread("data/wpp_africa_ageprop.csv"))
+vacc_cov <- seq(0.1, 0.9, by=0.1)
+lst_sim <- vector("list", nruns)
+
+for (runid in 1:nruns) {
+
+  lst_sim[[runid]] <- 
+    run_vacc_impact(
+      outbreak_data = ts824_wk_cumsum,
+      outbreak_data2 = ds,
+      ive_data = ive_data,
+      parameters = params,
+      age_dist = age_dist,
+      vacc_week = 1,
+      vacc_cov = vacc_cov,
+      runid = 1)
+}
+# fwrite(static_vim, paste0("outputs/static_vim", tstamp(), ".csv"))
+# saveRDS(lst_sim, paste0("outputs/static_vim_lst_", tstamp(), ".rds"))
+```
+
+#### Parallel `run_vacc_impact`
+```{r, eval=FALSE}
+tic <- Sys.time()
+
+library(doParallel)
+# UN data on country- and year-specific age distribution (< 5 yo and 5+ yo)
+age_dist <- as.data.frame(fread("data/wpp_africa_ageprop.csv"))
+vacc_cov <- seq(0.1, 0.9, by=0.1)
+vacc_week <- 1:16
+nruns <- 200 # number of simulation runs
+
+cl <- makeCluster(getOption("cl.cores", detectCores() - 1))
+registerDoParallel(cl)
+
+svim_list <- 
+  foreach(i = 1:nruns, .packages = c("data.table")) %dopar% {
+    run_vacc_impact(
+      outbreak_data = ts824_wk_cumsum,
+      outbreak_data2 = ds,
+      ive_data = ive_data,
+      parameters = params,
+      age_dist = age_dist,
+      vacc_week = vacc_week,
+      vacc_cov = vacc_cov,
+      runid = i)
+}
+stopCluster(cl)
+
+Sys.time() - tic
+# Time difference of 36.02764 mins
+saveRDS(svim_list, paste0("outputs/svim_list_", tstamp(), ".rds"))
+```
+
+#### Parallel `run_vacc_impact_weekly`
+```{r, eval=FALSE}
+tic <- Sys.time()
+
+library(doParallel)
+# UN data on country- and year-specific age distribution (< 5 yo and 5+ yo)
+age_dist <- as.data.frame(fread("data/wpp_africa_ageprop.csv"))
+vacc_cov <- seq(0.1, 0.9, by=0.1)
+vacc_week <- 1:16
+nruns <- 200 # number of simulation runs
+
+cl <- makeCluster(getOption("cl.cores", detectCores() - 1))
+registerDoParallel(cl)
+
+svim_list <- 
+  foreach(i = 1:nruns, .packages = c("data.table")) %dopar% {
+    run_vacc_impact_weekly(
+      outbreak_data = ts824_wk_cumsum,
+      outbreak_data2 = ds,
+      ive_data = ive_data,
+      parameters = params,
+      age_dist = age_dist,
+      vacc_week = vacc_week,
+      vacc_cov = vacc_cov,
+      runid = i)
+}
+stopCluster(cl)
+
+Sys.time() - tic
+# Time difference of 36.02764 mins
+saveRDS(svim_list, paste0("outputs/svim_week_list_", tstamp(), ".rds"))
+```

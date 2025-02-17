@@ -1,0 +1,75 @@
+Parameter,Value,Lower,Upper,Error,Unit,Source,Notes
+Prop_Symptomatic_Infection,0.0426,0.0337,0.0516,NA,Percent [95% CI],"[Weyant, 2024; Vaccine]","Weyant et al. reported a percentage of symptomatic infections as 4.26 % [3.37–5.16] with calibration. [Weyant, 2024; Vaccine]
+No other article (Ginny’s group) reported the parameter of symptomatic infection."
+Duration_Immunity_Against_Clinical_Infection,19.18,13.34,29.19,NA,Years [95% CI],"[Weyant, 2024; Vaccine]","Weyant et al. reported Duration of immunity against clinical infection as 19.18 years [13.34–29.19] with calibration. [Weyant, 2024; Vaccine]
+Antillón et al. reported the Duration of immunity as 104 weeks referencing [Hornick, 1970; NEJM] (Supplementary table 2). Bilcke et al. also reported the Duration of immunity as 104 weeks, exponential sourcing [Hornick, 1970; NEJM] (Table 1). The two articles share co-authors (Ginny’s team) 
+"
+Case_Fatality_Ratio,0.0249,0.0165,0.0375,,Proportion [95% CI],"[Pieters, 2018; Clin Infect Dis.]",
+Duration_Infection,11.8,2,28,,days (range),"[Mamo, 2018; J. Infect. Dis. Immun.]",
+Duration_Infection,7,1,150,,days (range),"[Neil, 2012; CID]",
+Duration_Infection,12,1,20,NA,days (range),"[Roy, 2016; indian j med res]",
+Prop_Infection_Become_Carrier,0.003,NA,NA,NA,Proportion,"[Ames, 1943; Am. J. Public. Health Nations Health ]",<20 yo
+Prop_Infection_Become_Carrier,0.053,NA,NA,NA,Proportion,"[Ames, 1943; Am. J. Public. Health Nations Health ]",>=20 yo
+Duration_Carriage,10,5,15,NA,Years [95% CI],"[Weyant, 2024; Vaccine]","Weyant et al. reported Duration of carriage as 10 years [5–15] referencing [Ames, 1943; Am J Public Health Nations Health], [Bhan, 2005; Lancet], [Gunn, 2014; Trends Microbiol.]. However, The duration value could not be found in all 3 articles. [Weyant, 2024; Vaccine]
+No other modeling article reported the duration of carriage.
+"
+Relative_Infectiousness_Carrier,0.075,0.055,0.095,NA,Proportion [95% CI],"[Weyant, 2024; Vaccine]","Weyant et al. reported Relative infectiousness of carriers, compared with acute infections as 7.5 % [5.5–9.5] sourcing estimate calibrated from [Lo, 2018; JID]. [Weyant, 2024; Vaccine]
+Lo et al. fitted the Relative infectiousness of long-term carriers as frequency distribution below. (Supplementary Figure 1) [Lo, 2018; JID]"
+Relative_Infectiousness_Carrier,0.35,0.15,0.67,NA,Proportion [95% CI],[Antillón et al (2017)],"Antillón et al. estimated a prior distribution for the relative infectiousness of chronic carriers (r) by leveraging data from a cluster-randomized study of Vi-polysaccharide vaccine in Kolkata which uses the same data. However, Antillón estimates the Relative infectiousness of carriers as a fraction of 0.35 (0.15, 0.67) (Supplementary table 2) [Antillón, 2017; Vaccine.]"
+Relative_Infectiousness_Carrier,0.25,,,NA,Proportion,"[Bilcke, 2019; Lancet ID]","Blicke et al., estimated relative infectiousness of carriers compared with acute infection as 0.25 with beta distribution of (a=6·34, b=19·4). Blicke noted that they retrieved the indirect protection data observed from Vi-polysaccharide vaccine cluster-randomised trial in Kolkata, India.[Sur, 2009; NEJM] (Table 1) [Bilcke, 2019; Lancet ID]"
+Vaccine_Efficacy_Direct_MA,0.83,0.79,0.88,NA,Proportion [95% CI],"[Batool, 2024; Lancet Global Health]",
+Vaccine_Efficacy_Direct_MA_U5,0.73,0.53,0.85,NA,Proportion [95% CI],"[Batool, 2024; Lancet Global Health]",
+Vaccine_Efficacy_Direct_MA_5P,0.87,0.8,0.91,NA,Proportion [95% CI],"[Batool, 2024; Lancet Global Health]",
+Vaccine_Efficacy_Direct_Patel,0.783,0.663,0.861,NA,Proportion [95% CI],"[Patel, 2024; Lancet]",4.61 years follow-up trial in Malawi
+Vaccine_Efficacy_Direct_Shakya,0.79,0.619,0.885,NA,Proportion [95% CI],"[Shakya, 2021; Lancet Global Health]",2 years follow-up trial in Nepal
+Vaccine_Efficacy_Direct_Qadri,0.85,0.76,0.91,NA,Proportion [95% CI],"[Qadri, 2021, Lancet]",17.1 months follow-up trial in Bangladesh
+Vaccine_Efficacy_Indirect_Qadri,0.19,-0.12,0.41,NA,Proportion [95% CI],"[Qadri, 2021, Lancet]",
+Duration_Immunity,10,NA,NA,NA,Years,"[Patel, 2024; Lancet]","The following calculation was estimated through linear regression analysis with the 5 efficacy points derived from Patel et al.(2024).[Patel, 2024; Lancet]"
+Onset_Vaccine_Derived_Protection,10,NA,NA,NA,Days,"[Chen, 2016; CID]","Although Vaxchora is not a conjugate vaccine, the trial of OCV shows 90.3% efficacy in 10 days."
+Onset_Vaccine_Derived_Protection,7,NA,NA,NA,Days,"[Moreira, 2022; NEJM]","one COVID-19 Pfizer booster vaccine trial suggested that at least in 7 days, the vaccine efficacy could be obtained as 47.3%."
+Onset_Vaccine_Derived_Protection,28,NA,NA,NA,Days,"[Bhutta, 2014; Lancet infectious diseases]
+[Jin, 2017; Lancet]
+[Rai, 2022; Lancet Infectious diseases]","From all 3 types of TCV(Vi-TT, Vi-DT, Vi-CRM197) articles, at least in 28 days, 100% seroconversions are achieved. The shortest timeline for seroconversion analysis was 28 days, therefore there was no straight evidence of which timepoint for the onset of TCV protection."
+Vaccine_Supply,"40,000,000",NA,NA,NA,Doses per year,"[UNICEF, 2022]
+[GAVI;2022] ","UNICEF has awarded 39.2 million doses of 2 types of TCV for 3 years in 2022-2024 as Long-term Arrangement Awards, estimated to be 13 million doses per year. [UNICEF, 2022] The demand forecast conducted by GAVI has estimated annual demand to be around 40 million doses per year with 20 million to 70 million doses in range. In addition, the new TCV by SK Bioscience has received WHO PQ facilitating the expectation of achieving the demand forecast. [GAVI;2022] 
+Therefore, based on the UNICEF procurement history and demand forecast, we fixed the annual TCV supply parameter to 40 million."
+Campaign_Coverage,0.82,0.63,0.95,NA,"Proportion, median (range)","[Hancuh, 2023; MMWR]",
+Cost_Vaccine_Procurement,0.19,NA,NA,NA,"USD per dose, Biologics E",[UNICEF - Typhoid Conjugate Vaccine (TCV) price data],
+Cost_Vaccine_Procurement,0.3,NA,NA,NA,"USD per dose, Bharat",[UNICEF - Typhoid Conjugate Vaccine (TCV) price data],
+Cost_Syringes_Safety_Equipment,1.5,NA,NA,NA,USD per dose (financial cost),"Calculated from [Song, 2023; Plos GPH]","Financial costs = Direct expenditures 
+Economic costs = Financial costs + Personnel Costs +  Training materials + Travel costs + Organizational expenses"
+Cost_Syringes_Safety_Equipment,2.4,NA,NA,NA,USD per dose (economic cost),"Calculated from [Song, 2023; Plos GPH]","Financial costs = Direct expenditures 
+Economic costs = Financial costs + Personnel Costs +  Training materials + Travel costs + Organizational expenses"
+Cost_Vaccine_Vaccination_Supplies_Financial,1.87,NA,NA,NA,2018 USD per dose,,
+Cost_Vaccine_Vaccination_Supplies_Economic,2.96,NA,NA,NA,2018 USD per dose,,
+Cost_Campaign_Delivery_Financial,0.38,NA,NA,NA,2018 USD per dose,"[Song, 2023; Plos GPH]","Financial costs = Direct expenditures 
+Economic costs = Financial costs + Personnel Costs +  Training materials + Travel costs + Organizational expenses"
+Cost_Campaign_Delivery_Economic,1.49,NA,NA,NA,2018 USD per dose,"[Song, 2023; Plos GPH]","Financial costs = Direct expenditures 
+Economic costs = Financial costs + Personnel Costs +  Training materials + Travel costs + Organizational expenses"
+Cost_Total_Vaccination_Financial,2.25,NA,NA,NA,2018 USD per dose,,
+Cost_Total_Vaccination_Economic,4.45,NA,NA,NA,2018 USD per dose,,
+Cost_Illness_Inpatient_Children,377.87,216.52,539.05,NA,"2024 USD, median (range)","[Limani, 2022; PLoS One]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Outpatient_Children,85.27,39.52,133.61,NA,"2024 USD, median (range)","[Limani, 2022; PLoS One]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Inpatient_Adults,574.38,324.24,824.62,NA,"2024 USD, median (range)","[Limani, 2022; PLoS One]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Outpatient_Children,62.03,33.81,90.5,NA,"2024 USD, median (range)","[Limani, 2022; PLoS One]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Total,199.13,78.39,575.2,NA,"2024 USD, median (range)","[Riewpaiboon, 2014; J Health Popul Nutr.]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Children_Under_15,217.79,148.56,575.2,NA,"2024 USD, median (range)","[Riewpaiboon, 2014; J Health Popul Nutr.]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Cost_Illness_Adults_Over_15,171.82,78.39,353.01,NA,"2024 USD, median (range)","[Riewpaiboon, 2014; J Health Popul Nutr.]","Cost of illness studies were conducted in two African countries; Malawi (2020) and Tanzania (2010). Inflation for the cost of illness in both studies was adjusted using CPI (Consumer Price Index) suggested by Turner et al, 2019; Value in Health."
+Prop_Moderate,0.35,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Prop_Severe,0.43,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Prop_Severe_GI_Bleeding,0.05,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Prop_Severe_Other_Complications,0.17,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Dur_Illness_Moderate,0.038,NA,NA,NA,Years,"[GBD, 2017; Lancet ID]",
+Dur_Illness_Severe,0.079,NA,NA,NA,Years,"[GBD, 2017; Lancet ID]",
+Dur_Illness_Severe_GI_Bleeding,0.083,NA,NA,NA,Years,"[GBD, 2017; Lancet ID]",
+Dur_Illness_Severe_Other_Complications,0.079,NA,NA,NA,Years,"[GBD, 2017; Lancet ID]",
+Disability_Weight_Moderate,0.051,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Disability_Weight_Severe,0.133,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Disability_Weight_Severe_GI_Bleeding,0.133,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+Disability_Weight_Severe_Ileal_Perforation,0.324,NA,NA,NA,Proportion,"[GBD, 2017; Lancet ID]",
+YLD_Weighted_Mean,0.010101,NA,NA,NA,Years lost per case,"[GBD, 2017; Lancet ID]","GBD 2017 Typhoid and Paratyphoid Collaborators estimated the proportion of cases, duration (years), and disability weights with 4 different states of typhoid fever disease severity; moderate, severe uncomplicated, severe with GI bleeding, severe typhoid fever with other complications. With cumulation, the proportion of YLDs was estimated to be 0.010101."
+Population turnover rate in sub-Saharan Africa,64,NA,NA,NA,Years,"World Population Prospects 2024, UN DESA Population Divisions",2020?
+Life_Expectancy_Birth_2023,62.1,NA,NA,NA,Years,"World Population Prospects 2024, UN DESA Population Divisions",
+Rate_Discount,0.03,,,,Proportion,,Economic discount rate
+Delay_Vacc_Effect,10.5,,,,Day,,
+Dur_Campaign,42,8,197,,Day,"Poncin (2019) Vaccine X, Date (2018) CID, Qamar (2020) Vaccines","Outbreak durations were 8d, 42d, and 197d from three campaigns, resp."

@@ -1,0 +1,232 @@
+---
+title: "vacc_impact"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load packages
+```{r}
+library(readxl)
+library(tidyverse)
+library(data.table)
+source("utils.R")
+```
+
+## Data and parameters
+```{r}
+dat <- read_xlsx("data/Typhoid_outbreak_TS_datasheet_SciData_submission_final.xlsx", 
+                       sheet = "Typhoid outbreaks summary")
+ts <- read_xlsx("data/Typhoid_outbreak_TS_datasheet_SciData_submission_final.xlsx", 
+                       sheet = "Time-series data")
+ts <- janitor::clean_names(ts)
+dat <- janitor::clean_names(dat)
+names(ts)
+names(dat)
+ts$unit_time <- as.integer(as.Date(ts$end_date) - as.Date(ts$start_date)) + 1
+ts |>
+  group_by(study_id) |>
+  mutate(time_since_outbreak = cumsum(unit_time)) -> ts
+
+parms <- read_xlsx("data/model_parameters.xlsx", sheet = "model_parameters")
+parms$Value <- as.numeric(parms$Value)
+```
+
+
+## Vaccine impact
+
+Select outbreak whose time series data has resolutions higher than 10 days 
+In other words, incidences reported regularly shorter than 10 days
+```{r}
+d <- ts |> filter(unit_time < 8)  #unit time
+d |> 
+  group_by(study_id) |> 
+  
+```
+
+## Indirect vaccine effectiveness
+```{r}
+
+```
+
+## Vaccine impact 
+```{r}
+ive_dat <- data.frame(eff_vc = seq(0.1,0.9,0.1), ive = seq(0.1,0.9,0.1))
+
+vacc_impact <- function(data = NULL,
+                        vacc_cov = 0.9,
+                        vacc_week = 3,
+                        day_delay = 28,# includes both duration of vaccination campaign and 
+                        dve = 0.85,
+                        ive_data = ive_dat) {
+  
+  # yr_ch <- strsplit(as.character(data$date[1]),"-")[[1]][1]
+  # this only accounts for vaccine-induced immunity but not existing in the population
+  # this could be another reason for underestimation for the vaccine impact
+  # variables that may different across simulations
+  vacc_cov_eff <- vacc_cov * dve
+  ive <- as.numeric(ive_data[ive_data$eff_vc == round(vacc_cov_eff, digits=1),]$ive)
+
+  # fraction to be averted via vaccination
+  fa <- 1 - (vacc_cov*(1-dve)*(1-ive)+(1-vacc_cov)*(1-ive))
+
+  # apply delay to vaccine effectiveness
+  frac_averted <- rep(fa, nrow(data))
+  frac_averted <- ifelse(data$time_since_outbreak < day_delay, 0, frac_averted)
+  # nr <- nrow(data)
+  # if (week_delay <= nrow(data)) {
+  #   nr <- week_delay
+  # }
+  # frac_averted[1:nr] <- 0 # no averted before the vaccine takes effect
+  
+  data$case_wk_averted <-  data$no_of_patients * frac_averted
+  
+  return(data)
+}
+# choose studies whose time 
+d2 <- vacc_impact(data = d, day_delay = 30)
+# View(d2)
+
+
+cfr <- as.numeric(parms[parms$Parameter == "Case fatality ratio", "Value"])
+# this is modeled as a simplified approach to determine the number of death
+# and must be elaborated to be more realistic
+d2 |>
+  group_by(study_id) |>
+  summarise(case_novacc = sum(no_of_patients),
+            case_averted = sum(case_wk_averted),
+            death_novacc = cfr * case_novacc, 
+            death_averted = cfr * case_averted,
+            pct_reduction = 100 * case_averted / case_novacc) -> res
+
+# population column added to later compute population size-dependent values
+res <- left_join(res, dat[, c("study_id", "total_deaths", "attack_rate_percent",
+                              "cfr_percent", "population")], by="study_id")
+
+for (x in c("total_deaths","attack_rate_percent","cfr_percent","population")){
+  res$x <- as.numeric(res$x)  
+} 
+
+res$gdp <- 100
+hist(res$pct_reduction, breaks=seq(0,100,2))
+```
+
+
+### Cost effectiveness
+
+```{r}
+# pr_asymp <- parms[parms$Parameter == "Prop_Asymptomatic", "Value"]
+# delay_onset_protection <- 
+#   as.numeric(parms[parms$Parameter == "Onset of vaccine-derived protection", "Value"])
+yld_per_case <- as.numeric(parms[parms$Parameter == "Average YLD", "Value"])
+
+# 2018 USD per dose
+vacc_cost_per_dose <-
+  as.numeric(parms[parms$Parameter == "Total vaccination cost - economic", "Value"])
+dose_regimen <- 1
+vacc_cost_per_person <- vacc_cost_per_dose * dose_regimen
+
+coi <- 
+  as.numeric(parms[parms$Parameter == "Costs of illness – Total cost of illness", "Value"])
+dr <- 
+  as.numeric(parms[parms$Parameter == "Discount rate", "Value"]) # economic discount rate
+```
+
+```{r}
+compute_yll <- function(deaths, life_exps = NULL, discount_rate = NULL) {
+  yll <- deaths * (1/dr) * (1 - exp(-discount_rate * life_exps))
+  return(yll)
+}
+```
+
+Merge workforce, life expectancy, and GDP data
+```{r}
+# case averted
+svim_list <- read_rds("outputs/svim_list_20240620.rds")
+svim1 <- svim_list[[1]] |> filter(!is.na(confirmed_tot) & confirmed_tot > 0)
+svim1$population <- sapply(1:nrow(svim1), function(i) dat[dat$ID == svim1$data_id[i], "population"])
+svim1_v9w1 <- svim1 |> filter(vacc_cov == 0.9, week_vaccination == 1)
+svim1_v9w1$year <- data.table::year(svim1_v9w1$date)
+
+# combine life expectancy, GDP, and percent workforce data
+life_exp_data <- as.data.frame(fread("data/wpp2022_life_expectancy.csv"))
+names(life_exp_data)[names(life_exp_data) == "ISO3 Alpha-code"] <- "country"
+names(life_exp_data)[names(life_exp_data) == "Year"] <- "year"
+
+svim1_v9w1 <- left_join(svim1_v9w1,
+                        life_exp_data[, c("country", "year", "26")], 
+                        by = c("country", "year"))
+
+names(svim1_v9w1)[names(svim1_v9w1) == "26"] <- "life_exp"
+svim1_v9w1$life_exp <- as.numeric(svim1_v9w1$life_exp)
+
+gdp <- read_xls("data/GDP_WorldBank.xls")
+names(gdp)[names(gdp) == "Country Code"] <- "country"
+gdp_long <- gdp %>%
+  pivot_longer(
+    cols = `1960`:`2023`, 
+    names_to = "year",     
+    values_to = "gdp"      
+  )
+
+gdp_long$year <- as.integer(gdp_long$year)
+
+svim1_v9w1 <- left_join(svim1_v9w1, 
+                        gdp_long[, c("country", "year", "gdp")],
+                        by = c("country", "year"))
+
+workforce <- read_xls("data/Workforce_Worldbank.xls")
+names(workforce)[names(workforce) == "Country Code"] <- "country"
+workforce_long <- workforce %>%
+  pivot_longer(
+    cols = `1960`:`2023`,
+    names_to = "year",
+    values_to = "pct_workforce"
+  )
+workforce_long$year <- as.integer(workforce_long$year)
+
+svim1_v9w1 <- 
+  left_join(svim1_v9w1, 
+            workforce_long[, c("country", "year", "pct_workforce")],
+            by = c("country", "year"))
+
+```
+
+
+```{r}
+life_exp <- 50
+
+compute_cost_eff <- function(d){
+  d |> 
+    summarize(
+      case_tot = sum(case_novacc),
+      case_averted_tot = sum(case_averted),
+      prop_averted = case_averted_tot / case_tot,
+      yld_tot = case_tot * yld_per_case, 
+      yld_averted_tot = case_averted_tot * yld_per_case,
+      yll_tot = sum(compute_yll(death_novacc, 50, dr), na.rm=T), 
+      yll_averted_tot = yll_tot * prop_averted, 
+      daly_averted_tot = yld_averted_tot + yll_averted_tot,
+      coi_averted_tot = case_averted_tot * coi,
+      death_tot = sum(death_novacc, na.rm=T),
+      cod_averted_tot = sum(death_novacc * prop_averted * gdp * life_exp, na.rm=T),
+      vacc_cost = sum(vacc_cost_per_person * population, na.rm=T),
+      net_cost_tot = vacc_cost - coi_averted_tot - cod_averted_tot,
+      cost_per_daly_averted = net_cost_tot / daly_averted_tot, # ICER
+      gdp_sum = sum(gdp, na.rm=T)) -> res
+  
+  return(res)
+}
+
+res_cea <- compute_cost_eff(res)
+View(res_cea)
+```
+
+
+
+
+Dynamic models
+```{r}
+
+```
+

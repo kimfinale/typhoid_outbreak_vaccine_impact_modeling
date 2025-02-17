@@ -1,0 +1,108 @@
+---
+title: "data_description"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+Load libraries
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(data.table)
+library(janitor)
+```
+
+```{r}
+dat <- read_xlsx("data/Typhoid_Outbreak_Time_Series_2000_2022.xlsx", 
+                       sheet = "Typhoid outbreaks summary")
+ts <- read_xlsx("data/Typhoid_Outbreak_Time_Series_2000_2022.xlsx", 
+                       sheet = "Time-series data")
+```
+
+```{r}
+ts <- janitor::clean_names(ts)
+names(ts)
+ts |>
+  ggplot(aes(start_date, no_of_patients))+
+  geom_line()+
+  facet_wrap(~study_id, scales = "free")
+
+ts$unit_time <- as.integer(as.Date(ts$end_date) - as.Date(ts$start_date)) + 1
+
+# ts[!(ts$unit_time %in% c(1,7,30,31)),] -> d
+# unique(d$study_id)
+ts |> 
+  group_by(study_id) |>
+  mutate(time_since_outbreak = cumsum(unit_time)) -> ts
+  
+```
+
+```{r}
+dat <- janitor::clean_names(dat)
+dat$amr_status <- ifelse(dat$amr_status == "-", NA, dat$amr_status)
+```
+
+```{r}
+table(dat$who_region)
+table(dat$country)
+table(dat$attack_rate_percent)
+sum(as.numeric(dat$total_suspected_cases), na.rm=T)
+sum(as.numeric(dat$total_confirmed_cases), na.rm=T)
+```
+
+```{r}
+dat$intervention <- ifelse(dat$intervention == "-", NA, dat$intervention)
+table(dat$intervention)
+```
+
+outbreak size
+
+```{r}
+ts |> 
+  group_by(study_id) |>
+  summarize(outbreak_size = sum(no_of_patients)) -> d
+
+ggplot(d)+
+  geom_histogram(aes(x=outbreak_size), 
+                 breaks = seq(0, max(d$outbreak_size), by = 100))
+```
+
+outbreak duration
+
+```{r}
+ts |>
+  group_by(study_id) |> 
+  summarize(outbreak_size = sum(no_of_patients),
+            outbreak_duration = as.integer(max(end_date) - min(start_date))) -> d
+
+ggplot(d)+
+  geom_histogram(aes(x=as.integer(outbreak_duration)), 
+                 breaks = seq(0, max(d$outbreak_duration), by = 30))
+# summarize(num_case = sum(suspected, na.rm=T))
+
+```
+
+outbreak time series by study
+
+```{r}
+ts |>
+  group_by(study_id) |> 
+  mutate(id = cur_group_id()) -> ts
+ 
+ggplot(ts)+
+  geom_line(aes(x=time_since_outbreak/7, y=suspected, group=study_id, 
+                color=as.factor(id)))
+ts |> 
+  group_by(study_id) |> 
+  summarize(outbreak_duration = as.integer(max(end_date) - min(start_date))) |>
+  ggplot(aes(outbreak_duration/7)) +
+  stat_ecdf(geom = "step")
+```
+
+```{r}
+# 340 - Lewis 2005
+d <- ts[ts$study_id == "#340 - Lewis 2005",]
+```
