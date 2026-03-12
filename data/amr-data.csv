@@ -1,0 +1,43 @@
+study_id,outbreak_start_year,outbreak_end_year,location,country,country_iso,admin0_1,admin0_2,admin1,WHO_region,amr_status,tot_tested_amr,tot_amr_cases,resistant,mdr,fqns,xdr,intervention,time_unit,start_date,end_date,peak_date,intervention_date,tot_suspected_cases,lab_tested_cases,tot_confirmed_cases,lab_confirmed_cases,tot_probable_cases,hospitalized,complicated,tot_deaths,attack_rate,cfr,population
+Aye 2004,2000,2000,"Madaya, Myanmar",Myanmar,MMR  ,Myanmar,,Madaya,SEAR,susceptible,3,0,0,0,0,0,CHLO/ANTI/EDU,weekly,2000-08-01,2000-09-30,2000-09-10,-,49,22,3,3,33,31,1,-,2.9,-,1102
+Michel 2005,2001,2001,"Abidjan, Cote d'Ivoire",Cote d'Ivoire,CIV  ,Cote d'Ivoire,,Abidjan,AFR,quinolones,NA,"2 (suspected, clinical)",0,0,2,0,ANTI,daily,2001-08-23,2001-09-17,2001-09-07,-,10,6,5,5,9,-,-,-,-,-,570
+Lewis 2005,2002,2002,"Bharatpur, Nepal",Nepal,NPL  ,Nepal,,Bharatpur,SEAR,MDR,39,39,39,34,0,0,CHLO,daily,2002-05-24,2002-07-14,2002-06-09,2002-06-12,5963,104,39,39,-,2184,3,4,6.49,-,92214
+Al-Sanouri 2008,2004,2004,Jordan,Jordan,JOR  ,Jordan,,,EMR,MDR,24,24,24,14,0,0,-,weekly,2004-10-30,2004-12-31,2004-12-11,-,83,-,24,20,-,-,-,-,-,-,-
+Muehlen 2007,2004,2004,"Leipzig, Germany",Germany,DEU  ,Germany,,Leipzig,EUR,-,NA,NA,NA,NA,NA,NA,-,daily,2004-06-08,2004-06-15,2004-06-12,-,6,6,4,-,1,3,-,-,-,-,-
+Muyembe-Tamfum 2009,2004,2005,"Kinshasa, DRC",DRC,COD  ,DRC,,Kinshasa,AFR,MDR,11,11,11,11,0,0,surgery/ANTI,daily,2004-10-01,2004-12-31,2004-10-27,2004-10-01,144,16,11,11,-,144,63,64,-,44.4,-
+Holt 2011,2004,2005,"Mekong river delta, Vietnam",Vietnam,VNM  ,Vietnam,,Mekong river delta,SEAR,MDR,267,257,257,154,0,0,-,monthly,2004-01-01,2005-12-31,2005-03-15,-,-,358,287,287,-,-,-,-,-,-,-
+Keddy 2011,2005,2005,"Delmas, South Africa",South Africa,ZAF  ,South Africa,,Delmas,AFR,susceptible,NA,0,0,0,0,0,-,daily,2005-08-31,2005-09-21,2005-09-14,-,600,-,49,-,-,-,-,-,-,-,-
+Neil 2012,2007,2009,"Kasese, Uganda",Uganda,UGA  ,Uganda,,Kasese,AFR,MDR,21,17,16,1,0,0,-,weekly,2007-12-27,2009-07-30,2009-03-15,-,577,63,27,25,-,289,249,47,8.09,-,670000
+Bayram 2011,2008,2008,"Anatolia, Turkey",Turkey,TUR  ,Turkey,,Anatolia,EUR,MDR,91,91,91,91,0,0,CHLO,daily,2008-10-15,2008-10-29,2008-10-19,2008-10-18,637,-,91,76,-,78,-,-,-,-,4700
+Scobie 2014,2008,2011,Fiji,Fiji,FJI  ,Fiji,,,WPR,-,NA,NA,NA,NA,NA,NA,ViPS vaccine,monthly,2008-01-01,2011-12-31,2010-05-01,2010-06-01,1765,1449,1582,1449,-,183,-,-,-,-,-
+Lutterloh 2012,2009,2009,Malawi–Mozambique,Malawi–Mozambique,MWI-MOZ  ,Malawi,Mozambique,,AFR,MDR,42,42,42,38,4,0,CHLO/EDU,fortnightly,2009-03-01,2009-11-13,2009-09-15,-,303,108,46,44,43,81,40,11,-,4,-
+Limpitikul 2014 (1),2009,2010,"Songkhla, Thailand",Thailand,THA  ,Thailand,,Songkhla,SEAR,susceptible,137,0,0,0,0,0,-,monthly,2009-10-01,2010-03-30,2009-12-01,-,-,137,137,137,-,-,-,0,-,-,-
+Limpitikul 2014 (2),2010,2011,"Songkhla, Thailand",Thailand,THA  ,Thailand,,Songkhla,SEAR,susceptible,231,0,0,0,0,0,-,monthly,2010-09-01,2011-07-30,2011-01-01,-,-,231,231,231,-,-,-,0,-,-,-
+Limpitikul 2014 (total),2009,2011,"Songkhla, Thailand",Thailand,THA  ,Thailand,,Songkhla,SEAR,susceptible,368,0,0,0,0,0,-,monthly,2009-10-01,2011-07-30,-,-,-,368,368,368,-,260,49,-,-,-,-
+Hendriksen 2015,2010,2012,"Lusaka, Zambia",Zambia,ZMB  ,Zambia,,Lusaka,AFR,MDR,94,93,93,77,4,0,-,monthly,2010-01-01,2012-09-30,2012-02-28,-,2040,-,94,86,-,-,-,10,-,0.5,1420000
+"Walters 2014, Kasese",2009,2011,"Kasese, Uganda",Uganda,UGA  ,Uganda,,Kasese,AFR,MDR,18,16,16,15,1,0,-,monthly,2009-08-01,2011-12-31,2011-11-30,-,709,74,8,7,-,-,570,-,-,-,-
+"Walters 2014, Bundibugyo",2011,2011,"Bundibugyo, Uganda",Uganda,UGA  ,Uganda,,Bundibugyo,AFR,MDR,18,16,16,15,1,0,-,monthly,2011-01-01,2011-12-31,2011-08-31,-,333,72,16,15,-,-,59,-,-,-,-
+Ali 2017,2011,2012,"Kikwit, DRC",DRC,COD  ,DRC,,Kikwit,AFR,-,NA,NA,NA,NA,NA,NA,-,weekly,2011-11-06,2012-01-14,2011-12-04,-,1430,66,63,56,-,-,71,17,0.6,1.5,400000
+"Polonsky 2014, Dzivaresekwa",2011,2012,"Dzivaresekwa, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Dzivaresekwa,AFR,-,NA,NA,NA,NA,NA,NA,-,weekly,2011-10-06,2012-03-17,2011-12-03,-,785,-,-,-,-,-,-,-,0.66,-,118271
+Polonsky 2014_Kuwadzana,2011,2012,"Kuwadzana, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Kuwadzana,AFR,-,NA,NA,NA,NA,NA,NA,-,weekly,2011-10-27,2012-03-17,2012-01-30,-,1785,-,-,-,-,-,-,-,1.13,-,157396
+Polonsky 2014 (total),2011,2012,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,-,NA,NA,NA,NA,NA,NA,-,weekly,2011-10-10,2012-03-17,-,-,3795,-,62,-,-,-,-,2,-,0.05,-
+Muti 2014,2011,2012,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,CHL,NA,NA,NA,NA,NA,NA,EDU/WASH,daily,2011-10-08,2012-01-06,2011-11-29,2011-11-25,1078,-,24,-,-,-,0,1,-,-,-
+"Imanishi 2014, Dzivaresekwa",2011,2012,"Dzivaresekwa, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Dzivaresekwa,AFR,MDR,8,8,8,8,0,0,chlorine tablets,monthly,2011-10-01,2012-04-30,2011-11-01,2011-11-01,1017,-,-,-,-,-,-,-,-,-,97000
+"Imanishi 2014, Kuwadzana",2011,2012,"Kuwadzana, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Kuwadzana,AFR,MDR,0,0,0,0,0,0,chlorine tablets,monthly,2011-11-01,2012-04-30,2012-01-01,2012-01-01,1965,-,-,-,-,-,-,-,-,-,129000
+Imanishi 2014 (total),2011,2012,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,MDR,3,3,3,3,0,0,chlorine tablets,monthly,2011-10-01,2012-04-30,-,-,4181,-,52,-,-,1788,-,2,-,-,-
+Cherian 2015,2013,2013,"Pondicherry, India",India,IND  ,India,,Pondicherry,SEAR,-,NA,NA,NA,NA,NA,NA,ANTI,weekly,2013-07-01,2013-07-21,2013-07-14,-,9,-,2,2,7,4,-,0,3.4,-,226
+Roy 2016,2014,2014,"Assam, India",India,IND  ,India,,Assam,SEAR,susceptible,6,0,0,0,0,0,-,daily,2014-01-09,2014-02-06,2014-01-20,-,79,13,6,6,73,-,-,-,1.95,-,-
+Kabwama 2017,2015,2015,"Kampala, Uganda",Uganda,UGA  ,Uganda,,Kampala,AFR,MDR,17,17,17,5,17,0,WASH/CHLO,daily,2015-01-01,2015-06-12,2015-03-01,-,10230,364,51,51,1038,-,-,-,0.95,-,1076842
+Burnsed 2018,2015,2015,"Oklahoma, USA",USA,USA  ,USA,,Oklahoma,AMR,susceptible,20,0,0,0,0,0,WASH/EDU,daily,2015-01-19,2015-03-31,2015-01-31,-,38,-,25,16,-,14,-,0,-,-,-
+Qamar 2018,2016,2017,"Hyderabad, Pakistan",Pakistan,PAK  ,Pakistan,,Hyderabad,EMR,XDR,486,486,486,486,486,486,Active surveillance,weekly,2016-11-21,2017-12-31,2017-05-22,-,-,586,486,486,-,96,71,1,-,>1,3500000
+Davis 2018,2016,2017,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,CIP,73,28,18,0,28,0,WASH/CHLO,daily,2016-10-06,2017-03-08,2017-01-01,-,860,-,80,-,-,-,-,4,-,0.5,-
+Hu 2022,2016,2016,"Lanling, China",China,CHN  ,China,,Lanling,WPR,TMP-SMX,25,1,1,0,0,0,water pipes renewed,weekly,2016-01-21,2016-05-30,2016-05-20,-,31,31,25,24,-,-,-,-,-,-,-
+Yousafzai 2019,2016,2017,"Hyderabad, Pakistan",Pakistan,PAK  ,Pakistan,,Hyderabad,EMR,XDR,101,101,101,101,101,101,CHLO/WASH,weekly,2016-11-30,2017-03-28,2017-03-08,-,101,101,101,101,-,60,57,1,-,-,878418
+Hechaichi 2023,2016,2016,"Gabes, Tunisia",Tunisia,TUN  ,Tunisia,,Gabes,EMR,susceptible,NA,0,0,0,0,0,WASH/EDU,daily,2016-06-23,2016-09-02,2016-07-19,-,187,-,74,74,-,74,2,0,16.24,-,628
+N'Cho 2019,2017,2018,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,CIP,46,15,15,0,15,0,WASH/CHLO/EDU,daily,2017-10-16,2018-02-24,2017-10-30,2018-01-01,3187,-,191,-,-,583,79,0,-,-,-
+Bano-Zaidi 2018,2017,2018,"Yucatan, Mexico",Mexico,MEX  ,Mexico,,Yucatan,AMR,"AMP, CHL",56,3,3,0,0,0,-,weekly,2017-07-18,2018-05-25,2017-10-10,2017-10-10,110,-,66,52,44,110,37,3,-,-,-
+Makungo 2020,2017,2017,"Makhuduthamaga, South Africa",South Africa,ZAF  ,South Africa,,Makhuduthamaga,AFR,susceptible,6,0,0,0,0,0,WASH/CHLO/EDU,daily,2017-11-05,2017-12-24,2017-11-19,2017-12-24,122,65,7,7,-,-,-,0,-,-,274358
+Poncin 2022,2018,2019,"Harare, Zimbabwe",Zimbabwe,ZWE  ,Zimbabwe,,Harare,AFR,-,NA,NA,NA,NA,NA,NA,TCV,weekly,2018-08-26,2019-02-23,2018-12-16,2019-02-01,1967,-,-,-,-,-,-,1,-,-,-
+Nimonkar 2022,2019,2019,"Amritsar, India.",India,IND  ,India,,Amritsar,SEAR,-,NA,NA,NA,NA,NA,NA,-,weekly,2019-03-27,2019-05-14,2019-04-11,2019-05-14,75,75,75,75,-,-,0,0,1.64,-,-
+Srinivasan 2022,2019,2019,"Vellore, India",India,IND  ,India,,Vellore,SEAR,CIP,51,50,3,0,50,0,-,monthly,2019-04-01,2019-06-30,2019-05-01,2019-06-30,51,51,51,51,-,14,1,-,0.9,-,-
+Wang 2022 (1),2022,2022,"Beijing, China",China,CHN,China,,Beijing,WPR,XDR,4,4,4,4,4,4,WASH/CHLO,daily,2022-01-22,2022-03-05,2022-02-17,2022-02-01,23,1,23,1,-,-,-,-,21.7,-,106

@@ -1,0 +1,20 @@
+# ─── Data folder: ignore everything except core input files ──────────────────
+data/*
+!data/amr-data.*
+!data/country_costs.*
+!data/parameters.*
+!data/typhoid_outbreak_summary_v1.*
+!data/typhoid_outbreak_ts_v2.*
+
+# ─── Reference PDFs (copyrighted; not for redistribution) ────────────────────
+references/files/
+
+# ─── R workspace and history ─────────────────────────────────────────────────
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# ─── OS files ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
