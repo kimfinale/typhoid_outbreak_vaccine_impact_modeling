@@ -59,8 +59,6 @@ Loads and cleans all input datasets. Key tasks:
 
 **Working directory:** Set your working directory to `data/` before running, or update the file paths in the script.
 
-> **Note:** Line 106–108 contains hardcoded paths from a co-author's machine (`/Users/monicaduong/...`). Update these to point to `typhoid_outbreak_summary_v1.csv` and `typhoid_outbreak_ts_v2.csv` in your local `data/` directory.
-
 ### Step 2 — Functions (`R/2-functions.R`)
 
 Defines all helper functions used in the simulation:
@@ -128,7 +126,7 @@ install.packages(c(
 
 ## Contact
 
-Monica Duong and Jong-Hoon Kim
+Jong-Hoon Kim
 Epidemiology, Public Health, Impact, International Vaccine Institute, Seoul 08826, Korea
 
 For questions about the analysis, please open an issue in this repository.
