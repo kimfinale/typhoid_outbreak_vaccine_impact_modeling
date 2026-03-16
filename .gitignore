@@ -6,6 +6,12 @@ data/*
 !data/typhoid_outbreak_summary_v1.*
 !data/typhoid_outbreak_ts_v2.*
 
+# ─── Paper files: ignore manuscripts/figures, keep submission materials
+papers/*
+!papers/cover_letter.*
+!papers/highlights.*
+!papers/author_details.*
+
 # ─── Reference PDFs (copyrighted; not for redistribution) ────────────────────
 references/files/
 
