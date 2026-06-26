@@ -1,0 +1,129 @@
+---
+title: "Typhoid ORI manuscript revision — results manifest"
+subtitle: "One row per pending margin comment (c0-c9), with supporting tables and figures"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+    df-print: kable
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+tab <- function(n) read.csv(file.path(root, "revision/tables", n), check.names = FALSE)
+out <- function(n) read.csv(file.path(root, "revision/outputs", n), check.names = FALSE)
+fig <- function(n) file.path(root, "revision/figures", paste0(n, ".png"))
+```
+
+## Revision manifest (primary handoff)
+
+Each row maps a pending manuscript value to its computed result. Fill the
+manuscript placeholders directly from this table.
+
+```{r manifest}
+kable(out("revision_values.csv"))
+```
+
+## Part A — Data reconciliations (c0, c5, c6)
+
+```{r partA}
+kable(tab("tab_reconciliations.csv"))
+```
+
+## Part B — Corrected global extrapolation (c7)
+
+The submitted **1,409 / 1,461 = 96%** is impossible under the static model
+(maximum proportional reduction P_max ≈ 72%). Corrected aggregate annual cases
+averted at 1- and 8-week delay, 80% coverage:
+
+```{r partB}
+kable(tab("tab_global_extrapolation.csv"))
+```
+
+## Part C — Cost-effectiveness decomposition (c8)
+
+Deaths averted are near zero, so averted DALYs are almost entirely YLD. Cost per
+DALY averted sits well above 0.5×GDP (Ochalek opportunity cost), 1×GDP and 3×GDP.
+
+```{r partC}
+kable(tab("tab_ce_decomposition.csv"), digits = 2)
+```
+
+```{r partC_fig, fig.cap="Cost per DALY averted vs GDP-based thresholds."}
+knitr::include_graphics(fig("fig_ce_thresholds"))
+```
+
+### c2 — Coverage-dependence of indirect VE
+
+`IVE(f) = (OVE − f·TVE)/(1−f)` (Khanam Vi-TT: OVE=0.57, TVE=0.85) is
+coverage-dependent and turns negative above f ≈ 67%. The fixed IVE = 17% is best
+stated as a conservative assumption; the renewal model removes the need for it.
+
+```{r c2}
+kable(tab("tab_ive_coverage.csv"))
+```
+
+```{r c2_fig, fig.cap="Algebraic IVE(f) vs the submitted fixed 17%."}
+knitr::include_graphics(fig("fig_ive_coverage"))
+```
+
+## Part D — Confirmation adjustment for suspected cases (c3)
+
+Per-outbreak α = (confirmed/suspected) / s_culture (Mogasale 2016 = 0.61),
+capped at 1. Vaccination cost is fixed; only true-case-linked quantities scale.
+**Percent case reduction is invariant** to α (validated).
+
+```{r partD}
+kable(tab("tab_confirmation_adjusted.csv"), digits = 2)
+```
+
+## Part E — Spatial / hotspot targeting (c8; ILLUSTRATIVE)
+
+Parameterized illustrative scenario (not a fitted estimate): vaccinating the
+sub-area holding φ_cases = 80% of cases needs only φ_pop of the population.
+
+```{r partE}
+kable(tab("tab_spatial_targeting.csv"), digits = 1)
+```
+
+```{r partE_fig, fig.cap="Whole-unit vs targeted cost per DALY (illustrative)."}
+knitr::include_graphics(fig("fig_spatial_targeting"))
+```
+
+## Part F — Statistical reporting (c9)
+
+Ranges labelled "95% CI" are percentile/IQR spreads, not confidence intervals.
+Both IQR and 2.5–97.5 percentile bounds are reported; pooled estimates include
+population- and cases-weighted variants.
+
+```{r partF}
+kable(tab("tab_intervals.csv"))
+kable(tab("tab_weighted_impact.csv"), digits = 1)
+```
+
+```{r partF_fig, fig.cap="Per-outbreak % reduction, static vs renewal, with pooled and population-weighted."}
+knitr::include_graphics(fig("fig_forest_pctreduction"))
+```
+
+## Part G — Renewal-model results (c1)
+
+Manuscript-ready renewal outputs (R_t panels, self-consistency/resolution tables,
+forest, amplification, η_eff, policy grid, GI/ψ_T sensitivity) are produced by the
+companion module `renewal/run_analysis.R` (see `renewal/report.html`).
+
+## Key assumptions
+
+- **GI:** gamma, mean 14 d (CV ≈ 0.6), first weekly bin dropped; renewal only where μ_g/Δ ≥ 2.
+- **ψ = 0.83** (matches static pipeline); ψ_T = ψ base.
+- **s_culture = 0.61** (95% CI 0.52–0.70), Mogasale et al. 2016.
+- **Thresholds:** 0.5×GDP (Ochalek et al. 2018 opportunity cost), 1×GDP, 3×GDP.
+- **Spatial φ:** φ_cases = 0.80, φ_pop swept 0.25–0.50 — **illustrative only**.
+- **Inflation:** Sub-Saharan Africa CPI proxy (provided IMF file lacks a World row).
+```

@@ -73,6 +73,7 @@ run_scenarios <- function(prep, cfg, amr_props,
             population = dbl(), tau = dbl(), vacc_cov = dbl(), draw = integer(N),
             model = chr(), psi = dbl(), psi_T = dbl(), eta = dbl(), gi_mean = dbl(),
             t_eff = dbl(), ori_occurred = logical(N), s_ch_tot = dbl(),
+            post_int_cases = dbl(),
             s_ch_averted_tot = dbl(), death_averted_tot = dbl(),
             s_ch_averted_amr_tot = dbl(), s_ch_averted_resistant_tot = dbl(),
             s_ch_averted_mdr_tot = dbl(), s_ch_averted_fqns_tot = dbl(),
@@ -95,6 +96,7 @@ run_scenarios <- function(prep, cfg, amr_props,
       te <- t_eff_weeks(tau, params$immuno_delay[i], params$campaign_duration[i], cfg$step_days)
       te_int <- max(round(te), 1L); occurred <- te <= tail_guard
 
+      post_int <- if (occurred && te_int <= Tn) sum(inc[te_int:Tn]) else 0
       if (!occurred) { a_ren <- 0; a_sta <- 0 } else {
         ren <- renewal_counterfactual(inc, w, tau = tau, t_eff = te_int, pi = cov,
                                       psi_T = psi_T, c_shape = cfg$timing$c_shape, feedback = TRUE)
@@ -111,7 +113,8 @@ run_scenarios <- function(prep, cfg, amr_props,
         C$tau[k] <- tau; C$vacc_cov[k] <- cov; C$draw[k] <- i; C$model[k] <- mdl
         C$psi[k] <- psi; C$psi_T[k] <- psi_T; C$eta[k] <- if (j == 2L) eta else NA_real_
         C$gi_mean[k] <- gi_mean_days; C$t_eff[k] <- te_int; C$ori_occurred[k] <- occurred
-        C$s_ch_tot[k] <- m$tot_cases; C$s_ch_averted_tot[k] <- a
+        C$s_ch_tot[k] <- m$tot_cases; C$post_int_cases[k] <- post_int
+        C$s_ch_averted_tot[k] <- a
         C$death_averted_tot[k] <- a * death_per_case
         C$s_ch_averted_amr_tot[k] <- a * props["amr"]
         C$s_ch_averted_resistant_tot[k] <- a * props["resistant"]

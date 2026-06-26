@@ -1,0 +1,61 @@
+# =============================================================================
+# Configuration for the manuscript-revision outputs (Parts A-G + manifest).
+# Extends renewal/config.yml; reuses the renewal engine and R/2-functions.R.
+# =============================================================================
+
+seed: 123
+renewal_config: "renewal/config.yml"     # base parameters (Table 1), reused
+
+paths:
+  tables:  "revision/tables"
+  figures: "revision/figures"
+  outputs: "revision/outputs"
+
+# --- Part A: span / denominator (c5) -----------------------------------------
+# Manuscript inconsistency: Title/Methods 2000-2022, Results 2000-2020,
+# Discussion 18 years. Reconcile from the data; denominator = total / span.
+span_years_manuscript: 18                 # value used in the submitted Discussion
+
+# --- Part B: extrapolation guard (c7) ----------------------------------------
+# P_max = 1 - (1-eta)(1-pi*psi) at base pi=0.80, psi=0.83, eta=0.17 ~ 0.72.
+extrapolation:
+  delays_weeks: [1, 8]
+  coverage: 0.80
+
+# --- Part C: cost-effectiveness thresholds (c8) ------------------------------
+# Opportunity-cost multiplier from Ochalek et al. 2018 (BMJ Glob Health):
+# health opportunity cost ~ 0.5x GDP per capita in LICs.
+thresholds:
+  gdp_multipliers: [0.5, 1, 3]            # 0.5x = Ochalek opportunity cost; 1x,3x = WHO-CHOICE
+  gdp_1x_reference_usd: 4440              # manuscript's 1x GDP per-capita reference (c8)
+  ochalek_multiplier: 0.5
+  ochalek_citation: "Ochalek, Lomas & Claxton (2018) BMJ Glob Health"
+
+# --- Part D: confirmation adjustment (c3) ------------------------------------
+# alpha_o = c_o / s_culture, capped at 1.
+#   c_o      = per-outbreak confirmed/suspected (from data where available)
+#   s_culture = blood-culture sensitivity (Mogasale et al. 2016, Ann Clin
+#               Microbiol Antimicrob): 61% (95% CI 52-70%).
+confirmation:
+  s_culture_base: 0.61
+  s_culture_range: [0.50, 0.70]
+  s_culture_citation: "Mogasale et al. (2016) Ann Clin Microbiol Antimicrob 15:32"
+  c_o_fallback: "pooled"                  # for outbreaks lacking confirmation counts
+
+# --- Part E: spatial / hotspot targeting (ILLUSTRATIVE) (c8) ------------------
+# Vaccinating the sub-area holding phi_cases of cases needs only phi_pop of the
+# target population (phi_pop < phi_cases). Anchored loosely to Harare (Poncin 2022,
+# 9 targeted suburbs). NOT a fitted estimate.
+spatial:
+  phi_cases: 0.80
+  phi_pop_sweep: [0.25, 0.33, 0.40, 0.50]
+
+# --- Part C2: IVE coverage-dependence (c2) -----------------------------------
+# IVE(f) = (OVE - f*TVE)/(1-f); Khanam 2023 Vi-TT trial OVE=0.57, TVE=0.85.
+# Zero-crossing at f = OVE/TVE ~ 0.671. Submitted model holds IVE=0.17 fixed.
+ive_algebra:
+  OVE: 0.57
+  TVE: 0.85
+  ive_fixed: 0.17
+  coverage_grid: [0.65, 0.80, 0.90]
+  citation: "Khanam et al. (2023) eClinicalMedicine; Ali et al. (2020) Int Health"
