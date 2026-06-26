@@ -1,0 +1,54 @@
+# =============================================================================
+# Configuration for the renewal-equation (R_t) ORI analysis.
+# Single source of truth for all parameters (manuscript Table 1).
+# Sourced once by run_analysis.R via yaml::read_yaml().
+# Values confirmed against the existing static Sobol pipeline (R/3-model.R).
+# =============================================================================
+
+seed: 123            # RNG seed; printed by run_analysis.R for reproducibility
+n_sobol: 200         # Sobol parameter draws (matches static pipeline)
+
+paths:
+  ts:        "data/typhoid_outbreak_ts_v2.csv"        # Koh 2025 time series
+  summary:   "data/typhoid_outbreak_summary_v1.csv"   # outbreak-level metadata
+  amr:       "data/amr-data.csv"                       # AMR resistance proportions
+  figures:   "renewal/figures"
+  tables:    "renewal/tables"
+  outputs:   "renewal/outputs"
+
+# --- Time step ---------------------------------------------------------------
+step_days: 7         # analysis time step Delta = 1 week
+
+# --- Generation interval (the only transmission assumption) ------------------
+gi:
+  mean_days: 14      # base-case mu_g = 2 weeks
+  cv: 0.6            # coefficient of variation -> sd = 8.4 days
+  drop_first_week: true   # zero the 0-1 week bin then renormalize (incubation >= 1 wk)
+  max_steps: 20      # max GI support in weekly bins
+  mean_days_sweep: [7, 14, 21, 28]   # sensitivity: 1-4 weeks
+  resolution_min_ratio: 2.0          # require mu_g/Delta >= this to include an outbreak
+
+# --- Vaccine parameters ------------------------------------------------------
+vaccine:
+  coverage_base: 0.80
+  coverage_grid: [0.65, 0.80, 0.90]
+  coverage_sobol: [0.63, 0.95]       # Sobol uniform bounds for coverage
+  psi_mean: 0.83                     # direct VE (matches static pipeline, not parameters.csv 0.87)
+  psi_sd: 0.087
+  psi_sobol: [0.77, 0.87]            # truncation bounds
+  psiT_frac_lower: 0.6               # transmission VE sensitivity: psi_T in [0.6*psi, psi]
+  eta_static: 0.17                   # indirect VE — STATIC model only
+  eta_sweep: [0.0, 0.17, 0.50]
+
+# --- Timing ------------------------------------------------------------------
+timing:
+  delay_grid_weeks: [1, 2, 4, 6, 8, 10, 12]   # ORI campaign delay tau (scenario)
+  delay_base_weeks: 8
+  campaign_duration_days: 14         # base; Sobol range below
+  campaign_duration_sobol: [3, 21]
+  immunity_onset_days: 21            # base; Sobol range below
+  immunity_onset_sobol: [14, 28]
+  c_shape: "step"                    # cumulative-protection shape: "step" or "ramp"
+
+# --- Outbreak-tail guard (matches R/3-model.R: outbreak "missed" if it ends <=3 wk after t*) ---
+tail_guard_weeks: 3
