@@ -2,3 +2,6 @@
 outputs/
 figures/
 tables/
+report.html
+report_files/
+.quarto/

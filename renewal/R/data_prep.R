@@ -84,13 +84,17 @@ prep_outbreaks <- function(cfg, inputs = NULL) {
       vec <- outbreak_weekly_series(inc_rows, tu)
       n_weeks <- length(vec)
       series[[sid]] <- vec
+      drow <- dat[dat$study_id == sid, ]
       meta[[sid]] <- list(
         study_id = sid, time_unit = tu,
-        country_iso = dat$country_iso[dat$study_id == sid][1],
-        population = suppressWarnings(as.numeric(dat$population[dat$study_id == sid][1])),
-        who_region = dat$WHO_region[dat$study_id == sid][1],
-        amr_status = dat$amr_status[dat$study_id == sid][1],
-        intervention_week = .intervention_week(dat[dat$study_id == sid, ], cfg)
+        country_iso = trimws(drow$country_iso[1]),   # summary CSV has trailing spaces
+        population = suppressWarnings(as.numeric(drow$population[1])),
+        who_region = drow$WHO_region[1],
+        amr_status = drow$amr_status[1],
+        year = suppressWarnings(as.integer(substr(drow$start_date[1], 1, 4))),
+        tot_deaths = suppressWarnings(as.numeric(drow$tot_deaths[1])),
+        tot_cases = sum(vec, na.rm = TRUE),
+        intervention_week = .intervention_week(drow, cfg)
       )
     }
     res <- rbind(res, data.frame(

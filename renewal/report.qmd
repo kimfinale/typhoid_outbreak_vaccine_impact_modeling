@@ -1,0 +1,131 @@
+---
+title: "Renewal-equation (R_t) model of typhoid ORI: results"
+subtitle: "Dynamic complement to the static proportional-reduction model"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+    code-fold: true
+    fig-width: 9
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+tab <- function(n) read.csv(file.path(root, "renewal/tables", n), check.names = FALSE)
+fig <- function(n) file.path(root, "renewal/figures", paste0(n, ".png"))
+res <- readRDS(file.path(root, "renewal/outputs/results.rds"))
+```
+
+## Summary
+
+This report compares two models of typhoid outbreak-response immunization (ORI)
+impact on an identical set of `r length(unique(res$summ_grid$study_id))`
+daily/weekly outbreaks and identical Sobol parameter draws:
+
+- **Static** (manuscript Eq. 2): a fixed proportional reduction with an exogenous
+  indirect-effectiveness term η = 17 %.
+- **Renewal** (this work): the vaccine reduces transmission (R_t), and herd
+  protection **emerges endogenously** from forward propagation — no η is supplied.
+
+The only quantity that differs between the models is how cases-averted is computed;
+DALY and cost calculations are shared (reused from `R/2-functions.R`).
+
+## 1. Which outbreaks qualify (resolution rule)
+
+The renewal model is identifiable only where the generation interval spans several
+reporting intervals (μ_g/Δ ≳ 2). Monthly series collapse ~95 % of GI mass into one
+reporting bin and are excluded; daily/weekly series qualify.
+
+```{r resolution}
+kable(tab("tab_resolution.csv"))
+```
+
+## 2. Self-consistency
+
+With ψ = 0 the renewal counterfactual must reproduce the observed curve exactly
+(the observed outbreak *is* the baseline).
+
+```{r selfconsistency}
+kable(tab("tab_selfconsistency.csv"), digits = 16)
+```
+
+## 3. Base case (τ = 8 wk, π = 0.80): static vs renewal
+
+```{r forest, fig.cap="Per-outbreak % cases averted, static vs renewal."}
+knitr::include_graphics(fig("fig_forest_pctreduction"))
+```
+
+```{r pooled}
+kable(res$pooled %>% filter(tau == 8), digits = 1,
+      caption = "Pooled and population-weighted % reduction at base case.")
+```
+
+## 4. Reconstructed R_t
+
+```{r rt, fig.cap="Exact reconstruction (black) vs EpiEstim 95% CrI (blue)."}
+knitr::include_graphics(fig("fig_Rt_panels"))
+```
+
+## 5. Amplification by response timing
+
+The renewal/static ratio of cases averted exceeds 1 for early response (several
+transmission generations remain) and converges to 1 for late response.
+
+```{r amp, fig.cap="Renewal / static cases-averted ratio vs ORI delay."}
+knitr::include_graphics(fig("fig_amplification_vs_delay"))
+```
+
+## 6. Effective indirect VE (η_eff)
+
+The fixed indirect VE the static formula would need to reproduce the renewal total
+reduction. η_eff > 17 % means the fixed assumption under-credits the emergent herd effect.
+
+```{r etaeff, fig.cap="η_eff per outbreak vs the assumed 17%."}
+knitr::include_graphics(fig("fig_eta_eff"))
+```
+
+```{r etatab}
+kable(tab("tab_eta_eff.csv"), digits = 2)
+```
+
+## 7. Policy grid and impact summary
+
+```{r policy, fig.cap="Impact metrics by delay × coverage, renewal vs static."}
+if (file.exists(fig("fig_policy_grid"))) knitr::include_graphics(fig("fig_policy_grid"))
+```
+
+```{r impact}
+kable(tab("tab_impact_summary.csv"), digits = 1,
+      caption = "Impact summary (mirrors Supplementary Table 2, with renewal column).")
+```
+
+## 8. Sensitivity analyses
+
+```{r gi, fig.cap="GI mean sensitivity (renewal % reduction)."}
+knitr::include_graphics(fig("fig_gi_sensitivity"))
+```
+
+```{r psit, fig.cap="Transmission-VE (ψ_T) sensitivity (renewal % reduction)."}
+knitr::include_graphics(fig("fig_psiT_sensitivity"))
+```
+
+## 9. Example counterfactual curves
+
+```{r curves, fig.cap="Observed vs static and renewal counterfactuals."}
+knitr::include_graphics(fig("fig_curves_examples"))
+```
+
+## Assumptions
+
+- Incidence = `total_cases` (relabeled `suspected_cases`, as in `R/1-data.R`).
+- GI gamma, base mean 14 d (CV ≈ 0.6), first weekly bin zeroed then renormalized.
+- ψ = 0.83 (matches the static Sobol pipeline); ψ_T = ψ base, floor 0.6·ψ.
+- Direct effect only in the renewal model; herd protection emerges from propagation.
+```

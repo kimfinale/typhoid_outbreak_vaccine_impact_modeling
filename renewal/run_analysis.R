@@ -16,9 +16,15 @@ suppressWarnings({
   if (requireNamespace("data.table", quietly = TRUE)) data.table::setDTthreads(1)
 })
 
+source("R/2-functions.R")            # REUSE: compute_yld/yll, add_cea_results
 source("renewal/R/gi.R")
 source("renewal/R/renewal_core.R")
 source("renewal/R/data_prep.R")
+source("renewal/R/scenario.R")
+source("renewal/R/cost_daly.R")
+source("renewal/R/summarise.R")
+source("renewal/R/epiestim_rt.R")
+source("renewal/R/figures.R")
 
 cfg <- yaml::read_yaml("renewal/config.yml")
 set.seed(cfg$seed)
@@ -62,8 +68,104 @@ cat("--- Running validation tests ---\n")
 test_status <- tryCatch({ source("renewal/tests/test_renewal.R", local = new.env()); 0L },
                         error = function(e) { cat("TEST ERROR:", conditionMessage(e), "\n"); 1L })
 
+if (!identical(test_status, 0L)) { cat("Validation tests failed; stopping.\n"); quit(status = 1L) }
+
+# =============================================================================
+# PHASE 2 — Sobol scenarios, CEA, diagnostics, figures
+# =============================================================================
+cat("\n=== Phase 2 — scenarios + CEA + figures ===\n")
+amr_props <- load_amr_props(cfg)
+cost_env  <- setup_cost_env(cfg)          # NULL if cost inputs missing
+have_cost <- !is.null(cost_env)
+cat("Cost/DALY arm:", ifelse(have_cost, "ENABLED", "SKIPPED (missing inputs)"), "\n")
+tab <- function(n) file.path(cfg$paths$tables, n)
+
+maybe_cea <- function(df) if (have_cost) add_cost_daly(df, cost_env) else df
+
+# --- Analysis 2: delay x coverage grid (base GI, psi_T = psi) -----------------
+cat("Running delay x coverage grid (both models)...\n")
+grid_raw  <- run_scenarios(prep, cfg, amr_props,
+                           coverage = cfg$vaccine$coverage_grid,
+                           delays   = cfg$timing$delay_grid_weeks)
+grid_cea  <- maybe_cea(grid_raw)
+summ_grid <- summarise_draws(grid_cea)
+write.csv(summ_grid, tab("summary_delay_coverage.csv"), row.names = FALSE)
+
+# --- Analysis 1: base case (tau = 8, pi = 0.80) ------------------------------
+summ_base <- summ_grid %>%
+  dplyr::filter(tau == cfg$timing$delay_base_weeks, vacc_cov == cfg$vaccine$coverage_base)
+pooled    <- pooled_estimates(summ_grid)
+write.csv(pooled, tab("pooled_estimates.csv"), row.names = FALSE)
+
+# --- tab_impact_summary (mirror Supp Table 2 w/ renewal column) --------------
+impact_summary <- summ_grid %>%
+  dplyr::filter(vacc_cov %in% cfg$vaccine$coverage_grid) %>%
+  dplyr::group_by(model, tau, vacc_cov) %>%
+  dplyr::summarise(
+    cases_averted_median = median(s_ch_averted_median, na.rm = TRUE),
+    cases_averted_iqr_low = quantile(s_ch_averted_median, 0.25, na.rm = TRUE),
+    cases_averted_iqr_high = quantile(s_ch_averted_median, 0.75, na.rm = TRUE),
+    pct_reduction_median = median(pct_reduction_median, na.rm = TRUE),
+    cost_per_daly_median = median(cost_per_daly_averted_median, na.rm = TRUE),
+    .groups = "drop")
+write.csv(impact_summary, tab("tab_impact_summary.csv"), row.names = FALSE)
+
+# --- eta_eff diagnostic ------------------------------------------------------
+cat("Computing eta_eff...\n")
+eta_tab <- eta_eff_table(prep, cfg, amr_props)
+write.csv(eta_tab, tab("tab_eta_eff.csv"), row.names = FALSE)
+
+# --- Analysis 3: GI sensitivity (mu_g in 7-28 d), base timing/coverage -------
+cat("Running GI sensitivity...\n")
+gi_sens <- do.call(rbind, lapply(cfg$gi$mean_days_sweep, function(mg) {
+  r <- run_scenarios(prep, cfg, amr_props, coverage = cfg$vaccine$coverage_base,
+                     delays = cfg$timing$delay_base_weeks, gi_mean_days = mg)
+  s <- summarise_draws(maybe_cea(r)); s$gi_mean <- mg
+  s[s$model == "renewal", ]
+}))
+write.csv(gi_sens, tab("sens_gi.csv"), row.names = FALSE)
+
+# --- Analysis 4: psi_T sensitivity (0.6*psi - psi) ---------------------------
+cat("Running psi_T sensitivity...\n")
+psiT_fracs <- seq(cfg$vaccine$psiT_frac_lower, 1, length.out = 5)
+psiT_sens <- do.call(rbind, lapply(psiT_fracs, function(fr) {
+  r <- run_scenarios(prep, cfg, amr_props, coverage = cfg$vaccine$coverage_base,
+                     delays = cfg$timing$delay_base_weeks, psi_T_frac = fr)
+  s <- summarise_draws(maybe_cea(r)); s$psiT_frac <- fr
+  s[s$model == "renewal", ]
+}))
+write.csv(psiT_sens, tab("sens_psiT.csv"), row.names = FALSE)
+
+# --- Figures -----------------------------------------------------------------
+cat("Building figures...\n")
+save_fig(fig_Rt_panels(prep, cfg), "fig_Rt_panels", cfg, width = 10, height = 10)
+save_fig(fig_forest_pctreduction(summ_base, pooled, cfg), "fig_forest_pctreduction", cfg, height = 7)
+save_fig(fig_amplification_vs_delay(summ_grid, cfg), "fig_amplification_vs_delay", cfg)
+save_fig(fig_eta_eff(eta_tab, cfg), "fig_eta_eff", cfg, height = 7)
+if (have_cost) save_fig(fig_policy_grid(summ_grid, cfg), "fig_policy_grid", cfg, width = 10, height = 7)
+save_fig(fig_sensitivity(gi_sens, "gi_mean", "GI mean (days)", "GI sensitivity (renewal)"),
+         "fig_gi_sensitivity", cfg)
+save_fig(fig_sensitivity(psiT_sens, "psiT_frac", "psi_T / psi", "Transmission-VE sensitivity (renewal)"),
+         "fig_psiT_sensitivity", cfg)
+# two representative outbreaks: largest (cases) and longest (weeks)
+sizes <- vapply(prep$series, sum, numeric(1)); lens <- vapply(prep$series, length, numeric(1))
+ex_ids <- unique(c(names(which.max(sizes)), names(which.max(lens))))
+save_fig(fig_curves_examples(prep, cfg, ex_ids), "fig_curves_examples", cfg, width = 10)
+
 # --- Reproducibility record --------------------------------------------------
 writeLines(capture.output(sessionInfo()), file.path(cfg$paths$outputs, "sessionInfo.txt"))
-cat("\nWrote", file.path(cfg$paths$outputs, "sessionInfo.txt"), "\n")
-cat("=== Phase 1 complete ===\n")
-if (!identical(test_status, 0L)) quit(status = 1L)
+saveRDS(list(summ_grid = summ_grid, pooled = pooled, eta_tab = eta_tab,
+             gi_sens = gi_sens, psiT_sens = psiT_sens, have_cost = have_cost),
+        file.path(cfg$paths$outputs, "results.rds"))
+cat("\nWrote tables to", cfg$paths$tables, "and figures to", cfg$paths$figures, "\n")
+
+# --- Render the Quarto report (if quarto is available) -----------------------
+if (nzchar(Sys.which("quarto"))) {
+  cat("Rendering report.qmd...\n")
+  Sys.setenv(RENEWAL_ROOT = normalizePath(ROOT))
+  rc <- system2("quarto", c("render", shQuote("renewal/report.qmd")),
+                stdout = FALSE, stderr = FALSE)
+  cat(if (rc == 0) "Wrote renewal/report.html\n" else "quarto render failed (non-fatal)\n")
+} else cat("quarto not found; skipping report render.\n")
+
+cat("=== Phase 2 complete ===\n")
