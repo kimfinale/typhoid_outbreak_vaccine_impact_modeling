@@ -8,7 +8,13 @@ suppressMessages({ library(ggplot2); library(dplyr); library(tidyr) })
 save_fig <- function(plot, name, cfg, width = 9, height = 6, dpi = 300) {
   base <- file.path(cfg$paths$figures, name)
   ggsave(paste0(base, ".png"), plot, width = width, height = height, dpi = dpi)
-  ggsave(paste0(base, ".pdf"), plot, width = width, height = height, device = cairo_pdf)
+  # PDF is best-effort: cairo_pdf can fail to start on large patchwork grids, and
+  # the target file may be locked by a viewer. Try cairo, then base pdf; never halt.
+  ok <- tryCatch({ ggsave(paste0(base, ".pdf"), plot, width = width, height = height,
+                          device = cairo_pdf); TRUE }, error = function(e) FALSE)
+  if (!ok) ok <- tryCatch({ ggsave(paste0(base, ".pdf"), plot, width = width,
+                                   height = height); TRUE }, error = function(e) FALSE)
+  if (!ok) warning("Could not write ", base, ".pdf (locked or device error); PNG written.")
   invisible(base)
 }
 

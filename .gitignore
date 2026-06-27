@@ -3,7 +3,8 @@ data/*
 !data/amr-data.*
 !data/country_costs.*
 !data/parameters.*
-!data/typhoid_outbreak_summary_v1.*
+!data/Typhoid_Outbreak_Time_Series_2000_2022_Summary.*
+!data/Typhoid_Outbreak_Time_Series_2000_2022_Timeseries.*
 !data/typhoid_outbreak_ts_v2.*
 
 # ─── Paper files: ignore manuscripts/figures, keep submission materials

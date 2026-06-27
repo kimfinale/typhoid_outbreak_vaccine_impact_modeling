@@ -122,15 +122,18 @@ part_B_extrapolation <- function(scn_raw, cfg, rcfg, span_years = cfg$span_years
 confirmation_factors <- function(raw_summary, prep, cfg) {
   num <- function(x) suppressWarnings(as.numeric(x))
   d <- raw_summary
-  co <- num(d$tot_confirmed_cases) / num(d$tot_suspected_cases)
+  # c_o = culture positivity = confirmed-by-culture (AI) / tested-by-culture (AG).
+  # Correct denominator (the TESTED, not all suspected); proportion of clinically
+  # suspected cases that are true typhoid follows as PPV = c_o / s_culture.
+  co <- num(d$lab_confirmed_cases) / num(d$lab_tested_cases)
+  co[is.finite(co)] <- pmin(co[is.finite(co)], 1)
   cf <- data.frame(study_id = d$study_id, c_o = co, stringsAsFactors = FALSE)
   cf <- cf[cf$study_id %in% names(prep$series), ]
-  pooled_co <- with(d[d$study_id %in% names(prep$series), ],
-                    sum(num(tot_confirmed_cases), na.rm = TRUE) /
-                    sum(num(tot_suspected_cases), na.rm = TRUE))
-  cf$c_o[!is.finite(cf$c_o)] <- pooled_co               # fallback for missing
-  cf$c_o_source <- ifelse(is.finite(co[match(cf$study_id, d$study_id)]),
-                          "per-outbreak", "pooled fallback")
+  sub <- d[d$study_id %in% names(prep$series), ]
+  pooled_co <- sum(num(sub$lab_confirmed_cases), na.rm = TRUE) /
+               sum(num(sub$lab_tested_cases), na.rm = TRUE)
+  cf$c_o_source <- ifelse(is.finite(cf$c_o), "per-outbreak (AI/AG)", "pooled fallback")
+  cf$c_o[!is.finite(cf$c_o)] <- pooled_co               # fallback for missing AG/AI
   attr(cf, "pooled_co") <- pooled_co
   cf
 }

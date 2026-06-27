@@ -6,7 +6,11 @@ suppressMessages({ library(ggplot2); library(dplyr) })
 save_fig_u <- function(plot, name, cfg, width = 9, height = 6, dpi = 300) {
   base <- file.path(cfg$paths$figures, name)
   ggsave(paste0(base, ".png"), plot, width = width, height = height, dpi = dpi)
-  ggsave(paste0(base, ".pdf"), plot, width = width, height = height, device = cairo_pdf)
+  ok <- tryCatch({ ggsave(paste0(base, ".pdf"), plot, width = width, height = height,
+                          device = cairo_pdf); TRUE }, error = function(e) FALSE)
+  if (!ok) ok <- tryCatch({ ggsave(paste0(base, ".pdf"), plot, width = width,
+                                   height = height); TRUE }, error = function(e) FALSE)
+  if (!ok) warning("Could not write ", base, ".pdf; PNG written.")
 }
 
 # Observed incidence + R_t with the full MC uncertainty ribbon, per outbreak.

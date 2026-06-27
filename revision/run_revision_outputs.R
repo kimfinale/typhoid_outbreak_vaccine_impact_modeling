@@ -25,7 +25,7 @@ tabf <- function(n) file.path(cfg$paths$tables, n)
 figf <- function(n) file.path(cfg$paths$figures, n)
 
 # --- Shared inputs -----------------------------------------------------------
-raw_summary <- read.csv(rcfg$paths$summary, stringsAsFactors = FALSE, check.names = FALSE)
+raw_summary <- read_summary(rcfg$paths$summary)   # normalized (headers + study-id crosswalk)
 prep <- prep_outbreaks(rcfg)
 amr_props <- load_amr_props(rcfg)
 cost_env  <- setup_cost_env(rcfg)

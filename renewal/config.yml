@@ -9,8 +9,8 @@ seed: 123            # RNG seed; printed by run_analysis.R for reproducibility
 n_sobol: 200         # Sobol parameter draws (matches static pipeline)
 
 paths:
-  ts:        "data/typhoid_outbreak_ts_v2.csv"        # Koh 2025 time series
-  summary:   "data/typhoid_outbreak_summary_v1.csv"   # outbreak-level metadata
+  ts:        "data/Typhoid_Outbreak_Time_Series_2000_2022_Timeseries.csv"   # Koh 2025 time series (canonical)
+  summary:   "data/Typhoid_Outbreak_Time_Series_2000_2022_Summary.csv"   # outbreak-level metadata (canonical)
   amr:       "data/amr-data.csv"                       # AMR resistance proportions
   figures:   "renewal/figures"
   tables:    "renewal/tables"

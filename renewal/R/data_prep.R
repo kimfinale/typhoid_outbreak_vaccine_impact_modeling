@@ -28,9 +28,73 @@ RENEWAL_EXCLUSIONS <- c(
 # cannot be refined below their native bin.
 STEP_WEEKS_BY_UNIT <- c(daily = 1, weekly = 1, fortnightly = 2, monthly = 30 / 7)
 
+# --- Summary normalizer ------------------------------------------------------
+# The canonical summary (Typhoid_Outbreak_Time_Series_2000_2022_Summary.csv) uses
+# human-readable headers and its own study-id naming. read_summary() maps both to
+# the snake_case columns and the ts_v2 study-id names the pipeline expects, so all
+# downstream code is unchanged. (The legacy typhoid_outbreak_summary_v1.csv passes
+# through untouched.)
+SUMMARY_COLMAP <- c(
+  "Study ID" = "study_id", "Outbreak start year" = "outbreak_start_year",
+  "Outbreak end year" = "outbreak_end_year", "Location" = "location",
+  "Country 3-letter ISO" = "country_iso", "WHO region" = "WHO_region",
+  "AMR status" = "amr_status", "Time unit" = "time_unit", "Start date" = "start_date",
+  "End date" = "end_date", "Peak date" = "peak_date", "Intervention date" = "intervention_date",
+  "Total suspected cases" = "tot_suspected_cases",
+  "Lab tested cases by blood/bone marrow culture" = "lab_tested_cases",
+  "Total confirmed cases" = "tot_confirmed_cases",
+  "Confirmed cases by blood/ bone marrow culture" = "lab_confirmed_cases",
+  "Total probable cases" = "tot_probable_cases", "Number of hospitalized" = "hospitalized",
+  "Number of complications" = "complicated", "Total deaths" = "tot_deaths",
+  "Attack rate (%)" = "attack_rate", "CFR (%)" = "cfr", "Population" = "population")
+
+# new-file study id -> ts_v2 canonical name (matched by cumulative cases / dates).
+STUDY_ID_CROSSWALK <- c(
+  "Polonsky 2014 (1)" = "Polonsky 2014, Dzivaresekwa",
+  "Polonsky 2014 (2)" = "Polonsky 2014_Kuwadzana",
+  "Imanishi 2014 (1)" = "Imanishi 2014, Dzivaresekwa",
+  "Imanishi 2014 (2)" = "Imanishi 2014, Kuwadzana",
+  "Walters 2014 (1)" = "Walters 2014, Kasese",
+  "Walters 2014 (2)" = "Walters 2014, Bundibugyo",
+  "Wang 2022" = "Wang 2022 (1)",          # excluded; map to an excluded canonical name
+  "Limpitikul 2014 (total)" = "Limpitikul 2014")  # aggregate; excluded base name
+
+read_summary <- function(path) {
+  raw <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
+  if ("Study ID" %in% names(raw)) {                     # new canonical format
+    raw <- raw[, names(raw) %in% names(SUMMARY_COLMAP), drop = FALSE]
+    names(raw) <- SUMMARY_COLMAP[names(raw)]
+    raw <- raw[!is.na(raw$study_id) & trimws(raw$study_id) != "", ]
+    raw$study_id <- trimws(raw$study_id)
+    hit <- raw$study_id %in% names(STUDY_ID_CROSSWALK)
+    raw$study_id[hit] <- STUDY_ID_CROSSWALK[raw$study_id[hit]]
+  }
+  raw
+}
+
+# Time-series normalizer: the canonical Timeseries file uses human-readable
+# headers but the same (ts_v2) study-id naming, so only column renaming is needed.
+# "No. of Patients" is the count the static model uses (old total_cases).
+TS_COLMAP <- c(
+  "Study ID" = "study_id", "start date" = "start_date", "end date" = "end_date",
+  "No. of Patients" = "total_cases", "Suspected" = "suspected_cases",
+  "Confirmed" = "confirmed_cases", "Probable" = "probable_cases",
+  "Date of onset (T/F)" = "date_onset", "Date of confirmation (T/F)" = "date_confirmation")
+
+read_timeseries <- function(path) {
+  raw <- read.csv(path, stringsAsFactors = FALSE, check.names = FALSE)
+  if ("Study ID" %in% names(raw)) {                     # new canonical format
+    raw <- raw[, names(raw) %in% names(TS_COLMAP), drop = FALSE]
+    names(raw) <- TS_COLMAP[names(raw)]
+    raw <- raw[!is.na(raw$study_id) & trimws(raw$study_id) != "", ]
+    raw$study_id <- trimws(raw$study_id)
+  }
+  raw
+}
+
 load_inputs <- function(cfg) {
-  ts  <- read.csv(cfg$paths$ts,      stringsAsFactors = FALSE, check.names = FALSE)
-  dat <- read.csv(cfg$paths$summary, stringsAsFactors = FALSE, check.names = FALSE)
+  ts  <- read_timeseries(cfg$paths$ts)
+  dat <- read_summary(cfg$paths$summary)
   # incidence series the static model uses: total_cases relabeled suspected_cases
   ts$incidence <- suppressWarnings(as.numeric(ts$total_cases))
   list(ts = ts, summary = dat)
