@@ -1,0 +1,99 @@
+---
+title: "Drivers of outbreak-response immunization impact"
+subtitle: "Which outbreak characteristics, knowable at vaccination, predict ORI impact?"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+    df-print: kable
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+tab <- function(n) read.csv(file.path(root, "impact_drivers/tables", n), check.names = FALSE)
+fig <- function(n) file.path(root, "impact_drivers/figures", paste0(n, ".png"))
+r <- readRDS(file.path(root, "impact_drivers/outputs/impact_drivers.rds"))
+```
+
+## Question & approach
+
+Factors that shape an outbreak's size also shape how much a reactive vaccination
+campaign can avert. We ask **which characteristics, knowable at the time of
+vaccination, predict ORI impact** — using only *prospective* predictors (the first
+τ weeks of the curve + static context), never retrospective quantities (final size,
+peak, duration). Impact is measured three ways: **cases averted per 1,000 doses**
+(efficiency, primary), **% case reduction** (relative), and **cases averted**
+(absolute). We combine the 13 real outbreaks (empirical, exploratory) with a
+renewal-model **simulation experiment** (confounding-free, large n), then overlay
+the real outbreaks on the simulated surface.
+
+## 1. Empirical association (real outbreaks, n=13)
+
+```{r assoc}
+kable(tab("tab_associations.csv") |> head(12), digits = 2,
+      caption = "Spearman rho (bootstrap CI) of prospective predictors vs impact at tau=8, ranked.")
+```
+
+```{r ranking, fig.cap="Predictor importance: empirical |rho| vs simulation deviance explained."}
+knitr::include_graphics(fig("fig_ranking_case_averted_per_1000"))
+```
+
+**Mediation — does context add anything beyond R_t at vaccination?**
+
+```{r med}
+kable(tab("tab_mediation.csv"), caption = "Variance explained: R_t alone vs + population vs + cumulative attack rate.")
+```
+
+## 2. Predictive value shifts with delay
+
+```{r abd, fig.cap="The R_t-at-vaccination signal tracks impact at the decision time; early growth fades as outbreaks burn out."}
+knitr::include_graphics(fig("fig_assoc_by_delay"))
+```
+
+## 3. Simulation surface & the impact map
+
+```{r simimp}
+kable(tab("tab_sim_importance.csv"), digits = 2,
+      caption = "Confounding-free driver ranking from the simulation (deviance explained, univariate GAM).")
+```
+
+```{r surface, fig.cap="Impact map: expected cases averted per 1,000 doses over (R_t at vaccination x delay), real outbreaks overlaid."}
+knitr::include_graphics(fig("fig_impact_surface"))
+```
+
+```{r validation, fig.cap="Real outbreaks vs the simulation-trained prediction (external validation)."}
+knitr::include_graphics(fig("fig_validation"))
+```
+
+## 4. The interaction: delay matters more for still-growing outbreaks
+
+```{r interaction, fig.cap="Slope of impact vs delay within R_t strata."}
+knitr::include_graphics(fig("fig_interaction"))
+```
+
+```{r ds}
+kable(tab("tab_delay_sensitivity.csv"), digits = 2)
+```
+
+## 5. Decision rule
+
+```{r tree, fig.cap="Interpretable rule (regression tree) for cases averted per 1,000 doses, from prospective features."}
+if (file.exists(fig("fig_decision_tree"))) knitr::include_graphics(fig("fig_decision_tree"))
+```
+
+LOO-CV (real outbreaks, % reduction ~ R_t at vaccination): R² =
+`r round(r$loo$loo_r2, 2)`, correlation = `r round(r$loo$loo_cor, 2)` (n = `r r$loo$n`).
+
+## Takeaways & limitations
+
+- **R_t at the time of vaccination (epidemic phase) is the dominant, mechanistically-grounded driver** — early growth rate alone is insufficient because fast outbreaks burn out sooner.
+- **Rapid response matters most for still-growing outbreaks** (steeper impact-vs-delay slope at high R_t).
+- Population scales the efficiency (cases per 1,000 doses) but acts largely through R_t / remaining burden.
+- **Limitations:** n=13 empirically (hypothesis-generating; simulation carries the functional forms); prospective-only predictors; reconstructed early R_t is uncertain; detection/selection bias; population missing for 4 outbreaks.
+```
