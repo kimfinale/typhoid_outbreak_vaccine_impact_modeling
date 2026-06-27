@@ -42,6 +42,62 @@ fig_Rt_panels <- function(prep, cfg) {
     theme_minimal(base_size = 9)
 }
 
+# --- fig_Rt_with_incidence: observed incidence (the fitted data) + R_t --------
+# One stacked mini-plot per outbreak (incidence on top, reconstructed R_t below,
+# sharing the week axis), laid out in a grid via patchwork. R_t shows the exact
+# reconstruction (black) and the EpiEstim 95% CrI (blue); the dotted line is
+# R_t = 1 and the red dashed line marks the observed intervention week.
+fig_Rt_with_incidence <- function(prep, cfg, ncol = 4, rt_cap = 6) {
+  stopifnot(requireNamespace("patchwork", quietly = TRUE))
+  w <- gi_from_config(cfg)
+  units <- lapply(names(prep$series), function(sid) {
+    inc <- prep$series[[sid]]; wk <- seq_along(inc)
+    exact <- pmin(reconstruct_Rt(inc, w)$Rt, rt_cap)
+    ee <- epiestim_rt(inc, cfg)
+    dinc <- data.frame(week = wk, cases = inc)
+    drt <- data.frame(week = wk, exact = exact)
+    iw <- prep$meta[[sid]]$intervention_week
+    xmax <- max(wk)
+
+    p_inc <- ggplot(dinc, aes(week, cases)) +
+      geom_col(fill = "grey55", width = 0.9) +
+      {if (!is.na(iw)) geom_vline(xintercept = iw, linetype = "dashed",
+                                  colour = "red", linewidth = 0.3)} +
+      scale_x_continuous(limits = c(0.5, xmax + 0.5)) +
+      labs(title = sid, x = NULL, y = "cases") +
+      theme_minimal(base_size = 7) +
+      theme(plot.title = element_text(size = 7.5, face = "bold"),
+            axis.text.x = element_blank(), plot.margin = margin(2, 4, 0, 2))
+
+    p_rt <- ggplot(drt, aes(week, exact))
+    if (!is.null(ee)) p_rt <- p_rt +
+      geom_ribbon(data = ee, aes(week, ymin = pmin(lo, rt_cap), ymax = pmin(hi, rt_cap)),
+                  inherit.aes = FALSE, fill = "#0072B2", alpha = 0.2) +
+      geom_line(data = ee, aes(week, pmin(mean_r, rt_cap)), inherit.aes = FALSE,
+                colour = "#0072B2", linewidth = 0.4)
+    p_rt <- p_rt +
+      geom_hline(yintercept = 1, linetype = "dotted", colour = "grey50") +
+      {if (!is.na(iw)) geom_vline(xintercept = iw, linetype = "dashed",
+                                  colour = "red", linewidth = 0.3)} +
+      geom_line(colour = "black", linewidth = 0.5) +
+      scale_x_continuous(limits = c(0.5, xmax + 0.5)) +
+      coord_cartesian(ylim = c(0, rt_cap)) +
+      labs(x = "week", y = expression(R[t])) +
+      theme_minimal(base_size = 7) +
+      theme(plot.margin = margin(0, 4, 2, 2))
+
+    patchwork::wrap_plots(p_inc, p_rt, ncol = 1, heights = c(1, 1))
+  })
+  patchwork::wrap_plots(units, ncol = ncol) +
+    patchwork::plot_annotation(
+      title = "Observed incidence and reconstructed R_t, per outbreak",
+      subtitle = "Each outbreak: weekly cases (top, the fitted data) and R_t (bottom; black = exact, blue = EpiEstim 95% CrI, dotted = 1, red dashed = intervention)",
+      theme = theme(plot.title = element_text(size = 12, face = "bold"),
+                    plot.subtitle = element_text(size = 9)))
+}
+
+# --- fig_forest_pctreduction: static vs renewal per outbreak -----------------
+
 # --- fig_forest_pctreduction: static vs renewal per outbreak -----------------
 fig_forest_pctreduction <- function(summ_base, pooled, cfg) {
   d <- summ_base %>% arrange(model, pct_reduction_median) %>%

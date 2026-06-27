@@ -139,6 +139,7 @@ write.csv(psiT_sens, tab("sens_psiT.csv"), row.names = FALSE)
 # --- Figures -----------------------------------------------------------------
 cat("Building figures...\n")
 save_fig(fig_Rt_panels(prep, cfg), "fig_Rt_panels", cfg, width = 10, height = 10)
+save_fig(fig_Rt_with_incidence(prep, cfg), "fig_Rt_with_incidence", cfg, width = 13, height = 11)
 save_fig(fig_forest_pctreduction(summ_base, pooled, cfg), "fig_forest_pctreduction", cfg, height = 7)
 save_fig(fig_amplification_vs_delay(summ_grid, cfg), "fig_amplification_vs_delay", cfg)
 save_fig(fig_eta_eff(eta_tab, cfg), "fig_eta_eff", cfg, height = 7)
