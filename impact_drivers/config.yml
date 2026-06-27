@@ -1,0 +1,26 @@
+# =============================================================================
+# Config for the impact-drivers analysis: which outbreak/environment
+# characteristics (knowable AT vaccination) predict the magnitude of ORI impact.
+# Reuses the renewal engine, scenario runner, and cost/DALY machinery.
+# =============================================================================
+
+seed: 123
+renewal_config: "renewal/config.yml"
+
+paths:
+  tables:  "impact_drivers/tables"
+  figures: "impact_drivers/figures"
+  outputs: "impact_drivers/outputs"
+
+# Vaccination-delay grid (weeks) and coverage for the impact outcomes.
+delays_weeks: [1, 2, 4, 6, 8, 10, 12]
+coverage: 0.80
+
+# Early-growth-rate window (weeks): log-linear slope over the first k weeks.
+growth_window_weeks: 4
+
+# Outcomes modelled (all three, ranked by predictability), primary first.
+outcomes:
+  - case_averted_per_1000   # deployment efficiency (primary)
+  - pct_reduction           # relative impact
+  - cases_averted           # absolute burden averted

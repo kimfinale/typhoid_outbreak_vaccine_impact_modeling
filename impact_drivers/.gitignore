@@ -1,0 +1,6 @@
+tables/
+figures/
+outputs/
+.quarto/
+report.html
+report_files/
