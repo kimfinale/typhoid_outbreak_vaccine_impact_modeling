@@ -1,0 +1,11 @@
+param,symbol,base,low,high,dist,unit,affects,source
+gi_mean,mu_g,14,10,28,lognormal,days,R_t kernel (dominant),"Derived: incubation BMC ID 2018; shedding Marudaiappan 2021; endemic anchor Phillips 2020"
+gi_cv,CV_g,0.6,0.4,0.8,uniform,ratio,R_t kernel,"Incubation/shedding dispersion"
+carrier_tail_weight,pi_c,0.03,0.02,0.04,uniform,proportion,R_t kernel long tail,"Chronic carriers 2-4% (Pitzer 2014; Watson 2015)"
+carrier_rel_infectiousness,c_c,0.05,0.0,0.10,uniform,ratio,R_t kernel long tail,"Carrier transmissibility low/pivotal (Pitzer 2014)"
+carrier_gi_mean,mu_carrier,180,90,365,uniform,days,R_t kernel long tail,"Carriage up to ~1 yr (reviews)"
+asymptomatic_fraction,f_a,0.5,0.25,0.75,uniform,proportion,psi_T (via phi_a),"Seroincidence:clinical 10-24x (STRATAA); CHIM ~37% subclinical"
+asymptomatic_rel_infectiousness,c_a,0.3,0.1,0.5,uniform,ratio,psi_T (via phi_a),"Lower shedding subclinical (assumption bounded)"
+ppv_level,ppv,0.4,0.2,0.7,uniform,proportion,absolute scale (invariant for % reduction),"confirmed/suspected / culture sens; per-outbreak in data"
+ppv_trend,delta_ppv,0.0,-0.3,0.3,uniform,relative,R_t shape (time-varying only),"No strong evidence; bounded sensitivity"
+culture_sensitivity,s_cult,0.61,0.52,0.70,normal,proportion,PPV / true-case basis,"Mogasale et al. 2016 Ann Clin Microbiol Antimicrob 15:32"

@@ -1,0 +1,33 @@
+# =============================================================================
+# Config for the rigorous (propagated-uncertainty) R_t analysis.
+# Extends renewal/config.yml; parameter ranges in uncertainty/params_uncertainty.csv.
+# =============================================================================
+
+seed: 123
+n_mc: 500                       # Monte Carlo draws over the uncertainty parameters
+renewal_config: "renewal/config.yml"
+params_csv: "uncertainty/params_uncertainty.csv"
+
+paths:
+  tables:  "uncertainty/tables"
+  figures: "uncertainty/figures"
+  outputs: "uncertainty/outputs"
+
+# Vaccine scenario for the impact propagation (base case, from renewal config)
+scenario:
+  tau_weeks: 8
+  coverage: 0.80
+
+# Sobol global-sensitivity sample size (variance decomposition of impact)
+sobol_n: 256
+
+# Full Bayesian extension (Phase 6)
+bayes:
+  enable: true
+  n_iter: 1500                  # MCMC iterations per chain (adjustable)
+  n_warmup: 500
+  n_chains: 2
+  thin: 2
+  rw_sd_logRt: 0.4              # random-walk prior sd on log R_t (smoothing)
+  gi_lo: 10                     # GI-mean prior bounds (days), from params_uncertainty.csv
+  gi_hi: 28
