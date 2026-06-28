@@ -1,0 +1,7 @@
+parameter,value,denominator,definition,maps_to,citation
+household_secondary_case_fraction,0.125,7/56 households,Households reporting a blood-culture-confirmed secondary typhoid case (Vellore community surveillance),Household (short-cycle) secondary clinical cases per index household,"Srinivasan/Marudaiappan et al. 2021, J Infect Dis (PMC8892528)"
+household_contact_shedding_fraction,0.070,12/172 contacts,Household contacts of index cases with S. Typhi in stool (5/12 asymptomatic),Infection (not disease) in household contacts; upper-ish on transmission but includes asymptomatic shedding,"Srinivasan/Marudaiappan et al. 2021, J Infect Dis (PMC8892528)"
+households_with_shedding_contact,0.196,11/56 households,Households with >=1 contact shedding S. Typhi,~1 in 5 households have concurrent infection,"Srinivasan/Marudaiappan et al. 2021, J Infect Dis (PMC8892528)"
+index_shedding_fraction,0.214,15/70 children,Index children shedding S. Typhi after fever onset (median 11.5 d),Infectious-period proxy; informs kernel not R_tr level,"Srinivasan/Marudaiappan et al. 2021, J Infect Dis (PMC8892528)"
+household_serial_interval_days,12,median,Median serial interval (fever onset) between secondary and index cases,Generation/serial-interval kernel (NOT R_tr level),"Srinivasan/Marudaiappan et al. 2021, J Infect Dis (PMC8892528)"
+chronic_carrier_fraction,0.02-0.04,reviews,Proportion of cases becoming chronic carriers (long right-tail source),Long-cycle carrier-maintained transmission (small),"Pitzer et al. 2014, PLoS NTD; reviews"

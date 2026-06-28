@@ -1,0 +1,15 @@
+study_id,constraint_type,R_tr_constraint,channel,independent_or_confounded,note
+Aye 2004,prior_ordinal,"R_tr > 0 (transmission non-negligible); widen, do not pin",total,independent,Contact OR 22 (no denominator) -> ordinal only
+Lewis 2005,pooled_fallback,"R_tr_household ~ 0.056 (Vellore pooled 12.5% sec)",household,pooled,Point-source; no outbreak-specific p2p data
+Muyembe-Tamfum 2009,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,p2p asserted but unquantified
+Neil 2012,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,No contact data
+Ali 2017,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,Latrine-sharing is ecological/confounded; not used
+"Polonsky 2014, Dzivaresekwa",prior_level,"R_tr_household ~ 0.056 (from prop_secondary 5.3%)",household,independent,Household-linked secondary fraction; community R_tr NOT constrained
+Polonsky 2014_Kuwadzana,prior_level,"R_tr_household ~ 0.056 (from prop_secondary 5.3%)",household,independent,Pooled prop_secondary; community R_tr NOT constrained
+Muti 2014,prior_ordinal,"R_tr > 0 (transmission non-negligible); widen, do not pin",total,independent,Home-contact OR 8.34 (no denominator) -> ordinal only
+Kabwama 2017,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,Only water/food exposures measured
+Qamar 2018,prior_ordinal,"R_tr > 0 (transmission non-negligible); widen, do not pin",total,independent,Contact OR 3.81 (no denominator) -> ordinal only
+Davis 2018,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,PDF misfiled; not assessed
+Yousafzai 2019,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,Case-control not concluded
+N'Cho 2019,pooled_fallback,"R_tr_household ~ 0.056 (pooled)",household,pooled,MMWR note; no data
+Michel 2005,prior_level,"R_tr ~ 0 (0% secondary; pure point-source)",total,independent,EXCLUDED from pipeline; clean lower anchor only

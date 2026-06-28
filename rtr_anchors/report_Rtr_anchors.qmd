@@ -1,0 +1,77 @@
+---
+title: "Literature anchors for the transmission reproduction number R_tr"
+subtitle: "Field measurements of person-to-person transmission, independent of curve shape"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+    df-print: kable
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+rd <- function(n) read.csv(file.path(root, "rtr_anchors", n), check.names = FALSE)
+fig <- function(n) file.path(root, "rtr_anchors/figures", paste0(n, ".png"))
+A <- rd("tab_Rtr_anchors.csv"); ren <- A[A$renewal_set == "Y", ]
+```
+
+## Purpose
+
+The source fraction θ was unidentifiable from curve shape alone (`hierarchical_theta/`):
+the renewal transmission term R_tr and the common-source pulse occupy the same ridge.
+Field measurements of **person-to-person transmission** — household secondary attack
+rates, contact-tracing counts, attributable fractions — are observed *independently* of
+the incidence curve, so they can constrain R_tr along the unidentified direction.
+
+## Coverage: the evidence is thin
+
+```{r coverage, fig.cap="Independent R_tr anchors among the 13 renewal outbreaks."}
+knitr::include_graphics(fig("fig_anchor_coverage"))
+```
+
+```{r covtab}
+ren %>% count(anchor_type, name = "outbreaks") %>% kable()
+```
+
+Only **2/13** outbreaks (Polonsky's two suburbs) give a level-anchoring quantity with a
+denominator; **3/13** give ordinal contact ORs (no denominator); **8/13** have nothing and
+fall back to a pooled prior. **No outbreak reports a household SAR with a denominator**, so
+the proposed `secondary_cases ~ Binomial(contacts, p)` likelihood term has no data to attach.
+
+## Per-outbreak anchors
+
+```{r anchors}
+kable(A |> select(study_id, renewal_set, contact_OR, prop_secondary, anchor_type, confidence, citation))
+```
+
+## Pooled fallback (broader literature)
+
+```{r priors}
+kable(rd("tab_typhoid_transmission_priors.csv"))
+```
+
+## Constraint for the model
+
+```{r model}
+kable(rd("tab_Rtr_priors_for_model.csv"))
+```
+
+## Honest bottom line
+
+- Independent evidence points to **low household transmission** (~5–12.5%), consistent with
+  source/community-dominated typhoid.
+- **Critical caveat:** these anchors measure **short-cycle household** transmission. The
+  model's R_tr also includes **long-cycle community (water-mediated)** transmission — the
+  dominant propagated channel here and the part confounded with the source. No field
+  measurement isolates it.
+- Therefore: adding these anchors to `hierarchical_theta/` and re-running the Phase-1 gate is
+  worth doing, but should be expected to tighten only the **household** channel — unlikely on
+  its own to make total θ identifiable. The article classification (`source_decomposition/`)
+  remains primary.
+```
