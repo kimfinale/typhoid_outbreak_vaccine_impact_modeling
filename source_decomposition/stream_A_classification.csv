@@ -1,0 +1,21 @@
+study_id,renewal_set,mode_paper,theta_paper_lo,theta_paper_hi,confidence,source_evidence,curve_shape,citation
+Aye 2004,Y,C,0.4,0.6,high,Myaung River water (adjOR 12.5) AND person-to-person contact (adjOR 22); authors say common source but person-to-person also important,single peak then 2-wk decline,Aye & Siriarayapon 2004 J Med Assoc Thai
+Lewis 2005,Y,A,0.7,0.9,high,Single municipal water supply; S. Typhi isolated from tap and PFGE-matched to clinical isolates; declined after chlorination,single sharp explosive peak,Lewis et al. 2005 Clin Infect Dis
+Muyembe-Tamfum 2009,Y,A,0.5,0.8,low,Presumed contaminated municipal water in poor-sanitation suburbs; no water/food testing; clinical/microbiology paper,protracted multi-month curve,Muyembe-Tamfum et al. 2009 Travel Med Infect Dis
+Neil 2012,Y,B,0.1,0.3,med,Kasese Uganda; no vehicle implicated; multi-strain (PFGE); prolonged ~19 months; intestinal-perforation epidemic,prolonged persistent no single peak,Neil et al. 2012 Clin Infect Dis
+Ali 2017,Y,C,0.4,0.6,med,Kikwit DRC military camps; contaminated water + camp overcrowding then dissemination to general population,camp early peak then broader later peak (waves),Ali et al. 2017 Pan Afr Med J
+"Polonsky 2014, Dzivaresekwa",Y,C,0.4,0.6,med,Borehole water (faecal contamination; S. Typhi not isolated); long-cycle transmission predominated; epicentre shifted suburbs,early peak then spatial shift,Polonsky et al. 2014 PLoS ONE
+Polonsky 2014_Kuwadzana,Y,C,0.4,0.6,med,Borehole water; long-cycle transmission; epicentre shifted here from Dzivaresekwa,later second peak,Polonsky et al. 2014 PLoS ONE
+Muti 2014,Y,C,0.4,0.6,high,Wells E. coli-positive (8/8) AND authors state epidemic curve indicates a propagated outbreak; home-contact adjOR 8.34,prolonged multi-peak propagated,Muti et al. 2014 Pan Afr Med J
+Kabwama 2017,Y,C,0.5,0.7,med,Contaminated vended/spring water; recurrent contamination sustained outbreak propagation over months,prolonged multimodal,Kabwama et al. 2017 BMC Public Health
+Qamar 2018,Y,C,0.4,0.6,high,Sewage-contaminated water (S. Typhi DNA in 12/55 samples); cases peaked every 2 weeks growing larger = propagated epidemic,2-week peaks growing; persistent 12+ mo,Qamar et al. 2018 Lancet Infect Dis
+Davis 2018,Y,C,0.5,0.8,low,Zotero PDF misfiled (yellow fever); classified by analogy to other Harare 2016-17 waterborne+spread outbreaks (N'Cho/Polonsky/Imanishi),prolonged waterborne (analogy),Davis et al. 2018 MMWR (PDF misfiled)
+Yousafzai 2019,Y,C,0.4,0.6,med,Sewage-contaminated drinking water (E. coli; no Salmonella isolated); cyclical curve = propagated transmission,multi-peak over 4 months; persistent,Yousafzai et al. 2019 Clin Infect Dis
+N'Cho 2019,Y,A,0.7,0.9,med,Contaminated boreholes/shallow wells amid municipal water shortages; declined after WASH/borehole interventions,prolonged fluctuating then decline,N'Cho et al. 2019 MMWR
+Lutterloh 2012,N,A,0.6,0.8,med,Spring drinking water E. coli-positive; waterborne source suspected; localized remote villages,single broad peak prolonged,Lutterloh et al. 2012 Clin Infect Dis
+Hendriksen 2015,N,A,0.5,0.8,low,Genomic paper; environmental/poor-sanitation attribution; no source testing; multi-year endemic-like,multi-wave over ~2.5 years,Hendriksen et al. 2015 J Clin Microbiol
+"Imanishi 2014, Dzivaresekwa",N,C,0.4,0.6,med,Boreholes/shallow wells E. coli-positive; case-control implicated water; ongoing transmission,early peak then decline,Imanishi et al. 2014 Am J Trop Med Hyg
+"Imanishi 2014, Kuwadzana",N,C,0.4,0.6,med,Same waterborne outbreak spread from Dzivaresekwa; resurgence peaking Jan 2012,second wave (resurgence),Imanishi et al. 2014 Am J Trop Med Hyg
+"Walters 2014, Kasese",N,C,0.3,0.55,med,Fecally-contaminated tap water (E. coli 4/6 taps); no clustering by source; prolonged multiyear and spread,prolonged multiyear no single peak,Walters et al. 2014 PLoS Negl Trop Dis
+"Walters 2014, Bundibugyo",N,C,0.35,0.6,med,GFS tap/river water E. coli-positive; cases clustered on a single gravity-flow scheme; spread from Kasese,sharp 2011 rise within ongoing epidemic,Walters et al. 2014 PLoS Negl Trop Dis
+Michel 2005,N,A,0.8,1.0,high,Cote d'Ivoire troops; cucumber-salad food point-source (RR 3.6); NO person-to-person secondary cases (EXCLUDED from pipeline),single-phase point-source one wave,Michel et al. 2005 Eur J Epidemiol

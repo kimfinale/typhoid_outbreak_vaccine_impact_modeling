@@ -1,0 +1,94 @@
+---
+title: "Transmission-mode classification & source decomposition"
+subtitle: "Common-source (static) vs propagated (renewal) vs mixed — and the static↔renewal bracket"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+    df-print: kable
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+tab <- function(n) read.csv(file.path(root, "source_decomposition/tables", n), check.names = FALSE)
+fig <- function(n) file.path(root, "source_decomposition/figures", paste0(n, ".png"))
+```
+
+## Question
+
+The static model is correct for **common-source** outbreaks (a water/food source drives
+incidence; transmission is non-reproductive) and the renewal model for **propagated**
+(person-to-person) outbreaks. We classify each of the 13 weekly-resolvable outbreaks,
+assign a source fraction θ (1 = pure common-source → static; 0 = pure propagated →
+renewal), and report impact as the **static↔renewal bracket** with a θ point estimate.
+
+Two evidence streams are triangulated: **A — paper evidence** (full-text reading of each
+primary report against a fixed rubric) and **B — curve-shape diagnostics** computed from the
+incidence series (common-source fit + propagation signals).
+
+## Headline
+
+```{r modefig, fig.cap="Paper-based transmission mode of the 13 renewal outbreaks."}
+knitr::include_graphics(fig("fig_mode_distribution"))
+```
+
+Reading the actual reports **revises the optimistic seeded demonstration**: most of these
+outbreaks are **mixed** (an identified water source *and* documented onward transmission /
+resurgence), several are explicitly described by their authors as "propagated" (Muti,
+Qamar, Yousafzai), and one is clearly propagated (Neil 2012, Kasese — no source implicated,
+~19-month multi-strain epidemic). Only a few are clean common-source (Lewis 2005, with
+S. Typhi isolated and PFGE-matched to the tap; Michel 2005, a food point-source [excluded
+from the pipeline]). **Implication: the dataset is *not* source-dominated — so the
+static↔renewal bracket (not a pure-static claim) is the defensible framing.**
+
+## Classification & cross-validation
+
+```{r modetab}
+kable(tab("tab_transmission_mode.csv") |>
+        dplyr::select(study_id, mode_paper, theta_paper_lo, theta_paper_hi,
+                      theta_data, agreement, final_theta, confidence, citation),
+      digits = 2, caption = "Stream A (paper) vs Stream B (data) source fraction theta.")
+```
+
+```{r xval, fig.cap="Cross-validation of theta: paper (Stream A) vs data (Stream B)."}
+if (file.exists(fig("fig_theta_crossvalidate"))) knitr::include_graphics(fig("fig_theta_crossvalidate"))
+```
+
+**Identifiability caveat.** A single incidence curve cannot definitively separate a
+common-source pulse (convolved with the incubation period) from propagation — they can
+produce identical curves (the same non-identifiability the manuscript notes). Stream B is
+therefore *suggestive*, and the paper evidence (Stream A) is the primary classifier.
+
+## The static↔renewal bracket
+
+```{r bracket, fig.cap="Per-outbreak bracket: renewal (theta=0) to static (theta=1) with the theta point."}
+knitr::include_graphics(fig("fig_decomposition_bracket"))
+```
+
+```{r dectab}
+kable(tab("tab_decomposition.csv") |>
+        dplyr::select(study_id, final_theta, pct_renewal, pct_static, pct_theta),
+      digits = 1, caption = "% cases averted: renewal endpoint, static endpoint, and theta point (tau=8, 80%).")
+```
+
+The decomposition satisfies `averted(theta) = theta·static + (1-theta)·renewal`, validated so
+that θ=1 reproduces the static model and θ=0 the renewal model to machine precision.
+
+## Limitations
+
+- Stream A depends on report completeness; several reports are short (MMWR notes) or are
+  genomic/clinical papers thin on transmission mode (Hendriksen, Muyembe) → low confidence.
+- **Davis 2018's Zotero PDF is misfiled** (a Yellow Fever paper) — classified by analogy to
+  the other Harare 2016–18 waterborne+spread outbreaks; low confidence.
+- The protocol's outbreak list (Supp. Table 1) and the analysis dataset differ slightly
+  (it lists Michel 2005, which the pipeline excludes, and omits Lewis 2005, which the
+  pipeline includes); both are reconciled here.
+- Stream B's θ is heuristic given the identifiability limit; θ is treated as a bracket with
+  sensitivity, not a point parameter.
+```
