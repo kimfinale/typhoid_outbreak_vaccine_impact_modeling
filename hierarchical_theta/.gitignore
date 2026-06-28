@@ -1,0 +1,8 @@
+tables/
+figures/
+outputs/
+.quarto/
+*.html
+*_files/
+stan/*.exe
+stan/renewal_source

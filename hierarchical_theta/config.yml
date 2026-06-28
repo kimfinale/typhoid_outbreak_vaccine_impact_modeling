@@ -1,0 +1,39 @@
+# =============================================================================
+# Config for the hierarchical Bayesian renewal-with-source model (theta_o).
+# =============================================================================
+seed: 123
+stan_seed: 20260628
+
+paths:
+  stan:    "hierarchical_theta/stan"
+  tables:  "hierarchical_theta/tables"
+  figures: "hierarchical_theta/figures"
+  outputs: "hierarchical_theta/outputs"
+
+renewal_config: "renewal/config.yml"
+mode_table: "source_decomposition/tables/tab_transmission_mode.csv"
+
+# Generation interval (mean is a model parameter; cv fixed).
+gi:
+  cv: 0.6
+  mean_prior_log_mu: 0.693      # log(2 weeks)
+  mean_prior_log_sd: 0.30
+  max_lag_weeks: 10
+
+# MCMC
+mcmc:
+  chains: 4
+  parallel_chains: 4
+  iter_warmup: 1000
+  iter_sampling: 1000
+  adapt_delta: 0.95
+  max_treedepth: 12
+
+# Phase 1 synthetic identifiability gate
+gate:
+  n_synth: 18
+  theta_grid: [0.1, 0.3, 0.5, 0.7, 0.9]
+  # PASS criteria
+  min_cri_coverage: 0.8
+  max_abs_median_bias: 0.12
+  min_rank_cor: 0.7
