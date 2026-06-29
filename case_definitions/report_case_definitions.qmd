@@ -68,21 +68,28 @@ kable(Fd |> filter(renewal_set == "Y") |>
 ```{r counts}
 fr <- Fd |> filter(renewal_set == "Y")
 data.frame(
-  pool = c("Type A pool-as-reference", "Type C suspected+rho", "Type B harmonize-absolute",
-           "Include w/ caution (invariance)", "Exclude (Type D perforation)", "Flag (misfiled)"),
-  n = c(sum(grepl("pool as reference", fr$recommendation)),
-        sum(grepl("suspected for dynamics", fr$recommendation)),
+  pool = c("Suspected-series pool (A+C; rho via alpha)", "Type B harmonize-absolute",
+           "Include w/ caution (invariance)", "Exclude (Type D perforation)"),
+  n = c(sum(grepl("suspected-series pool", fr$recommendation)),
         sum(grepl("true-case", fr$recommendation)),
         sum(grepl("caution", fr$recommendation)),
-        sum(grepl("EXCLUDE", fr$recommendation)),
-        sum(grepl("human review|misfiled", fr$recommendation)))) |> kable()
+        sum(grepl("EXCLUDE", fr$recommendation)))) |> kable()
 ```
+
+## A and C are fitted identically (fit the suspected series)
+
+Types A and C get the **same** treatment — fit the **suspected** series. The confirmed
+subset does **not** calibrate ρ, because culture is run on a *selected* subset of suspected
+cases, so confirmed:suspected conflates culture sensitivity with the (non-random) choice of
+whom to test. ρ comes from the α adjustment using **culture positivity among the tested
+(AI/AG ÷ sensitivity)**, which conditions on testing and removes the selection. So A+C
+collapse to one suspected-series pool; only B (confirmed-only) and D (perforation) differ.
 
 ## Pipeline linkages
 
-- **Confirmation adjustment (α):** Types A/C use α (suspected→true). **Type B (Qamar,
-  Yousafzai) need the *inverse* scaling** (already confirmed). Type D needs the
-  perforation-rate scale, not α.
+- **Confirmation adjustment (α):** the suspected-series classes A **and** C use α
+  (suspected→true, via culture positivity AI/AG). **Type B (Qamar, Yousafzai) need the
+  *inverse* scaling** (already confirmed). Type D needs the perforation-rate scale, not α.
 - **θ / transmission-mode (`source_decomposition/`, `hierarchical_theta/`):** drop Muyembe;
   caution on Neil.
 - **DALY/cost:** Type D carries real mortality (YLL); A/C/B morbidity-dominated.

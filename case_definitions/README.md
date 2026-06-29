@@ -50,17 +50,28 @@ E Widal-serological · F ambiguous/not stated.
   780 suspected / 80 confirmed (10.3%), blood/stool culture, city surveillance, no severity
   restriction.
 
+## A and C are fitted identically (fit the suspected series)
+
+Type A (suspected only reported) and Type C (suspected + a confirmed subset) get the **same
+fitting treatment: fit the *suspected* series.** The confirmed subset does **not** calibrate
+the ascertainment scale rho, because **culture is performed on a *selected* subset of
+suspected cases** — so confirmed:suspected conflates culture sensitivity with the
+(non-random) decision of whom to test. rho (PPV) instead comes from the α adjustment using
+**culture positivity *among the tested* (AI/AG ÷ sensitivity)**, which conditions on testing
+and removes the selection factor. So A and C collapse to one "suspected-series" class; only
+B (confirmed-only counts) and D (perforation) differ — they have no comparable suspected series.
+
 ## Poolability summary (the 13 renewal outbreaks)
-- **Pool as reference (%-reduction & θ):** Lewis, Polonsky×2, Muti (Type A, invariance holds).
-- **Type C — suspected for dynamics + confirmed for rho:** Aye, Kabwama, N'Cho.
+- **Suspected-series pool (%-reduction & θ; ρ via α):** Lewis, Polonsky×2, Muti (A) +
+  Aye, Kabwama, N'Cho, Davis (C) — fitted identically on the suspected curve.
 - **Type B — dynamics OK; harmonize absolute to true-case (opposite of α):** Qamar, Yousafzai.
 - **Include with caution (invariance violated):** Neil, Ali.
 - **Exclude from renewal/θ (Type D perforation series):** Muyembe-Tamfum 2009.
-- **Flag for review (misfiled):** Davis 2018.
 
 ## Linkages (do not re-run those analyses here)
-- **Confirmation adjustment (α):** applies to Types A/C (suspected→true). Type B needs the
-  *inverse* scaling; Type D needs the perforation-rate scale, not α.
+- **Confirmation adjustment (α):** applies to the suspected-series classes A **and** C
+  (suspected→true, using culture positivity AI/AG). Type B needs the *inverse* scaling; Type
+  D needs the perforation-rate scale, not α.
 - **θ / transmission-mode:** drop Muyembe (perforation curve); caution on Neil (ascertainment).
 - **DALY/cost:** Type D carries real mortality (YLL via perforation); Types A/C/B morbidity-dominated.
 

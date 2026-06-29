@@ -24,10 +24,8 @@ fr <- F_[F_$renewal_set == "Y", ]
 pool <- fr %>% mutate(pool_class = case_when(
   grepl("EXCLUDE|exclude", recommendation) ~ "exclude (Type D perforation)",
   grepl("caution", recommendation) ~ "include w/ caution (invariance)",
-  grepl("human review|misfiled", recommendation) ~ "flag for review",
   grepl("true-case", recommendation) ~ "Type B (harmonize absolute)",
-  grepl("suspected for dynamics", recommendation) ~ "Type C (suspected+rho)",
-  grepl("pool as reference", recommendation) ~ "Type A (pool as reference)",
+  grepl("suspected-series pool", recommendation) ~ "suspected-series pool (A+C; rho via alpha)",
   TRUE ~ "other")) %>% count(pool_class)
 cat("\n=== Recommendation classes (renewal 13) ===\n"); print(as.data.frame(pool), row.names = FALSE)
 
