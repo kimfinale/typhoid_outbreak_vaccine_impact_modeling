@@ -1,0 +1,4 @@
+figures/
+*.html
+*_files/
+.quarto/

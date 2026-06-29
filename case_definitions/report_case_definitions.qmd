@@ -1,0 +1,93 @@
+---
+title: "Case definitions as observation operators"
+subtitle: "Typing each outbreak's ascertainment and designing definition-appropriate fitting"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+    df-print: kable
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(knitr); library(dplyr)
+root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
+rd <- function(n) read.csv(file.path(root, "case_definitions", n), check.names = FALSE)
+fig <- function(n) file.path(root, "case_definitions/figures", paste0(n, ".png"))
+D <- rd("tab_case_definitions.csv"); Fd <- rd("tab_fitting_design.csv")
+```
+
+## Why this matters
+
+One latent infection process λ_o(t) per outbreak; each study observes a different transform
+`observed = rho_o · (λ * d_o)`. The case definition sets the ascertainment scale rho_o and
+delay d_o. Mishandling it biases absolute/cost outcomes (rho_o), the percent-reduction
+invariance (needs rho_o time-constant), θ/renewal (d_o distorts curve shape), and DALYs
+(severity mix). The deliverable decides — per outbreak — pool / harmonize / stratify / exclude.
+
+## Types of the 13 renewal outbreaks
+
+```{r typefig, fig.cap="Observation-process type of the 13 renewal outbreaks."}
+knitr::include_graphics(fig("fig_type_distribution"))
+```
+
+```{r typetab}
+kable(D |> filter(renewal_set == "Y") |>
+  select(study_id, type, confirmation_method, definition_changed_midoutbreak,
+         severity_restriction, confidence), caption = "Case definitions (renewal outbreaks).")
+```
+
+## The worked problem: Muyembe vs Neil (and the real second perforation series)
+
+- **Muyembe-Tamfum 2009 — Type D, a peritonitis/surgical case series** (144 perforation
+  admissions; the severe ~1–3% subset; long severity-filtered delay). It is in the
+  renewal-13, so its R_t/θ are built on a *perforation* curve. **Recommendation: exclude
+  from renewal/θ/%-reduction (sensitivity case); keep only for a perforation-mortality (YLL)
+  subgroup with Walters-Kasese.**
+- **Neil 2012 — Type A surveillance, NOT a perforation series** (perforation is one optional
+  qualifier; IP rate 43% passive but 5–8% under enhanced surveillance). This corrects the
+  prompt's premise. But **ascertainment changed mid-outbreak** → invariance violated, early
+  curve IP-distorted → **include with caution**, flag the change.
+- **The actual second perforation-biased series is Walters-Kasese** (de facto IP-restricted
+  retrospectively, 82% IP). A perforation subgroup = **Muyembe + Walters-Kasese**.
+
+## Fitting design (per outbreak)
+
+```{r design}
+kable(Fd |> filter(renewal_set == "Y") |>
+  select(study_id, type, rho_scale, invariance_status, pool_pct_reduction, pool_theta, recommendation),
+  caption = "Observation operator, invariance, poolability, recommendation (renewal outbreaks).")
+```
+
+## Poolability counts (percent-reduction / θ pool)
+
+```{r counts}
+fr <- Fd |> filter(renewal_set == "Y")
+data.frame(
+  pool = c("Type A pool-as-reference", "Type C suspected+rho", "Type B harmonize-absolute",
+           "Include w/ caution (invariance)", "Exclude (Type D perforation)", "Flag (misfiled)"),
+  n = c(sum(grepl("pool as reference", fr$recommendation)),
+        sum(grepl("suspected for dynamics", fr$recommendation)),
+        sum(grepl("true-case", fr$recommendation)),
+        sum(grepl("caution", fr$recommendation)),
+        sum(grepl("EXCLUDE", fr$recommendation)),
+        sum(grepl("human review|misfiled", fr$recommendation)))) |> kable()
+```
+
+## Pipeline linkages
+
+- **Confirmation adjustment (α):** Types A/C use α (suspected→true). **Type B (Qamar,
+  Yousafzai) need the *inverse* scaling** (already confirmed). Type D needs the
+  perforation-rate scale, not α.
+- **θ / transmission-mode (`source_decomposition/`, `hierarchical_theta/`):** drop Muyembe;
+  caution on Neil.
+- **DALY/cost:** Type D carries real mortality (YLL); A/C/B morbidity-dominated.
+
+## Honesty notes
+Definitions paraphrased and cited; "not clearly stated" for Hendriksen (epi basis undefined)
+and Davis (PDF misfiled); no definition imputed. Confidence flagged per row.
+```
