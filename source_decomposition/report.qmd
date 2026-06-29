@@ -84,8 +84,9 @@ that θ=1 reproduces the static model and θ=0 the renewal model to machine prec
 
 - Stream A depends on report completeness; several reports are short (MMWR notes) or are
   genomic/clinical papers thin on transmission mode (Hendriksen, Muyembe) → low confidence.
-- **Davis 2018's Zotero PDF is misfiled** (a Yellow Fever paper) — classified by analogy to
-  the other Harare 2016–18 waterborne+spread outbreaks; low confidence.
+- **Davis 2018** is read from the real MMWR (the Zotero copy was misfiled): waterborne
+  common-source (boreholes 13/18 fecal-contaminated; cases clustered around boreholes;
+  declined after WASH) → mode A.
 - The protocol's outbreak list (Supp. Table 1) and the analysis dataset differ slightly
   (it lists Michel 2005, which the pipeline excludes, and omits Lewis 2005, which the
   pipeline includes); both are reconciled here.

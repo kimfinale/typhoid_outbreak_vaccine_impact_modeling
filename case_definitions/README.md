@@ -46,8 +46,9 @@ E Widal-serological · F ambiguous/not stated.
 - **Ascertainment changed mid-outbreak** for **Neil, Ali, Lutterloh** → percent-reduction
   invariance at risk for those. Imanishi only reduced the *culturing fraction* (not the
   suspected-case definition) → invariance holds.
-- **Davis 2018 = Type F** — its Zotero PDF is misfiled (yellow fever); flagged for human
-  review (provisional analogy to N'Cho = C).
+- **Davis 2018 = Type C** — classified from the real MMWR (the Zotero copy was misfiled):
+  780 suspected / 80 confirmed (10.3%), blood/stool culture, city surveillance, no severity
+  restriction.
 
 ## Poolability summary (the 13 renewal outbreaks)
 - **Pool as reference (%-reduction & θ):** Lewis, Polonsky×2, Muti (Type A, invariance holds).

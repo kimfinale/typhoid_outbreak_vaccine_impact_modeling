@@ -89,5 +89,5 @@ data.frame(
 
 ## Honesty notes
 Definitions paraphrased and cited; "not clearly stated" for Hendriksen (epi basis undefined)
-and Davis (PDF misfiled); no definition imputed. Confidence flagged per row.
+(epi basis undefined); Davis read from the real MMWR (the Zotero copy was misfiled). No definition imputed. Confidence flagged per row.
 ```
