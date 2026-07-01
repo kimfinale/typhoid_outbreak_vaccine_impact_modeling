@@ -34,14 +34,21 @@ available … since all studies only enrolled patients with suspected typhoid."
 Each proposed piece maps to a gap none of the three fills:
 
 1. **Se_BC as a proper latent-class posterior** that (a) relaxes Mogasale's union-complete
-   assumption by *estimating* the both-negative-truly-positive cell, and (b) *estimates* Se_BC
-   rather than fixing it (Arora). Gap: real.
+   assumption by *estimating* the both-negative-truly-positive cell, (b) *estimates* Se_BC rather
+   than fixing it (Arora), and (c) treats **bone marrow as imperfect** (estimates Se_BM). This last
+   point is directly motivated by Antillón, who flags BMC is only ~90% sensitive (<1 mL in 14
+   studies) and that their composite "may have missed cases, so BC sensitivity may be
+   overestimated." Estimating Se_BM resolves the three-way denominator ambiguity that yields
+   66% (vs BMC) / 61% (vs BC∪BMC) / 59% (vs any-site). Gap: real.
 2. **Volume-anchored, heterogeneity-aware Se_BC** — reuse Antillón's volume relationship as a
    structural prior so each outbreak's Se_BC is set by its blood volume + between-study τ, not by
    the outbreak's own data. Gap: real (nobody folds volume into a PPV/observation estimator).
 3. **Per-outbreak surveillance PPV (π_o)** of the clinical case definition, with the
    **transportable Se / local PPV split**, delivered as an **observation operator** for the
-   transmission/burden model. Gap: real and central — this is the genuine novelty.
+   transmission/burden model. Note Arora *explicitly could not* use prevalence ("all studies only
+   enrolled suspected typhoid"); our φ_s (prevalence-among-suspected = hospital PPV) is exactly that
+   quantity, estimated freely from the paired 2×2 — we do the thing Arora sidestepped. Gap: real and
+   central — this is the genuine novelty.
 
 ## Two honest caveats (why the novelty is thinner than a first glance, and how to keep it real)
 
@@ -58,11 +65,22 @@ and used by Arora).
 **(b) Volume is necessary but not sufficient — antibiotics/duration/age dominate.** Antillón
 shows Se_BC is depressed **34% by prior antimicrobials** (up to 73% after 5 days), **31% by
 sampling after week 1**, and is **higher in adults (0.74)**. These often differ between the
-historic paired studies and outbreak line lists (and are usually **unreported** in outbreaks).
-**This is the main threat to Se_BC transportability** — more than volume. The plan should
-therefore (i) treat the volume model as *one* covariate on Se_BC with a healthy between-study τ
-absorbing the rest, and (ii) headline "unreported antibiotic pretreatment in outbreaks" as the
-key sensitivity analysis. The optional conditional-dependence term addresses only part of this.
+historic paired studies and outbreak line lists (and are usually **unreported** in outbreaks). The
+plan should therefore (i) treat the volume model as *one* covariate on Se_BC with a healthy
+between-study τ absorbing the rest, and (ii) headline "unreported antibiotic pretreatment in
+outbreaks" as a key sensitivity analysis. The optional conditional-dependence term addresses only
+part of this.
+
+**(c) The severity/bacteremia gradient — the transfer's biggest threat (from reading Antillón
+directly).** **38/40 paired BC/BMC studies are hospitalized** patients (severe, high-bacteremia),
+whereas only **1–20% of community-surveillance cases are hospitalized**. So the anchored Se_BC is a
+**hospital** sensitivity; the outbreak suspected-case population is milder with lower bacteremia →
+its true Se_BC is plausibly **lower**. Since π_o = positivity / Se_BC, transferring the (higher)
+hospital Se **over-estimates** outbreak Se and therefore **under-estimates** π_o (a conservative
+bias, but a bias). Volume and τ do **not** absorb this — it is a population-setting shift, not
+between-study noise, and there is **no community paired BC/BMC data** to estimate it directly. This
+is the honest headline limitation and should drive an explicit sensitivity analysis (a
+hospital→community Se offset with a wide prior), not be buried.
 
 ## Recommended (narrowed, sharper) scope
 Proceed, but frame the contribution precisely:
@@ -80,9 +98,13 @@ Proceed, but frame the contribution precisely:
 
 ## Seed data extracted (Phase-0 deliverable)
 - `data/mogasale2016_paired_bc_bmc_seed.csv` — the 10 paired blood/bone-marrow 2×2 studies
-  (a,b,c,d + blood volume). **Flags:** Vallenas 1985 has a+b+c+d = 43 but "tested-both" = 58 →
-  d likely 15, not 0 (verify at source). Gasem 1995 and Wain 2008 each cultured **two volumes**
-  from the same patients (3 & 10 mL; 5 & 15 mL) — needs a per-arm split or a chosen volume.
+  (a,b,c,d + blood volume), verified against Mogasale Table 3. **Flags:** Vallenas 1985 — the
+  published Table 3 prints d (both-negative) = 0, but that is an **erratum**: tested-both = 58 and
+  a+b+c = 43, so d must = 15 (every *other* study reconciles as d = tested_both − true_pos). Seed
+  uses d=15. Gasem 1995 and Wain 2008 each cultured **two volumes** from the same patients
+  (3 & 10 mL; 5 & 15 mL) — needs a per-arm split or a chosen volume. Also note the historic 2×2 d
+  cell (both-negative) is the very cell that identifies φ_s once BMC is imperfect — so the Vallenas
+  correction is not cosmetic.
 - `data/antillon2018_volume_sensitivity.csv` — 25 per-study (volume, Se) rows for the volume
   prior + cross-check against Mogasale's 10.
 - **Volume model for the prior:** Antillón's best fit is a log-linear slope-and-intercept
@@ -92,9 +114,21 @@ Proceed, but frame the contribution precisely:
   slope b live in Antillón Supplementary Table S2, not in the main-text PDF — PLACEHOLDER, obtain
   before building the volume prior; use the +3%/mL linear value as an interim. -->
 
-## Decision requested
+## Decision requested (adjusted after reading the three papers in full)
 Approve to proceed to **Phase 1** (model build + simulation-recovery gate) under the narrowed
-framing above? Specifically confirm: (1) include antibiotic/duration as Se_BC covariates (or τ +
-sensitivity)? (2) is the "integrated observation model with transportable/local split" framing the
-one you want, rather than claiming novel PPV estimation? (3) resolve the two seed-data flags
-(Vallenas d; two-volume studies) now or in Phase 2?
+framing above? Four specific choices, in priority order:
+
+1. **The hospital→community Se_BC transfer (caveat c) is the crux — how do we handle it?**
+   Options: (a) transfer Se_BC via the volume model + τ only, and report the severity/bacteremia
+   gradient as a one-directional bias (π_o under-estimated) — simplest, honest; (b) add an explicit
+   hospital→community Se offset with a wide prior and run it as the primary sensitivity analysis
+   (recommended); (c) hunt for any community-based paired BC/BMC (or BC-vs-PCR) data to anchor the
+   offset (likely none exists — Phase-2 search). My recommendation: **(b)**.
+2. **Se_BC covariates:** include antibiotic-pretreatment (± symptom-duration) as covariates, or
+   just a wide between-study τ + a sensitivity analysis? (Antillón gives the effect sizes either
+   way; outbreaks rarely report these, so the covariate is often latent.)
+3. **Framing:** confirm the contribution is pitched as the *integrated, uncertainty-honest
+   observation model with a transportable-Se / local-PPV split* (estimating φ_s and Se_BM that
+   Arora/Mogasale fixed or assumed away) — **not** as novel PPV arithmetic.
+4. **Seed-data:** the Vallenas d=15 correction and the two-volume studies (Gasem 1995, Wain 2008) —
+   lock these in now (my proposed values), or defer per-arm splits to Phase 2?
