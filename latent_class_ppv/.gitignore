@@ -5,3 +5,4 @@ outputs/
 stan/bc_bmc_ppv
 stan/*.exe
 stan/*.hpp
+stan/community_ppv
