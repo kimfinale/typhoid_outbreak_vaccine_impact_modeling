@@ -1,10 +1,10 @@
-"study","country","year","suspected","tested","confirmed_cx","attack_pct","population","positivity","exclude_reason","usable"
-"Aye 2004","Myanmar",2000,49,22,3,2.9,1102,0.136363636363636,"",TRUE
-"Lewis 2005","Nepal",2002,5963,104,39,6.49,92214,0.375,"",TRUE
-"Neil 2012","Uganda",2007,577,63,25,8.09,670000,0.396825396825397,"",TRUE
-"Ali 2017","DRC",2011,1430,66,56,0.6,4e+05,0.848484848484849,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE
-"Roy 2016","India",2014,79,13,6,1.95,NA,0.461538461538462,"",TRUE
-"Kabwama 2017","Uganda",2015,10230,364,51,0.95,1076842,0.14010989010989,"",TRUE
-"Nimonkar 2022","India",2019,75,75,75,1.64,NA,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE
-"Srinivasan 2022","India",2019,51,51,51,0.9,NA,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE
-"Wang 2022","China",2022,23,1,1,21.7,106,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE
+"study","country","year","suspected","tested","confirmed_cx","attack_pct","population","positivity","exclude_reason","usable","community_syndromic"
+"Aye 2004","Myanmar",2000,49,22,3,2.9,1102,0.136363636363636,"",TRUE,TRUE
+"Lewis 2005","Nepal",2002,5963,104,39,6.49,92214,0.375,"",TRUE,FALSE
+"Neil 2012","Uganda",2007,577,63,25,8.09,670000,0.396825396825397,"",TRUE,TRUE
+"Ali 2017","DRC",2011,1430,66,56,0.6,4e+05,0.848484848484849,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE,FALSE
+"Roy 2016","India",2014,79,13,6,1.95,NA,0.461538461538462,"",TRUE,FALSE
+"Kabwama 2017","Uganda",2015,10230,364,51,0.95,1076842,0.14010989010989,"",TRUE,TRUE
+"Nimonkar 2022","India",2019,75,75,75,1.64,NA,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE,FALSE
+"Srinivasan 2022","India",2019,51,51,51,0.9,NA,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE,FALSE
+"Wang 2022","China",2022,23,1,1,21.7,106,1,"positivity>=0.8 (confirmed-only / selective testing; pi would exceed 1)",FALSE,FALSE
