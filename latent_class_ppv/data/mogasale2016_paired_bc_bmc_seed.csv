@@ -1,0 +1,11 @@
+study,location,year,a_BCpos_BMpos,b_BCpos_BMneg,c_BCneg_BMpos,d_BCneg_BMneg,n_tested_both,blood_vol_mL,bm_vol_mL,flag
+Akoh 1991,Zaria Nigeria,1986-87,8,3,11,9,31,2,1.5,"bm 1-2 mL"
+Hirsowitz 1951,Transvaal S.Africa,<1951,13,0,5,10,28,NA,NA,"blood volume not reported"
+Farooqui 1991,Karachi Pakistan,<1990,58,0,30,12,100,5,0.75,"bm 0.5-1 mL"
+Gasem 1995,Semarang Indonesia,1989-90,39,13,28,0,80,3,1,"TWO volumes cultured (3 and 10 mL) - needs per-arm split or chosen volume"
+Gasem 2002,Semarang Indonesia,<2001,43,1,10,7,61,9,1.5,"bm 1-2 mL; blood 8-10 mL (used 9)"
+Chaicumpa 1992,Jakarta Indonesia,<1992,17,5,15,15,52,3,0.65,"bm 0.5-0.8 mL"
+Wain 2008,Dong Thap Vietnam,1993-99,53,4,16,30,103,5,1,"TWO volumes cultured (5 and 15 mL) - needs per-arm split or chosen volume"
+Gilman 1975,Mexico City,<1975,24,1,32,5,62,2,NA,"bm volume not reported"
+Guerra-Caceres 1979,Lima Peru,<1979,26,0,31,3,60,5,1,""
+Vallenas 1985,Lima Peru,1984,9,10,24,15,58,3,0.5,"VERIFY d: extraction gave d=0 but a+b+c=43 vs tested-both=58 implies d=15; used 15 pending source check"
