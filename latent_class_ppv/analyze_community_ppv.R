@@ -32,38 +32,42 @@ D$exclude_reason <- ifelse(D$positivity >= 0.80,
   ifelse(!is.na(D$suspected) & D$tested >= D$suspected,
          "tested>=suspected (confirmed-case series, not syndromic)", ""))
 D$usable <- D$exclude_reason == ""
+# TIGHTEN to genuinely-comparable community syndromic surveillance with EXPLICIT criteria.
+# Drop hospital-presentation / no-explicit-definition series (curated from the case defs):
+#   Lewis 2005 = hospital admission, "admitting physician suspects typhoid" (no criteria)
+#   Roy 2016   = no case definition; presented with fever to a medical college / nursing homes
+tight_drop <- c("Lewis 2005", "Roy 2016")
+D$community_syndromic <- D$usable & !(D$study %in% tight_drop)
 write.csv(D, "latent_class_ppv/data/community_surveillance_ppv.csv", row.names = FALSE)
 cat("=== community-surveillance points (from AN + AI/AG) ===\n")
-print(D[, c("study","country","year","suspected","tested","confirmed_cx","positivity","attack_pct","usable")], row.names = FALSE)
+print(D[, c("study","country","year","tested","confirmed_cx","positivity","attack_pct","usable","community_syndromic")], row.names = FALSE)
 
-V <- D[D$usable, ]
-cat(sprintf("\nUsable (clean syndromic) points: %d\n", nrow(V)))
-cat(sprintf("positivity: median=%.3f, range %.3f..%.3f (%.1f-fold)\n",
-            median(V$positivity), min(V$positivity), max(V$positivity), max(V$positivity)/min(V$positivity)))
-cat(sprintf("Spearman cor(positivity, log attack_pct) = %.2f  (attack-rate denominator is inconsistent across studies -> unreliable covariate)\n",
-            suppressWarnings(cor(V$positivity, log(V$attack_pct), method = "spearman"))))
+Vfull <- D[D$usable, ]; V <- D[D$community_syndromic, ]     # tightened primary set
+cat(sprintf("\nFull syndromic-ish: %d | TIGHT community-syndromic: %d (%s)\n",
+            nrow(Vfull), nrow(V), paste(V$study, collapse = ", ")))
+cat(sprintf("tight positivity: %s\n", paste(sprintf("%s=%.3f", V$study, V$positivity), collapse = ", ")))
 
-# ---- partial-pooling estimate (community Se_BC informative ~0.55) ------------
+# ---- partial-pooling on the TIGHT set (community Se_BC informative ~0.55) ----
 mod <- cmdstan_model("latent_class_ppv/stan/community_ppv.stan")
-dat <- list(O = nrow(V), n = as.integer(V$tested), k = as.integer(V$confirmed_cx),
-            se_a = 12, se_b = 10)   # Se_BC ~ Beta(12,10): mean 0.545, sd ~0.10 (community/mild)
-fit <- mod$sample(data = dat, seed = 1, chains = 4, parallel_chains = 4,
-                  iter_warmup = 1000, iter_sampling = 1000, adapt_delta = 0.95,
-                  refresh = 0, show_messages = FALSE)
-s <- fit$summary(c("pi_mean","sigma","Se_BC","pi_new","pi"))
-q <- function(nm) { v <- fit$draws(nm, format = "draws_matrix"); quantile(as.numeric(v), c(.05,.5,.95)) }
-cat("\n=== partial-pooled community-surveillance PPV (Se_BC ~ Beta(12,10), mean 0.545) ===\n")
-cat(sprintf("pi_mean (typical community PPV): %.2f (90%% CrI %.2f..%.2f)\n", q("pi_mean")[2], q("pi_mean")[1], q("pi_mean")[3]))
-cat(sprintf("sigma (between-setting logit SD): %.2f (90%% CrI %.2f..%.2f)  [data-driven]\n", q("sigma")[2], q("sigma")[1], q("sigma")[3]))
-cat(sprintf("pi_new (predictive PPV, NEW community outbreak = transferable prior): %.2f (90%% CrI %.2f..%.2f)\n",
-            q("pi_new")[2], q("pi_new")[1], q("pi_new")[3]))
-# level sensitivity to the Se_BC prior
-for (m in c(0.50, 0.60, 0.66)) {
-  a <- m*22; b <- 22-a
-  f2 <- mod$sample(data = c(dat[c("O","n","k")], list(se_a=a, se_b=b)), seed=1, chains=2,
-                   iter_warmup=800, iter_sampling=800, adapt_delta=0.95, refresh=0, show_messages=FALSE)
-  pm <- median(as.numeric(f2$draws("pi_mean", format="draws_matrix")))
-  cat(sprintf("  [sensitivity] if community Se_BC~%.2f -> pi_mean ~ %.2f\n", m, pm))
+fitp <- function(V, se_a, se_b, chains = 4, warm = 1000, samp = 1000)
+  mod$sample(data = list(O = nrow(V), n = as.integer(V$tested), k = as.integer(V$confirmed_cx),
+             se_a = se_a, se_b = se_b), seed = 1, chains = chains, parallel_chains = chains,
+             iter_warmup = warm, iter_sampling = samp, adapt_delta = 0.97, refresh = 0, show_messages = FALSE)
+fit <- fitp(V, 12, 10)
+q <- function(f, nm) { v <- f$draws(nm, format = "draws_matrix"); quantile(as.numeric(v), c(.05, .5, .95)) }
+cat("\n=== TIGHT partial-pooled community PPV (Se_BC ~ Beta(12,10), mean 0.545) ===\n")
+cat(sprintf("pi_mean: %.2f (90%% CrI %.2f..%.2f)\n", q(fit,"pi_mean")[2], q(fit,"pi_mean")[1], q(fit,"pi_mean")[3]))
+cat(sprintf("sigma  : %.2f (90%% CrI %.2f..%.2f)  [data-driven spread]\n", q(fit,"sigma")[2], q(fit,"sigma")[1], q(fit,"sigma")[3]))
+cat(sprintf("pi_new : %.2f (90%% CrI %.2f..%.2f)  [transferable prior]\n", q(fit,"pi_new")[2], q(fit,"pi_new")[1], q(fit,"pi_new")[3]))
+
+# ---- does the SPREAD move with Se_BC? sweep the prior mean; report pi_mean AND sigma ----
+cat(sprintf("\n=== level vs spread across the Se_BC prior (c_max = %.2f) ===\n", max(V$positivity)))
+cat(sprintf("%-9s %-9s %-9s\n", "Se_BC~", "pi_mean", "sigma"))
+for (m in c(0.45, 0.50, 0.55, 0.60, 0.66, 0.75)) {
+  a <- m*22; b <- 22-a; f2 <- fitp(V, a, b, chains = 2, warm = 800, samp = 800)
+  cat(sprintf("%-9.2f %-9.2f %-9.2f\n", m,
+      median(as.numeric(f2$draws("pi_mean", format = "draws_matrix"))),
+      median(as.numeric(f2$draws("sigma",   format = "draws_matrix")))))
 }
 per <- fit$summary("pi")
 V$pi_med <- per$median; V$pi_lo <- per$q5; V$pi_hi <- per$q95
@@ -72,11 +76,11 @@ write.csv(V[,c("study","country","year","tested","confirmed_cx","positivity","at
 
 gg <- ggplot(V, aes(reorder(study, pi_med), pi_med)) +
   geom_pointrange(aes(ymin = pi_lo, ymax = pi_hi), colour = "#0072B2") +
-  geom_hline(yintercept = q("pi_mean")[2], colour = "#D55E00", linetype = "dashed") +
+  geom_hline(yintercept = q(fit, "pi_mean")[2], colour = "#D55E00", linetype = "dashed") +
   coord_flip(ylim = c(0,1)) +
   labs(x = NULL, y = "community-surveillance PPV (pi_o, 90% CrI)",
-       title = "Community-surveillance PPV varies ~3-fold across settings",
-       subtitle = "dashed = pooled mean; PPV is a transferable DISTRIBUTION, not a constant (Se_BC~0.55)") +
+       title = "Community-surveillance PPV (tightened set: explicit syndromic criteria)",
+       subtitle = "dashed = pooled mean; level set by the Se_BC anchor (~0.55), spread is data-driven") +
   theme_minimal(base_size = 11)
 ggsave("latent_class_ppv/figures/fig_community_ppv.png", gg, width = 7.5, height = 4.5, dpi = 300)
 cat("\n=== community PPV analysis complete ===\n")
