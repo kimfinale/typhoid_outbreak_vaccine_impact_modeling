@@ -79,12 +79,14 @@ positivity (`data/community_surveillance_ppv.csv`, tight syndromic set: Aye, Nei
 Se sub-model:   logit(Se_BC) = alpha0 + alpha1*log(volume) + tau*u,   u ~ Normal(0,1)
                   alpha0 = level, alpha1 = volume slope (Antillon-informed), tau = heterogeneity
 
-Historic LCM (conditional-independence, marginalised over status):
-  p_a = phi*Se_BC*Se_BM        + (1-phi)*(1-Sp_BC)*(1-Sp_BM)
-  p_b = phi*Se_BC*(1-Se_BM)    + (1-phi)*(1-Sp_BC)*Sp_BM
-  p_c = phi*(1-Se_BC)*Se_BM    + (1-phi)*Sp_BC*(1-Sp_BM)
-  p_d = phi*(1-Se_BC)*(1-Se_BM)+ (1-phi)*Sp_BC*Sp_BM
-  (a,b,c,d) ~ Multinomial(N, (p_a,p_b,p_c,p_d))
+Historic LCM, for each study s (conditional-independence, marginalised over true status):
+  p_a = phi_s*Se_s*Se_BM         + (1-phi_s)*(1-Sp_BC)*(1-Sp_BM)
+  p_b = phi_s*Se_s*(1-Se_BM)     + (1-phi_s)*(1-Sp_BC)*Sp_BM
+  p_c = phi_s*(1-Se_s)*Se_BM     + (1-phi_s)*Sp_BC*(1-Sp_BM)
+  p_d = phi_s*(1-Se_s)*(1-Se_BM) + (1-phi_s)*Sp_BC*Sp_BM
+  (a_s,b_s,c_s,d_s) ~ Multinomial(N_s, (p_a,p_b,p_c,p_d))
+    phi_s = hospital PPV of study s (local);  Se_s = Se_BC at study s's volume (= Se_BC_hist[s]);
+    Se_BM, Sp_BC, Sp_BM = shared across studies
 
 Outbreak (single-test):
   k_o ~ Binomial(n_o, pi_o*Se_BC(vol_o) + (1-pi_o)*(1-Sp_BC))
