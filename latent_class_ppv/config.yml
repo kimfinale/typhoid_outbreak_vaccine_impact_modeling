@@ -1,0 +1,63 @@
+# Phase 1 — simulation-recovery gate for the BC/BMC latent-class PPV model.
+seed: 20260701
+stan_seed: 20260701
+
+# ---- "true" generating parameters (transportable Se sub-model) ----
+truth:
+  alpha0: 0.18       # logit-Se intercept; severe Se(5mL) ~ 0.66 (Mogasale hospital)
+  alpha1: 0.30       # volume slope per log(mL) (Antillon-like, gentle)
+  beta: -0.50        # mild (lower-load) offset on logit-Se (<0)
+  tau: 0.30          # between-study SD (logit Se)
+  Se_BM: 0.92        # bone-marrow sensitivity (imperfect)
+  Sp_BC: 0.995
+  Sp_BM: 0.995
+
+# ---- simulation design ----
+sim:
+  S_hist: 12         # historic paired studies (severe baseline, mild=0)
+  O_out: 15          # outbreaks (surveillance, mild=1); pi spans low->mid
+  vol_hist: [2, 15]  # blood volume range (mL), historic
+  vol_out: [3, 10]   # blood volume range (mL), outbreaks
+  N_hist: [30, 130]  # enrolled-tested-both per historic study
+  n_out: [120, 400]  # cultured per outbreak
+  phi_range: [0.20, 0.70]   # hospital PPV (historic, wide)
+  pi_range: [0.02, 0.60]    # surveillance PPV (wide, INCLUDES low Pemba-like)
+
+# ---- priors passed to Stan ----
+priors:
+  se_bm_a: 90        # Se_BM ~ Beta(90,8) -> mean 0.918 (bone marrow ~high but imperfect)
+  se_bm_b: 8
+  sp_a: 200          # Sp ~ Beta(200,1) -> ~0.995 near 1
+  sp_b: 1
+  beta_sd: 1.0       # weakly-informative half-normal scale for the mild offset
+
+# ---- MCMC ----
+mcmc:
+  chains: 4
+  parallel_chains: 4
+  warmup: 1000
+  sampling: 1000
+  adapt_delta: 0.95
+  max_treedepth: 12
+
+# ---- conditional-dependence stress test ----
+dependence:
+  cd_infected: 0.06  # simulate historic with this covariance among infected, fit with 0
+
+# ---- ">1 plug-in" demo outbreak ----
+# A high-yield outbreak (large blood volume -> true Se ~0.72). Positivity 0.62 is
+# FEASIBLE (< Se) yet plug-in 0.62/0.60 = 1.03 > 1. A mild/low-load population
+# CANNOT show this (its Se < 0.6), so the demo is a severe/high-volume setting.
+demo_gt1:
+  n_cult: 250        # NB: do NOT name this key 'n' (YAML parses 'n' as boolean false)
+  positivity: 0.62   # plug-in 0.62/0.60 = 1.03 > 1
+  volume: 12         # true Se ~0.72 at 12 mL (severe)
+  mild: 0
+
+# ---- PASS thresholds for the recovery gate ----
+gate:
+  min_cri_coverage: 0.80   # 90% CrI coverage across key params + pi_o
+  max_abs_median_bias_logit: 0.35   # |bias| on logit-Se-scale params
+  max_abs_median_bias_pi: 0.10      # |bias| on pi_o (probability scale)
+  max_rhat: 1.05
+  min_ess: 200

@@ -1,0 +1,7 @@
+figures/
+tables/
+outputs/
+*.html
+stan/bc_bmc_ppv
+stan/*.exe
+stan/*.hpp
