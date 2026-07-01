@@ -71,16 +71,26 @@ between-study τ absorbing the rest, and (ii) headline "unreported antibiotic pr
 outbreaks" as a key sensitivity analysis. The optional conditional-dependence term addresses only
 part of this.
 
-**(c) The severity/bacteremia gradient — the transfer's biggest threat (from reading Antillón
-directly).** **38/40 paired BC/BMC studies are hospitalized** patients (severe, high-bacteremia),
-whereas only **1–20% of community-surveillance cases are hospitalized**. So the anchored Se_BC is a
-**hospital** sensitivity; the outbreak suspected-case population is milder with lower bacteremia →
-its true Se_BC is plausibly **lower**. Since π_o = positivity / Se_BC, transferring the (higher)
-hospital Se **over-estimates** outbreak Se and therefore **under-estimates** π_o (a conservative
-bias, but a bias). Volume and τ do **not** absorb this — it is a population-setting shift, not
-between-study noise, and there is **no community paired BC/BMC data** to estimate it directly. This
-is the honest headline limitation and should drive an explicit sensitivity analysis (a
-hospital→community Se offset with a wide prior), not be buried.
+**(c) The transfer's biggest threat is a BACTERIAL-LOAD composition shift (not a care-setting
+label).** Se_BC is mechanistically a function of blood bacterial load — typhoid bacteremia is sparse
+(Wain 1998: median **1 CFU/mL**, range <0.3–387), which is *why* volume matters (+3%/mL) and why
+Se falls with duration and antibiotics. Load's **measurable** drivers: **volume** (have it),
+**symptom duration** (load declines with time, P=0.002 → −31% after wk 1), **age** (children higher,
+1.5 vs 0.6 CFU/mL, P=0.008), **antibiotics** (−34%). Crucially, load does **not** map cleanly onto
+"severity" or "hospital": Wain ties it to duration/age/shedding/resistance, and children carry
+*higher* load yet Antillón found *adults* have higher observed Se (volume confounds). So
+"hospital vs community" and even "severe vs mild" are **noisy proxies** for the real axis, which is
+bacterial load.
+
+The transfer threat, restated: the 38/40 hospitalized paired studies sample a **load
+composition** (illness-stage × age × volume mix) that differs from an outbreak's suspected-case
+line list; if the surveillance population sits at lower load, its true Se_BC is lower, so
+transferring the paired Se **over-estimates** Se and **under-estimates** π_o. **Plan:** (i) model
+Se_BC on the *measurable* load drivers — volume as the in-hand covariate, plus duration/antibiotic
+where reported; (ii) represent the residual paired→surveillance **load-composition** difference as
+an **explicit offset with a wide prior**, run as the primary sensitivity analysis (per your
+steer). There is **no community paired BC/BMC data** to pin this offset, so it stays a stated
+structural assumption, not a fitted quantity.
 
 ## Recommended (narrowed, sharper) scope
 Proceed, but frame the contribution precisely:
@@ -114,21 +124,41 @@ Proceed, but frame the contribution precisely:
   slope b live in Antillón Supplementary Table S2, not in the main-text PDF — PLACEHOLDER, obtain
   before building the volume prior; use the +3%/mL linear value as an interim. -->
 
-## Decision requested (adjusted after reading the three papers in full)
-Approve to proceed to **Phase 1** (model build + simulation-recovery gate) under the narrowed
-framing above? Four specific choices, in priority order:
+## Resolved direction (per user) + concrete Phase-1 plan
 
-1. **The hospital→community Se_BC transfer (caveat c) is the crux — how do we handle it?**
-   Options: (a) transfer Se_BC via the volume model + τ only, and report the severity/bacteremia
-   gradient as a one-directional bias (π_o under-estimated) — simplest, honest; (b) add an explicit
-   hospital→community Se offset with a wide prior and run it as the primary sensitivity analysis
-   (recommended); (c) hunt for any community-based paired BC/BMC (or BC-vs-PCR) data to anchor the
-   offset (likely none exists — Phase-2 search). My recommendation: **(b)**.
-2. **Se_BC covariates:** include antibiotic-pretreatment (± symptom-duration) as covariates, or
-   just a wide between-study τ + a sensitivity analysis? (Antillón gives the effect sizes either
-   way; outbreaks rarely report these, so the covariate is often latent.)
-3. **Framing:** confirm the contribution is pitched as the *integrated, uncertainty-honest
-   observation model with a transportable-Se / local-PPV split* (estimating φ_s and Se_BM that
-   Arora/Mogasale fixed or assumed away) — **not** as novel PPV arithmetic.
-4. **Seed-data:** the Vallenas d=15 correction and the two-volume studies (Gasem 1995, Wain 2008) —
-   lock these in now (my proposed values), or defer per-arm splits to Phase 2?
+**Resolved:** the transfer offset is **bacterial-load-based**, not care-setting-based. First
+establish Se_BC ~ load (via volume + severity/duration), then add the explicit load-composition
+offset. Mechanism confirmed (Wain 1998 + Antillón), with the honest nuance that load ≠ clean
+"severity" (children higher-load; volume confounds) — so the offset is a **load-composition** shift.
+
+**Phase-1 Se_BC sub-model (proposed):**
+```
+logit(Se_BC,s) = alpha0 + alpha1*g(volume_s) + beta*load_shift_s + u_s,   u_s ~ N(0, tau^2)
+  g(volume)       log-linear (Antillón best-fit; +3%/mL linear check as interim)
+  load_shift_s    a study-level standardized "load composition" index built from what IS
+                  reported (mean/median symptom duration; age mix; inpatient fraction), = 0 for
+                  the hospital paired-study baseline
+  beta            effect of a lower-load population on logit(Se); INFORMATIVE-but-wide prior
+                  (sign constrained: lower load -> lower Se), the primary sensitivity knob
+For an outbreak o:  Se_BC,o = inv_logit(alpha0 + alpha1*g(volume_o) + beta*load_shift_o + u_o)
+  with load_shift_o set from the outbreak's reported severity/duration mix (or a prior if
+  unreported), u_o ~ N(0, tau^2) from the same population.
+```
+The severe/mild separation enters as `load_shift` (a composition covariate), and the
+hospital→surveillance transfer is `beta * (load_shift_o - 0)` with a wide prior — exactly the
+explicit offset you asked for, but on the load axis.
+
+**Still-open choices for your quick confirm before I write Stan:**
+1. **`load_shift` construction** — build it from reported duration + age + inpatient-fraction as a
+   crude standardized index (my proposal), or keep it a single binary hospital-paired(0)/
+   surveillance(1) indicator with a wide `beta`? (The index is better if the paired studies report
+   enough; several report age/duration, few report inpatient fraction — I'll use what's there.)
+2. **`beta` prior** — how strong? Proposal: weakly-informative, sign-constrained so a lower-load
+   surveillance population cannot raise Se, centered on a modest reduction with wide tails, and
+   swept in the sensitivity analysis.
+3. **Seed data** — lock Vallenas d=15 and pick volumes for the two-volume studies now (Gasem 1995
+   → model both 3 & 10 mL arms; Wain 2008 → both 5 & 15 mL arms, since the paper reports per-volume)?
+
+Answer these three and I build Phase 1 (Stan model + simulation-recovery: parameter recovery, the
+single-outbreak ridge demo, the ">1" scenario, and the conditional-dependence stress test), then
+**stop at the recovery gate** before any real data.
