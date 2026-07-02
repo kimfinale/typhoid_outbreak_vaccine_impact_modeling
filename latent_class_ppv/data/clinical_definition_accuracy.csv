@@ -1,0 +1,7 @@
+variant,order,Se_clin,Sp_clin,tier,source
+Bare fever >=3d,1,0.80,0.20,syndromic (assumed),Storey 2015 (illustrative assumption)
+WHO suspected (fever + symptom),2,0.83,0.36,syndromic,Thriemer 2012 Pemba / Storey 2015
+Prediction rule (Hosoglu; +Widal+WBC),3,0.84,0.82,syndromic + lab,Hosoglu 2006
+Fever + single serology (TUBEX),4,0.75,0.88,+ serology,Storey 2015 (TUBEX pooled)
+WHO probable (fever + dual Widal),5,0.41,0.997,+ serology,Thriemer 2012 Pemba
+Fever + triple serology,6,0.39,1.00,+ serology,Dong 2010 Hechi
