@@ -31,12 +31,14 @@ Zotero mode, any blockers) before analysis.
    R package). Install any missing.
 5. **Rendering:** check `Sys.which("quarto")`. If absent, render via `rmarkdown`/`knitr` or emit `.md` +
    `.tex` and note the fallback (Quarto CLI is an OS-level install -> SETUP_NEEDED if you want it).
-6. **Zotero PDFs — assume ABSENT (Zotero was just installed; the library is almost certainly not
-   synced).** Check the storage path in `CLAUDE.md`. If empty/missing, run in **WEB-ONLY LITERATURE
-   MODE**: do ALL extraction via WebSearch + WebFetch (prefer open-access PMC), flag every source as
-   web-retrieved in `references.bib`, and state it in Methods. **Do not block on missing local PDFs.**
-   (If, unexpectedly, the library IS present, verify each PDF matches its filename — known misfiling,
-   see CLAUDE.md.)
+6. **Zotero PDFs — file sync is ENABLED but coverage is likely PARTIAL / in-progress** (a fresh sync,
+   and Zotero's free storage tier is 300 MB — a ~2,000-PDF library will only fully sync with a paid plan
+   or WebDAV, so expect a subset). **Detect and adapt per paper:** check the storage path in `CLAUDE.md`,
+   recurse and count `*.pdf`; for EACH paper you need, try the **local Zotero copy first** (locate by
+   filename and **verify the content matches** — known misfiling, see CLAUDE.md), and **fall back to
+   WebSearch/WebFetch** (open-access PMC) for any not-yet-synced. Record per-source provenance
+   (Zotero-local vs web-retrieved) in `references.bib` and state the mix in Methods. Do NOT block on
+   missing local PDFs; if almost nothing is present, proceed web-only.
 7. **Env notes:** on Windows, invoke R via script files (not `-e`), and `data.table::fread` segfaults
    under Rscript — use `read.csv`. Adapt to the actual OS/shell of this machine.
 
