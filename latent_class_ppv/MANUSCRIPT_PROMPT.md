@@ -12,11 +12,34 @@ rather than fabricate when data or convergence fail.
 
 ---
 
-## 0. Environment & orientation (read first)
-- R 4.5.3 at `C:\Program Files\R\R-4.5.3\bin\Rscript.exe`; cmdstanr + cmdstan 2.39 installed. Run R via
-  PowerShell with script files (not `-e`); `data.table::fread` segfaults under Rscript — use `read.csv`.
-- Reference PDFs are in the user's **Zotero** library on disk (see `CLAUDE.md` for the path pattern and
-  the **misfiling caveat** — always verify a PDF's content matches its filename).
+## 0. PREFLIGHT — environment (DO THIS FIRST; this is a FRESH remote machine)
+Do not assume the toolchain is present. Self-install what you can (R packages, cmdstan); for OS-level
+items you cannot reliably self-provision (R itself, RTools, Quarto, the Zotero PDF library), write
+`manuscript/SETUP_NEEDED.md` with the exact fix, then continue with whatever is possible (or stop only
+if nothing can proceed). Record findings in `manuscript/PREFLIGHT.md` (R/cmdstan/quarto versions,
+Zotero mode, any blockers) before analysis.
+
+1. **R version.** Need R >= 4.4 (repo written for 4.5.3). You cannot reliably self-update R from within
+   R — if it's older, write SETUP_NEEDED ("install R 4.5.x + matching RTools") and skip the modelling.
+2. **C++ toolchain / RTools.** `cmdstanr::check_cmdstan_toolchain(fix = FALSE)`. On **Windows** this
+   needs **RTools45** (for R 4.5); on Linux/macOS use the system compiler. If broken and unfixable from
+   R -> SETUP_NEEDED, skip modelling.
+3. **cmdstanr + cmdstan.** If missing:
+   `install.packages("cmdstanr", repos=c("https://mc-stan.org/r-packages/", getOption("repos")))`, then
+   `cmdstanr::install_cmdstan()` (any recent 2.3x is fine). Verify with a trivial compile + sample.
+4. **R packages:** cmdstanr, posterior, ggplot2, dplyr, tidyr, yaml, scales, knitr, rmarkdown (+ quarto
+   R package). Install any missing.
+5. **Rendering:** check `Sys.which("quarto")`. If absent, render via `rmarkdown`/`knitr` or emit `.md` +
+   `.tex` and note the fallback (Quarto CLI is an OS-level install -> SETUP_NEEDED if you want it).
+6. **Zotero PDFs — assume ABSENT (Zotero was just installed; the library is almost certainly not
+   synced).** Check the storage path in `CLAUDE.md`. If empty/missing, run in **WEB-ONLY LITERATURE
+   MODE**: do ALL extraction via WebSearch + WebFetch (prefer open-access PMC), flag every source as
+   web-retrieved in `references.bib`, and state it in Methods. **Do not block on missing local PDFs.**
+   (If, unexpectedly, the library IS present, verify each PDF matches its filename — known misfiling,
+   see CLAUDE.md.)
+7. **Env notes:** on Windows, invoke R via script files (not `-e`), and `data.table::fread` segfaults
+   under Rscript — use `read.csv`. Adapt to the actual OS/shell of this machine.
+
 - **Build on existing assets — do NOT restart.** The `latent_class_ppv/` module already contains most of
   this analysis. Read these before doing anything:
   - `FINAL_REPORT.md` (fitted results), `README.md` (model + assumptions + estimand split),
