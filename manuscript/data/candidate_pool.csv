@@ -1,0 +1,64 @@
+study,layer,setting_label,why_candidate,provenance,data_recoverable
+Akoh 1991 (Zaria),culture_accuracy,hospital-referred,paired BC/BM 2x2 + volume (Mogasale study 1),web via Mogasale2016,2x2+volume
+Hirsowitz 1951 (Transvaal),culture_accuracy,hospital-referred,paired BC/BM 2x2 (Mogasale),web via Mogasale2016,2x2 (no volume)
+Farooqui 1991 (Karachi),culture_accuracy,hospital-referred,paired BC/BM 2x2 + volume (Mogasale),web via Mogasale2016,2x2+volume
+Gasem 1995 (Semarang),culture_accuracy,hospital-referred,paired BC/BM 2x2 + two volumes (Mogasale/Antillon),web via Mogasale2016,2x2+volume
+Gasem 2002 (Semarang),culture_accuracy,hospital-referred,paired BC/BM 2x2 + volume (Mogasale),web via Mogasale2016,2x2+volume
+Chaicumpa 1992 (Jakarta),culture_accuracy,hospital-referred,paired BC/BM 2x2 + volume (Mogasale),web via Mogasale2016,2x2+volume
+Wain 2008 (Dong Thap),culture_accuracy,hospital-referred,paired BC/BM 2x2 + two volumes (Mogasale/Antillon),web via Mogasale2016,2x2+volume
+Gilman 1975 (Mexico City),culture_accuracy,hospital-referred,paired BC/BM 2x2 (Mogasale),web via Mogasale2016,2x2 (BM vol NR)
+Guerra-Caceres 1979 (Lima),culture_accuracy,hospital-referred,paired BC/BM 2x2 + volume (Mogasale),web via Mogasale2016,2x2+volume
+Vallenas 1985 (Lima),culture_accuracy,hospital-referred,paired BC/BM 2x2 (Mogasale; both-neg cell flagged),web via Mogasale2016,2x2 (verify cell d)
+Wain 2001 (Vietnam bone marrow quantitation),culture_accuracy,hospital-referred,paired blood+marrow quantitation; overlap check vs Wain 2008,web (PMC87972),partial (overlap risk)
+Mogasale 2016 (systematic review),culture_accuracy,n/a,source of the 10 paired studies + pooled BC Se 61-66%,zotero FETGANPJ/XN95ULUY,meta-source
+Antillon 2018 (volume meta-regression),culture_accuracy,mixed-facility,25 studies BC Se vs blood volume; volume-slope prior,zotero 6FNQL499/EPIZH3LX/V4HJT5JR,meta-source (volume/Se)
+Thriemer 2012 (Pemba),clinical_definition;positivity,community-or-surveillance,WHO suspected vs probable Se/Sp vs culture; low-endemicity positivity ~2%,zotero FCJAVDWC,Se/Sp+positivity
+Hosoglu 2006 (Turkey),clinical_definition,hospital-referred,prediction rule Se 84 / Sp 82 vs culture (embeds Widal),web (OUP),Se/Sp
+Ross & Abraham 1987 (Malaysia),clinical_definition,hospital-referred,Bayesian rule Se 92 / Sp 80 vs blood+stool culture,web (PMID 3686631),Se/Sp
+Vollaard 2005 (Jakarta),clinical_definition,community-or-surveillance,outpatient clinical identification; likely no clean Se/Sp (qualitative),web (PMID 15837356),weak/none
+Dong 2010 (Hechi China),clinical_definition,community-or-surveillance,fever+triple-serology combined definition Se/Sp; specificity ceiling,web (PMC2870657),Se/Sp
+SEAP clinical-features 2020 (Bangladesh/Nepal/Pakistan),clinical_definition;positivity,mixed-facility,clinical case definition PPV ~10.5% (7.2-15.0),web (PMC7705879),PPV/positivity
+Storey 2015 (DTA meta-analysis),clinical_definition,n/a,serology Se/Sp (Widal/TUBEX/Typhidot); WHO suspected 0.83/0.36,zotero N6MAP2JM,meta-source (Se/Sp)
+Mawazo 2019 (Tanzania),clinical_definition,mixed-facility,Widal + stool culture performance vs blood culture,zotero 5PEHN9JS,Se/Sp (serology)
+Darton 2017 (blood culture-PCR),culture_accuracy,mixed-facility,BC vs PCR optimisation; culture yield,zotero 47BQ724N,partial
+Aye 2004 (Madaya Myanmar),positivity,community-or-surveillance,suspected 49 / cultured 22 / conf 3 (positivity 0.14),zotero 8YYE62LX,positivity
+Neil 2012 (Kasese Uganda),positivity,community-or-surveillance,suspected 577 / cultured 63 / conf 25 (positivity 0.40; IP-skew flag),zotero 4Z8V6MKA/VHZAMGH9,positivity
+Kabwama 2017 (Kampala),positivity,community-or-surveillance,suspected 10230 / cultured 364 / conf 51 (0.14); tiered defn,zotero 2ARGT7WZ,positivity+tiers
+N'Cho 2019 (Harare 2017-18),positivity,community-or-surveillance,suspected 3187 / conf 191; culture subset,zotero RAYYTM4G,positivity
+Davis 2018 (Harare 2016-17),positivity,community-or-surveillance,suspected 780 / conf 80 (0.103); MMWR (Zotero copy misfiled - use real MMWR),zotero CTL54YK3 (verify)/web,positivity
+Muti 2014 (Dzivaresekwa),positivity,community-or-surveillance,suspected 1078 / conf 24 (0.022); case-control,zotero 8TGV6SMZ,positivity
+Qamar 2018 (Hyderabad XDR),positivity,mixed-facility,confirmed-only counts (Type B); positivity among tested,web (Lancet ID),positivity (confirmed-only)
+Yousafzai 2019 (Hyderabad XDR),positivity,mixed-facility,confirmed-only XDR counts; positivity among tested,zotero TPH7NURK,positivity (confirmed-only)
+Lewis 2005 (Kathmandu),positivity,hospital-referred,hospital-register suspected; culture subset,web (CID),positivity
+Muehlen 2007 (domestic outbreak),positivity,community-or-surveillance,suspected/probable/confirmed tiers,zotero BF6PNXLW,positivity+tiers
+Bano-Zaidi 2018,positivity,mixed-facility,suspected/probable/confirmed tiers,zotero ZQMHVZ7E,positivity+tiers
+Srinivasan 2022 (Vellore children),positivity,community-or-surveillance,outbreak in children; positivity,zotero YHMI8HRX,positivity
+Limpitikul 2014 (Songkhla),positivity,community-or-surveillance,outbreak 2009-11; serology reliability,zotero 9HKFIEAD,positivity
+Bhunia 2009 (South Dumdum),positivity,community-or-surveillance,slum outbreak; suspected/confirmed,zotero JVG88YK8,positivity
+Brainard 2018 (DRC),positivity,community-or-surveillance,DRC typhoid outbreak,zotero EHZL6QVP,positivity
+Hechaichi 2023 (Tunisia),positivity,community-or-surveillance,outbreak investigation; suspected/confirmed,zotero 8TX2TUHE,positivity
+Mamo 2018 (Ofla Ethiopia),positivity,community-or-surveillance,outbreak investigation,zotero NRP884RK,positivity
+Michel 2005 (Cote d'Ivoire troops),positivity,community-or-surveillance,point-source cohort; suspected/probable/confirmed,zotero HG29X4I6,positivity+tiers
+Roy 2016 (Jorhat India),positivity,hospital-referred,hospital-presentation; small; positivity high (selection),web,positivity
+Nimonkar 2022 (India),positivity,mixed-facility,confirmed-heavy (tested=suspected) - likely excluded,web,positivity (confirmed-only)
+Wang 2022 (China XDR),positivity,mixed-facility,XDR outbreak; tested=1 - likely excluded,zotero BPH5R428,positivity (trivial)
+Olsen 2001 (Florida restaurant),positivity,community-or-surveillance,foodborne outbreak (high-income),web,positivity
+Katz 2002 (Florida),positivity,community-or-surveillance,outbreak; suspected/confirmed,zotero 2BB43G9Q,positivity
+Yoon 2004 (Korea),positivity,community-or-surveillance,domestically-acquired outbreak,zotero KJWRVYP8,positivity
+Yang/Hh 2001 (Xing-An China),positivity,community-or-surveillance,outbreak; suspected/confirmed,zotero WFILNPKU/NSP9CG63,positivity
+Misra 2005 (India MDR),positivity,mixed-facility,MDR outbreak,zotero H4FGW7L2,positivity
+Singla 2013 (subdivision India),positivity,community-or-surveillance,outbreak; suspected/confirmed,zotero HHKP6AWB,positivity
+Pradier 2000 (French Riviera),positivity,community-or-surveillance,outbreak,zotero 3IMX82CP,positivity
+Loharikar 2012 (frozen mamey),positivity,community-or-surveillance,foodborne outbreak,zotero X55ZAMP5,positivity
+Kobayashi 2016 (foodborne),positivity,community-or-surveillance,foodborne outbreak case report,zotero I985QLEY,positivity
+Hancock-Allen 2016,positivity,community-or-surveillance,MMWR notes-from-field outbreak,zotero B5STER4I/VCTIXGA6,positivity
+von Kalckreuth 2016 (TSAP),positivity,community-or-surveillance,African febrile surveillance; blood-culture positivity (methods+results),zotero LV5JF4LV,positivity (setting-mix)
+Carey 2020 (SEAP),positivity,mixed-facility,Asia enteric-fever surveillance; outpatient+inpatient positivity,zotero PPALAYWP,positivity (stratifiable)
+Meiring 2021 (STRATAA),positivity,mixed-facility,3-site febrile surveillance; typhoidal positivity 3.2-8.2%,zotero X3A5KMNG,positivity (setting)
+Srikantiah 2006 (Egypt),positivity,community-or-surveillance,population-based typhoid surveillance,zotero QYIRVXUE,positivity
+Hancuh 2023 (Kenya),positivity,community-or-surveillance,typhoid surveillance/incidence Kenya,zotero RLSDAG7T,positivity
+Marks 2022 (SETA severe),positivity,hospital-referred,severe-typhoid program; S.Typhi share of CSO,web/zotero,positivity
+Mahende 2015 (Tanzania outpatient),positivity,community-or-surveillance,outpatient children bacteraemia; S.Typhi 2.1%,web/zotero,positivity
+Voysey 2020 (under-detection),positivity,mixed-facility,under-detection of BC-positive enteric fever (STRATAA-linked),zotero 98AAWGSG,adjustment/positivity
+Andrews 2018 (Nepal),positivity,mixed-facility,facility-based enteric fever diagnosis rates,zotero 8HIK9ZHP,positivity
+Khaliq 2021 (outbreak case-definition review),positivity,n/a,catalogue of 68 outbreak case definitions; citation-chase source,zotero 6BYAZ6T7,meta-source (defns)
