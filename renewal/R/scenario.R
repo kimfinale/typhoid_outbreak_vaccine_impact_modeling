@@ -61,10 +61,15 @@ run_scenarios <- function(prep, cfg, amr_props,
                           coverage = cfg$vaccine$coverage_base,
                           delays   = cfg$timing$delay_base_weeks,
                           psi_T_frac = 1, gi_mean_days = cfg$gi$mean_days,
-                          eta = cfg$vaccine$eta_static) {
+                          eta = cfg$vaccine$eta_static, pi_post = NULL,
+                          ppv_regime = if (is.null(cfg$ppv$regime)) "multiplicative" else cfg$ppv$regime) {
   w <- gi_from_config(cfg, mean_days = gi_mean_days)
   params <- build_param_sets(cfg)
   ndraw <- nrow(params)
+  # PPV (pi) draws per (study, draw); additive regime de-backgrounds the curve.
+  pim <- if (!is.null(pi_post))
+    build_pi_matrix(pi_post, names(prep$series), ndraw, seed = cfg$seed + 777L) else NULL
+  additive <- !is.null(pim) && identical(ppv_regime, "additive")
   N <- length(prep$series) * length(delays) * length(coverage) * ndraw * 2L
 
   # Preallocate columns (filled by index; one data.frame built at the end).
@@ -77,7 +82,8 @@ run_scenarios <- function(prep, cfg, amr_props,
             s_ch_averted_tot = dbl(), death_averted_tot = dbl(),
             s_ch_averted_amr_tot = dbl(), s_ch_averted_resistant_tot = dbl(),
             s_ch_averted_mdr_tot = dbl(), s_ch_averted_fqns_tot = dbl(),
-            s_ch_averted_xdr_tot = dbl())
+            s_ch_averted_xdr_tot = dbl(),
+            pi_ppv = dbl(), suspected_tot = dbl(), obs_pct_reduction = dbl())
   k <- 0L
 
   for (sid in names(prep$series)) {
@@ -89,6 +95,7 @@ run_scenarios <- function(prep, cfg, amr_props,
     death_per_case <- if (isTRUE(m$tot_cases > 0) && is.finite(m$tot_deaths))
       m$tot_deaths / m$tot_cases else 0
     tail_guard <- Tn - cfg$tail_guard_weeks   # outbreak "missed" if t_eff beyond this
+    sum_inc <- sum(inc)                        # observed suspected total (dilution denom)
 
     for (tau in delays) for (cov in coverage) for (i in seq_len(ndraw)) {
       psi   <- params$dve[i]
@@ -96,12 +103,19 @@ run_scenarios <- function(prep, cfg, amr_props,
       te <- t_eff_weeks(tau, params$immuno_delay[i], params$campaign_duration[i], cfg$step_days)
       te_int <- max(round(te), 1L); occurred <- te <= tail_guard
 
-      post_int <- if (occurred && te_int <= Tn) sum(inc[te_int:Tn]) else 0
+      # ADDITIVE regime models TRUE typhoid I(t)=S(t)-B(t); else models suspected S(t).
+      pi_i    <- if (!is.null(pim)) pim[i, sid] else NA_real_
+      inc_i   <- if (additive) ppv_true_incidence(inc, pi_i) else inc
+      s_tot_i <- if (additive) sum(inc_i) else m$tot_cases
+      dpc_i   <- if (additive) { s <- sum(inc_i)
+                   if (is.finite(m$tot_deaths) && s > 0) m$tot_deaths / s else 0 } else death_per_case
+
+      post_int <- if (occurred && te_int <= Tn) sum(inc_i[te_int:Tn]) else 0
       if (!occurred) { a_ren <- 0; a_sta <- 0 } else {
-        ren <- renewal_counterfactual(inc, w, tau = tau, t_eff = te_int, pi = cov,
+        ren <- renewal_counterfactual(inc_i, w, tau = tau, t_eff = te_int, pi = cov,
                                       psi_T = psi_T, c_shape = cfg$timing$c_shape, feedback = TRUE)
-        a_ren <- impact_measures(inc, ren$incidence_v)$averted
-        a_sta <- impact_measures(inc, static_counterfactual(inc, te_int, P_halloran(cov, psi, eta)))$averted
+        a_ren <- impact_measures(inc_i, ren$incidence_v)$averted
+        a_sta <- impact_measures(inc_i, static_counterfactual(inc_i, te_int, P_halloran(cov, psi, eta)))$averted
       }
 
       for (j in 1:2) {
@@ -113,16 +127,25 @@ run_scenarios <- function(prep, cfg, amr_props,
         C$tau[k] <- tau; C$vacc_cov[k] <- cov; C$draw[k] <- i; C$model[k] <- mdl
         C$psi[k] <- psi; C$psi_T[k] <- psi_T; C$eta[k] <- if (j == 2L) eta else NA_real_
         C$gi_mean[k] <- gi_mean_days; C$t_eff[k] <- te_int; C$ori_occurred[k] <- occurred
-        C$s_ch_tot[k] <- m$tot_cases; C$post_int_cases[k] <- post_int
+        C$s_ch_tot[k] <- s_tot_i; C$post_int_cases[k] <- post_int
         C$s_ch_averted_tot[k] <- a
-        C$death_averted_tot[k] <- a * death_per_case
+        C$death_averted_tot[k] <- a * dpc_i
         C$s_ch_averted_amr_tot[k] <- a * props["amr"]
         C$s_ch_averted_resistant_tot[k] <- a * props["resistant"]
         C$s_ch_averted_mdr_tot[k] <- a * props["mdr"]
         C$s_ch_averted_fqns_tot[k] <- a * props["fqns"]
         C$s_ch_averted_xdr_tot[k] <- a * props["xdr"]
+        C$pi_ppv[k] <- pi_i; C$suspected_tot[k] <- sum_inc
+        C$obs_pct_reduction[k] <- if (additive && sum_inc > 0) 100 * a / sum_inc else NA_real_
       }
     }
   }
-  as.data.frame(C, stringsAsFactors = FALSE)
+  df <- as.data.frame(C, stringsAsFactors = FALSE)
+  # MULTIPLICATIVE regime: scale case columns SUSPECTED -> TRUE typhoid (pi-invariant %reduction).
+  if (!is.null(pim) && !additive) {
+    cc <- intersect(.ppv_case_cols, names(df))
+    df[cc] <- df[cc] * df$pi_ppv
+    df$obs_pct_reduction <- ifelse(df$s_ch_tot > 0, 100 * df$s_ch_averted_tot / df$s_ch_tot, NA_real_)
+  }
+  df
 }

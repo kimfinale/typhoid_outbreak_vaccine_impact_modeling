@@ -25,6 +25,7 @@ source("renewal/R/cost_daly.R")
 source("renewal/R/summarise.R")
 source("renewal/R/epiestim_rt.R")
 source("renewal/R/figures.R")
+source("renewal/R/ppv.R")            # PPV (pi) posterior propagation
 
 cfg <- yaml::read_yaml("renewal/config.yml")
 set.seed(cfg$seed)
@@ -32,6 +33,16 @@ cat("=== Renewal analysis — Phase 1 ===\n")
 cat("Seed:", cfg$seed, "| Sobol n:", cfg$n_sobol,
     "| GI mean:", cfg$gi$mean_days, "d (CV", cfg$gi$cv, ")",
     "| drop_first_week:", cfg$gi$drop_first_week, "\n\n")
+
+# --- PPV (pi) posterior: suspected -> TRUE typhoid impact --------------------
+pi_post <- if (isTRUE(cfg$ppv$enable)) load_pi_posterior(cfg$ppv$draws, cfg$ppv$anchor) else NULL
+if (!is.null(pi_post)) {
+  cat(sprintf("PPV propagation: ENABLED (%d posterior draws; anchored: %s).\n",
+              pi_post$ndraw, paste(pi_post$anchor, collapse = ", ")))
+  cat(sprintf("  community pi typical = %.2f [%.2f, %.2f] (median inv_logit(mu) across draws)\n\n",
+              plogis(median(pi_post$mu)), plogis(quantile(pi_post$mu, .025)),
+              plogis(quantile(pi_post$mu, .975))))
+} else cat("PPV propagation: DISABLED (raw suspected-case impact).\n\n")
 
 dir.create(cfg$paths$tables,  recursive = TRUE, showWarnings = FALSE)
 dir.create(cfg$paths$figures, recursive = TRUE, showWarnings = FALSE)
@@ -86,10 +97,36 @@ maybe_cea <- function(df) if (have_cost) add_cost_daly(df, cost_env) else df
 cat("Running delay x coverage grid (both models)...\n")
 grid_raw  <- run_scenarios(prep, cfg, amr_props,
                            coverage = cfg$vaccine$coverage_grid,
-                           delays   = cfg$timing$delay_grid_weeks)
+                           delays   = cfg$timing$delay_grid_weeks,
+                           pi_post  = pi_post)
 grid_cea  <- maybe_cea(grid_raw)
 summ_grid <- summarise_draws(grid_cea)
 write.csv(summ_grid, tab("summary_delay_coverage.csv"), row.names = FALSE)
+
+# --- PPV effect: base-case impact, suspected-naive vs TRUE typhoid (+ dilution) --
+if (!is.null(pi_post)) {
+  cat(sprintf("Computing PPV effect (regime=%s, base case, renewal)...\n", cfg$ppv$regime))
+  bc <- function(df) df[df$model == "renewal" &
+                        df$tau == cfg$timing$delay_base_weeks &
+                        df$vacc_cov == cfg$vaccine$coverage_base, ]
+  gt <- bc(grid_raw)                                               # PPV-adjusted (true typhoid)
+  gs <- bc(run_scenarios(prep, cfg, amr_props, coverage = cfg$vaccine$coverage_base,
+                         delays = cfg$timing$delay_base_weeks, pi_post = NULL))  # suspected-naive
+  perstudy_sum <- function(df) sum(tapply(df$s_ch_averted_tot, df$study_id, median, na.rm = TRUE))
+  ppv_cmp <- data.frame(
+    quantity = c("total_cases_averted (per-study median, summed)",
+                 "pooled_TRUE_pct_reduction_median",
+                 "pooled_OBSERVED_pct_reduction_median (suspected surveillance)"),
+    suspected_naive = c(round(perstudy_sum(gs)),
+                        round(median(100 * gs$s_ch_averted_tot / gs$s_ch_tot, na.rm = TRUE), 1),
+                        NA_real_),
+    true_typhoid = c(round(perstudy_sum(gt)),
+                     round(median(100 * gt$s_ch_averted_tot / gt$s_ch_tot, na.rm = TRUE), 1),
+                     round(median(gt$obs_pct_reduction, na.rm = TRUE), 1)))
+  write.csv(ppv_cmp, tab("tab_ppv_effect.csv"), row.names = FALSE)
+  cat("Wrote", tab("tab_ppv_effect.csv"),
+      "-- true typhoid cases averted (pi-scaled) + surveillance dilution (additive regime)\n")
+}
 
 # --- Analysis 1: base case (tau = 8, pi = 0.80) ------------------------------
 summ_base <- summ_grid %>%

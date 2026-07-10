@@ -52,3 +52,16 @@ timing:
 
 # --- Outbreak-tail guard (matches R/3-model.R: outbreak "missed" if it ends <=3 wk after t*) ---
 tail_guard_weeks: 3
+
+# --- PPV (pi) propagation: convert suspected-case impact to TRUE typhoid ------
+# Outbreak curves are SUSPECTED cases; pi = P(true typhoid | suspected) from
+# latent_class_ppv. When enabled, case-based impact (cases averted, YLD, COI,
+# cases/dose) is scaled to true typhoid per posterior draw; deaths/YLL are
+# pi-invariant. Anchored outbreaks use their own pi posterior; others draw from
+# the reconstructed community hyper-distribution. Set enable:false for the raw
+# suspected-case analysis.
+ppv:
+  enable: true
+  regime: "additive"   # "additive" (S=I+B, background dilutes observed %reduction) | "multiplicative" (I=pi*S)
+  draws:  "latent_class_ppv/outputs/final_draws.rds"
+  anchor: ["Aye 2004", "Neil 2012", "Kabwama 2017"]

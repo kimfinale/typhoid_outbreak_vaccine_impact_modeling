@@ -38,3 +38,4 @@ manuscript/data/ts_batches/
 manuscript/data/ts_recent_pool.csv
 manuscript/data/pdfs/
 manuscript/data/*.png
+renewal/_run.log
