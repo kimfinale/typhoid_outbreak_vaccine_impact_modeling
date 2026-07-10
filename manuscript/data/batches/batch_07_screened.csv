@@ -1,0 +1,501 @@
+pmid,decision,layer,reason,citation_chase,language_exclude
+17298925,exclude,none,case report liver abscess; no diagnostic or positivity data,no,no
+10348767,maybe,L2,treatment trial reports suspected fever with culture-positive counts,no,no
+17217551,include,multiple,evaluates typhoid case definitions sensitivity specificity; large population study,no,no
+25584214,exclude,none,PCR diagnostic versus culture; culture is reference not evaluated,no,no
+39171062,exclude,none,case report peritonitis; no diagnostic or positivity data,no,no
+9251454,exclude,none,treatment trial in pre-selected culture-positive patients; no denominator,no,no
+40642389,exclude,none,vaccine impact modeling; no positivity or definition accuracy,no,no
+27891335,include,multiple,blood culture sensitivity versus composite reference; clinical suspicion population,no,no
+30184162,maybe,L3,surveillance methods adjusting blood culture sensitivity; possible positivity data,no,no
+28515625,exclude,none,narrative review vaccine utility; not systematic; no positivity,no,no
+26930553,exclude,none,blood culture PCR development in challenge volunteers; molecular,no,no
+39100591,include,L3,pseudo-outbreak; suspected cases versus case definition counts reported,no,no
+30410688,exclude,none,clinical features of confirmed cases; travelers; no accuracy,no,no
+24479030,exclude,none,case report typhoid hepatitis; no diagnostic data,no,no
+34849434,exclude,none,case report splenic vein thrombosis; no diagnostic data,no,no
+31665774,exclude,none,cost-of-illness study protocol; economic; no accuracy,no,no
+34916803,maybe,L3,AMR study reports culture positivity among febrile patients,no,no
+3850013,exclude,none,case report typhoid pneumonia; no diagnostic data,no,no
+27504289,exclude,none,salivary antibody biomarker; case-control; not culture or definition,no,no
+35788572,include,L3,surveillance positivity among febrile; blood culture sensitivity adjusted,no,no
+6636284,exclude,none,culture-proven case series clinical features; no accuracy metrics,no,no
+12041566,exclude,none,case report typhoid glomerulonephritis; no diagnostic data,no,no
+29234353,maybe,L3,reports culture positivity among suspected enteric fever patients,no,no
+34842022,exclude,none,systematic review cost-effectiveness of typhoid RDTs,yes,no
+17338970,exclude,none,travelers fluoroquinolone resistance; no positivity or accuracy,no,no
+18603924,include,L2,evaluates diagnostic accuracy of clinical features versus culture,no,no
+34137685,exclude,none,case report nanopore sequencing identification; molecular,no,no
+14768191,include,L2,clinical diagnosis versus culture confirmation; positivity of clinical diagnosis,no,no
+38686255,exclude,none,antibiogram of culture-positive cases; no suspected denominator,no,no
+33294191,maybe,L3,H58 genomics reports culture positivity among typhoid patients,no,no
+30833820,exclude,none,narrative review Salmonella in children; not systematic,no,no
+24765267,exclude,none,case report cholestatic hepatitis; no diagnostic data,no,no
+30911492,exclude,none,myositis complication series; no case-definition or culture accuracy,no,no
+34678198,exclude,none,vaccine efficacy trial; no positivity or definition accuracy,no,no
+17678562,exclude,none,non-typhoidal Salmonella seroincidence; not typhoid,no,no
+37602057,exclude,none,case report hemophagocytic lymphohistiocytosis; no diagnostic data,no,no
+2818408,exclude,none,two case reports typhoid hepatitis; no denominator,no,no
+41146722,maybe,L2,diagnostic accuracy PPV of typhoid tests in suspected patients,no,no
+28764158,exclude,none,salivary antibody biomarker; small case-control; not in scope,no,no
+30705483,exclude,none,AMR susceptibility trends of blood-culture isolates; no positivity or accuracy,no,no
+32477551,exclude,none,single case report; drug-resistant typhoid; no denominator,no,no
+41666457,maybe,L3,AUFI hospital cohort; blood culture; zero enteric fever confirmed,no,no
+33956660,exclude,none,AMR of seventeen blood-culture isolates; no positivity or accuracy,no,no
+11414416,exclude,none,serologic ELISA accuracy; case-control; culture as reference standard,no,no
+25250072,exclude,none,single case report; typhoid complication; no denominator,no,no
+30307563,exclude,none,systematic review meta-analysis; blood versus bone-marrow culture sensitivity,yes,no
+11832640,exclude,none,case series of confirmed cases; clinical description; no accuracy,no,no
+33409057,exclude,none,single case report; typhoid complication; no denominator,no,no
+16687861,exclude,none,environmental water bacteriology; not human diagnostic or positivity,no,no
+16771224,maybe,L3,treatment trial; thirty-one of forty-eight clinical suspects confirmed,no,no
+39591175,exclude,none,glycoconjugate vaccine design; animal immunogenicity; no human diagnostics,no,no
+36795626,exclude,none,global surveillance/incidence overview; no primary suspected or confirmed counts,no,no
+32490233,exclude,none,hematological parameters; Widal-grouped; no culture or diagnostic accuracy,no,no
+38745803,exclude,none,AMR hospital database of isolates; no positivity or accuracy,no,no
+33919283,include,L3,1298 suspected enteric fever; 40 blood-culture confirmed positivity,no,no
+27514969,maybe,L3,enteric fever outbreak; 43 blood-culture-confirmed cases,no,no
+37274536,exclude,none,narrative treatment review; no diagnostic or positivity data,no,no
+36246709,exclude,none,XDR risk-factor study in confirmed cases; no positivity,no,no
+12728206,exclude,none,HIV special-population case reports; no denominator,no,no
+27408156,include,L3,typhoid outbreak; attack rate; 5.43% blood culture positive,no,no
+41836143,exclude,none,single laboratory-acquired case report; genomics; no denominator,no,no
+32725239,exclude,none,cost-of-illness methodology; economic-only; no diagnostic or positivity data,no,no
+34485467,include,L3,typhoid outbreak; suspected case definition; 7 of 122 confirmed,no,no
+26094960,include,multiple,300 febrile; blood culture 19 versus composite 34; RDT accuracy,no,no
+804867,exclude,none,case series of 97 confirmed; clinical description; no denominator,no,no
+19087343,exclude,none,single imported case report; no denominator or accuracy,no,no
+23324821,exclude,none,arbovirus co-infection focus; typhoid by Widal not culture,no,no
+32725223,exclude,none,TCV control commentary; no diagnostic or positivity data,no,no
+37075141,include,L3,population-based AFI surveillance; 299 blood-culture-confirmed typhoid cases,no,no
+41446431,exclude,none,single case report; typhoid complication; Widal; no denominator,no,no
+37918629,exclude,none,murine vaccine immunization; not human; no diagnostics,no,no
+15495599,exclude,none,molecular PCR accuracy; case-control; culture as reference standard,no,no
+25356352,exclude,none,AMR of 968 isolates; no typhoid positivity or accuracy,no,no
+31989918,include,L3,913 of 60384 blood cultures positive; hospital febrile surveillance,no,no
+22858557,exclude,none,vaccine immunology plasmablast study; no positivity or diagnostics,no,no
+36387692,maybe,L3,180 febrile; 58 blood culture positive; RDT accuracy,no,no
+34057946,maybe,L3,241 febrile; 68 blood culture positive; Tubex/Widal accuracy,no,no
+30614411,maybe,L1,bone marrow examination in fever; marrow culture yield; typhoidal cases,no,no
+29887216,exclude,none,case report plus HLH systematic review; off-topic complication,no,no
+20387354,include,L1,paired bone marrow vs blood culture; Typhi commonest isolate,no,no
+41415828,exclude,none,genomic AMR surveillance; no diagnostic or positivity data,no,no
+3074465,maybe,L2,treatment trial; 12 of 27 clinical typhoid culture-positive,no,no
+37111480,maybe,L3,population screening healthy children; culture-negative seroprevalence,no,no
+19901486,exclude,none,case report; Widal cross-reactivity in melioidosis,no,no
+22232450,include,L3,fever etiology; blood culture Typhi positivity reported,no,no
+11057501,exclude,none,descriptive confirmed-case series; no positivity or accuracy,no,no
+9593481,exclude,none,risk-factor case-control study; no diagnostic content,no,no
+7872445,exclude,none,treatment RCT; culture-confirmed only; no positivity,no,no
+10858343,exclude,none,treatment RCT in confirmed cases; no positivity,no,no
+8991347,maybe,L1,clinical spectrum; bone marrow culture positive untreated cases,no,no
+10093424,exclude,none,confirmed-case series; antibiotic sensitivity focus; no positivity,no,no
+34648506,exclude,none,whole-genome phylogenomics; no diagnostic or positivity data,no,no
+23411364,exclude,none,retrospective case review; travellers; no diagnostic accuracy,no,no
+1797965,exclude,none,fatal-complication series; no case-definition accuracy or positivity,no,no
+16400212,include,L2,112 clinical typhoid; blood culture positive 49 percent,no,no
+36985239,exclude,none,whole-genome genotyping of isolates; no positivity data,no,no
+27407999,exclude,none,susceptibility of confirmed isolates; no positivity denominator,no,no
+30767006,exclude,none,narrative policy review; no diagnostic or positivity data,no,no
+25653945,exclude,none,typhoid by Widal serology only; no culture,no,no
+559593,maybe,L2,treatment RCT; 81 of 100 enteric fever culture-positive,no,no
+17323826,include,L1,blood clot vs whole blood culture sensitivity enteric fever,no,no
+24761498,maybe,L2,latex agglutination vs blood culture reference standard,no,no
+3488182,exclude,none,three-case report; no denominator,no,no
+9136240,maybe,L2,28 clinical typhoid children; blood culture positive seven,no,no
+33633872,include,L2,112 clinical enteric fever; blood culture positive 30,no,no
+42147650,exclude,none,two-case series; no denominator or accuracy,no,no
+31259125,exclude,none,single case report; no denominator,no,no
+39156211,exclude,none,single case report; no positivity or accuracy,no,no
+16611453,exclude,none,complication series in confirmed cases; no positivity,no,no
+36289966,maybe,L3,45 of 4051 blood cultures Salmonella; AMR-focused,no,no
+33921159,exclude,none,FTIR typing of isolates; not culture accuracy,no,no
+20075115,exclude,none,brucellosis serodiagnosis study; not typhoid,no,no
+35769175,exclude,none,genomic epidemiology of isolates; no positivity data,no,no
+15846718,exclude,none,Cochrane systematic review of treatment; chase references,yes,no
+36119327,include,L3,511 febrile patients; 47 blood cultures Salmonella-positive,no,no
+18057480,maybe,L2,140 suspected typhoid children; 40 culture-confirmed,no,no
+39664923,exclude,none,single case report; no denominator or accuracy,no,no
+34139966,exclude,none,broad foodborne surveillance; typhoid notification counts only,no,no
+30498310,exclude,none,hematology mean monocyte volume biomarker not case definition or culture,no,no
+41550837,exclude,none,XDR typhoid clinical characteristics and AMR confirmed cases,no,no
+29883448,exclude,none,risk-factor WASH case-control study,no,no
+19745522,exclude,none,narrative review typhoid Ethiopia not systematic,no,no
+1495126,exclude,none,MDR typhoid clinical description and resistance,no,no
+37461754,exclude,none,biochemical hematological biomarkers not case definition,no,no
+24218407,include,L1,estimates blood culture sensitivity via Bayesian latent class model,no,no
+17901638,exclude,none,general pediatric blood culture yield not typhoid specific,no,no
+27780232,exclude,none,culture-confirmed surveillance incidence/HIV no positivity denominator,no,no
+9522873,include,multiple,blood vs bone marrow culture yield; clinical algorithm typhoid vs malaria,no,no
+25121013,maybe,L3,AFI epidemic; culture-confirmed typhoid proportion among febrile,no,no
+23569940,exclude,none,single case report atypical presentation,no,no
+34798028,include,L3,population-based surveillance; blood-culture-confirmed among febrile patients,no,no
+38817408,exclude,none,single case report GI bleeding,no,no
+7981287,include,L1,blood culture sensitivity 94% vs stool/serology in outbreak,no,no
+10584470,exclude,none,typhoid hepatitis clinical description confirmed cases,no,no
+7795095,maybe,L3,treatment RCT; blood culture positivity among enrolled typhoid,no,no
+42413857,exclude,none,scoping review typhoid Ghana,yes,no
+34976449,exclude,none,single case report dengue typhoid coinfection,no,no
+29327210,maybe,L1,paired vs single blood culture yield; Salmonella Typhi major isolate,no,no
+7834718,exclude,none,single case report typhoid hepatitis,no,no
+7271978,exclude,none,clinical description typhoid young children confirmed cases,no,no
+36277244,exclude,none,treatment comparison XDR typhoid confirmed cases,no,no
+15609783,maybe,L3,cost study; culture-positive vs culture-negative clinical typhoid counts,no,no
+30181402,exclude,none,single case report rectus palsy,no,no
+37537677,exclude,none,TCV cluster RCT protocol no results,no,no
+34646609,exclude,none,single case report GI hemorrhage,no,no
+25041573,exclude,none,single case report azithromycin failure,no,no
+1438666,exclude,none,HIV AIDS case definition not typhoid,no,no
+35750069,exclude,none,seroincidence estimation from serosurveys not culture accuracy,no,no
+36585362,exclude,none,published erratum correction,no,no
+40754580,exclude,none,cost-benefit wastewater monitoring modeling,no,no
+42234814,exclude,none,vaccine immunogenicity study no positivity,no,no
+40277824,exclude,none,systematic review meta-analysis typhoid prevalence Ghana,yes,no
+41755920,exclude,none,diagnostic-practice audit not accuracy or positivity,no,no
+35325118,exclude,none,published erratum correction,no,no
+18474400,exclude,none,narrative review Salmonella immunocompromised adults,no,no
+1401194,exclude,none,Vi antibody serology test accuracy not culture or clinical definition,no,no
+9465434,include,L2,clinical features vs confirmed enteric fever; sens/spec/PPV reported,no,no
+23972616,exclude,none,non-typhoid salmonella gastroenteritis serology; not enteric fever,no,no
+30724049,maybe,L3,blood culture positivity among suspected paratyphoid patients,no,no
+23166719,maybe,L3,78 suspected enteric fever; 28 culture-confirmed positivity,no,no
+19741285,exclude,none,narrative burden review; no positivity or accuracy data,no,no
+1746041,include,L1,paired blood vs bone marrow culture sensitivity typhoid,no,no
+1200211,exclude,none,radiographic findings small series; no culture accuracy,no,no
+34475718,exclude,none,AMR and molecular identification focus; preselected isolates,no,no
+33062279,exclude,none,single case report; no denominator,no,no
+39688427,exclude,none,bacteriophage genomics; no diagnostic content,no,no
+17785907,exclude,none,single case report vertical transmission,no,no
+25304633,exclude,none,systematic burden review; chase references,yes,no
+19918413,exclude,none,single case report co-infection,no,no
+30274432,exclude,none,single case report endocarditis,no,no
+3503403,maybe,L3,anti-LPS ELISA vs culture; culture-confirmed among suspected,no,no
+19745518,exclude,none,treatment narrative review; no diagnostic counts,no,no
+31877141,exclude,none,treatment challenge trial; no accuracy or positivity,no,no
+39697915,exclude,none,single case report triple co-infection,no,no
+41971054,exclude,none,single case report cholecystitis,no,no
+2237130,exclude,none,quinolone treatment review; no diagnostic data,no,no
+24031338,maybe,L3,waterborne S. Typhi outbreak; culture-confirmed cases,no,no
+17642712,exclude,none,single case report typhoid spine,no,no
+14865371,exclude,none,bacteriophage lysotyping; no diagnostic accuracy content,no,no
+3996939,exclude,none,gastric secretion pathophysiology; no diagnostic accuracy,no,no
+380595,include,L1,treatment RCT reports blood 39%; bone marrow 77% culture,no,no
+886637,exclude,none,perforation complication series; no diagnostic accuracy,no,no
+17209308,exclude,none,general septicaemia bacteriology; typhoid incidental 0.48%,no,no
+35757827,maybe,L3,S. Typhi outbreak with case definition; culture-confirmed,no,no
+23198130,exclude,none,systematic review global burden; chase references,yes,no
+26015752,exclude,none,single case report atypical typhoid,no,no
+1468522,exclude,none,meta-analysis of typhoid outbreaks; chase references,yes,no
+27080779,exclude,none,AMR trends in isolates; no positivity,no,no
+1914976,exclude,none,Widal titers healthy population; no suspected cases,no,no
+38425657,include,L3,cross-sectional febrile; 20.86% stool-culture positivity; Typhidot/Widal,no,no
+2380034,exclude,none,travellers special population; vaccination rationale not diagnostic,no,no
+35412603,maybe,L3,TCV/WASH trial; blood-culture-confirmed typhoid surveillance,no,no
+15969472,maybe,L3,8/55 blood culture positive among suspected typhoid,no,no
+12093703,maybe,L3,Widal accuracy vs culture-confirmed typhoid; PPV reported,no,no
+29441245,exclude,none,single case report bicytopenia,no,no
+7880095,exclude,none,furazolidone treatment trial; no diagnostic accuracy,no,no
+23208887,exclude,none,healthcare utilization study; not diagnostic or positivity,no,no
+27437211,exclude,none,antibiogram of isolates; AMR focus no positivity,no,no
+17374897,exclude,none,descriptive case series plus AMR; no accuracy,no,no
+40976078,exclude,none,mouse vaccine adjuvant; not human immunogenicity,no,no
+1724780,maybe,L2,ELISA serology vs culture in suspected enteric fever,no,no
+21003708,maybe,L3,enteric fever outbreak; likely case counts; no abstract,no,no
+8131197,exclude,none,HIV-associated nontyphoidal Salmonella bacteraemia; not case-definition or culture accuracy,no,no
+29518166,exclude,none,antigen RDT on blood-culture broth isolates; not culture yield,no,no
+30138141,exclude,none,narrative call-to-action review; not diagnostic-accuracy study,no,no
+22298135,exclude,none,vaccine inclusion advocacy; burden and cost; no positivity,no,no
+26676104,maybe,L2,Widal Typhidot Tubex accuracy vs culture-defined typhoid,no,no
+39200066,include,L3,hospital cohort; 5735 suspected 691 culture-confirmed; positivity 12%,no,no
+25444695,exclude,none,typhoid Vi vaccine effectiveness in travelers; no positivity,no,no
+28969659,exclude,none,treatment RCT protocol for febrile illness; no diagnostics,no,no
+39383552,exclude,none,Paratyphi A O-antigen variation; vaccine development; molecular,no,no
+32670677,exclude,none,single case report; typhoid-tuberculosis coinfection; no denominator,no,no
+31468702,maybe,L1,host gene signature; culture-negative suspected reclassified; culture sensitivity,no,no
+27162265,exclude,none,imported enteric fever case series; AMR and relapse,no,no
+25921727,exclude,none,narrative review; Salmonella complications and mortality; not diagnostic,no,no
+3488842,include,L3,point-source typhoid outbreak; case-control investigation; verified cases,no,no
+25745548,include,L1,blood culture yield superior to bone marrow aspirate,no,no
+35238361,exclude,none,supplement commentary on Indian typhoid burden; not primary,no,no
+3962968,maybe,L2,Widal test accuracy vs culture-confirmed typhoid; case-control,no,no
+25921288,exclude,none,review of transmission models and economic evaluations; not diagnostic,no,no
+38485427,include,L3,multi-country African surveillance; febrile enrolled; 346 Typhi confirmed,no,no
+3407678,include,multiple,waterborne typhoid outbreak; blood cultures positive 46/50 (92%),no,no
+40385822,exclude,none,single case report; typhoid cerebral venous thrombosis,no,no
+33755582,exclude,none,single case report; typhoid ileal perforation Dhaka,no,no
+6600045,maybe,L3,typhoid outbreak girls camp Zambia; no abstract,no,no
+15408642,maybe,L3,methods for investigating enteric fever outbreaks; no abstract,no,no
+10702512,maybe,L2,dot-blot serology for typhoid; sensitivity and specificity,no,no
+9200031,exclude,none,hospitalized culture-proven pediatric typhoid; clinical features; no denominator,no,no
+28764168,exclude,none,drug resistance of S. Typhi isolates; AMR only,no,no
+35238357,include,L3,active pediatric surveillance; fever blood-cultured; culture-confirmed incidence,no,no
+40788116,exclude,none,systematic review meta-analysis Vi-TT vaccine; chase confirmed-case counts,yes,no
+39840122,exclude,none,single case report; typhoid liver failure; traveler,no,no
+42413480,exclude,none,WHO-EMR surveillance vaccination survey; not primary positivity data,no,no
+32774044,exclude,none,single case report; Salmonella Typhi sacroiliitis,no,no
+12118445,exclude,none,two case reports plus review; paratyphi cardiac complications,no,no
+19762576,exclude,none,confirmed typhoid case series; clinical features and AMR,no,no
+8187784,exclude,none,treatment RCT ciprofloxacin vs ceftriaxone; no diagnostics,no,no
+7233308,maybe,L2,Widal test accuracy; confirmed suspected febrile healthy groups,no,no
+1177348,exclude,none,treatment trial co-trimoxazole vs chloramphenicol; no diagnostics,no,no
+11237848,exclude,none,host NRAMP1 polymorphisms; typhoid susceptibility genetics,no,no
+26205108,exclude,none,narrative review childhood Salmonella infections; not diagnostic,no,no
+42099665,exclude,none,systematic review enteric fever SSA diagnostics prevalence; chase refs,yes,no
+29067141,exclude,none,biomagnetic therapy pilot; Widal only no culture,no,no
+3126648,exclude,none,hepatic injury spectrum; not case-definition accuracy,no,no
+37201126,exclude,none,XDR molecular/AMR-mechanism characterization,no,no
+36726577,maybe,L3,21 of 154 suspected typhoid blood-culture positive,no,no
+25173426,maybe,L3,prospective typhoid surveillance with blood culture; incidence,no,no
+41837092,exclude,none,single case report atypical typhoid,no,no
+36825878,exclude,none,genomic surveillance; travellers special population,no,no
+23056954,maybe,L3,45 of 100 suspected typhoid blood cultures positive,no,no
+565281,exclude,none,German language; kala-azar not typhoid,no,yes
+33808924,exclude,none,TCV trial design/baseline; protocol no results,no,no
+35310803,exclude,none,clinical outcomes by resistance; all culture-positive,no,no
+3727002,exclude,none,cerebellar ataxia case series; complication,no,no
+20414379,include,multiple,clinical parameters vs blood culture; 53 of 421 positive,no,no
+1166856,include,L3,waterborne typhoid outbreak; 105 of 188 bacteremic,no,no
+1423751,exclude,none,SAT serology accuracy; no culture yield or positivity series,no,no
+28158395,exclude,none,paratyphoid human challenge model; not field diagnostic,no,no
+25161970,exclude,none,small ileal perforation surgical series,no,no
+28802757,exclude,none,TyVAC meeting report on vaccine study design,no,no
+33224651,exclude,none,GI complications by resistance; all culture-proven,no,no
+8841255,exclude,none,non-typhoidal Salmonella infant case report,no,no
+36008894,maybe,L3,137 of 157 suspected enteric fever culture positive,no,no
+3731363,exclude,none,Salmonella serotyping/AMR strain characterization,no,no
+911455,include,L1,bone-marrow vs blood culture positivity in typhoid,no,no
+30584487,exclude,none,single hepatopancreatitis case report,no,no
+41180260,exclude,none,meteorological drivers of bacteraemia; no case-definition,no,no
+16201725,exclude,none,Widal-based surveillance; no culture confirmation,no,no
+21340299,include,multiple,blood culture yield 27% among clinically suspected children,no,no
+41246287,exclude,none,descriptive epidemiology of confirmed cases; no denominator,no,no
+35708413,exclude,none,malaria-typhoid co-infection case report,no,no
+32991678,maybe,L3,87 of 326 febrile illness culture-confirmed enteric fever,no,no
+2632513,exclude,none,plasma cortisol pathophysiology study,no,no
+11280056,exclude,none,risk-factor case-control study,no,no
+11120931,exclude,none,host MHC genetic association study,no,no
+39483419,exclude,none,genotypic diversity/AMR isolate study,no,no
+24441441,exclude,none,gallbladder perforation case report,no,no
+1483995,exclude,none,neuropsychiatric complications case series,no,no
+27397952,include,L3,60 of 271 febrile adults blood-culture positive; Widal accuracy,no,no
+27408039,include,L3,enteric fever outbreak; 60 of 95 blood-culture positive,no,no
+17244813,exclude,none,ciprofloxacin treatment failure case report,no,no
+27657909,exclude,none,whole-genome molecular surveillance/AMR,no,no
+23513182,maybe,L3,national surveillance; 27.8% of cases laboratory-confirmed,no,no
+33258939,maybe,L3,blood culture screening enteric fever positivity South Asia,no,no
+555285,exclude,none,Salmonella antibiotic resistance surveillance only,no,no
+28358796,exclude,none,yellow fever outbreak typhoid only differential,no,no
+40735580,exclude,none,systematic review azithromycin-resistant typhoid AMR,yes,no
+36457176,exclude,none,narrative review typhoid diagnosis management,no,no
+23634415,exclude,none,single case report splenic abscess,no,no
+32458786,exclude,none,single case report Paratyphi B infection,no,no
+3813617,exclude,none,small case series neonatal typhoid,no,no
+7591678,exclude,none,single case report cerebral thrombosis,no,no
+31188093,exclude,none,blood culture system for pseudomallei not typhoid,no,no
+31665778,maybe,L3,typhoid surveillance febrile children blood culture positivity,no,no
+25383971,exclude,none,host genetics GWAS HLA enteric fever,no,no
+12649949,exclude,none,single case report Salmonella Weltevreden,no,no
+20214086,maybe,L3,enteric fever suspects blood culture positivity reported,no,no
+22347587,exclude,none,nalidixic acid susceptibility AMR only,no,no
+24416466,exclude,none,vaccination transmission dynamics modeling study,no,no
+32588803,include,L2,clinical prediction rule for culture-negative typhoid,no,no
+35615099,exclude,none,corrigendum erratum,no,no
+28692655,include,L3,population-based Salmonella Typhi blood culture positivity,no,no
+34321745,exclude,none,baseline Widal titers healthy population,no,no
+36622222,exclude,none,antimicrobial susceptibility survey Typhi isolates,no,no
+25394534,exclude,none,imported enteric fever travelers small series,no,no
+33217433,exclude,none,climate ENSO risk factor enteric fever,no,no
+20865074,maybe,L3,enteric fever burden trends surveillance outbreaks,no,no
+24837780,exclude,none,vaccine effectiveness travelers without positivity,no,no
+33254569,maybe,L2,hematologic discriminant prediction rule typhoid PPV,no,no
+33409025,exclude,none,antimicrobial sensitivity Salmonella Typhi AMR,no,no
+33299564,maybe,L2,hematologic parameters enteric fever diagnosis evaluation,no,no
+29684022,exclude,none,antibiotic therapy treatment trial no diagnostics,no,no
+25066005,exclude,none,meeting report commentary typhoid control Fiji,no,no
+12678160,exclude,none,small case series typhoid children clinical,no,no
+31863394,exclude,none,narrative review pediatric blood cultures AMR,no,no
+41674650,exclude,none,seroincidence serosurvey without culture positivity,no,no
+40891258,exclude,none,O-antigen vaccine development purification,no,no
+31666788,exclude,none,single case report caecal perforation,no,no
+40083469,exclude,none,systematic review Widal test diagnostic accuracy,yes,no
+2258653,exclude,none,Japanese language not allowed,no,yes
+32000695,maybe,L3,AUFI outbreak blood culture confirmed enteric fever,no,no
+11816954,maybe,L3,clinically diagnosed typhoid; 32 of 140 blood-culture positive,no,no
+18475390,exclude,none,case report; typhi in pregnancy; no denominator,no,no
+25395900,exclude,none,cost-of-illness economic study only,no,no
+23082592,exclude,none,ultrasound imaging diagnosis; not case definition or culture,no,no
+6311001,exclude,none,treatment trial in confirmed cases; no positivity denominator,no,no
+30845335,exclude,none,vaccine trial logistics; no positivity data,no,no
+42077728,exclude,none,case report; XDR typhi neurological complication,no,no
+34345124,exclude,none,narrative review of tropical infection diagnostics,no,no
+34069789,exclude,none,pneumonia/sepsis blood cultures; typhi incidental,no,no
+33390675,exclude,none,quinolone susceptibility MIC only; no diagnostic content,no,no
+28532981,include,L3,NDSS typhoid notification PPV versus laboratory confirmation,no,no
+18834913,exclude,none,vaccine antigen immunogenicity in mice; not diagnostic,no,no
+20519611,exclude,none,travellers case series; special population; no positivity,no,no
+42374913,exclude,none,surveillance trends/spatial analysis; no positivity or confirmation counts,no,no
+38013532,exclude,none,narrative review of complete blood count diagnosis,no,no
+24304980,exclude,none,narrative review of typhoid epidemiology and diagnostics,no,no
+22634599,exclude,none,practice guideline for public health management,no,no
+23272255,exclude,none,Salmonella bloodstream AMR characterization; no positivity denominator,no,no
+38404085,exclude,none,culture-proven XDR cases; AMR and treatment focus,no,no
+16504150,exclude,none,case report; typhoid opportunistic infection,no,no
+35910822,exclude,none,malaria coinfection study; typhoid incidental,no,no
+22137537,maybe,L3,population blood culture surveillance; S. Typhi positivity and decline,no,no
+22443482,exclude,none,PFGE molecular subtyping; not diagnostic accuracy,no,no
+35433085,include,L3,waterborne XDR typhoid outbreak investigation with isolation,no,no
+2113941,exclude,none,treatment trial in culture-positive cases; no denominator,no,no
+29815988,include,L1,blood cultures in early diagnosis of enteric fever,no,no
+35114948,maybe,L3,blood culture surveillance; S. Typhi among suspected bloodstream infections,no,no
+35307231,exclude,none,corrigendum/erratum; vaccine effectiveness,no,no
+6485058,exclude,none,leptospirosis immune response study; not typhoid,no,no
+17214195,maybe,L2,clinical signs and Widal sensitivity in confirmed enteric fever,no,no
+1431177,exclude,none,case report; paratyphi A meningitis,no,no
+19287065,include,L3,11240 suspected enteric fever; 305 culture-confirmed,no,no
+28303820,exclude,none,Salmonella AMR characterization of isolates; no positivity,no,no
+21223462,exclude,none,cost-of-illness economic study only,no,no
+42329350,exclude,none,culture-confirmed paratyphi A; clinical and AMR profile,no,no
+21232772,exclude,none,case report; Bickerstaff encephalitis paratyphi A,no,no
+26556415,include,L3,200 febrile patients; typhoid blood culture and Widal positivity,no,no
+40126322,exclude,none,imported typhoid case series; special population,no,no
+18715736,exclude,none,serological rapid test TUBEX accuracy; not case definition or culture,no,no
+35491421,include,L2,Four-country study; enteric fever clinical predictors and RDT accuracy,no,no
+33258933,exclude,none,Healthcare utilization survey methodology; no diagnostic or positivity data,no,no
+23226492,include,L3,Typhoid outbreak; clinical case definition with culture/serology confirmation,no,no
+21301658,exclude,none,Narrative review; traveller prevention; no diagnostic or positivity content,no,no
+33062482,maybe,L2,Eosinopenia predicting culture/serology-proven typhoid; diagnostic feature case-control,no,no
+24479019,exclude,none,Culture-proven paratyphoid clinical profile and antibiotic sensitivity only,no,no
+32085751,exclude,none,Serious bacterial infection risk factors; no typhoid-specific positivity,no,no
+26600755,exclude,none,Vaccine antigen purification; no diagnostic or positivity content,no,no
+16380360,exclude,none,Treatment trial pefloxacin; no diagnostic accuracy denominators,no,no
+33316609,exclude,none,Single case report septic arthritis; no denominator,no,no
+16455118,include,L3,Community-based burden study; blood culture-confirmed typhoid cases,no,no
+17442354,exclude,none,Brucellosis febrile illness study; not typhoid-focused,no,no
+35025610,exclude,none,Food-sample molecular assay; not human diagnosis,no,no
+10475185,include,L3,Community surveillance under-5; culture-positive typhoid incidence,no,no
+7325630,exclude,none,Carrier bacteriuria treatment trial; special population; no diagnostics,no,no
+30608489,exclude,none,Single case report; HLH rhabdomyolysis; no denominator,no,no
+26798572,exclude,none,Rapid IgM cross-reactivity study; not culture or case-definition layer,no,no
+29018810,exclude,none,Antimicrobial susceptibility MIC study; no diagnostic accuracy content,no,no
+31888513,exclude,none,Cohort drop-out reasons; no diagnostic or positivity data,no,no
+22034162,exclude,none,Non-typhoidal Salmonella ELISA review; not typhoid,no,no
+42313333,maybe,L3,Enteric fever outbreak; culture-proven cases; ceftriaxone resistance,no,no
+15609784,exclude,none,Cost-benefit immunization analysis; economic-only,no,no
+37689305,exclude,none,Letter; HCV false positive single patient; no denominator,no,no
+3604512,exclude,none,Russian-language article; not allowed language,no,yes
+17906841,exclude,none,Single case report transverse myelitis; no denominator,no,no
+11368111,include,L3,Laboratory-based study; S. typhi blood culture isolation rates,no,no
+18843659,exclude,none,Systematic review meta-analysis of fluoroquinolone treatment; chase citations,yes,no
+40612528,exclude,none,Azithromycin susceptibility testing methods; AMR-only,no,no
+34131486,exclude,none,Outbreak case-definition catalogue review; chase citations,yes,no
+20254274,maybe,L1,Spanish; blood culture in typhoid; no abstract; plausibly culture yield,no,no
+6630465,exclude,none,Urinary Vi antigen test accuracy; not culture or case-definition layer,no,no
+17477815,exclude,none,Host gene polymorphism susceptibility study; no diagnostic content,no,no
+6470105,exclude,none,Fecal culture medium development; poor for S. typhi,no,no
+24904229,exclude,none,Narrative review paratyphoid; not systematic; no primary positivity,no,no
+10807074,include,L2,Clinical/lab features differentiating typhoid from hepatic failure; culture reference,no,no
+15298225,exclude,none,Global burden synthesis of population-based culture-confirmed studies; chase citations,yes,no
+22589684,exclude,none,In vitro plant extract antimicrobial; not diagnostic,no,no
+26082464,exclude,none,human challenge model protocol; healthy volunteers,no,no
+36371020,exclude,none,SERS serum spectroscopy diagnostic; not culture or clinical definition,no,no
+36458097,exclude,none,proteomic biomarker discovery; no culture or definition accuracy,no,no
+22276105,include,L3,population-based surveillance; blood-culture confirmed typhoid incidence,no,no
+12804994,exclude,none,single case report; genital ulcer,no,no
+17673269,exclude,none,latex serology accuracy; not culture or clinical definition,no,no
+11864178,exclude,none,single case report; fluoroquinolone resistance,no,no
+12757224,include,L3,febrile children; blood-culture positivity for S. typhi,no,no
+6789457,include,multiple,paratyphoid outbreak; blood-culture yield among confirmed cases,no,no
+36511128,exclude,none,case report; brucellosis not typhoid,no,no
+23585003,exclude,none,gene distribution; vaccine antigen; not diagnostic accuracy,no,no
+39281825,exclude,none,antigen profiling; serodiagnostic development not accuracy,no,no
+1341091,include,L2,clinical algorithm; sensitivity/specificity vs culture-positive typhoid,no,no
+39641022,exclude,none,environmental water AMR genes; not human diagnosis,no,no
+3798274,exclude,none,non-allowed language Afrikaans; case report,no,yes
+23066491,exclude,none,single case report; HIV special population,no,no
+28254988,exclude,none,draft genome; pure genomics; no positivity,no,no
+14978991,exclude,none,non-typhoid ileal perforation; not typhoid,no,no
+37983081,exclude,none,WASH risk-factor cohort; not diagnostic positivity,no,no
+873122,exclude,none,Widal serology evaluation; not culture or clinical definition,no,no
+15884685,exclude,none,clinical-therapeutic case series; no positivity or definition accuracy,no,no
+123083,exclude,none,small case series; cardiac complications,no,no
+25859155,exclude,none,case report with narrative review; no denominator,no,no
+13216364,exclude,none,non-allowed language Afrikaans; no abstract,no,yes
+853248,exclude,none,outbreak strain phage/AMR description; no positivity denominator,no,no
+12171621,exclude,none,brucellosis PCR study; not typhoid,no,no
+21804509,exclude,none,treatment trial; no diagnostic accuracy or positivity,no,no
+38952512,exclude,none,nanoparticle antimicrobial activity; AMR study,no,no
+24719692,exclude,none,multiplex PCR method development; analytical not clinical,no,no
+19136804,exclude,none,single case report; renal abscess,no,no
+18493312,maybe,L3,treatment RCT reports suspected and confirmed counts; positivity,no,no
+25253252,exclude,none,non-typhoid Salmonella serology review; not typhoid,no,no
+39821093,exclude,none,outbreak time-series dataset descriptor; chase references,yes,no
+40766357,exclude,none,genomic AMR genotyping tool; pure genomics,no,no
+38889189,exclude,none,genomic molecular epidemiology; not positivity or accuracy,no,no
+41832696,maybe,L3,AMR study reports suspected and culture-confirmed positivity,no,no
+3009281,exclude,none,single case report; HIV special population,no,no
+40252689,exclude,none,TCV effectiveness study-design methods; not diagnostic positivity,no,no
+24043999,exclude,none,AMR trends; Salmonella isolation from all blood cultures,no,no
+26186586,maybe,L3,paratyphoid outbreak 601 confirmed; plausible positivity/attack-rate data,no,no
+24198224,exclude,none,travellers-only paratyphoid outbreak; therapy focus; special population,no,no
+20920053,exclude,none,travellers attack-rate hygiene trends; special population,no,no
+41517053,include,L3,febrile children blood-culture positivity 41.5% Typhi,no,no
+31665773,include,L3,febrile patients blood-culture Typhi positivity reported,no,no
+24664784,include,L3,Harare outbreak 4181 suspected 52 confirmed typhoid,no,no
+23634429,exclude,none,AMR therapeutics review; no diagnostic positivity content,no,no
+21935450,exclude,none,TUBEX serologic rapid test accuracy; out of scope,no,no
+26169980,exclude,none,travellers paratyphoid small series; no positivity denominator,no,no
+7867742,maybe,L3,typhoid outbreak 81 confirmed; attack rates reported,no,no
+13478071,exclude,none,German language excluded; animal mouse blood-culture test,no,yes
+31218143,exclude,none,AMR susceptibility typhoid isolates; no positivity denominator,no,no
+41322897,maybe,L3,multiplex PCR febrile cohort; typhoid culture positivity present,no,no
+18312473,exclude,none,narrative review clinical/Widal diagnosis; no primary data,no,no
+25315238,exclude,none,case reports typhoid-dengue coinfection; no denominator,no,no
+27294165,exclude,none,single case report septic shock; no denominator,no,no
+9638293,exclude,none,single lab-acquired paratyphoid case report; no denominator,no,no
+24386229,exclude,none,HIV-only febrile bacteremia; predominant non-typhoid Salmonella,no,no
+13156140,maybe,L1,blood culture Widal in 253 typhoid cases,no,no
+39539546,exclude,none,serological assay development vaccine immunogenicity; no positivity,no,no
+30344560,exclude,none,childhood enteric fever complications; no positivity/PPV,no,no
+12693446,exclude,none,modified Widal serodiagnostic accuracy; out of scope,no,no
+2755396,exclude,none,Russian language excluded; opisthorchiasis typhoid immunology,no,yes
+18509759,exclude,none,travellers domestic typhoid; two cases; no positivity,no,no
+8839648,exclude,none,adenosine deaminase biomarker; out of scope diagnostic,no,no
+23075077,exclude,none,HIV-only non-typhoid Salmonella bacteraemia; special population,no,no
+6977209,exclude,none,co-trimoxazole treatment trial; no diagnostic positivity data,no,no
+30766999,exclude,none,Gates Foundation perspective commentary; no primary data,no,no
+18826840,maybe,L3,febrile cohort with blood-culture-positive enteric fever comparator,no,no
+37496432,maybe,L3,AFI blood-culture positivity; TP test versus culture,no,no
+42242803,exclude,none,biosensor immunosensor lab method development; not clinical,no,no
+20571169,include,L3,village typhoid outbreak; attack rate Widal positivity,no,no
+39319013,exclude,none,carriers shedding biofilm AMR pathogenesis; no positivity,no,no
+8517741,exclude,none,multiplex PCR Salmonella detection lab method; not clinical,no,no
+14510164,maybe,L3,human typhoid surveillance 64 suspected 11 confirmed,no,no
+35238367,exclude,none,typhoid vaccine cost-effectiveness modeling; no diagnostic data,no,no
+37274532,exclude,none,TCV prevention perspective; no diagnostic positivity content,no,no
+27495900,exclude,none,narrative review enteric fever India; no primary data,no,no
+41675599,include,L3,Feni bloodstream infections; blood-culture positivity Typhi reported,no,no
+35983519,exclude,none,TCV campaign implementation coverage cost; no positivity counts,no,no
+1344225,exclude,none,phage typing antibiotic susceptibility isolates; no positivity,no,no
+29720736,exclude,none,systematic review typhoid seasonality; citation chase database,yes,no
+17648820,exclude,none,chickens animal blood culture Salmonella Typhimurium; not human,no,no
+32963006,exclude,none,molecular gallbladder genotoxicity; no diagnostic content,no,no
+22993409,include,multiple,serologic test eval; culture positivity; fever threshold vs culture,no,no
+39212022,exclude,none,case report; three perforation cases; no denominator,no,no
+4966310,exclude,none,German language not allowed,no,yes
+36387619,include,L3,typhoid outbreak; case definitions; attack rate reported,no,no
+5322754,exclude,none,carrier detection only; special population,no,no
+9579614,include,L3,blood culture positive 77 of 171 suspected,no,no
+29624284,exclude,none,poultry egg bacteria; not human typhoid,no,no
+8042888,exclude,none,surveillance travel epidemiology; no positivity or definition,no,no
+2694338,exclude,none,narrative management review; no diagnostic counts,no,no
+36845782,exclude,none,single case report; no denominator,no,no
+19048751,maybe,L1,blood culture positive 5 of 105 perforation,no,no
+21482058,include,L3,French typhoid cluster; case definition; sixteen cases,no,no
+10530559,exclude,none,histopathology case series; four cases,no,no
+34120765,exclude,none,cost-effectiveness of vaccination; economic only,no,no
+19173963,exclude,none,non-typhoidal Salmonella surveillance; not typhoid,no,no
+24119827,exclude,none,narrative review enteric fever; not accuracy,no,no
+34578216,exclude,none,systematic review meta-analysis; immunodiagnostic tests,yes,no
+18807375,exclude,none,malaria diagnosis history; not typhoid,no,no
+1265834,exclude,none,narrative typhoid management; no diagnostic counts,no,no
+20152354,exclude,none,pediatric splenic abscess management; not typhoid diagnosis,no,no

@@ -1,0 +1,501 @@
+pmid,decision,layer,reason,citation_chase,language_exclude
+765284,exclude,none,mouse salivary antibody immunology; not diagnostic,no,no
+8354566,exclude,none,case reports salmonella sacroiliitis; no denominator,no,no
+2443287,exclude,none,monoclonal IgM protein specificity; not diagnostic,no,no
+30936374,exclude,none,bile curli fimbriae biofilm; molecular,no,no
+19465870,exclude,none,Lactobacillus antibacterial peptides; not diagnostic,no,no
+2915026,exclude,none,multilocus enzyme electrophoresis clonal; molecular,no,no
+24615129,exclude,none,cytokine T-cell responses typhoid; immunology,no,no
+7445882,exclude,none,Russian language; bacterial culture physiology,no,yes
+32694956,exclude,none,plant extract antibacterial screening; not diagnostic,no,no
+29348094,exclude,none,biofilm gallstones Manuka honey; molecular,no,no
+26446080,exclude,none,quinolone resistant mutants virulence; molecular,no,no
+20861532,exclude,none,pathogenicity island regulatory pathways; molecular,no,no
+15026021,exclude,none,Vi polysaccharide O-acetyl assay; vaccine QC,no,no
+23333431,exclude,none,typhoid vaccine inflammatory response; not diagnostic,no,no
+22679502,exclude,none,IL-17 CD8 T cells vaccine; immunology,no,no
+6772597,exclude,none,general hospital blood culture spectrum; not typhoid-specific,no,no
+19889623,exclude,none,gyrA mutations fluoroquinolone; AMR molecular,no,no
+86040,exclude,none,gallbladder carrier detection string; carriers special population,no,no
+776080,exclude,none,Russian language; bacterial polyamines,no,yes
+23790417,exclude,none,HlyE antigen cloning immunoassay; molecular,no,no
+26148116,exclude,none,dehydratase enzyme inhibitor; molecular,no,no
+28570603,exclude,none,Omp T and B cell responses vaccine; immunology,no,no
+1797643,exclude,none,disc diffusion false resistance artifact; AMR method,no,no
+2259337,exclude,none,electroporation transformation method; molecular,no,no
+2891982,exclude,none,PBL antibody immune response vaccine; immunology,no,no
+6441172,exclude,none,bacterial surface charge titration; not diagnostic,no,no
+702624,exclude,none,animal serology S. typhi carriers; not human,no,no
+11738748,exclude,none,Ty21a urease vaccine volunteers; immunogenicity,no,no
+3024564,exclude,none,plasmid citrate utilization determinant; molecular,no,no
+14604543,exclude,none,TUBEX detects IgM mechanism; not culture accuracy,no,no
+8406640,exclude,none,drug resistance phage types Typhi; AMR surveillance,no,no
+11321589,exclude,none,multidrug resistance regulation genomics; molecular,no,no
+1340565,exclude,none,virulence factors colicin siderophores; molecular,no,no
+17888533,exclude,none,cholera vibriocidal assay; typhi only control,no,no
+16441380,exclude,none,multiplex PCR detection water food; not clinical,no,no
+7415844,exclude,none,antigenic cross-reactions immunoelectrophoresis; taxonomy,no,no
+349095,exclude,none,cefamandole in vitro activity; AMR susceptibility,no,no
+25963025,exclude,none,travel-related Typhi AMR molecular; no positivity,no,no
+37689734,exclude,none,curli gene expression regulation; molecular,no,no
+19124765,exclude,none,neonatal Salmonella F1 vaccine mice; immunology,no,no
+19211419,exclude,none,AMR trends Typhi isolates India; no positivity,no,no
+17156963,exclude,none,HRM assay gyrA mutation detection; AMR molecular,no,no
+21363982,exclude,none,flagellin gene Typhi Indonesia; molecular,no,no
+12228306,exclude,none,ClyA cytotoxin characterization; molecular,no,no
+3218614,exclude,none,platelet antibacterial activity; not diagnostic,no,no
+25324202,exclude,none,urinary antibiotic activity children; typhi test organism,no,no
+22311085,exclude,none,microfluidic immunoassay device development; not culture accuracy,no,no
+34179968,exclude,none,bactericidal time-kill isolates; AMR pharmacodynamics,no,no
+12686884,exclude,none,narrative review childhood salmonellosis; not systematic,no,no
+29675926,exclude,none,duck meat irradiation food safety; not human,no,no
+15609243,exclude,none,Ty21a vaccine lymphocyte homing immunology; no diagnostic content,no,no
+17709421,exclude,none,Molecular pathogenesis fimbrial operon; no diagnostic content,no,no
+1089714,exclude,none,Animal adjuvant DTH study; no diagnostic content,no,no
+15914292,exclude,none,Case report; antibiogram fluoroquinolone susceptibility only,no,no
+27481158,exclude,none,Mushroom extract antibacterial in vitro; unrelated to diagnosis,no,no
+31829769,exclude,none,Molecular pathogenesis YrbE transporter; no diagnostic content,no,no
+1419117,exclude,none,Mouse model vaccine mechanism; not human diagnostic,no,no
+1964185,exclude,none,Mouse porin vaccine mechanism study; not diagnostic,no,no
+3698151,exclude,none,Serotyping antigen survey; no case definition or culture accuracy,no,no
+33956650,exclude,none,Stool gene carriage in healthy children; no diagnostic accuracy,no,no
+4072494,exclude,none,Russian language; Vi antigen erythrocyte adsorption study,no,yes
+19417771,exclude,none,Narrative review of live-vector vaccines; not our topic,no,no
+16602463,exclude,none,Water chlorination disinfection study; unrelated to diagnosis,no,no
+6645880,exclude,none,Case report; Salmonella-schistosome association,no,no
+35129256,exclude,none,AMR and virulence genes in poultry isolates; unrelated,no,no
+9701891,exclude,none,Antimicrobial susceptibility testing of isolates; AMR only,no,no
+1612742,exclude,none,Monoclonal antibody LPS characterization; molecular study,no,no
+28721851,exclude,none,MLVA subtyping discriminatory power; not diagnostic accuracy,no,no
+29925993,exclude,none,T-cell clonal repertoire analysis; immunology only,no,no
+17090663,exclude,none,Genomic recombination analysis Paratyphi/Typhi; pure genomics,no,no
+6376627,exclude,none,Serotype surveillance in Malaysia; no case definition or positivity,no,no
+15494539,exclude,none,HLA-E restricted CD8 T-cell subset; immunology mechanism,no,no
+15222543,exclude,none,Food irradiation radiosensitization study; unrelated,no,no
+11580224,exclude,none,Vaccine trial bacteremia and immunogenicity; not diagnostic accuracy,no,no
+11549415,exclude,none,Immune response to colostrum trial; not diagnostic,no,no
+20699513,exclude,none,GyrA mutation detection assay; AMR mechanism,no,no
+9075219,exclude,none,PhoP/Q regulated gene mutants; molecular pathogenesis,no,no
+38964564,exclude,none,Antibiotic resistance genotype trends; AMR only,no,no
+5948192,exclude,none,Rabbit corneal virus model; unrelated to typhoid diagnosis,no,no
+29359991,exclude,none,Mouse adjuvant immunogenicity of conjugate vaccine; not diagnostic,no,no
+12936967,exclude,none,MDR plasmid molecular analysis; not diagnostic,no,no
+24997264,exclude,none,Silver nanoparticle antibacterial assay; unrelated,no,no
+10967260,exclude,none,Probiotic immune response trial; not diagnostic,no,no
+3928466,exclude,none,Pyocin activity Pseudomonas study; unrelated organism focus,no,no
+7459712,exclude,none,Rabbit platelet endotoxin study; not diagnostic,no,no
+24693250,exclude,none,Photocatalytic antibacterial coating; unrelated to diagnosis,no,no
+20195364,exclude,none,SPI-3 recombinant phenotype study; molecular pathogenesis,no,no
+8289685,exclude,none,Mouse lymphocyte proliferation to porins; immunology,no,no
+6975132,exclude,none,Russian language; mouse antibody-secreting cells study,no,yes
+21402763,exclude,none,Vi antigen regulation in mice; molecular immunology,no,no
+25428145,exclude,none,Single ESBL case genomic typing; no denominator,no,no
+20056478,exclude,none,Narrative review of persistence strategies; not our topic,no,no
+15243066,exclude,none,Plasmid clonality of MDR strains; not diagnostic,no,no
+21701726,exclude,none,Molecular dynamics simulation of Vi polysaccharide; unrelated,no,no
+2429714,exclude,none,Russian language; mouse macrophage antibody response study,no,yes
+22353742,exclude,none,Probiotic Lactobacillus characterization; unrelated to diagnosis,no,no
+26741681,exclude,none,In vitro serum killing assay; immunology mechanism,no,no
+32221592,exclude,none,Azithromycin MIC concordance between labs; AMR testing,no,no
+22627312,exclude,none,NA resistance predicts ciprofloxacin susceptibility; AMR marker,no,no
+34764353,exclude,none,Rotavirus-Vi conjugate vaccine immunogenicity in mice; not diagnostic,no,no
+3073045,exclude,none,Meningitis treatment trial; not typhoid-specific diagnostic study,no,no
+10618104,exclude,none,Molecular typing study; no diagnostic accuracy data,no,no
+11677608,exclude,none,Genome sequencing study; pure genomics,no,no
+35097108,exclude,none,In vitro honey antibacterial testing; not diagnostic,no,no
+14643636,exclude,none,Gene regulation study; molecular mechanism only,no,no
+26905349,exclude,none,Diarrhea pathogen occurrence survey; not typhoid-specific,no,no
+11736994,exclude,none,Macrophage death mechanism; molecular pathogenesis study,no,no
+27869515,exclude,none,Narrative review of Vi polysaccharide biology,no,no
+14695432,exclude,none,Antibiotic susceptibility testing method; not diagnostic accuracy,no,no
+7874079,exclude,none,Vaccine immunogenicity study; no positivity data,no,no
+301046,exclude,none,Rheumatoid arthritis immunology; TAB vaccine unrelated,no,no
+17061491,exclude,none,Food Salmonella test in chicken meat; not human,no,no
+17728470,exclude,none,Molecular clonal typing study; no diagnostic accuracy,no,no
+11339472,exclude,none,Single case report; no denominator,no,no
+18606582,exclude,none,AMR surveillance typing study; not case-definition accuracy,no,no
+29407993,exclude,none,Drug synthesis antimicrobial testing; unrelated topic,no,no
+28724927,exclude,none,Nanoparticle antimicrobial study; not diagnostic accuracy,no,no
+11933123,exclude,none,Plant extract antibacterial testing; unrelated topic,no,no
+1976876,exclude,none,E coli outbreak; not typhoid Salmonella specific,no,no
+2396471,exclude,none,Oral vaccine immunogenicity trial; no positivity,no,no
+27165538,exclude,none,Enterococcus antibacterial effect study; unrelated topic,no,no
+19517022,exclude,none,T cell priming mechanism study; immunology only,no,no
+393169,exclude,none,Chromatography species differentiation method; not clinical diagnosis,no,no
+21771438,maybe,L3,Institution Widal positivity surveillance; no culture confirmation,no,no
+18639586,exclude,none,Recombinant vaccine vector mouse study; unrelated,no,no
+19592256,exclude,none,Microarray assay chemistry method; no accuracy data,no,no
+34590996,exclude,none,Gene promoter regulation study; molecular biology only,no,no
+19426268,exclude,none,Water bioterrorism agent detection method; not clinical,no,no
+17410210,exclude,none,Enzyme crystal structure study; structural biology only,no,no
+1879916,exclude,none,Bacterial invasion gene study; molecular virulence only,no,no
+4328408,exclude,none,Mouse endotoxin immunity experiment; unrelated topic,no,no
+30632347,exclude,none,Single case report osteomyelitis; no denominator,no,no
+3489034,exclude,none,Vaccine cellular immunity study; no positivity data,no,no
+4325832,exclude,none,Mouse endotoxin assay; unrelated to diagnosis,no,no
+31629569,exclude,none,Vaccine T cell immunology study; no positivity,no,no
+15256030,exclude,none,AMR mechanism study; gyrA mutation characterization,no,no
+21300870,exclude,none,Adhesion protein pathogenesis study; vaccine target discovery,no,no
+31117406,exclude,none,Intracellular metabolism single-cell study; molecular only,no,no
+23865073,exclude,none,Antimicrobial synergy assay; unrelated to diagnosis,no,no
+18434098,exclude,none,Hemolysin gene invasion study; molecular virulence only,no,no
+38552286,exclude,none,Vaccine biomarker computational study; no positivity data,no,no
+15733694,include,L3,PUO patients; blood culture positivity proportion reported,no,no
+6820607,exclude,none,Carrier state immunology; special population excluded,no,no
+6760337,exclude,none,Review of infective dose; not diagnostic accuracy,no,no
+24321888,exclude,none,Rab GTPase mechanism study; molecular pathogenesis only,no,no
+16093235,exclude,none,Medicinal plant antibacterial screening; unrelated topic,no,no
+12522518,exclude,none,Natural killer cell cytotoxicity study; immunology only,no,no
+40403455,exclude,none,Wastewater surveillance study; no typhoid clinical data,no,no
+37705001,exclude,none,Single case report meningitis; no denominator,no,no
+31617758,exclude,none,Antimicrobial protein efficacy study; unrelated topic,no,no
+1701285,exclude,none,Mouse immunology tolerance study; not typhoid diagnostic,no,no
+21148209,exclude,none,Gene regulation study; no diagnostic or positivity data,no,no
+41006350,exclude,none,Genomic sequencing method study; no diagnostic accuracy data,no,no
+7767923,exclude,none,Molecular ribotyping epidemiology; not case definition or culture,no,no
+32018007,exclude,none,Protein structural biophysics study; unrelated to diagnostics,no,no
+23898212,exclude,none,Vaccine platform immunogenicity; no positivity or case-definition data,no,no
+19826075,exclude,none,Transposon mutant library genomics; not diagnostic accuracy,no,no
+11230541,exclude,none,Bioinformatics horizontal gene transfer; unrelated to diagnosis,no,no
+4681667,exclude,none,Rat lymphocyte immunology; antigen used only as reagent,no,no
+31142637,exclude,none,Bacterial effector biochemistry; not diagnostic or positivity study,no,no
+10646085,exclude,none,Review of polysaccharide vaccines; no diagnostic accuracy content,no,no
+29447698,exclude,none,Mouse gene-knockout model study; not diagnostic,no,no
+2438866,exclude,none,Mouse immunology antigen sorption; non-English language,no,yes
+19800753,maybe,L3,AFI surveillance reports blood-culture positivity for S Typhi,no,no
+39058093,exclude,none,Pangenome mobile genetic elements; genomic epidemiology only,no,no
+32565239,exclude,none,Reverse vaccinology candidate; mouse immunogenicity; no positivity,no,no
+25412680,exclude,none,Comparative strain genomics; no diagnostic or positivity content,no,no
+28718270,exclude,none,Food-worker carrier screening; special population; no case definition,no,no
+18706861,exclude,none,Vaccine strain engineering; secretion system study; not diagnostic,no,no
+29417203,exclude,none,Gene regulatory network study; not diagnostic or positivity,no,no
+776082,exclude,none,Antibiotic sensitivity survey; non-English language; no positivity,no,yes
+40394957,exclude,none,Comparative genomics of typhoidal serovars; not diagnostic,no,no
+9711777,exclude,none,Review of polysaccharide vaccine immunogenicity; no diagnostic content,no,no
+7513555,exclude,none,Antibody-carbohydrate structural biology; unrelated to diagnostics,no,no
+41034435,exclude,none,Nanoparticle antimicrobial testing; S typhi used as test strain,no,no
+34550365,exclude,none,AMR prevalence narrative review; no case-definition or positivity,no,no
+39215903,exclude,none,Plant metabolomics antibiofilm study; not diagnostic,no,no
+24914172,exclude,none,Mucosal vaccine review; no diagnostic or positivity content,no,no
+12672061,exclude,none,Mouse B-cell repertoire study; antigen used as reagent,no,no
+2872108,exclude,none,Mouse adjuvant toxoid study; not diagnostic or positivity,no,no
+10796610,exclude,none,Systematic review of NTS antibiotics; excludes typhoid explicitly,yes,no
+40751874,exclude,none,Probiotic strain characterization; S typhi antagonism assay only,no,no
+28780413,exclude,none,Hydrogel biomaterial study; antimicrobial testing only,no,no
+19130558,exclude,none,Mouse TLR signaling study; not diagnostic or positivity,no,no
+138926,exclude,none,Antibiotic-resistant strain surveillance; non-English language,no,yes
+19901065,exclude,none,Bovine ligated-loop pathogenesis study; not diagnostic,no,no
+42250148,exclude,none,Review of quorum-quenching therapeutics; no diagnostic content,no,no
+24151318,exclude,none,Humanized mouse model review; unrelated to diagnostics,no,no
+10084994,exclude,none,Bile-resistance gene regulation study; not diagnostic,no,no
+14609047,maybe,multiple,Hospital surveillance reports blood-culture positivity 22.7% children,no,no
+34443531,exclude,none,Bee-bread antimicrobial chemistry; S typhi test organism only,no,no
+26186031,exclude,none,Coral extract antibacterial study; not diagnostic,no,no
+7489341,exclude,none,Rat cholinergic receptor study; antigen used as reagent,no,no
+28742135,exclude,none,Cell transcriptomics comparison study; not diagnostic or positivity,no,no
+25385146,exclude,none,Plasmid dendritic-cell immunology study; mouse model only,no,no
+4614333,exclude,none,No abstract; occupational carrier surveillance; non-English,no,yes
+17556632,exclude,none,Molecular typing of resistant strains; no positivity data,no,no
+12379722,exclude,none,CFTR receptor pathogenesis study; not diagnostic,no,no
+24643532,exclude,none,Mouse CD4 T-cell response study; not diagnostic,no,no
+23796754,exclude,none,Mouse porin vaccine immunogenicity study; not diagnostic,no,no
+21945101,exclude,none,Pathogenesis/virulence review; no diagnostic content,no,no
+21926221,exclude,none,Environmental persistence study; not diagnostic/clinical,no,no
+3514312,exclude,none,Antimicrobial therapy perspective; no diagnostic data,no,no
+29132479,exclude,none,AMR susceptibility profiling only; no positivity data,no,no
+41308805,exclude,none,Nanoparticle antibacterial synthesis; not diagnostic,no,no
+24627178,exclude,none,Nanoparticle antibacterial activity study; not diagnostic,no,no
+17888027,exclude,none,Macrophage apoptosis mechanism; pathogenesis not diagnosis,no,no
+33604308,exclude,none,Biofilm/immunity review; no diagnostic content,no,no
+32708062,exclude,none,Essential oil antibacterial screening; not diagnostic,no,no
+32284321,exclude,none,Gene regulation molecular study; not diagnostic,no,no
+7538539,exclude,none,Mouse vaccine carrier immunogenicity; no positivity data,no,no
+31989670,exclude,none,Antibacterial chemistry synthesis; not diagnostic,no,no
+29324337,exclude,none,Antimicrobial drug synthesis; not diagnostic,no,no
+23103891,exclude,none,Fluoroquinolone resistance screening method; not clinical diagnosis,no,no
+29958737,exclude,none,Vaccine immunogenicity study; no positivity data,no,no
+20551214,exclude,none,Genetic island molecular study; not diagnostic,no,no
+22426380,exclude,none,Vaccine conjugate immunogenicity in mice; no positivity,no,no
+14113107,exclude,none,Comparative vertebrate immunology; not typhoid diagnostic,no,no
+3620049,exclude,none,Vaccine immunogenicity study; no positivity data,no,no
+32098623,exclude,none,Vaccine T-cell immunology; no positivity data,no,no
+41309395,exclude,none,Endophyte antibacterial/antioxidant study; not diagnostic,no,no
+29983509,exclude,none,Plant extract antibacterial susceptibility; not diagnostic,no,no
+23093937,exclude,none,Mouse vaccine antigen study; no positivity data,no,no
+27779154,exclude,none,Case report; no denominator,no,no
+32532687,exclude,none,Vaccine as inflammatory challenge; neuroscience outcome,no,no
+31001247,exclude,none,In vitro macrophage mechanism study; not diagnostic,no,no
+25451608,exclude,none,Vaccine inflammatory challenge; pain-tolerance psychology study,no,no
+19005140,include,L1,Compares blood-culture media yield for S Typhi,no,no
+41629629,exclude,none,Biofilm/AMR mechanistic isolate study; not diagnostic,no,no
+28522600,exclude,none,Flagellin immune mechanism study; not diagnostic,no,no
+29473020,exclude,none,Fimbrial gene cluster function study; not diagnostic,no,no
+21329318,exclude,none,Fluoroquinolone resistance molecular study; not diagnostic,no,no
+20107010,exclude,none,Vaccine antibody assay development; immunogenicity not positivity,no,no
+17582562,exclude,none,Vaccine immunology review; no positivity data,no,no
+16926408,exclude,none,Bacterial antigen discovery study; not diagnostic accuracy,no,no
+12824689,exclude,none,R-factor transfer molecular study; not diagnostic,no,no
+16414270,exclude,none,Vaccine design review; no positivity data,no,no
+16475506,exclude,none,Cholera detection assay; typhi only negative control,no,no
+32188388,exclude,none,Fern extract antibacterial/anticancer study; not diagnostic,no,no
+33392103,exclude,none,Intracellular killing mechanism study; not diagnostic,no,no
+15356155,exclude,none,Dendritic cell antigen presentation mechanism; not diagnostic,no,no
+18456117,exclude,none,Food starter culture antimicrobial test; not diagnostic,no,no
+11386421,exclude,none,Melioidosis macrophage mechanism; typhi comparator only,no,no
+10548572,exclude,none,Mouse antibiotic-vaccine interaction study; not diagnostic,no,no
+25027085,exclude,none,Ciprofloxacin resistance mutation study; not diagnostic,no,no
+29460220,exclude,none,Molecular serovar identification assay; not clinical diagnosis,no,no
+32724295,exclude,none,Review bacteria-cancer mechanisms; not diagnostic accuracy,no,no
+14632310,exclude,none,NK cell lysis in vitro study; not diagnostic,no,no
+40349994,exclude,none,Genomic/AMR profiling of isolates; pure genomics,no,no
+22906006,exclude,none,Cancer vaccine trial; special population no positivity,no,no
+7483777,exclude,none,HIV vaccine vector construction; no diagnostic content,no,no
+17908946,exclude,none,AMR mechanism study; fluoroquinolone resistance; no diagnostics,no,no
+15583305,exclude,none,molecular typing method (VNTR/MLVA); no diagnostic accuracy,no,no
+39732413,exclude,none,Vi polysaccharide autophagy pathogenesis mechanism study,no,no
+22574205,exclude,none,macrophage transposon screen; molecular pathogenesis only,no,no
+27226298,exclude,none,Vi antigen capsule biochemistry; no diagnostic content,no,no
+24429069,exclude,none,vaccine immunogenicity study; no positivity data,no,no
+19179420,exclude,none,anthrax vaccine vector in mice; unrelated diagnostics,no,no
+16443683,exclude,none,macrophage transcriptome study; molecular pathogenesis only,no,no
+23320824,exclude,none,essential oil antimicrobial testing; not diagnostic study,no,no
+7680409,exclude,none,LPS cloning in vaccine strains; molecular only,no,no
+1813146,exclude,none,macrophage phagocytosis mechanism; not typhoid-specific diagnostics,no,no
+20619377,exclude,none,anthrax vaccine mucosal priming in mice,no,no
+23502764,exclude,none,cancer immunotherapy mouse model; unrelated to diagnostics,no,no
+37956962,exclude,none,gyrA/waaG mutants; AMR biofilm mechanism study,no,no
+28167670,exclude,none,LPS O-antigen serum resistance mechanism study,no,no
+20113512,exclude,none,genetic diversity/AMR of isolates; no suspected counts,no,no
+42263922,exclude,none,C. elegans model; not human typhoid diagnostics,no,no
+11027455,exclude,none,oral vaccine vector safety trial; no positivity,no,no
+23474241,exclude,none,Shigella LPS vaccine vector construction; molecular only,no,no
+21138562,exclude,none,sseJ gene cytotoxicity mechanism; molecular pathogenesis,no,no
+26418004,maybe,L3,surveillance bacteraemia study; reports typhoid positivity among febrile,no,no
+22399179,exclude,none,case report; no denominator; Turkish language,no,yes
+6782721,maybe,L1,letter; bone marrow culture in salmonellosis; no abstract,no,no
+7523304,exclude,none,EHEC invasion mechanism; S. typhi used as comparator,no,no
+13939175,exclude,none,1963 O-antigen chemistry isolation methods paper,no,no
+17578083,exclude,none,broad narrative review; not diagnostic-focused; Spanish allowed,no,no
+31654777,exclude,none,tannic acid anti-virulence testing; no diagnostic content,no,no
+15908381,exclude,none,Ty21a CD8 T-cell response study; no positivity,no,no
+23087912,exclude,none,B-cell receptor signaling mechanism; not diagnostic study,no,no
+4882188,exclude,none,transplantation immunology; unrelated topic; Russian language,no,yes
+19159446,exclude,none,pseudogene evolutionary genomics; no diagnostic content,no,no
+38470539,exclude,none,YncD vaccine candidate; mouse immunogenicity study,no,no
+4208429,exclude,none,lymphosarcoma cells LPS study; not typhoid-specific,no,no
+31852488,exclude,none,ethics/practical discussion of challenge studies; no positivity data,no,no
+21227657,exclude,none,AMR mechanism in travellers; special population excluded,no,no
+15272228,exclude,none,antibiotic synergy testing; not diagnostic accuracy,no,no
+3100423,exclude,none,septicemia case series; German language excluded,no,yes
+4555401,exclude,none,phage genetics in Salmonella hybrids; molecular only,no,no
+840847,exclude,none,bone marrow granulocyte physiology; unrelated to typhoid,no,no
+4432414,exclude,none,lymphogranulomatosis interferon study; unrelated; Russian language,no,yes
+2672161,exclude,none,non-typhi Salmonella in HIV patients; special population,no,no
+18474127,exclude,none,AMR surveillance of confirmed isolates; no suspected counts,no,no
+40952137,exclude,none,OxyR fimbriae regulation; molecular mechanism only,no,no
+30500817,exclude,none,virulotyping/genomics of isolates; no diagnostic content,no,no
+7013096,maybe,L3,clinically suspected salmonellosis vs culture-confirmed; mixed pathogens,no,no
+15372085,exclude,none,review of immune evasion mechanisms; not diagnostics,no,no
+4555121,exclude,none,endotoxin bone marrow SRBC immunology; unrelated topic,no,no
+7039709,exclude,none,rabbit bone marrow antibody culture; unrelated topic,no,no
+36755237,exclude,none,honey antibacterial efficacy vs XDR isolates; treatment study,no,no
+6737356,exclude,none,Mouse LPS bone-marrow migration study; not typhoid diagnosis,no,no
+33388175,exclude,none,HPV vaccine using Typhi vector; toxicology safety only,no,no
+846687,exclude,none,Cirrhosis antibody immunology; not diagnostic; Italian language,no,yes
+18212096,exclude,none,Confirmed-case treatment-outcome cohort; no diagnostic counts,no,no
+39372404,exclude,none,Epithelial epigenetics and IFN-gamma pathogenesis study,no,no
+23615945,exclude,none,VNTR-PCR strain diversity; molecular epidemiology only,no,no
+14314116,exclude,none,Mouse endotoxin tissue-oxygen study; not typhoid diagnosis,no,no
+7059519,exclude,none,Canine endotoxin erythropoiesis study; unrelated to diagnosis,no,no
+18280709,maybe,L3,Fever surveillance letter; resistant strain; counts unclear,no,no
+9693338,exclude,none,Single pediatric case report; no denominator,no,no
+1533572,exclude,none,Mouse bone-marrow suppressor-cell immunology; not diagnostic,no,no
+25136011,exclude,none,Antimicrobial-resistance genetics across countries; no diagnostics,no,no
+38776664,exclude,none,AMR pattern among confirmed isolates; no case definition,no,no
+15356819,exclude,none,Narrative review; nontyphoidal Salmonella AMR; off-topic,no,no
+33264364,exclude,none,Risk-factor study among confirmed bacteremia children,no,no
+2169339,exclude,none,Murine bone-marrow toxicity mechanism; unrelated to typhoid,no,no
+16398017,exclude,none,Mouse marrow stem-cell lodging study; endotoxin model,no,no
+23569884,exclude,none,Chitosan antifungal production; unrelated to typhoid diagnosis,no,no
+22632186,exclude,none,Systematic review of bacteremia etiology; chase references,yes,no
+4589992,exclude,none,Mouse Peyer's-patch LPS immunology; not diagnostic,no,no
+19660538,exclude,none,Macrophage host-specificity mouse study; pathogenesis only,no,no
+6375871,exclude,none,Mouse stem-cell regulation; endotoxin stress model,no,no
+22425882,exclude,none,Vaccine-strain stool shedding detection method; not disease diagnosis,no,no
+20837759,exclude,none,Disk breakpoints for resistance detection; AMR method only,no,no
+10487122,exclude,none,Russian language; immunoassay method; not case definition,no,yes
+1097571,exclude,none,Dengue immune-complex assay; no typhoid content,no,no
+20852851,exclude,none,Generic DNA-microarray detection method; not typhoid-specific,no,no
+18417532,exclude,none,H pylori vaccine trial using Typhi vector,no,no
+16162237,exclude,none,Nontyphoidal Salmonella acid-resistance phenotype study,no,no
+4898999,exclude,none,Lactose-fermentation genetics using lab strains; molecular only,no,no
+1315232,exclude,none,Cholera case report; single patient; no denominator,no,no
+2099076,exclude,none,Yersinia pestis hypersensitivity assay; Russian; not typhoid,no,yes
+4589987,exclude,none,Mouse humoral-immunity maturation; LPS reagent only,no,no
+5154880,exclude,none,Hagfish antibody comparative immunology; unrelated to typhoid,no,no
+30211534,exclude,none,Environmental water single-bacterium detection membrane; not clinical,no,no
+24291643,exclude,none,Aptamer-PCR food detection method; not clinical diagnosis,no,no
+23876937,exclude,none,DNA-repair mass-spectrometry method; unrelated to typhoid,no,no
+22442318,exclude,none,Pangenomic PCR target design; molecular assay development,no,no
+20381608,exclude,none,Multiplex PCR assay development; analytic sensitivity only,no,no
+15202870,exclude,none,Enteric pathogen PCR assay development; molecular only,no,no
+826112,exclude,none,Brucella/Yersinia ELISA; no Salmonella Typhi content,no,no
+4967109,exclude,none,Newborn/adult natural-antibody immunology; not diagnostic,no,no
+92459,exclude,none,Leukocyte hydrolase LPS-release biochemistry; not diagnostic,no,no
+30224752,exclude,none,Fluoroquinolone-cucurbituril chemistry; antibacterial testing only,no,no
+34602445,exclude,none,Azithromycin metal-complex antibacterial chemistry study,no,no
+7516489,exclude,none,Dexamethasone genotoxicity; Ames Salmonella reagent only,no,no
+6977373,exclude,none,Mouse marrow granulocytic hyperplasia; endotoxin model,no,no
+9630571,exclude,none,Scooter exhaust mutagenicity; Ames Salmonella reagent,no,no
+33767,exclude,none,Haemopoietic stem-cell generation-age hypothesis; unrelated,no,no
+9387577,exclude,none,Phage-typing and AMR surveillance of isolates; no case definition,no,no
+7852817,exclude,none,Not typhoid; radioprotection pharmacology study,no,no
+9366910,exclude,none,Not typhoid; Ames mutagenicity assay chemical study,no,no
+23891671,exclude,none,Not typhoid; genotoxicity Ames test study,no,no
+24721074,exclude,none,Not typhoid; plant polysaccharide antioxidant study,no,no
+22438516,exclude,none,Not typhoid; nanoparticle biocompatibility toxicology study,no,no
+3324284,exclude,none,Not typhoid; chemical enteropathy animal model,no,no
+29237294,exclude,none,Not typhoid; plant extract mutagenicity testing,no,no
+17499012,exclude,none,Not typhoid; environmental mutagen chemical assay,no,no
+7715612,exclude,none,Not typhoid; Ames assay genotoxicity of drug,no,no
+10628822,exclude,none,Conference summary on MDR typhoid treatment; no diagnostic data,no,no
+9654248,exclude,none,Not typhoid; algal mutagen activation assay,no,no
+17483118,exclude,none,Not typhoid; air pollutant mutagenicity study,no,no
+3513285,exclude,none,Case report review; no denominator or diagnostic accuracy,no,no
+18713064,exclude,none,Genomics methods paper; no typhoid diagnostic content,no,no
+17333825,include,L1,Blood/bone marrow culture positivity rate reported,no,no
+11895968,exclude,none,Vaccine vector construction; no positivity data,no,no
+34275792,exclude,none,Chemical synthesis antibacterial screening; not typhoid,no,no
+4862190,exclude,none,Endotoxin biology lab study; not diagnostic,no,no
+476774,exclude,none,Animal hematology LPS study; not diagnostic,no,no
+719696,exclude,none,Animal irradiation study; not typhoid related,no,no
+1125428,exclude,none,Mouse endotoxin tolerance study; not diagnostic,no,no
+19187206,exclude,none,Molecular signaling mechanism study,no,no
+34726213,exclude,none,Generic entero-pathogen biosensor; no typhoid mention,no,no
+33662480,exclude,none,Molecular PCR assay development; not culture based,no,no
+33060802,exclude,none,Mouse immunology mechanism study,no,no
+29866803,exclude,none,Molecular stress-response mechanism study,no,no
+27132191,exclude,none,AMR mutation detection method; not positivity,no,no
+27118505,maybe,L1,Novel culture device; spiked samples not patient yield data,no,no
+24854446,exclude,none,Ames test strain sensitivity; not typhoid diagnosis,no,no
+20199820,exclude,none,Poultry meat testing; not human clinical study,no,no
+18624175,exclude,none,Environmental water testing; not human typhoid,no,no
+18515488,exclude,none,Phage therapy delivery formulation study,no,no
+18156266,exclude,none,Gene regulation molecular mechanism study,no,no
+12886639,exclude,none,Rabbit immunology assay; not clinical diagnosis,no,yes
+11722736,exclude,none,Plasmid conjugation molecular biology study,no,no
+8971684,exclude,none,Macrophage receptor pathogenesis mechanism study,no,no
+8835346,exclude,none,General febrile illness surveillance; no typhoid specifics,no,no
+1570178,exclude,none,Culture media comparison; Typhi excluded from analysis,no,no
+2053890,exclude,none,Unrelated neuroanatomy pyrogen study,no,yes
+91283,exclude,none,Antigen reagent development; not clinical diagnosis,no,yes
+49392,exclude,none,Not typhoid; Bordetella pertussis antigen study,no,no
+4737981,exclude,none,Immunology mechanism study; not diagnostic,no,no
+4928011,exclude,none,Bacterial genetics recombination study,no,no
+5724965,exclude,none,Not typhoid; staphylococcal enterotoxin study,no,no
+30145252,exclude,none,Gene regulation molecular mechanism study,no,no
+27761429,exclude,none,Plasmid gene function molecular study,no,no
+23330551,exclude,none,AMR epidemiology molecular typing; not diagnostic,no,no
+21341534,exclude,none,In vitro apoptosis mechanism study,no,no
+19878715,exclude,none,Vaccine candidate development in rabbits; no positivity,no,no
+19130491,exclude,none,Biochemical lipid A analytical method study,no,no
+16216636,exclude,none,soil bioremediation genotoxicity; not typhoid,no,no
+15317794,exclude,none,genomic microarray serovar typing; not diagnostic,no,no
+12089607,exclude,none,rabbit pyrogen fever study; not human diagnostic,no,no
+1388838,exclude,none,cholera vaccine mucosal immunity review; not typhoid,no,no
+357679,exclude,none,plasmid pili serotyping; unrelated to typhoid diagnosis,no,no
+696087,exclude,none,Russian language; flagellin hemagglutination reagent development,no,yes
+183429,exclude,none,Russian language; Salmonella L-form characterization study,no,yes
+5026855,exclude,none,generic antigen lymphocyte immunology; not typhoid specific,no,no
+13687195,exclude,none,bacterial mating genetics hybrids; not diagnostic,no,no
+18034866,exclude,none,Vi capsule TLR4 pathogenesis mechanism; not diagnostic,no,no
+7117423,exclude,none,mouse LPS splenic CFU study; not diagnostic,no,no
+39341826,exclude,none,ClyA virulence factor secretion mechanism; not diagnostic,no,no
+23594418,exclude,none,endotoxemia mortality prognosis; not culture or case definition,no,no
+23178046,exclude,none,non-typhoidal veterinary outbreak; molecular typing only,no,no
+22343301,exclude,none,gene cluster transcriptional regulation; molecular biology,no,no
+21398529,exclude,none,CRISPR/Cas operon regulation; molecular biology,no,no
+19589805,exclude,none,genomic island bioinformatics method; not typhoid specific,no,no
+19426448,exclude,none,promoter motif bioinformatics; not diagnostic,no,no
+19259362,exclude,none,single MDR case report; no denominator,no,no
+16489221,exclude,none,nucleoside transport gene function; molecular biology,no,no
+15557633,exclude,none,live-vector vaccine immunogenicity mice; no positivity data,no,no
+12183559,exclude,none,vaccine immunogenicity mice; not diagnostic,no,no
+12065485,exclude,none,vaccine trial immunogenicity volunteers; no positivity data,no,no
+10614695,exclude,none,PCB immunotoxicity splenocytes; not typhoid,no,no
+9219554,exclude,none,Ames mutagenicity biomonitoring assay; not typhoid disease,no,no
+1692364,exclude,none,Russian language; otherwise blood-culture yield method,no,yes
+2642532,exclude,none,NK cell antibacterial mechanism; not typhoid specific,no,no
+6378078,exclude,none,Russian language; Salmonella plasmid resistance epidemiology,no,yes
+1106729,exclude,none,Italian language; mouse bactericidal immunology study,no,yes
+807274,exclude,none,complement C6 deficiency case study; not diagnostic,no,no
+14164481,exclude,none,endotoxin tolerance physiology volunteers; not diagnostic,no,no
+36748517,exclude,none,AMR plasmid genomics characterization; not diagnostic,no,no
+36731236,exclude,none,food-safety bacterial capture method; not clinical diagnosis,no,no
+26907990,exclude,none,genomic island prediction tool; bioinformatics,no,no
+25749454,exclude,none,innate immune receptor review; pathogenesis not diagnostic,no,no
+24421037,exclude,none,mouse colitis neutrophil immunology; non-typhoidal,no,no
+20382859,exclude,none,EPC mobilization RCT; vaccination as inflammation model,no,no
+19794055,exclude,none,endotoxemia detection meta-analysis; not culture or case definition,yes,no
+18996651,exclude,none,swine shedding genetics; veterinary non-typhoidal,no,no
+16919987,exclude,none,mouse tumor vaccine model; not diagnostic,no,no
+16423041,exclude,none,mouse porin antibody memory; not diagnostic,no,no
+15126450,exclude,none,porin gene transcriptional regulation; molecular biology,no,no
+10193329,maybe,L2,Widal versus immunoblotting serology; diagnostic accuracy adjacent,no,no
+8250575,exclude,none,environmental PCR viability method; no typhoid mention,no,no
+2519452,exclude,none,HIV special population case report; no denominator,no,no
+6506938,exclude,none,Russian language; influenza vaccine endotoxin assay,no,yes
+1194858,exclude,none,macrophage tumor cytotoxicity mechanism; not typhoid specific,no,no
+4169543,exclude,none,generic bacterial staining method; not typhoid,no,no
+14078002,exclude,none,rabbit pyrogen tolerance mechanism; not Salmonella specific,no,no
+14107751,exclude,none,gonorrhea fluorescent antibody method; not typhoid,no,no
+3080895,exclude,none,Rat model; not typhoid or Salmonella,no,no
+25000398,exclude,none,Mouse model; no human diagnostic data,no,no
+7523943,exclude,none,Ames mutagenicity assay; not clinical typhoid,no,no
+4225,exclude,none,Mouse endotoxin model; not clinical,no,no
+33526848,exclude,none,Mouse coinfection model; not human,no,no
+1590461,exclude,none,Rat aorta endotoxin model; not typhoid clinical,no,no
+39326804,exclude,none,In vitro biofilm and computational study; no diagnostics,no,no
+37272185,exclude,none,C elegans metabolomics; not human diagnostic,no,no
+34462572,exclude,none,Mouse T cell memory study; not clinical,no,no
+32788681,exclude,none,Ex vivo epigenetics; no diagnostic content,no,no
+31412039,exclude,none,In vitro organotypic immune model; not clinical,no,no
+31009521,exclude,none,Proteomics of intracellular Salmonella; molecular,no,no
+28334040,exclude,none,Mouse macrophage co-infection study; not clinical,no,no
+27456828,exclude,none,Mouse erythropoiesis mechanism study,no,no
+27334743,exclude,none,Biosensor tool development; not disease diagnostic,no,no
+26310179,exclude,none,Non-English; flagellar export system review,no,yes
+25560018,exclude,none,Environmental water Salmonella phenotyping; not clinical,no,no
+24632525,exclude,none,Pig model; not human,no,no
+23831136,exclude,none,In vitro antibacterial peptide MIC testing,no,no
+23735462,exclude,none,Human lung cells; unrelated PAH toxicology,no,no
+23721095,exclude,none,Mouse tumor model using Salmonella vector,no,no
+23645603,exclude,none,Vaccine strain acid-resistance engineering; molecular,no,no
+23306672,exclude,none,Fur regulator molecular mechanism study,no,no
+23036836,exclude,none,Bioinformatics entropy method paper,no,no
+23028876,exclude,none,SPI-2 effector SNP pathogenesis mechanism,no,no
+22591832,exclude,none,Review of carrier molecular biology; special population,no,no
+22579995,exclude,none,Plasmid instability molecular biology,no,no
+21220997,exclude,none,Sheep endotoxemia fluid resuscitation study,no,no
+21098104,exclude,none,Mouse complement clearance mechanism study,no,no
+20932087,exclude,none,Lab food safety VBNC study; not clinical,no,no
+20846899,exclude,none,Molecular epidemiology methods review,no,no
+20146749,exclude,none,Comparative genomics review; no diagnostics,no,no
+19884333,exclude,none,Mouse vaccine vector immunogenicity; no positivity,no,no
+19459960,exclude,none,Yeast genetic screen for effectors; molecular,no,no
+18566147,exclude,none,AMR ESBL gene surveillance in isolates,no,no
+18226587,exclude,none,Molecular evolution review of virulence genes,no,no
+19745516,exclude,none,Vi polysaccharide regulation review; molecular,no,no
+18070030,exclude,none,Mouse adjuvant vaccine immunogenicity study,no,no
+17875635,exclude,none,Mouse cytokine immunity mechanism study,no,no
+17660285,exclude,none,Ribosomal protein frameshift molecular genetics,no,no
+17579017,exclude,none,TLR9 immunostimulation basic immunology,no,no
+17371801,exclude,none,NAT enzyme structure modeling; unrelated,no,no
+16831216,exclude,none,Mouse macrophage apoptosis mechanism study,no,no
+16091431,exclude,none,Mouse immunogenicity of outer-membrane proteins,no,no
+15743936,exclude,none,Operon repressor molecular biology; unrelated,no,no
+15380256,exclude,none,AMR integron gene detection in isolates,no,no
+15279750,exclude,none,Single case report; no denominator,no,no
+15135528,exclude,none,Antigen gene cloning molecular biology,no,no
+12949092,exclude,none,Fimbriae polysaccharide structural biology,no,no
+12789775,exclude,none,Non-English; disinfectant lab testing,no,yes

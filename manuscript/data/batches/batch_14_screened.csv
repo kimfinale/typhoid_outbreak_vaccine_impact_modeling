@@ -1,0 +1,501 @@
+pmid,decision,layer,reason,citation_chase,language_exclude
+28922626,exclude,none,molecular colonization factor no diagnostic content,no,no
+26056383,exclude,none,flagellin pathogenesis not diagnostic,no,no
+16908798,exclude,none,travellers imported fever special population,no,no
+40506473,exclude,none,non-typhoidal Salmonella genomics AMR,no,no
+36176509,exclude,none,non-typhoidal Salmonella AMR genomics,no,no
+34423077,exclude,none,pediatric traveller review not diagnostic,no,no
+21134485,exclude,none,mouse immunology recurrent infection,no,no
+15381820,exclude,none,rickettsia study not typhoid,no,no
+11162188,exclude,none,flagellar gene virulence molecular,no,no
+138923,exclude,none,non-allowed language romanian,no,yes
+35625181,exclude,none,non-typhoidal Salmonella Campylobacter prevalence review,no,no
+30648083,exclude,none,hospital burden audit no positivity,no,no
+30464540,exclude,none,antimicrobial susceptibility surveillance gram-negatives,no,no
+37289732,exclude,none,historical outbreak speculation no culture,no,no
+26584170,exclude,none,bottled water microbiology not human,no,no
+25388662,exclude,none,climate water disease review,no,no
+23078995,exclude,none,travel vaccination schedules not diagnostic,no,no
+15604085,maybe,L3,military intestinal surveillance includes typhoid outbreaks,no,no
+41068693,exclude,none,cancer patients Salmonella isolates special population,no,no
+23163048,exclude,none,non-allowed language russian,no,yes
+20885961,exclude,none,B cell immunology not diagnostic,no,no
+11909838,exclude,none,in vitro antimicrobial test organism,no,no
+8225611,exclude,none,vaccine vector immunology mice,no,no
+3781619,exclude,none,galE mutant virulence molecular,no,no
+24318418,exclude,none,vaccine adverse event case report,no,no
+29693356,exclude,none,gallbladder microbiome not diagnostic,no,no
+20448855,exclude,none,plant extract antimicrobial test organism,no,no
+18025549,exclude,none,gene cloning molecular,no,no
+17883891,exclude,none,polymer antimicrobial test organism,no,no
+16380347,exclude,none,drug availability antimicrobial test organism,no,no
+11115104,exclude,none,transcription regulation genomics,no,no
+42395239,exclude,none,tuberculosis case report not typhoid,no,no
+41688594,exclude,none,endophytic fungi antimicrobial test organism,no,no
+41217718,exclude,none,probiotic antimicrobial test organism,no,no
+36292112,exclude,none,vaccine response immunodeficiency special population,no,no
+35478546,exclude,none,nanomaterial antibacterial test organism,no,no
+34423250,exclude,none,bacteriocin antimicrobial test organism,no,no
+32599956,exclude,none,silver nanoparticles antimicrobial test organism,no,no
+30548806,exclude,none,wildlife vultures Salmonella not human,no,no
+30165114,exclude,none,zirconia nanoparticles antibacterial test organism,no,no
+30143701,exclude,none,cadmium antibiotic resistance mechanism,no,no
+29158775,exclude,none,globin promoters synthetic biology,no,no
+27765980,exclude,none,antioxidant antimicrobial test organism,no,no
+27506558,exclude,none,chitosan antimicrobial test organism,no,no
+23821828,exclude,none,silver nanoparticles antibacterial test organism,no,no
+21771476,exclude,none,mollusk extract antibacterial test organism,no,no
+10681568,exclude,none,enzyme superfamily molecular,no,no
+8021209,exclude,none,siderophore biosynthesis molecular,no,no
+7965479,exclude,none,gut lavage immunity not diagnostic,no,no
+36558923,exclude,none,plant metabolites antibacterial test organism,no,no
+30101384,exclude,none,benzoxazole antimicrobial test organism,no,no
+23805675,exclude,none,non-allowed language russian,no,yes
+22105795,exclude,none,synthesized compounds antimicrobial test organism,no,no
+21264161,exclude,none,amblyone antibacterial test organism,no,no
+1960392,exclude,none,antibiotic sensitivity pattern not diagnostic,no,no
+2148211,exclude,none,antigen screening immunology molecular,no,no
+3154301,exclude,none,goat cheese food microbiology not human,no,no
+29896651,exclude,none,antimicrobial docking test organism,no,no
+39361926,exclude,none,west nile serology not typhoid,no,no
+9720873,exclude,none,lipid A pathogenesis mouse,no,no
+19869298,exclude,none,animal respiratory infection experimental,no,no
+19868540,exclude,none,bacteriophage historical molecular,no,no
+15667272,exclude,none,hydrogen metabolism virulence molecular,no,no
+31241247,exclude,none,ebola screening pregnancy not typhoid,no,no
+23047320,exclude,none,pesticide exposure not typhoid diagnostic,no,no
+41304940,exclude,none,green tea extract antimicrobial test organism,no,no
+34738450,exclude,none,non-allowed language russian,no,yes
+31865672,exclude,none,fowl typhoid poultry not human,no,no
+19072583,exclude,none,defensin assay method not diagnostic,no,no
+38150409,exclude,none,WASH water intervention not diagnostic,no,no
+29462444,exclude,none,business travellers surveillance special population,no,no
+41415829,exclude,none,phage therapy review animal models,no,no
+35659936,exclude,none,materials sensor review not diagnostic,no,no
+16878106,exclude,none,malaria splenomegaly case report,no,no
+16121811,exclude,none,leptospirosis review not typhoid,no,no
+16078535,exclude,none,non-allowed language russian,no,yes
+37975007,exclude,none,laboratory biosensor detection not clinical,no,no
+38319387,exclude,none,non-allowed language german,no,yes
+19687040,exclude,none,zoonotic Salmonella molecular review,no,no
+19494308,exclude,none,CD4 T cell immunology mouse,no,no
+17009942,exclude,none,enteric infections children review,no,no
+7370423,exclude,none,non-allowed language russian,no,yes
+10826714,exclude,none,seafood Salmonella incidence not human,no,no
+26833251,exclude,none,nursing history not diagnostic,no,no
+22129939,exclude,none,neurosyphilis diagnosis not typhoid,no,no
+16724347,exclude,none,gallbladder cancer risk review,no,no
+18671116,exclude,none,fowl typhoid poultry not human,no,no
+1501573,exclude,none,TNF mouse typhoid immunology,no,no
+4379352,exclude,none,CRP formation physiology not diagnostic,no,no
+32725224,exclude,none,invasive nontyphoidal Salmonella review,no,no
+31501784,exclude,none,gallbladder cancer epidemiology review,no,no
+17074883,exclude,none,Rho GTPase pathogenesis molecular,no,no
+12523765,exclude,none,water sanitation WASH survey,no,no
+19869815,exclude,none,mouse experimental epidemiology animal,no,no
+35592323,exclude,none,vaccination dementia meta-analysis off-topic,no,no
+38543523,exclude,none,leg ulcer bacteria not typhoid,no,no
+22884742,exclude,none,plant antimicrobial test organism,no,no
+33493332,exclude,none,non-typhoidal Salmonella diarrhoea study,no,no
+25609371,exclude,none,plant antimicrobial test organism,no,no
+22069504,exclude,none,paratyphi vaccine immunology mouse,no,no
+15690810,exclude,none,food irradiation study; Paratyphi test strain only,no,no
+28162821,exclude,none,systematic review live vaccine safety; off-topic,no,no
+37544954,exclude,none,Salmonella AMR and characterization; no diagnostic accuracy,no,no
+17220752,exclude,none,returning-traveler febrile cohort; special population,no,no
+37845663,exclude,none,syndromic febrile surveillance; no culture confirmation,no,no
+40784793,exclude,none,nontyphoidal Salmonella genomics; two diarrhea cases,no,no
+35588421,exclude,none,nontyphoidal Salmonella AMR and genomics study,no,no
+25010413,exclude,none,antiporter molecular characterization; not diagnostic,no,no
+16773553,exclude,none,German language excluded,no,yes
+11432326,exclude,none,Croatian language excluded,no,yes
+8557339,exclude,none,mouse typhoid immunology; not human,no,no
+42268871,exclude,none,open defecation WASH prediction; not diagnostic,no,no
+41996346,exclude,none,migrant morbidity burden; self-reported typhoid only,no,no
+38707311,exclude,none,typhoid vaccine trained immunity vs COVID,no,no
+36968540,exclude,none,vaccine adjuvant immunomodulation screening,no,no
+24592164,exclude,none,S. Typhi gene regulation molecular study,no,no
+18227269,exclude,none,Salmonella operon virulence; mouse model,no,no
+14705299,maybe,L3,historic 1977 typhoid outbreak from carrier,no,no
+30943627,exclude,none,foodborne economic loss; cost only,no,no
+1109788,exclude,none,melanoma antibody study; typhoid vaccine antigen,no,no
+14569721,exclude,none,narrative foodborne trends review; no positivity,no,no
+10604013,exclude,none,anthrax case report; typhoid differential only,no,no
+9684626,exclude,none,ultrasound periportal thickening; not typhoid diagnostic,no,no
+1797971,exclude,none,febrile workup using agglutination serology; not culture,no,no
+176771,exclude,none,Bulgarian language excluded,no,yes
+1179122,exclude,none,spondylitis diagnosis; typhoid serology mention only,no,no
+41487781,exclude,none,pediatric splenomegaly etiology series; no positivity,no,no
+34666650,exclude,none,Turkish language excluded,no,yes
+39375387,exclude,none,avian fowl typhoid genome dataset,no,no
+11162183,exclude,none,mouse Salmonella infection pathogenesis,no,no
+11091038,exclude,none,Salmonella antibiotic susceptibility database,no,no
+10999063,exclude,none,autoimmune hemolytic anemia series; typhoid etiology only,no,no
+7661625,exclude,none,essay on diagnostic odors; commentary,no,no
+8025852,exclude,none,military vaccination policy; not diagnostic,no,no
+8395321,exclude,none,ofloxacin treatment trial; no diagnostic counts,no,no
+6763300,exclude,none,Charcot historical biography article,no,no
+36881794,exclude,none,pediatric travel vaccine recommendations review,no,no
+35638014,exclude,none,water sanitation commentary; not diagnostic,no,no
+21357995,exclude,none,Polish language excluded,no,yes
+18845462,exclude,none,Salmonella osteomyelitis case report; immunocompromised,no,no
+24643271,exclude,none,German language excluded,no,yes
+7802441,exclude,none,military vaccination policy; not diagnostic,no,no
+3270523,exclude,none,sewage environmental study; agglutination titers only,no,no
+41477316,exclude,none,honey antibacterial screening; Typhi test strain,no,no
+40430230,exclude,none,probiotic antibacterial screening; Typhi test strain,no,no
+39080332,exclude,none,lignin nanoparticle antimicrobial; Typhi test strain,no,no
+37172679,exclude,none,plant saponin antimicrobial; Typhi test strain,no,no
+34371712,exclude,none,alginate film antimicrobial; Typhi test strain,no,no
+32995633,exclude,none,synthetic compound antimicrobial; Typhi test strain,no,no
+30221143,exclude,none,mobile phone contamination; Typhi isolates only,no,no
+24929684,exclude,none,chitosan antimicrobial; Typhi test strain,no,no
+24548812,exclude,none,metal complex antimicrobial; Typhi test strain,no,no
+22580913,exclude,none,yeast probiotic adhesion; Typhi lab strain,no,no
+19384031,exclude,none,azithromycin MIC methods; AMR study,no,no
+18536948,exclude,none,antimicrobial coating; Typhi test strain,no,no
+20162044,exclude,none,herbal product contamination; Typhi isolates only,no,no
+14635035,exclude,none,B-cell homing immunology; Ty21a immunization,no,no
+2808216,exclude,none,meropenem in-vitro activity; AMR,no,no
+6501903,exclude,none,pediatric bacteremia epidemiology; typhi one pathogen,no,no
+35676728,exclude,none,relapsing fever Borrelia review; typhoid differential,no,no
+42354914,exclude,none,Salmonella curli regulation review; molecular,no,no
+42183730,exclude,none,cancer vaccine using Typhi flagellin,no,no
+40286238,exclude,none,sulfur composite antimicrobial surfaces; Typhi strain,no,no
+37869919,exclude,none,plant phenolic antibacterial; Typhi test strain,no,no
+36213533,exclude,none,engineered Salmonella melanoma therapy,no,no
+30783365,exclude,none,plant extract antibacterial; Typhi test strain,no,no
+26817219,exclude,none,probiotic Lactobacillus antimicrobial; Typhi strain,no,no
+26169731,exclude,none,carbohydrate vaccine overview review,no,no
+26064246,exclude,none,silver nanoparticle antibacterial; Typhi strain,no,no
+26692751,exclude,none,plant compound antimicrobial; Typhi strain,no,no
+24551241,exclude,none,Salmonella gallstone biofilm; carriage molecular,no,no
+24098576,exclude,none,canine flu vaccine; Typhi OmpC adjuvant,no,no
+22568261,exclude,none,acorn extract antibacterial; Typhi test strain,no,no
+19487686,exclude,none,nontyphoidal Salmonella vaccine antibody immunology,no,no
+18825557,exclude,none,sulfonamide metal complex antimicrobial; Typhi strain,no,no
+18627518,exclude,none,UV inactivation biodefense review; Typhi strain,no,no
+15222547,exclude,none,Lactococcus antimicrobial; Typhi test strain,no,no
+9287938,exclude,none,Salmonella serotype surveillance; typhi isolates only,no,no
+8382333,exclude,none,Salmonella invasion gene molecular study,no,no
+3156112,exclude,none,pefloxacin in-vitro activity; AMR,no,no
+39661611,exclude,none,leptospirosis seroprevalence slaughterhouse; occupational,no,no
+39681261,exclude,none,humoral immunity testing review; Typhi vaccine response,no,no
+38901814,exclude,none,calcium oxide nanoparticle antimicrobial; Typhi strain,no,no
+36738199,exclude,none,plasmid shufflon molecular review,no,no
+35315851,exclude,none,oligosaccharide prebiotic; Typhi test strain,no,no
+34123468,exclude,none,chia seed antibacterial; Typhi test strain,no,no
+32565694,exclude,none,medicinal plant antimicrobial; Typhi test strain,no,no
+30041687,exclude,none,asymptomatic food handler carriage screening; special population,no,no
+29966294,exclude,none,biosensor detection lab strains; not clinical,no,no
+29846884,exclude,none,probiotic Lactobacillus safety; Typhi test strain,no,no
+28199144,exclude,none,pepper decontamination food microbiology; Typhi strain,no,no
+24672400,exclude,none,nanometal fabric wastewater; Typhi test strain,no,no
+24426144,exclude,none,Salmonella virulence gene typing; molecular,no,no
+19214947,exclude,none,plant triterpenoid antibacterial; Typhi test strain,no,no
+16931064,exclude,none,vaginal lactobacilli antagonism; Typhi test strain,no,no
+16789431,exclude,none,chromone compound antibacterial; Typhi test strain,no,no
+1882599,exclude,none,Russian language excluded,no,yes
+2931046,exclude,none,ciprofloxacin treatment study; no diagnostic accuracy,no,no
+253572,exclude,none,cephalosporin in-vitro comparison; AMR,no,no
+40690073,exclude,none,seed nanoparticle antibacterial larvicidal; Typhi strain,no,no
+39976903,exclude,none,nanoparticle antibacterial activity not diagnostic,no,no
+36950712,exclude,none,carbon quantum dots antibacterial not diagnostic,no,no
+35500771,exclude,none,nanocellulose film antimicrobial food packaging,no,no
+34293816,exclude,none,metal complexes antibacterial screening,no,no
+32719949,exclude,none,plant endophyte antibacterial extracts,no,no
+32622212,exclude,none,lateral flow assay for staphylococcal enterotoxin,no,no
+31049761,exclude,none,systematic review piriformis pyomyositis off-topic,no,no
+29892101,exclude,none,Lactobacillus antibacterial probiotic curd,no,no
+29530530,exclude,none,bacteriocin broad host-range antibacterial,no,no
+28415554,exclude,none,silver nanoparticles antimicrobial larvicidal,no,no
+27906139,exclude,none,silver nanoparticles wrapping paper,no,no
+23099161,exclude,none,Schiff base metal complexes antibacterial,no,no
+25566609,exclude,none,Terminalia plant antibacterial cytotoxic,no,no
+18844677,exclude,none,QSAR acetophenones antibacterial,no,no
+17852888,exclude,none,stool diarrheal pathogens HIV population,no,no
+17224205,exclude,none,metal complexes antimicrobial screening,no,no
+9973419,exclude,none,Shigella DNA vaccine vector measles,no,no
+41890857,exclude,none,systematic review PUO enteric fever diagnostics,yes,no
+25824831,exclude,none,mouse Salmonella anemia pathogenesis,no,no
+31585801,exclude,none,Streptomyces antibacterial anticancer compounds,no,no
+24490916,exclude,none,Salmonella on retail chicken meat,no,no
+23776811,exclude,none,Dialium plant antimicrobial extract,no,no
+41042481,exclude,none,MgO nanoparticles antimicrobial anticancer,no,no
+28319869,exclude,none,biofilm inhibition GC-MS plant extract,no,no
+37551236,exclude,none,thrombocytopenia etiology enteric fever incidental,no,no
+11681104,exclude,none,lower GI bleeding causes enteric fever incidental,no,no
+24748368,maybe,L3,non-malarial fever etiology includes culture typhoid,no,no
+12930096,exclude,none,review diagnostic kits not typhoid accuracy,no,no
+29365208,exclude,none,Salmonella chicken carcasses AMR,no,no
+28289725,exclude,none,Salmonella adhesin host tropism molecular,no,no
+27999166,exclude,none,Salmonella cytolethal toxin DNA damage,no,no
+9192048,exclude,none,fowl typhoid chick immunoprophylaxis poultry,no,no
+19869914,exclude,none,rabbit eye hypersensitivity immunology,no,no
+3456817,exclude,none,multiple sclerosis viral serology,no,no
+37776999,exclude,none,Lactobacillus antibacterial milk preservation,no,no
+28671537,exclude,none,carbapenem colistin resistance distribution,no,no
+36406693,exclude,none,review poultry AMR Salmonella outbreaks,no,no
+33917860,exclude,none,review vaccinations multiple sclerosis,no,no
+29031082,exclude,none,symptom-based AI diagnostic model no culture,no,no
+26182767,maybe,L3,fever causes adults includes typhoid proportion,no,no
+21934108,exclude,none,Salmonella phosphoproteomics host signaling,no,no
+14688128,exclude,none,murine salmonellosis neutrophils pathogenesis,no,no
+7866354,exclude,none,mouse plasma antigen typhimurium,no,no
+7941224,exclude,none,non-allowed language ger,no,yes
+1470007,exclude,none,haemophagocytic syndrome liver case series,no,no
+6380767,exclude,none,mouse transfer factor DTH immunology,no,no
+6163199,exclude,none,mouse typhoid vaccine protection,no,no
+31526179,exclude,none,Uganda preparedness logic model,no,no
+37930488,exclude,none,review waterborne diseases India WASH,no,no
+27663283,exclude,none,travellers vaccine attitudes survey,no,no
+23876365,exclude,none,global health commentary,no,no
+18680567,exclude,none,murine typhoid probiotic ofloxacin treatment,no,no
+17911684,exclude,none,satellite early warning infrastructure,no,no
+17685355,exclude,none,review foodborne outbreaks food workers,no,no
+16718796,exclude,none,ileoscopy hematochezia case series,no,no
+1342492,exclude,none,biography historical typhoid death,no,no
+16557723,exclude,none,mouse enteric infection immunity,no,no
+36803441,exclude,none,travellers ED fever special population,no,no
+24362635,exclude,none,post-fever retinitis case series,no,no
+40414566,exclude,none,climate drivers diarrheal disease modeling,no,no
+37358444,exclude,none,review pathogen metabolism virulence,no,no
+35963862,exclude,none,meta-analysis poultry Salmonella Gallinarum off-topic,no,no
+34547027,exclude,none,ancient DNA Salmonella genomics,no,no
+22912884,exclude,none,mouse CD4 T cell Salmonella immunology,no,no
+22709566,exclude,none,IHR public health events not diagnostic,no,no
+20634977,exclude,none,curcumin murine Salmonella pathogenicity,no,no
+20598184,exclude,none,French Guyana water supply WASH,no,no
+17130944,exclude,none,Chile disease transition epidemiology,no,no
+17086224,exclude,none,non-allowed language nor,no,yes
+16828151,exclude,none,marmoset vaccine pyridostigmine EEG,no,no
+11177679,exclude,none,foodborne illnesses review treatment,no,no
+10048039,exclude,none,Salmonella SirA regulator molecular,no,no
+2179197,exclude,none,review Salmonella typing fingerprinting methods,no,no
+841650,exclude,none,causes of death wards mortality analysis,no,no
+41943245,exclude,none,review scrub typhus antibiotic antagonism,no,no
+41523221,exclude,none,case report colonic perforation no typhoid,no,no
+36360604,exclude,none,soldier vaccination counts typhoid,no,no
+33526784,exclude,none,molecular gene-circuit diagnostic platform demo,no,no
+29344690,exclude,none,non-allowed language ger,no,yes
+24399343,exclude,none,review worker immunization recommendations,no,no
+23232093,exclude,none,non-typhoid Salmonella incidence Israel,no,no
+20141010,exclude,none,non-allowed language rus,no,yes
+18572515,exclude,none,non-allowed language pol,no,yes
+11023089,exclude,none,review adult immunization SE Asia,no,no
+8789045,exclude,none,brucellosis PCR typhoid as control,no,no
+6279211,exclude,none,non-allowed language rus,no,yes
+1175703,exclude,none,immunodeficient child lymphocyte immunology,no,no
+26531707,exclude,none,Salmonella seafood gene expression,no,no
+40182771,exclude,none,GBD enteric infections burden modeling,no,no
+36963058,exclude,none,travel-acquired infections geographic clustering,no,no
+30906553,include,L3,blood culture enteric fever prevalence febrile patients,no,no
+23115652,include,L3,blood culture bloodstream infection febrile children Nepal,no,no
+18712133,exclude,none,splenomegaly etiology enteric fever incidental,no,no
+39126924,exclude,none,essential oil antimicrobial antioxidant,no,no
+38139857,exclude,none,pollen extracts antimicrobial anticancer,no,no
+13306859,exclude,none,penicillin pharmacology experimental infection,no,no
+38993028,exclude,none,vaccine ADR pharmacovigilance database,no,no
+42032118,exclude,none,silver nanoparticles antimicrobial anticholinesterase,no,no
+41465824,exclude,none,rhizosphere fungi antimicrobial phytochemicals,no,no
+39407654,exclude,none,Schiff bases antimicrobial evaluation,no,no
+37161500,exclude,none,gold nanoparticles antibacterial; S. typhi test strain,no,no
+35163944,exclude,none,essential oil antibacterial; test strain only,no,no
+33681895,exclude,none,silver nanoparticles antibacterial; test strain only,no,no
+29537812,exclude,none,hydrogel antibacterial; test strain only,no,no
+28574025,exclude,none,antimicrobial susceptibility patterns; no diagnostic accuracy,no,no
+25400633,exclude,none,B-cell immunology vaccine antigen; not diagnostic,no,no
+16302091,exclude,none,lectin antibacterial; test strain only,no,no
+14967197,exclude,none,rat gastric ulcer model; not human diagnostic,no,no
+12597480,exclude,none,bacteriophage suppresses Salmonella; food application,no,no
+38250396,exclude,none,nanoparticle antimicrobial; test strain only,no,no
+35745287,exclude,none,mixed oxide antibacterial; test strain only,no,no
+41588131,exclude,none,fermented beverage antimicrobial; test strain,no,no
+41463526,exclude,none,zoonotic bacteria in turtles; not human diagnosis,no,no
+40247836,exclude,none,latex protein antimicrobial peptide; test strain,no,no
+38460106,exclude,none,spider silk antibiotics review; off-topic,no,no
+38294545,exclude,none,probiotic antimicrobial; test strain only,no,no
+38079305,exclude,none,surfactant antimicrobial; test strain only,no,no
+36139930,exclude,none,silver nanoparticles antimicrobial; test strain,no,no
+35355735,exclude,none,coumarin antibacterial; test strain only,no,no
+34071337,exclude,none,nanocomposite antibacterial; test strain only,no,no
+32808141,exclude,none,probiotic antimicrobial; test strain only,no,no
+31531380,exclude,none,heat-killed bacteria on cancer cells; not diagnostic,no,no
+31458269,exclude,none,quinazoline antimicrobial synthesis; test strain,no,no
+30501796,exclude,none,ZnO nanoparticle antibacterial; test strain,no,no
+29204178,exclude,none,urea derivatives antibacterial; test strain,no,no
+26292170,exclude,none,Salmonella biofilm genotyping; no diagnostic accuracy,no,no
+26044237,exclude,none,sea urchin extract antibacterial; test strain,no,no
+19999166,exclude,none,CpG-DNA gastritis mice; not human diagnosis,no,no
+19291103,exclude,none,chalcones antibacterial; test strain only,no,no
+40448913,exclude,none,groundwater bacteriology; environmental not clinical,no,no
+39673862,exclude,none,quinoline antibacterial synthesis; test strain,no,no
+35228638,exclude,none,rosemary oil antibacterial; test strain only,no,no
+34287457,exclude,none,Schiff bases antimicrobial; test strain only,no,no
+24455483,exclude,none,leaf gall extract antibacterial; test strain,no,no
+22096990,exclude,none,sponge antimicrobial peptides; test strain,no,no
+22282602,exclude,none,plant extract antimicrobial; test strain,no,no
+20061679,exclude,none,bloodstream AMR surveillance; not typhoid diagnostic accuracy,no,no
+3410538,exclude,none,pneumococcal conjugate vaccine synthesis; not diagnostic,no,no
+3527987,exclude,none,neutrophil protein antimicrobial; test strain,no,no
+41883907,exclude,none,case report ovarian cyst; no denominator,no,no
+38646564,exclude,none,plant extract antibacterial; test strain,no,no
+36355335,exclude,none,gold nanoparticles antibacterial; test strain,no,no
+36234819,exclude,none,soil bacteria antibacterial; test strain,no,no
+35337384,exclude,none,nanoparticle antimicrobial calli; test strain,no,no
+32684973,exclude,none,genomic epidemiology AMR drivers; not diagnostic,no,no
+32443454,exclude,none,vaccine toxicity cell culture; not diagnostic,no,no
+29321997,exclude,none,plant extract antibacterial; test strain,no,no
+25153762,exclude,none,Lactobacillus genotyping bacteriocin; test strain,no,no
+26782041,exclude,none,reuterin antimicrobial; test strain only,no,no
+20109237,exclude,none,Artemisia extract antibacterial; test strain,no,no
+17252952,exclude,none,sulfonamide metal complex antibacterial; test strain,no,no
+2114365,exclude,none,staph capsular vaccine synthesis; not diagnostic,no,no
+3182072,exclude,none,Salmonella cytotoxin production; molecular pathogenesis,no,no
+1090155,exclude,none,complement deficiency case; not typhoid diagnosis,no,no
+24754384,exclude,none,returned travellers fever labs; special population,no,no
+26042153,exclude,none,venom phospholipase antibacterial; test strain,no,no
+29875175,exclude,none,conjugate vaccine carrier immunogenicity; no positivity,no,no
+40996892,exclude,none,ETEC toxin genomics livestock; not typhoid,no,no
+36141780,exclude,none,meteorology diarrhea meta-analysis; off-topic climate,no,no
+30487152,exclude,none,Paratyphi B vaccine engineering; genomics,no,no
+31715230,exclude,none,exopolysaccharide antibiofilm; test strain,no,no
+42418522,exclude,none,arbovirus dengue febrile study; typhoid excluded,no,no
+37335884,exclude,none,breast cancer vaccine stimulus; not diagnostic,no,no
+38938436,exclude,none,Salmonella food/human AMR; not typhoid case definition,no,no
+36860632,exclude,none,travel infections ICU review; not diagnostic accuracy,no,no
+31150391,exclude,none,leptospirosis seroprevalence; not typhoid,no,no
+22970193,exclude,none,systematic review fever aetiology; mine references,yes,no
+25594780,exclude,none,climate-sensitive disease screening method; not diagnostic,no,no
+21248155,exclude,none,Vi conjugate vaccine immunogenicity; no positivity,no,no
+19486498,exclude,none,antimicrobial residues chicken eggs; veterinary,no,no
+18541478,exclude,none,Salmonella effector ubiquitylation; molecular,no,no
+16584852,exclude,none,Salmonella gallinarum genotyping; veterinary,no,no
+16572957,exclude,none,G6PD deficiency hematology; not typhoid diagnosis,no,no
+12761123,exclude,none,Salmonella virulence mutants animals; vaccine,no,no
+10078383,exclude,none,feco-oral vaccines review; not diagnostic,no,no
+8853999,exclude,none,polio vaccine storage review; not typhoid diagnostic,no,no
+7972044,exclude,none,Salmonella vector vaccine construction; not diagnostic,no,no
+3534723,exclude,none,imipenem treatment case series; no diagnostic counts,no,no
+226477,exclude,none,silica macrophage mice Salmonella; not human,no,no
+459594,exclude,none,granulomatous hepatitis etiology; not typhoid diagnostic,no,no
+13332180,exclude,none,endotoxin mouse resistance; not human diagnosis,no,no
+39866847,exclude,none,systematic review Salmonella outbreaks drugs; mine references,yes,no
+36802093,exclude,none,clinical dysentery non-typhoid; not enteric fever,no,no
+26597854,exclude,none,Salmonella gallinarum OmpA; veterinary molecular,no,no
+25964457,exclude,none,retinoic acid vaccine adjuvant review; no positivity,no,no
+22660944,exclude,none,quorum sensor molecular modeling; not diagnostic,no,no
+20158475,exclude,none,Salmonella dendritic cell virulence review; molecular,no,no
+8337529,exclude,none,Japanese language record; excluded,no,yes
+2089233,exclude,none,Turkish language record; excluded,no,yes
+30202952,exclude,none,student traveller surveillance; special population,no,no
+2315760,exclude,none,Cuba health policy; not typhoid diagnostic,no,no
+32300096,exclude,none,case report non-typhoid bacteremia; no denominator,no,no
+31973033,exclude,none,bacterial genotoxin DNA damage review; molecular,no,no
+27216724,exclude,none,Salmonella Gallinarum PCR identification; veterinary,no,no
+26330281,exclude,none,Ebola NGO response; typhoid mentioned only,no,no
+16944613,exclude,none,tropical ICU infections review; not diagnostic accuracy,no,no
+8859153,exclude,none,surgery Papua New Guinea; typhoid mentioned only,no,no
+7654835,exclude,none,hospital bacteremia non-typhoid Salmonella; not enteric fever,no,no
+12287506,exclude,none,Salmonella contraceptive vaccine news; not diagnostic,no,no
+3738607,exclude,none,measles diarrhea non-typhoid Salmonella; not typhoid,no,no
+32305985,exclude,none,travel vaccine review no diagnostic content,no,no
+32243955,exclude,none,waterborne pathogens sanitation not typhoid diagnostic,no,no
+28840040,exclude,none,hypertension study self-diagnosed typhoid only,no,no
+20397252,exclude,none,nanoparticle detection of Salmonella in food,no,no
+19149232,exclude,none,war surgical care typhoid mentioned in passing,no,no
+17944327,exclude,none,plant alkaloid chemistry typhoid folk use,no,no
+15274779,exclude,none,tularemia serology not typhoid,no,no
+41896464,exclude,none,WASH groundwater intervention no culture positivity,no,no
+24475552,exclude,none,adverse events following immunisation no diagnostics,no,no
+31205690,maybe,L3,diarrhea patients stool culture S Typhi positivity,no,no
+19868574,exclude,none,tuberculin hypersensitivity immunology not typhoid,no,no
+19474065,exclude,none,ESBL AmpC AMR mechanism in Salmonella,no,no
+190825,exclude,none,non-allowed language german,no,yes
+41769996,exclude,none,Salmonella genomics AMR mostly non-typhoidal,no,no
+15833239,exclude,none,food Salmonella AMR molecular characterization,no,no
+40906197,exclude,none,silver nanoparticle docking test organism,no,no
+39771225,exclude,none,citrus essential oil antibacterial test organism,no,no
+38659983,exclude,none,exopolysaccharide antibacterial test organism,no,no
+37894210,exclude,none,mushroom extract antibacterial test organism,no,no
+34946774,exclude,none,avocado extract antibacterial test organism,no,no
+33862280,exclude,none,nanocomposite antibacterial test organism,no,no
+33283189,exclude,none,plant antibacterial test organism,no,no
+31847423,exclude,none,kombucha antibacterial test organism,no,no
+29472791,exclude,none,plant extracts antibacterial test organism,no,no
+28002645,exclude,none,heterocyclic compounds antibacterial test organism,no,no
+19464353,exclude,none,plant extract antibacterial test organism,no,no
+6753526,exclude,none,mouse endotoxin shock not human diagnostic,no,no
+36687298,exclude,none,ileocecal ulcer etiology no typhoid culture accuracy,no,no
+19869198,exclude,none,streptococcus antigen immunology not typhoid,no,no
+21151879,exclude,none,paratyphi blood transcriptomics not diagnostic,no,no
+38192860,exclude,none,metal-doped hydroxyapatite antibacterial test organism,no,no
+37686485,exclude,none,dog cancer vaccine using Ty21a not human,no,no
+35267779,exclude,none,selenium nanoparticle fabric antibacterial test organism,no,no
+35012097,exclude,none,selenium nanoparticle leather antibacterial test organism,no,no
+34594333,exclude,none,glycoconjugate vaccine immunogenicity no positivity,no,no
+33916894,exclude,none,Typhi porin vaccine immunology mice,no,no
+32824304,exclude,none,nanoparticle wastewater disinfection test organism,no,no
+24116321,exclude,none,potassium iodide immunology complement lysis,no,no
+21485703,exclude,none,Vernonia plant antibacterial test organism,no,no
+8557943,exclude,none,food safety review no diagnostic,no,no
+42326853,exclude,none,epitope-imprinted polymer biosensor review,no,no
+39329882,maybe,L3,AGE patients S Typhi paratyphi positivity reported,no,no
+36908982,exclude,none,snake venom antibacterial test organism,no,no
+35976372,exclude,none,brown alga extract antibacterial test organism,no,no
+34956157,exclude,none,narrative review pathogens and GI cancer risk,no,no
+33525574,exclude,none,lectin binding tool not typhoid diagnostic,no,no
+27686121,exclude,none,drug design enzyme inhibitor test organism,no,no
+24594353,exclude,none,chromenone derivatives antibacterial test organism,no,no
+15383227,exclude,none,garlic extract antibacterial test organism,no,no
+2230623,exclude,none,Andrographis herbal antibacterial test organism,no,no
+42258181,exclude,none,integron AMR mechanism Enterobacterales,no,no
+42135924,exclude,none,moringa powder antibacterial test organism,no,no
+41101259,exclude,none,benzimidazole synthesis antibacterial test organism,no,no
+39973829,exclude,none,homeopathy nosode antibacterial test organism,no,no
+38591031,exclude,none,beta-lactam OMV polymyxin tolerance mechanism,no,no
+38539885,exclude,none,bee bread antibacterial test organism,no,no
+37422847,exclude,none,prodigiosin pigment antibacterial test organism,no,no
+34978647,exclude,none,Streptomyces evolution antibacterial test organism,no,no
+33969154,exclude,none,bacteriophage rabbit antibody immunology,no,no
+32528455,exclude,none,mouse intestinal fucosylation pathogenesis,no,no
+26690017,exclude,none,metal complexes antibacterial test organism,no,no
+22951389,exclude,none,walnut essential oil antibacterial test organism,no,no
+18051866,exclude,none,Salmonella vector HCV vaccine immunology,no,no
+17061512,exclude,none,vegetable microbiology typhi not human diagnostic,no,no
+11387317,exclude,none,FliC beta-defensin cell line molecular,no,no
+33493498,exclude,none,dichapetalin plant antibacterial test organism,no,no
+23055923,exclude,none,host-pathogen pathogenesis review,no,no
+35146354,exclude,none,Spanish flu history typhoid mortality mention,no,no
+3511461,exclude,none,pediatric diarrhea prevention no diagnostic,no,no
+35278387,exclude,none,systematic review temperature enteric infections,yes,no
+27630853,exclude,none,dengue platelet transfusion typhoid mention,no,no
+36619954,exclude,none,poultry fowl typhoid oregano oil veterinary,no,no
+33874975,exclude,none,Ty21a vaccine T cell immunology,no,no
+29272995,exclude,none,case report malaria AIWS not typhoid,no,no
+41276924,exclude,none,CRISPR host factors Salmonella molecular,no,no
+39438480,exclude,none,HIV vaccine macaques typhoid toxin scaffold,no,no
+38472947,exclude,none,gallbladder carcinoma imaging typhoid carrier risk,no,no
+34960737,exclude,none,NTS phage resistance vaccine in vitro,no,no
+34454788,exclude,none,rotavirus vaccine herd protection not typhoid,no,no
+25167682,exclude,none,WHO biological standardization report,no,no
+22044420,exclude,none,mouse CD4 T cell culling pathogenesis,no,no
+18052869,exclude,none,plant antibacterial MDR Salmonella test organism,no,no
+12055816,exclude,none,cotrimoxazole resistance TB HIV patients,no,no
+19869120,exclude,none,allergic irritability immunology agglutinin test,no,no
+38776555,exclude,none,chloramphenicol cancer senescence typhoid mention,no,no
+38481590,exclude,none,rat liver enzymes herbal typhimurium not human,no,no
+35844409,exclude,none,poultry Salmonella gallinarum phage veterinary,no,no
+35822022,exclude,none,senior travellers vaccine review,no,no
+34580042,exclude,none,non-typhoid Salmonella ESBL children AMR,no,no
+33679664,exclude,none,Salmonella periplasmic protein virulence molecular,no,no
+32393507,exclude,none,mouse chronic typhoid persistence immunology,no,no
+26528943,exclude,none,mouse exercise typhimurium IgA immunology,no,no
+25129447,exclude,none,traveler vaccination survey no diagnostic,no,no
+24986118,exclude,none,elite athletes vaccination review,no,no
+23643894,exclude,none,OmpL vaccine candidate mice,no,no
+22422127,exclude,none,crocodile microflora veterinary typhi mention,no,no
+20671876,exclude,none,Widal seroprevalence blood donors not accuracy,no,no
+26443365,exclude,none,Salmonella evolution ecology review,no,no
+15185632,exclude,none,non-allowed language slovak,no,yes
+6985448,exclude,none,trimethoprim pharmacology review typhoid indication,no,no

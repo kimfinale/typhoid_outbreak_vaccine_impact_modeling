@@ -25,3 +25,12 @@ references/files/
 # ─── OS files ─────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+
+# ─── Manuscript PPV review: title/abstract screen (keep scripts + screened outputs)
+manuscript/data/pubmed-typhoidtia-set.txt
+manuscript/data/pubmed_parsed.csv
+manuscript/data/batches/batch_[0-9][0-9].csv
+manuscript/data/batches/rescreen/
+manuscript/data/batches/_chunks*/
+manuscript/data/batches/_*.csv
+manuscript/data/batches/_*.txt

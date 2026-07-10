@@ -1,0 +1,501 @@
+pmid,decision,layer,reason,citation_chase,language_exclude
+12228290,exclude,none,Ty21a vaccine T-cell immunogenicity; no culture-confirmed case counts,no,no
+11249655,exclude,none,Review of oral vaccine development; not diagnostic,no,no
+10931184,exclude,none,Scorpion venom antimicrobial peptide; in-vitro only,no,no
+10869765,exclude,none,Live vector vaccine immunology in mice; not human,no,no
+9758814,exclude,none,Enteric pathogen acid survival on food; not diagnostic,no,no
+8033802,exclude,none,LPS-stimulated IL-6 pituitary cells; basic science,no,no
+8046632,exclude,none,Endotoxin-induced fever IL-1 rabbit brain; basic science,no,no
+8082140,exclude,none,S. typhi enzyme electrophoresis population genetics; molecular taxonomy,no,no
+8039863,exclude,none,Widal serology false positives; no culture comparison,no,no
+1417336,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+2053596,exclude,none,Intratracheal endotoxin cytokine mRNA; basic science,no,no
+2307579,exclude,none,LPS rheumatoid factor in mice; animal immunology,no,no
+2793833,exclude,none,rfb gene sequencing O-antigen; molecular,no,no
+3144641,exclude,none,Yogurt bacteria lymphocyte adherence; immunology,no,no
+2887389,exclude,none,Pyrogen fever study in snakes; basic science,no,no
+6797682,exclude,none,Arachidonate pyrogen hyperthermia in cats; basic science,no,no
+400256,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+566136,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+692464,exclude,none,Endotoxin lipid component chemistry; basic science,no,no
+319963,exclude,none,Chronic carrier treatment; special population; no diagnostic accuracy,no,no
+55020,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+1092106,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+237378,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+234909,exclude,none,Rabbit lymphoid cell subpopulations; animal immunology,no,no
+4447924,exclude,none,Endotoxin effect on stem cells; basic science,no,no
+4613088,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4780917,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4576055,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4778301,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4376904,exclude,none,Bordetella endotoxin bactericidal systems; not typhoid,no,no
+4111395,exclude,none,Antibiotic sensitivity of isolates; not positivity,no,no
+4323220,exclude,none,Bordetella LPS immune reactions; not typhoid,no,no
+4985830,exclude,none,Avocado antibacterial compound; in-vitro,no,no
+5382606,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+5802598,exclude,none,Vi antigen immunology in rabbits; animal,no,no
+4977481,exclude,none,Paratyphoid B vaccine lab correlates; no case counts,no,no
+4891264,exclude,none,Enterobacteriaceae DNA relatedness; molecular taxonomy,no,no
+4974397,exclude,none,Optochin quinine bacterial morphology; in-vitro,no,no
+5741521,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+5188220,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4170751,exclude,none,Endotoxin complement interactions; basic science,no,no
+4964476,exclude,none,Norethindrone antibacterial action; in-vitro and animal,no,no
+4863230,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4914909,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4162928,exclude,none,Mouse myeloma isoantibodies; not typhoid,no,no
+5318842,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+14208292,exclude,none,Immunofluorescent antibody-forming cell detection; not typhoid diagnostic,no,no
+14206893,exclude,none,Vi antibody slide test; serology; no culture,no,no
+14170956,exclude,none,Carob tannic acid antimicrobial; in-vitro,no,no
+14115824,exclude,none,Serum resistance gram-negative bacteria; basic science,no,no
+14102856,exclude,none,Episome transfer to Proteus; molecular genetics,no,no
+14024577,exclude,none,Salmonella survival in pot pies; food microbiology,no,no
+14011192,exclude,none,Chloramphenicol resistance survey of isolates; not positivity,no,no
+13324583,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13236160,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+12997911,exclude,none,Antibody effect on bacterial metabolism; basic science,no,no
+13049393,exclude,none,antibiotic potency pharmacology; no diagnostic content,no,no
+14815312,exclude,none,endotoxin antisera in rabbits; not human diagnostic,no,no
+34161391,exclude,none,Prodigiosin antibacterial virulence inhibition; in-vitro,no,no
+34108960,exclude,none,Iron Th1 differentiation in mice; pathogenesis,no,no
+33763633,exclude,none,Single-cell digital detection platform; methods; not typhoid diagnostic,no,no
+32251371,exclude,none,Dihydrofolate reductase conformer biophysics; not typhoid,no,no
+30278129,exclude,none,Pore-forming immunotoxins for cancer; not typhoid,no,no
+29704985,exclude,none,Probiotic co-culture inhibition of Typhi; in-vitro,no,no
+28882783,exclude,none,ramR ramA antibiotic resistance regulation; molecular,no,no
+27827449,exclude,none,Gata4 gut barrier in mice; not typhoid,no,no
+26026834,exclude,none,SufC macrophage survival of Typhi; pathogenesis,no,no
+25913156,exclude,none,Pseudogenization sopA sopE2 virulence; molecular,no,no
+25820138,exclude,none,RpoS OsmY expression in Typhi; molecular,no,no
+25184225,exclude,none,Slrp-Trx1 T3SS effector structure; molecular,no,no
+24957834,exclude,none,Myxinidin antimicrobial peptide structure; in-vitro,no,no
+24957829,exclude,none,CTX-M-5 Typhimurium AMR dissemination; molecular epidemiology,no,no
+24659766,exclude,none,LeuO regulator oligomerization in Typhi; molecular,no,no
+24489912,exclude,none,Low gastric pH mouse vaccine model; animal,no,no
+23535116,exclude,none,Pig gut microbiota Salmonella shedding; animal,no,no
+23360882,exclude,none,Infant probiotic inhibition of enteropathogens; in-vitro,no,no
+23395676,exclude,none,Dendritic cell antigen sampling in mice; immunology,no,no
+22717752,exclude,none,Copper vessel bacterial sub-lethal injury; environmental,no,no
+22178277,exclude,none,Copper nanoparticle antimicrobial cytotoxicity; in-vitro,no,no
+21652779,exclude,none,Chromosomal rearrangements in carrier isolates; molecular,no,no
+21592194,exclude,none,Holin remnant protein envelope stability; molecular,no,no
+21560168,exclude,none,Periplasmic binding protein crystallography; structural biology,no,no
+20946843,exclude,none,EnvZ fusion protein purification; molecular methods,no,no
+20575990,exclude,none,animal immunology IL-17A Salmonella; no diagnostic denominator,no,no
+20180850,exclude,none,in vitro adherence pathogenesis; no diagnostic content,no,no
+19341422,exclude,none,molecular genetics fljA gene; not diagnostic,no,no
+19301647,exclude,none,Salmonella siRNA tumor therapy; not typhoid diagnostic,no,no
+18939488,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+18794278,exclude,none,biofilm gallstone pathogenesis molecular; not diagnostic,no,no
+18637162,exclude,none,mouse Paneth cell peptides; not typhoid diagnostic,no,no
+18597997,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+18266715,exclude,none,dendritic cell survival pathogenesis; no denominator,no,no
+18243772,exclude,none,pathogenesis review exotoxin delivery; not diagnostic,no,no
+17943121,exclude,none,theoretical bacterial persistence model; not diagnostic,no,no
+17768242,exclude,none,copper homeostasis molecular biology; not diagnostic,no,no
+17725646,exclude,none,TviA IL-8 pathogenesis molecular; not diagnostic,no,no
+17596427,exclude,none,Salmonella SARS vaccine vector immunogenicity; no positivity,no,no
+17126961,exclude,none,DNA vaccine vector plasmid stability; not diagnostic,no,no
+17027970,exclude,none,macrophage apoptosis pathogenesis in vitro; not diagnostic,no,no
+16985292,exclude,none,PCR gyrA ciprofloxacin resistance detection; AMR only,no,no
+16442436,exclude,none,environmental genotoxicity Ames assay; not typhoid,no,no
+16439004,exclude,none,sediment PAH genotoxicity bacterial assay; not typhoid,no,no
+16377868,exclude,none,S Typhi biliary carriage prevalence; special population,no,no
+15618173,exclude,none,Typhi vaccine vector antigen delivery; no positivity,no,no
+15504831,exclude,none,MDR Typhi isolates characterization; AMR only,no,no
+15271924,exclude,none,neonatal mouse vaccine vector immunogenicity; no positivity,no,no
+14659662,exclude,none,gyrA mutation assay ciprofloxacin; AMR only,no,no
+12379462,exclude,none,nitroreductase molecular characterization Ames strain; not diagnostic,no,no
+10512755,exclude,none,H pylori defensin gastric cells; not typhoid,no,no
+9468170,exclude,none,rat sepsis nitric oxide endotoxin; not typhoid,no,no
+9385397,exclude,none,mutagenicity Ames assay hexamethylphosphoramide; not typhoid,no,no
+9366909,exclude,none,dinitropyrene mutagenicity Ames umu assay; not typhoid,no,no
+9192030,exclude,none,macrophage survival serovar differences; not diagnostic,no,no
+7700282,exclude,none,plant micronucleus genotoxicity assay; not typhoid,no,no
+8063100,exclude,none,his operon transcription molecular biology; not diagnostic,no,no
+7978654,exclude,none,equine cartilage LPS metabolism; not typhoid,no,no
+7516484,exclude,none,azido amino acid mutagenicity assay; not typhoid,no,no
+7959985,exclude,none,Typhi chloramphenicol resistance strains; AMR only,no,no
+1393271,exclude,none,rabbit endotoxaemia nitric oxide physiology; not typhoid,no,no
+2672364,maybe,L2,Widal false-positives nontyphoid Salmonella; possible culture comparison,no,no
+2728697,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+2446454,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+3501508,exclude,none,mouse IL-1 organ sensitivity physiology; not typhoid,no,no
+3893566,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+537487,maybe,L1,typhoid 200 cases; hemoculture main diagnostic clue,no,no
+430434,exclude,none,rabbit fever probenecid endotoxin physiology; not diagnostic,no,no
+732532,exclude,none,radiation endotoxin sensitivity physiology; not typhoid,no,no
+358691,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+343730,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+936829,exclude,none,phage typing R factor molecular; not diagnostic,no,no
+1096167,exclude,none,endotoxin resin binding in vitro; not diagnostic,no,no
+163275,exclude,none,mouse pertussis immunity Salmonella adjuvant; not typhoid,no,no
+1099401,exclude,none,Salmonella antigen serology immunochemistry; not diagnostic,no,no
+4587616,exclude,none,Salmonella O-antigen mutant serology molecular; not diagnostic,no,no
+4580673,exclude,none,limulus lysate endotoxin test nonspecificity; not typhoid,no,no
+5211562,exclude,none,in vitro antibiotic sensitivity Typhi Paratyphi; AMR,no,no
+4950351,exclude,none,enterobacteria antibiotic sensitivity strains; AMR only,no,no
+5459117,exclude,none,Vi-phage bacteriolytic enzyme specificity molecular; not diagnostic,no,no
+4908675,exclude,none,coliphage lambda Salmonella hybrids molecular; not diagnostic,no,no
+5350974,exclude,none,children IgM vaccine immunogenicity; no positivity,no,no
+5352361,exclude,none,antibody prozone phenomenon serology; not diagnostic,no,no
+4181542,exclude,none,antibody immune suppression Typhi endotoxin adjuvant; not diagnostic,no,no
+4873374,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4874861,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4287442,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+14244914,exclude,none,endotoxin anticomplementary action; not typhoid diagnostic,no,no
+14151741,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13547514,exclude,none,endotoxin corticotropic activity physiology; not typhoid,no,no
+13457238,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13437531,exclude,none,bacterial sensitivity to phagocytes; not typhoid diagnostic,no,no
+13333674,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+37821050,exclude,none,bacterial nanotube communication zebrafish pathogenesis; not diagnostic,no,no
+37815707,exclude,none,MurB drug target in silico screening; not diagnostic,no,no
+34788341,exclude,none,flagellin methyltransferase enzymology molecular; not diagnostic,no,no
+34566952,exclude,none,mouse IL-22 T cell immunology; not typhoid,no,no
+34433041,exclude,none,Carnivora inflammasome evolution immunology; not typhoid,no,no
+31859703,exclude,none,erythrocyte morphology bacterial infection; not typhoid diagnostic,no,no
+31311578,exclude,none,MDR Typhi plasmid profiling; AMR only,no,no
+30972983,exclude,none,biscuit aflatoxin food science; not typhoid,no,no
+30963674,exclude,none,flagellar protein export mechanism; no diagnostic content,no,no
+30796747,exclude,none,in-vitro antibacterial compound testing; not diagnostic,no,no
+30685290,exclude,none,polymyxin resistance mechanism; molecular AMR,no,no
+30323193,exclude,none,genomic source-attribution markers; no diagnostic content,no,no
+30077634,exclude,none,bacterial effector protein function; molecular pathogenesis,no,no
+29616040,exclude,none,animal immunology oral infection; no diagnostics,no,no
+29566638,exclude,none,bioinformatics genomic island detection tool,no,no
+29024617,exclude,none,enzyme biochemistry decarboxylase; no diagnostics,no,no
+27260307,exclude,none,SPI-9 adherence pathogenesis; molecular,no,no
+24602405,exclude,none,polyamine virulence Gallinarum; animal molecular,no,no
+24334939,exclude,none,drug resistance of clinical isolates; no positivity,no,no
+23750221,exclude,none,oxidoreductase virulence; molecular pathogenesis,no,no
+23583812,exclude,none,vaccine antibody assay methodology; no positivity,no,no
+23506992,exclude,none,plant polyphenol Ames mutagenicity; not typhoid,no,no
+23382562,exclude,none,CD4 T-cell immunology; animal,no,no
+23152205,exclude,none,NTS treatment meta-analysis; not typhoid diagnostic,no,no
+22911678,exclude,none,plasmid stability and motility; molecular,no,no
+22729194,exclude,none,plasmid autophagy pathogenesis; molecular,no,no
+21829346,exclude,none,Vi capsule immunology; animal model,no,no
+21707735,exclude,none,pseudogene invasion pathogenesis; cell lines,no,no
+21487806,exclude,none,type VI secretion system; molecular,no,no
+20800526,exclude,none,osteomyelitis six-case series; no denominator,no,no
+20717675,exclude,none,flagellar gene regulation; molecular,no,no
+20630547,exclude,none,food contamination survey; not typhoid diagnostic,no,no
+20473323,exclude,none,plasmid macrophage apoptosis; molecular,no,no
+20460466,exclude,none,npcRNA identification; genomics,no,no
+20149265,exclude,none,AMR and phage typing; no case-definition,no,no
+19809245,exclude,none,pullorum genomic sequences; poultry genomics,no,no
+19523707,exclude,none,probiotic immune modulation in-vitro; not diagnostic,no,no
+19489296,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+19436747,exclude,none,MgtC virulence factor; molecular,no,no
+18663003,exclude,none,vaccine vector plasmid marker; no positivity,no,no
+18474649,exclude,none,vaccine strain brain tissue; animal safety,no,no
+18192390,exclude,none,Vi-typing bacteriophage characterization; molecular,no,no
+19738333,exclude,none,AMR of clinical isolates; susceptibility focus,no,no
+17194608,exclude,none,genomic island gene expression; molecular,no,no
+17178790,exclude,none,Vi polysaccharide regulation; molecular,no,no
+16923786,exclude,none,cytolysin serology; not culture diagnostic,no,no
+16790817,exclude,none,vaccine strain plasmid stabilization; molecular,no,no
+16782300,exclude,none,chronic infection immune cells; animal,no,no
+16625049,exclude,none,virulence-defective teaching strains; molecular,no,no
+16448800,exclude,none,RpoS nitric-oxide resistance; animal molecular,no,no
+16413487,exclude,none,type III effector mimicry; molecular,no,no
+15968047,exclude,none,HilA regulatory microarray; molecular,no,no
+15817783,exclude,none,protein phosphatase biochemistry; molecular,no,no
+15231790,exclude,none,prophage gyrase site replication; molecular,no,no
+12692223,exclude,none,measles DNA vaccine vector; animal,no,no
+12531363,exclude,none,cytokine immunotherapy vector; animal,no,no
+11801179,exclude,none,noncoding RNA detection algorithm; bioinformatics,no,no
+11679569,exclude,none,ciprofloxacin susceptibility letter; AMR,no,no
+11322642,exclude,none,naloxone immune modulation; HCV/IBD patients,no,no
+11274119,exclude,none,plasmid ancestry genomics; molecular,no,no
+10370109,exclude,none,TNF fever pyrogen; rabbit study,no,no
+9366914,exclude,none,xanthophyll antimutagenicity Ames; not typhoid,no,no
+9221663,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+8717524,exclude,none,pathogenesis immunology narrative review,no,no
+7535382,exclude,none,diesel exhaust mutagenicity; not typhoid,no,no
+8244940,exclude,none,IncHI1 plasmid replicons; molecular,no,no
+8211161,exclude,none,Bacteroides abscess polysaccharide; not typhoid,no,no
+8361394,exclude,none,Salmonella carriage in gulls; environmental,no,no
+1834076,exclude,none,platelet-activating factor intestinal necrosis; animal,no,no
+2057321,exclude,none,LPS pyrogen fever; rabbit study,no,no
+2196071,exclude,none,phagosome-lysosome fusion; murine macrophages,no,no
+2112393,exclude,none,endotoxin immunosuppression; animal,no,no
+2807157,exclude,none,endotoxin-induced ascites; rat study,no,no
+2643883,exclude,none,endotoxin TNF mRNA in rat organs; basic science,no,no
+3568089,exclude,none,LPS radioprotection in mice; basic science,no,no
+2868591,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+6084378,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+6818473,exclude,none,aflatoxin mutagenicity in bacteria; molecular DNA repair,no,no
+6955584,exclude,none,S typhimurium peptidase mutation; bacterial genetics,no,no
+6755187,exclude,none,Salmonella antigen classification; serology chemistry,no,no
+6157394,exclude,none,endotoxin prostaglandin in fibroblasts; basic science,no,no
+77370,exclude,none,monocyte hydrolases in IBD; not typhoid,no,no
+305946,exclude,none,colony-stimulating activity in neutropenia; endotoxin,no,no
+97225,exclude,none,PCB endotoxin malaria resistance in mice,no,no
+205523,exclude,none,ACE in macrophages; endotoxin basic science,no,no
+924189,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+17975,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+340855,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+1026893,exclude,none,S typhosa antibiotic susceptibility testing; AMR strains,no,no
+63196,exclude,none,S typhi polysaccharide serology; antigen chemistry,no,no
+795249,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+799970,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+239506,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+50758,exclude,none,E coli antibody cytostimulation; basic science,no,no
+235827,exclude,none,natural antibody titres in adults; serology,no,no
+4206517,exclude,none,gamma-globulin in immunized mice; immunology,no,no
+5082850,exclude,none,endotoxin in plague bacteremia; not typhoid,no,no
+4943417,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4924158,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4902894,exclude,none,endotoxin pyrogenic tolerance; basic science,no,no
+4187140,exclude,none,serum IgM antibody quantification method; immunology,no,no
+5676185,exclude,none,RNA synthesis in mouse spleen immunity,no,no
+6035161,exclude,none,irradiated mice endotoxin sensitivity; animal,no,no
+5842276,exclude,none,Salmonella colicin sensitivity; basic bacteriology,no,no
+4284285,exclude,none,Bordetella pertussis bactericidal antisera; not typhoid,no,no
+14273660,exclude,none,Vi antigen persistence in immunized mice,no,no
+5319067,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+5319061,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+14127576,exclude,none,S typhimurium virulence genetic recombination; molecular,no,no
+14102874,exclude,none,S typhosa genetic crosses with E coli,no,no
+14115258,exclude,none,endogenous pyrogen species-specificity; basic science,no,no
+13547530,exclude,none,bacterial corticotropin from S typhosa; basic science,no,no
+13397077,exclude,none,strain sensitivity to inhibitory agents; bacteriology,no,no
+40692687,exclude,none,papaya phytol in-vitro antibacterial; plant compound,no,no
+39436139,exclude,none,SdiA quorum-sensing regulon; molecular genomics,no,no
+37391964,exclude,none,honey in-vitro antibacterial MIC; lab,no,no
+35587200,exclude,none,S Typhi L-form macrophage mouse infection; pathogenesis,no,no
+35489061,exclude,none,Salmonella pseudogene proteogenomics; molecular,no,no
+33347947,exclude,none,sopA intracellular Salmonella pathogenesis; molecular,no,no
+32673720,exclude,none,antimicrobial nanocellulose packaging paper; materials,no,no
+31552023,exclude,none,amoxicillin immune response in piglets; animal,no,no
+27173965,exclude,none,syringic acid proteasome inhibitor docking; chemistry,no,no
+27105170,exclude,none,non-typhoidal S Typhimurium outbreak; not enteric fever,no,no
+26927451,exclude,none,food-handler S Typhi carriage prevalence; special population,no,no
+25927313,exclude,none,dual RNA-seq Typhimurium host cells; transcriptomics,no,no
+24859144,exclude,none,parC antisense RNA in S Typhi; molecular,no,no
+24723031,exclude,none,pBSSB1 gene expression in S Typhi; molecular,no,no
+24424404,exclude,none,coumarin oxadiazole synthesis antibacterial; chemistry,no,no
+24421039,exclude,none,iron-sulfur cluster proteins in Salmonella; molecular,no,no
+24386394,exclude,none,yehUT two-component system Salmonella; molecular,no,no
+24163408,exclude,none,Nod1 Nod2 NKT cell activation; immunology,no,no
+24041196,exclude,none,plague of Athens historical commentary; no diagnostics,no,no
+23686781,exclude,none,multiplex PCR optimization for Typhimurium; lab method,no,no
+23316043,exclude,none,Vi capsule mutagenesis screen S Typhi; genomics,no,no
+22753706,exclude,none,S typhimurium tumor targeting in mice; cancer,no,no
+22619529,exclude,none,silver nanoparticle antibacterial assay; nanoparticles,no,no
+21749778,exclude,none,S Typhi quinolone resistance phenotype; AMR mechanism,no,no
+21190124,exclude,none,terlipressin in ovine endotoxemia; animal sepsis,no,no
+21035409,exclude,none,LPS-binding protein mass spectrometry; proteomics,no,no
+19703107,exclude,none,TviA RcsB regulon osmolarity S Typhi; molecular,no,no
+18936177,exclude,none,Abl kinase Salmonella epithelial entry; molecular,no,no
+17728466,exclude,none,SNP typing of S Typhi isolates; genomics,no,no
+16177292,exclude,none,tsx porin gene in S Typhi; molecular,no,no
+16041043,exclude,none,S Typhi macrophage-expressed genes; molecular,no,no
+15555434,exclude,none,E coli LPS mimotopes phage display; molecular,no,no
+15325437,exclude,none,S Typhi ciprofloxacin susceptibility testing; AMR,no,no
+15231754,exclude,none,Mauve genome alignment software; bioinformatics,no,no
+12798649,exclude,none,Salmonella vector plague vaccine in mice; no diagnostic content,no,no
+12117952,exclude,none,Salmonella vaccine vector for Shigella; molecular cloning; not diagnostic,no,no
+11527948,exclude,none,retinal COX-2 gene expression; not typhoid,no,no
+11279816,exclude,none,food pathogen prevalence and growth; not human diagnostic,no,no
+10924061,exclude,none,endotoxin cardiomyocyte signaling; basic science,no,no
+10603389,exclude,none,Salmonella Typhi vaccine immunogenicity in mice; no diagnostic counts,no,no
+10360352,exclude,none,dehydroquinase enzyme structure; biochemistry; not diagnostic,no,no
+9820693,exclude,none,endotoxin vascular relaxation in rats; basic science,no,no
+9539791,exclude,none,Salmonella virulence genes; genomics; not diagnostic,no,no
+9366912,exclude,none,mutagenicity Ames tester strains; not diagnostic,no,no
+8804922,exclude,none,iNOS expression during endotoxemia; basic science,no,no
+1285372,exclude,none,plasmid incompatibility review; AMR mechanism; not diagnostic,no,no
+2087883,exclude,none,mucosal immune response to vaccines; letter; not diagnostic,no,no
+1976093,exclude,none,endotoxin IL-6 release in rats; basic science,no,no
+2193932,exclude,none,Salmonella gene cloning and sequencing; molecular,no,no
+7059143,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+6808251,exclude,none,antibiotic sensitivity and lysotyping of strains; not diagnostic,no,no
+6775438,exclude,none,killed vaccine protein immunochemistry; basic science,no,no
+497382,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+376715,exclude,none,lymphocyte activation by endotoxin protein; basic science,no,no
+103836,exclude,none,macrophage bactericidal activity in mice; basic immunology,no,no
+344215,exclude,none,humoral bactericidal systems; basic immunology; not diagnostic,no,no
+827212,exclude,none,pyrogen febrile response after brain lesions in monkeys,no,no
+782743,exclude,none,radiometric bacterial metabolism assay; not typhoid diagnostic,no,no
+979697,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+1023890,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4853982,exclude,none,pyrogenic specificity of bacterial toxins in rabbits,no,no
+4151455,exclude,none,genetic control of antibody response in mice; not typhoid,no,no
+4583074,exclude,none,endotoxin tolerance serum transfer; basic science,no,no
+4795567,exclude,none,S. typhi polysaccharide antigen chemistry; basic science,no,no
+4632827,exclude,none,salmonella isolation technique from sewage and faeces; lab method,no,no
+5060793,exclude,none,chloramphenicol sensitivity of salmonella strains; not diagnostic,no,no
+4943599,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4985271,exclude,none,endotoxin structure and blood clearance; basic science,no,no
+4977487,exclude,none,actinomycin sensitivity of bacteria; basic microbiology,no,no
+4975886,exclude,none,idiotypic specificity of anti-typhi antibodies; basic immunology,no,no
+5731547,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4184638,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+4960714,exclude,none,shared protein antigenic determinants; immunochemistry; not diagnostic,no,no
+4877866,exclude,none,Shigella identification by selective sensitivity; not typhoid,no,no
+6002383,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+5872441,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+5841049,exclude,none,intracerebral infection in chicks; antisera protection; animal study,no,no
+14329439,exclude,none,genetic mapping of Vi antigens; genomics; not diagnostic,no,no
+14189214,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13966890,exclude,none,antibiotic sensitivity and penicillinase production; not diagnostic,no,no
+13603620,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13510312,exclude,none,antibiotic sensitivity of Salmonella strains; not diagnostic,no,no
+13471778,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13410060,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+14363450,exclude,none,non-English/French/Spanish/Chinese language,no,yes
+13130791,exclude,none,chloramphenicol antibody complement growth inhibition; basic science,no,no
+13140610,exclude,none,chloramphenicol resistance in vitro; AMR mechanism,no,no
+13106036,exclude,none,chloramphenicol-resistant strains in vitro; AMR mechanism,no,no
+37274530,exclude,none,seroepidemiology approaches perspective; no primary diagnostic data,no,no
+33919817,exclude,none,PCR lateral flow carrier stool detection; special population,no,no
+40212028,include,L3,population-based blood culture positivity; XDR typhoid Pakistan surveillance,no,no
+40230444,include,L3,enteric fever surveillance; suspected and confirmed counts; SEAP,no,no
+31638153,maybe,L3,blood culture-confirmed typhoid Fiji; clinical features; surveillance,no,no
+2109132,exclude,none,nine-patient typhoid hepatitis series; no denominator,no,no
+17657047,exclude,none,single mixed-infection case report; no denominator,no,no
+32195117,exclude,none,two co-infection case reports; no denominator,no,no
+29724223,exclude,none,fever surveillance study protocol; no results yet,no,no
+34345129,exclude,none,ICU enteric fever narrative review; no primary data,no,no
+41806875,maybe,L3,TCV effectiveness; blood culture-confirmed typhoid cases; test-negative design,no,no
+37972323,exclude,none,single imported typhoid case report; no denominator,no,no
+41939541,include,L3,suspected enteric fever blood culture positivity; clinical profile,no,no
+35891850,include,L3,suspected enteric fever blood culture positivity; XDR Pakistan,no,no
+37575696,exclude,none,narrative enteric fever diagnostics review; not systematic,no,no
+791088,exclude,none,cefazolin treatment of nine confirmed cases; no denominator,no,no
+40585162,maybe,L2,serologic HlyE and LPS IgA accuracy vs culture,no,no
+11864288,maybe,L2,dot-blot serologic test vs blood culture; sensitivity specificity,no,no
+33042671,maybe,L3,culture-confirmed enteric fever antibiogram series; possible positivity,no,no
+41209881,exclude,none,single splenic infarction case report; no denominator,no,no
+32124730,include,L3,blood culture surveillance positivity; typhoid incidence; Vientiane,no,no
+35714648,include,L3,SEAP surveillance; suspected and confirmed counts; incidence estimates,no,no
+30845325,include,L3,enteric fever surveillance; culture-confirmed counts; vaccine policy,no,no
+32728320,include,multiple,rapid serologic tests vs culture; suspected and confirmed counts,no,no
+35895361,include,L3,typhoid outbreak; cohort attack rate reported,no,no
+32228778,maybe,L3,hepatitis A outbreak; incidental blood-culture Salmonella Typhi,no,no
+33258937,maybe,L3,enteric fever surveillance; culture-confirmed cases; healthcare utilization,no,no
+36947143,maybe,L3,TCV effectiveness; blood-culture surveillance; culture-confirmed typhoid cases,no,no
+40497217,include,L2,clinical and lab predictors; blood-culture confirmed enteric fever,no,no
+30845332,include,L3,hospital surveillance; blood-culture positivity; typhoid incidence,no,no
+6185069,maybe,L2,clinical features of culture-confirmed typhoid; suspicion sensitivity,no,no
+16697432,include,L2,validated clinical prediction rule; blood-culture confirmed typhoid,no,no
+29109704,maybe,L3,ALS immunoassay accuracy vs blood culture reference,no,no
+7986000,maybe,L3,treatment trial; culture-confirmed enteric fever among enrolled,no,no
+37274524,include,L3,typhoid perforation surveillance; suspected and confirmed positivity,no,no
+2229436,include,L1,blood culture yield; method comparison; sensitivity,no,no
+20800009,include,L3,paratyphoid outbreak; suspected cases; blood-culture positivity,no,no
+30304505,include,L3,enteric fever surveillance; blood-culture positivity rates,no,no
+31579242,include,L3,enteric fever; blood-culture positivity proportion,no,no
+38868370,exclude,none,special population; cancer patients only,no,no
+10449469,maybe,L3,Widal accuracy vs blood culture; predictive value,no,no
+37274525,exclude,none,conference commentary; no diagnostic data,no,no
+9815378,exclude,none,travelers and expatriates; special population,no,no
+6462748,exclude,none,small treatment series; culture-positive by inclusion,no,no
+35238366,exclude,none,cost-of-illness economic study; no diagnostic accuracy,no,no
+32684794,exclude,none,pathogen genomics; no positivity denominator,no,no
+26101507,maybe,L3,Typhidot accuracy vs blood culture; PPV reported,no,no
+41646783,exclude,none,enteric fever seroincidence serosurvey; no culture positivity,no,no
+42078191,exclude,none,enteric fever seroincidence serosurvey; no culture positivity,no,no
+40821193,include,L2,eosinopenia diagnostic accuracy vs culture-confirmed enteric fever,no,no
+21508082,include,L3,febrile children; blood-culture positivity; suspected counts,no,no
+28507347,maybe,L3,TUBEX TF accuracy vs blood culture; PPV,no,no
+34428309,maybe,multiple,Bayesian incidence; blood-culture detection adjustment; surveillance,no,no
+27058877,maybe,L1,serologic assays and blood culture; latent-class accuracy,no,no
+41246786,maybe,L2,clinical spectrum of confirmed typhoid; feature frequencies,no,no
+42419341,maybe,L3,wastewater and clinical surveillance; blood-culture confirmed incidence,no,no
+17277535,maybe,L3,PCR vs blood culture and Widal; positivity,no,no
+25584217,exclude,none,nested PCR methodology; mixed infection; carriers,no,no
+22314449,maybe,L3,nested PCR vs blood culture; diagnostic accuracy,no,no
+33258941,exclude,none,cost-of-illness economic study; no diagnostic accuracy,no,no
+42118494,exclude,none,fever defervescence factors; confirmed cases; no positivity,no,no
+3485847,include,L3,typhoid outbreak; blood-culture positivity; suspected cases,no,no
+35350527,exclude,none,single case report; traveler,no,no
+7499779,include,L3,suspected enteric fever; culture positivity; Widal,no,no
+23287134,maybe,L3,nested PCR vs blood culture; PPV reported,no,no
+33915749,exclude,none,narrative review of enteric fever diagnostics,no,no
+1286490,exclude,none,treatment trial; culture-positive by inclusion; no denominator,no,no
+33258938,exclude,none,cost-of-illness economic study; no diagnostic accuracy,no,no
+30761564,exclude,none,LAMP on isolates and spiked samples; no patients,no,no
+24995183,maybe,L3,Widal Typhidot vs culture; co-infection diagnostics,no,no
+26633656,exclude,none,spatial risk factors; environmental transmission; no positivity,no,no
+16124436,include,L3,clinically diagnosed typhoid; blood and stool culture positivity,no,no
+22049899,exclude,none,single case report; no denominator,no,no
+30815359,exclude,none,single case report; XDR typhoid traveler,no,no
+8071554,exclude,none,outbreak isolates drug sensitivity; no positivity denominator,no,no
+39382469,include,L3,hybrid surveillance; blood-culture enteric fever incidence,no,no
+34754639,maybe,L3,Widal vs rapid ICT; blood-culture reference,no,no
+41684992,maybe,L3,serologic assays vs blood culture; diagnostic accuracy,no,no
+32522777,maybe,L3,DPP immunoassay vs blood culture; diagnostic accuracy,no,no
+31665779,exclude,none,study design methodology paper; no results,no,no
+16606981,maybe,L3,nationwide enteric fever surveillance; case definition; incidence,no,no
+37667726,exclude,none,single case report; food source,no,no
+41111763,exclude,none,case reports; three atypical presentations,no,no
+2682467,include,L1,paired blood and bone-marrow culture yield; suspected typhoid,no,no
+31497457,exclude,none,single case report; XDR typhoid,no,no
+27510670,include,L3,suspected enteric fever; blood-culture positivity; paratyphi predominance,no,no
+34465474,maybe,L3,TCV effectiveness study; culture-confirmed cases enrolled,no,no
+121028,exclude,none,cellular immunology in typhoid; no diagnostic denominator,no,no
+37274527,exclude,none,genomic surveillance review of Paratyphi A,no,no
+27546970,exclude,none,blood culture isolate antibiogram; AMR focus,no,no
+34297962,include,L3,TCV cohort reports suspected and culture-confirmed counts,no,no
+9231214,maybe,L3,treatment trial reports culture-confirmed among clinical enteric fever,no,no
+23951368,maybe,L2,TPTest serologic assay evaluated vs blood culture,no,no
+2628289,maybe,L2,coagglutination antigen test vs culture; sensitivity specificity,no,no
+24995178,maybe,L2,Widal audit vs culture; PPV reported,no,no
+34619766,exclude,none,traveller acquisition risk; special population,no,no
+37674393,exclude,none,PCR assay development on strains and spiked blood,no,no
+34335510,exclude,none,wastewater environmental detection methods,no,no
+41340926,exclude,none,blood Salmonella prevalence and AMR; antibiogram,no,no
+27407737,include,L3,outbreak reports suspected and culture-confirmed counts,no,no
+28674145,exclude,none,burden surveillance study protocol,no,no
+27796818,exclude,none,narrative review of enteric fever,no,no
+41675796,exclude,none,case report typhoid hepatitis,no,no
+9447901,exclude,none,treatment trial on culture-selected cases; no yield,no,no
+32102428,exclude,none,single case report XDR typhoid traveller,no,no
+14880700,maybe,L1,factors influencing blood culture results in enteric fever,no,no
+35344928,exclude,none,risk factor case-control; no febrile denominator,no,no
+41217957,exclude,none,genomic phylogenetics of Paratyphi A,no,no
+36320797,maybe,L3,culture-positive proportion among clinical enteric fever children,no,no
+28545155,exclude,none,systematic review meta-analysis of RDTs; mine references,yes,no
+34408802,maybe,L2,Widal and Typhidot vs coproculture; PPV reported,no,no
+33604204,exclude,none,AMR trends of typhoidal Salmonella; antibiogram,no,no
+41769448,exclude,none,Salmonella prevalence and AMR trends; antibiogram,no,no
+16288686,exclude,none,risk factor case-control; no febrile denominator,no,no
+26321807,exclude,none,procalcitonin biomarker; no accuracy vs culture,no,no
+16901852,include,multiple,blood culture yield and PCR in suspected typhoid children,no,no
+18604108,exclude,none,antibiotic sensitivity in culture-positive typhoid; AMR,no,no
+24551623,exclude,none,Salmonella isolate occurrence; no denominator,no,no
+24602772,exclude,none,travel-association case definition; special population,no,no
+34927711,exclude,none,clinical features vs socioeconomic status; no accuracy,no,no
+42402339,exclude,none,recurrence protection cohort; not diagnostic,no,no
+22028607,exclude,none,multiplex PCR method development on strains,no,no
+3438648,maybe,L3,vaccine program reports typhoid culture positivity over time,no,no
+25386175,exclude,none,immunology review of enteric fever,no,no
+37274534,exclude,none,narrative review of typhoid diagnostics,no,no
+33258940,exclude,none,cost of illness study; economic only,no,no
+1899554,exclude,none,HIV special population typhoid,no,no
+16734611,exclude,none,host genetic susceptibility study,no,no
+26243802,exclude,none,single case report soldier enteric fever,no,no
+15173152,maybe,L3,reports culture positivity among 1019 febrile patients,no,no
+32160991,exclude,none,eHealth relapse monitoring system; no diagnostics,no,no
+38952494,exclude,none,XDR typhoid clinical case series; no denominator,no,no
+30685587,exclude,none,dengue incidence study; not typhoid outcome,no,no
+30255832,exclude,none,single case report coinfection,no,no
+15217177,include,L3,outbreak with case definition attack rate and culture,no,no
+23440906,exclude,none,Salmonella blood isolate antibiogram; AMR,no,no
+11074322,exclude,none,small case series ED presentations; no denominator,no,no
+7281209,maybe,L2,single Widal test correlated with blood culture,no,no
+20009276,exclude,none,narrative review north Africa enteric fever,no,no
+36726659,exclude,none,resistance gene distribution; AMR mechanism,no,no
+25789187,exclude,none,single case bone marrow granuloma; morphology,no,no
+35097222,exclude,none,treatment RCT protocol,no,no
+24551619,exclude,none,baseline Widal titres in healthy donors; no culture,no,no
+19745517,exclude,none,narrative review of laboratory diagnosis,no,no
+42130107,exclude,none,Widal RDT vs tube Widal; no culture reference,no,no
+35238359,maybe,L3,multitiered blood-culture-confirmed enteric fever surveillance; positivity plausible,no,no
+33355403,exclude,none,LPS O-antigen inflammasome basic science,no,no
+29900092,exclude,none,single case report HLH from typhoid,no,no

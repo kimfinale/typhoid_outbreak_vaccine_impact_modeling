@@ -1,0 +1,501 @@
+pmid,decision,layer,reason,citation_chase,language_exclude
+27222578,exclude,none,toxin biology pathogenesis; no diagnostic content,no,no
+38865361,exclude,none,chronic gallbladder carriage; special population,no,no
+23759232,include,L3,fever surveillance; blood-culture positivity rate reported,no,no
+12138663,include,L3,hospital surveillance; clinical vs blood-culture positivity,no,no
+41502203,exclude,none,narrative review diagnosis pitfalls; no primary data,no,no
+27832592,exclude,none,typhoid toxin export biology; not diagnostic,no,no
+29746945,exclude,none,coagulation pathophysiology study; no diagnostic positivity,no,no
+34525285,include,L3,TCV trial; culture-confirmed case counts by arm,no,no
+21555791,include,L3,azithromycin trial; culture positive among clinical typhoid,no,no
+29746615,include,L3,blood-culture surveillance; typhoid case counts and incidence,no,no
+12437043,include,L2,Typhidot PanBio vs Widal; sens spec vs culture,no,no
+40553599,exclude,none,single case report; no denominator,no,no
+21970286,exclude,none,two-case report; no denominator,no,no
+18383953,exclude,none,confirmed-case series; AMR profile; no denominator,no,no
+7948526,include,L2,dot EIA vs Widal; sens spec vs culture,no,no
+14141043,exclude,none,non-eligible language,no,yes
+21444993,exclude,none,antimicrobial susceptibility study; no diagnostic positivity,no,no
+2010645,exclude,none,vaccine immunogenicity only; no positivity,no,no
+6523171,include,L2,latex agglutination vs Widal; sens spec PPV,no,no
+9866897,include,multiple,suspected enteric fever; culture positivity; antigen test accuracy,no,no
+25937611,exclude,none,narrative review of diagnostics; no primary data,no,no
+23077595,exclude,none,gallbladder Salmonella carriage; carrier special population,no,no
+19397806,include,L3,typhoid outbreak; case definition; attack rate; culture,no,no
+6373038,exclude,none,isolate characterization clinical features; no positivity denominator,no,no
+25231649,include,multiple,Widal vs culture; PPV; positivity among febrile,no,no
+2452530,exclude,none,non-eligible language,no,yes
+23304434,maybe,L2,antigen microarray biomarkers; sens spec vs controls,no,no
+29324231,exclude,none,toxin gene regulation; molecular biology; not diagnostic,no,no
+40916430,exclude,none,ESBL resistance genes; AMR mechanism; not diagnostic,no,no
+38630840,maybe,L3,febrile blood-culture cohort; Typhi isolates; AMR focus,no,no
+22303491,exclude,none,SNP genotyping isolates; genomics; no positivity,no,no
+32725220,exclude,none,narrative review enteric fever diagnostics; no data,no,no
+41528123,exclude,none,preliminary CRISPR assay; four isolates; no accuracy,no,no
+1712981,exclude,none,complication case series; pancreatitis; no denominator,no,no
+6199300,exclude,none,antibody antigen characterization; no diagnostic accuracy,no,no
+35690501,include,L3,outbreak TCV effectiveness; suspected and confirmed counts,no,no
+3548169,exclude,none,non-eligible language,no,yes
+32725226,exclude,none,elimination feasibility perspective; no primary data,no,no
+28544285,exclude,none,genomics narrative review; no diagnostic content,no,no
+14105915,exclude,none,non-eligible language,no,yes
+18276100,include,L2,lateral flow IgM test; sens spec vs culture,no,no
+41748640,maybe,L2,aptasensor antigen test; reported sensitivity and specificity,no,no
+2478615,include,L2,IFA vs Widal; detection in culture-proven typhoid,no,no
+26649174,exclude,none,systematic review enteric fever profile; chase references,yes,no
+21576347,include,L2,Typhidot vs Widal; sens spec PPV vs culture,no,no
+14811706,exclude,none,serum bactericidal power; vaccine therapy; not diagnostic,no,no
+10496884,exclude,none,comparative genomics fimbrial operon; molecular biology,no,no
+13131857,exclude,none,urinary carrier case report; special population,no,no
+18597207,exclude,none,non-eligible language,no,yes
+37449693,exclude,none,cefotaxime therapeutic narrative review; no diagnostic content,no,no
+28369224,exclude,none,systematic review and meta-analysis; citation chase,yes,no
+30425150,exclude,none,genomic diversity and AMR characterization; no positivity,no,no
+14182669,maybe,L1,no abstract; blood-culture positivity plausible; advance,no,no
+25042245,exclude,none,environmental water qPCR; not clinical positivity,no,no
+35904457,exclude,none,returned-traveller XDR case series; no positivity,no,no
+38304948,include,L3,typhoid outbreak; case counts; culture-confirmed source,no,no
+1938844,maybe,L3,typhoid outbreak observations; possible positivity; advance,no,no
+19357879,exclude,none,returned-traveller AMR rates; special population,no,no
+3349861,exclude,none,treatment RCT; no diagnostic positivity outcome,no,no
+25480294,exclude,none,typhoid toxin host adaptation; pathogenesis,no,no
+6380026,include,L1,blood and bone-marrow culture sensitivity compared,no,no
+27331909,maybe,L3,hospital blood-culture surveillance; case counts; advance,no,no
+2258347,exclude,none,pefloxacin treatment trial; no diagnostic positivity,no,no
+26933019,exclude,none,commentary call to action; narrative,no,no
+27215295,maybe,L2,serodiagnostic markers discriminating typhoid; advance,no,no
+25703211,exclude,none,gallbladder L-form carriage; special population,no,no
+1601498,include,multiple,blood bone-marrow Widal positivity; outbreak,no,no
+6158255,maybe,L2,precipitin serotest predictive value reported; advance,no,no
+10829903,include,L3,clinically-diagnosed children; 25.7% blood-culture positive,no,no
+1440790,maybe,L3,typhoid outbreak; AMR focus; advance for recall,no,no
+8568020,include,L3,outbreak; 40% attack rate; culture-confirmed cases,no,no
+22414353,exclude,none,AMR susceptibility of isolates; no positivity,no,no
+27975062,exclude,none,PCR marker analytical validation; molecular,no,no
+31954032,exclude,none,pefloxacin surrogate susceptibility method; isolates,no,no
+1820645,maybe,L2,dot-EIA serodiagnosis; typhoid vs non-typhoid; advance,no,no
+32459614,exclude,none,LAMP assay identifies isolates; molecular,no,no
+23853696,include,multiple,blood-culture detection method; 21% febrile positivity,no,no
+33079054,exclude,none,H58 genomic surveillance; no positivity,no,no
+18666925,exclude,none,imported typhoid in travellers; special population,no,no
+8787370,include,L2,Widal sensitivity specificity vs culture-proven typhoid,no,no
+30664444,maybe,L3,enteric fever surveillance; blood-culture positivity; AMR focus,no,no
+2890153,exclude,none,two-case abscess report; no denominator,no,no
+38387472,maybe,L3,typhoid surveillance positivity denominators; AMR focus,no,no
+1478046,include,L2,ELISA and Widal sensitivity specificity vs proven typhoid,no,no
+25433216,exclude,none,vaccine immunogenicity only; no positivity,no,no
+6426195,exclude,none,antigen characterization immunochemistry; no accuracy,no,no
+24584364,include,multiple,Widal vs culture; culture positivity of suspected,no,no
+16602990,exclude,none,PFGE molecular subtyping; no positivity,no,no
+392958,maybe,L1,no abstract; blood-culture detection method; advance,no,no
+15928436,exclude,none,asymptomatic carrier food-handler screening; special population,no,no
+39048963,exclude,none,WGS genotyping and AMR determinants; no positivity,no,no
+29203881,exclude,none,typhoid toxin tropism; pathogenesis,no,no
+1307533,exclude,none,chloramphenicol resistance of isolates; AMR mechanism,no,no
+35098787,include,multiple,rapid tests vs culture; 32% culture positivity,no,no
+39455953,exclude,none,AMR isolates; symptomatic asymptomatic carriage,no,no
+743658,maybe,L1,sporadic enteric fever; blood stool culture yield,no,no
+3513705,exclude,none,sewer swab environmental detection; carriers,no,no
+19747660,exclude,none,two-case complication report; no denominator,no,no
+33496224,exclude,none,azithromycin-resistant typhi; AMR surveillance,no,no
+33446146,maybe,L3,febrile pediatric; 4.9% Salmonella positivity; AMR focus,no,no
+6642575,maybe,L1,antigen/antibody detection test for typhoid; no abstract,no,no
+23100346,include,L1,blood culture antigen detection; reports sensitivity specificity PPV,no,no
+2424936,include,L1,haemagglutination vs Widal; sensitivity specificity vs culture-confirmed typhoid,no,no
+17935611,exclude,none,risk-factor GIS surveillance; no positivity or accuracy,no,no
+40627640,exclude,none,environmental wastewater genomics/AMR sequencing; not clinical diagnosis,no,no
+25376685,exclude,none,surveillance epidemiology plus AMR; no positivity or accuracy,no,no
+17939308,include,L1,Widal titres vs culture; sensitivity specificity PPV NPV,no,no
+4572216,exclude,none,S typhi strain characterization; no diagnostic or positivity,no,no
+30060199,maybe,L3,enteric fever surveillance; culture-confirmed cases across facilities,no,no
+19554971,exclude,none,in vitro antibiotic activity MIC; no diagnostic content,no,no
+41326716,exclude,none,typhoid toxin pathogenesis; molecular biology,no,no
+23000800,exclude,none,chronic carrier detection; special population,no,no
+3429619,exclude,none,Vi antibody ELISA for chronic carriers; special population,no,no
+6511025,maybe,L1,urine antigen coagglutination detection for typhoid; no abstract,no,no
+13364150,exclude,none,bactericidal antibody action; immunology not diagnosis,no,no
+13041212,exclude,none,chloramphenicol susceptibility; AMR not diagnosis,no,no
+6378979,include,L1,Vi-IFA vs Widal serodiagnosis; sensitivity vs culture,no,no
+29176850,maybe,L3,hospital blood-culture surveillance; S Typhi confirmed counts,no,no
+29590194,maybe,L1,LAMP molecular blood detection; sensitivity specificity reported,no,no
+8648213,exclude,none,vaccine safety immunogenicity only; no positivity,no,no
+17713634,include,L3,typhoid outbreak; 44 suspected 15 culture-confirmed,no,no
+15904505,exclude,none,AMR clinical outcomes; culture-proven cohort no positivity,no,no
+4182404,exclude,none,antibody response immunology; not diagnostic accuracy,no,no
+28735760,exclude,none,vaccine conjugate development in mice; immunogenicity only,no,no
+4215757,exclude,none,typhoid immunology and vaccinees; not diagnostic accuracy,no,no
+10083793,exclude,none,antibiotic sensitivity trends; AMR not diagnosis,no,no
+28060810,exclude,none,whole-genome sequencing phylogenetics; genomics only,no,no
+30047370,exclude,none,introductory narrative supplement article; no primary data,no,no
+1887494,maybe,L3,MDR typhoid outbreak preliminary report; no abstract,no,no
+7291769,exclude,none,clinical differences by AMR; no diagnostic content,no,no
+22204180,exclude,none,in vitro antimicrobial susceptibility; AMR only,no,no
+6386877,include,L1,anti-LPS ELISA serodiagnosis; vs culture-proven typhoid,no,no
+13086542,maybe,L1,urine S typhi antigen detection; no abstract,no,no
+16501718,include,L3,febrile surveillance; blood-culture-confirmed typhoid incidence,no,no
+30047362,include,L3,hospital blood-culture surveillance; percent positivity S Typhi trends,no,no
+6612784,exclude,none,single case report endocarditis; no denominator,no,no
+40753988,exclude,none,systematic review meta-analysis of typhoid incidence,yes,no
+13256029,exclude,none,chloramphenicol in vitro in vivo sensitivity; AMR,no,no
+2656560,include,L3,typhoid outbreak; attack rate; 52 of 54 confirmed,no,no
+2520670,exclude,none,guinea pig experimental infection; not human,no,no
+18078119,exclude,none,non-eligible language,no,yes
+8713243,exclude,none,transferable drug resistance phage typing; AMR only,no,no
+7294611,exclude,none,novel H antigen strain characterization; microbiology,no,no
+2768450,exclude,none,OMP humoral response immunoblot; immunology not diagnosis,no,no
+38485426,exclude,none,systematic review meta-analysis of vaccine efficacy,yes,no
+25469202,include,L3,typhoid outbreak; 1078 suspected 24 culture-confirmed,no,no
+35579416,exclude,none,typhoid toxin sorting transport; molecular biology,no,no
+22363591,exclude,none,non-Typhi Salmonella bacteremia focus; typhoid only comparator,no,no
+632343,include,L1,blood-culture recovery yield for S typhi; 64% vs 92%,no,no
+1506095,exclude,none,MDR typhoid therapeutics AMR; culture-positive cohort no positivity,no,no
+11284255,exclude,none,single case report; septic arthritis; no denominator,no,no
+26809813,maybe,L3,treatment trial; suspected cases with culture-confirmed proportion,no,no
+30504848,exclude,none,MDR phylogeography genomics; no diagnostic positivity content,no,no
+31043097,exclude,none,case report plus narrative review; no denominator,no,no
+33515460,exclude,none,azithromycin resistance genomics; no diagnostic content,no,no
+35742906,exclude,none,biofilm pathogenesis narrative review,no,no
+21999858,exclude,none,single case report; complications; no denominator,no,no
+14801253,exclude,none,in-vitro chloramphenicol sensitivity of isolates; not diagnostic,no,no
+20475832,exclude,none,mouse-virulence of strains; animal study,no,no
+5195797,exclude,none,non-eligible language,no,yes
+36094088,exclude,none,genomic surveillance genotypes; no diagnostic positivity,no,no
+21714829,exclude,none,AMR trends in blood-culture isolates; no positivity,no,no
+35639002,exclude,none,bile qPCR for chronic carriers; carrier population,no,no
+40618012,include,multiple,blood/stool culture yield vs qPCR; clinically diagnosed cases,no,no
+35537043,maybe,L3,fever-patient survey; culture prevalence; Widal overestimated typhoid,no,no
+20492644,maybe,L1,PCR sensitivity vs culture; blood vs bone marrow,no,no
+31665304,exclude,none,genomic surveillance isolate counts; no positivity denominator,no,no
+40563126,exclude,none,resistant outbreak; genotype focus; no positivity denominator,no,no
+9127481,exclude,none,mouse immunology pathogenesis study,no,no
+6779437,exclude,none,non-eligible language,no,yes
+420534,maybe,L2,serologic CIE test for typhoid; technique description,no,no
+1020698,exclude,none,leukocyte migration immunology; not diagnostic accuracy,no,no
+15969764,exclude,none,single treatment-failure case report; no denominator,no,no
+8203711,exclude,none,PCR strain typing of isolates; molecular characterization,no,no
+8215265,exclude,none,treatment trial in culture-positive patients; no diagnostic counts,no,no
+21692675,exclude,none,narrative review of enteric-fever diagnostics,no,no
+23420012,include,L2,serologic dipstick vs culture; sensitivity specificity reported,no,no
+15722595,exclude,none,Vi serology screening for typhoid carriers; carrier population,no,no
+28213043,exclude,none,typhoid toxin biology review,no,no
+33465146,exclude,none,biofilm chronic-carriage molecular study,no,no
+1681365,include,L3,Ty21a vaccine trial; blood-culture-confirmed typhoid rates by arm,no,no
+25912286,exclude,none,vaccine probe study design proposal; no data,no,no
+38134602,maybe,L3,200 symptomatic; 65 culture-confirmed; WGS AMR focus,no,no
+2479196,exclude,none,non-eligible language,no,yes
+26449953,include,L3,hospital blood-culture surveillance; Typhi positivity reported,no,no
+21115057,exclude,none,Vi conjugate vaccine development; immunogenicity only,no,no
+31800986,include,L3,TCV phase3 trial; blood-culture-confirmed typhoid cases by arm,no,no
+1958200,exclude,none,antigen discovery immunoblot; no diagnostic accuracy,no,no
+3007360,exclude,none,porin antibody-response characterization; not diagnostic accuracy,no,no
+8885672,exclude,none,antibody response in schistosomiasis; immunology special population,no,no
+4991896,maybe,L1,compares blood culture techniques; enteric fever; no abstract,no,no
+1797669,exclude,none,clinical profile of confirmed cases; no positivity,no,no
+19430063,include,multiple,Typhidot Widal vs culture; positivity among suspected children,no,no
+3845062,include,L2,serologic tests in culture-verified typhoid; sensitivity reported,no,no
+28965718,include,L3,human challenge vaccine trial; attack rates by arm,no,no
+29764520,include,L3,typhoid outbreak; suspect and culture-positive counts reported,no,no
+13278947,exclude,none,mouse immunity study; animal,no,no
+23417944,exclude,none,single case report; traveller; no denominator,no,no
+512365,maybe,L2,CIE antigen antibody detection for typhoid; no abstract,no,no
+19741292,maybe,L3,48 isolates from 113 suspected; AMR plasmid focus,no,no
+35254093,exclude,none,host genetic susceptibility GWAS; no diagnostic or positivity content,no,no
+34909072,include,L3,clinically suspected typhoid; proportion stool-culture confirmed reported,no,no
+36442498,maybe,L3,TCV effectiveness; blood-culture-confirmed typhoid; test-negative design,no,no
+32816733,exclude,none,returned-traveller AMR epidemiology; no diagnostic accuracy or positivity,no,no
+32773502,exclude,none,narrative review drug resistance; no diagnostic content,no,no
+8765450,exclude,none,plasmid AMR mechanism; no positivity or accuracy,no,no
+7914202,exclude,none,PFGE molecular typing of isolates; no diagnostic content,no,no
+35633006,exclude,none,single case report; no denominator,no,no
+32332133,exclude,none,environmental Moore-swab surveillance review; no human diagnostic content,no,no
+1413737,exclude,none,Vi-PHA carrier detection; carrier special population,no,no
+32699118,exclude,none,single isolate azithromycin resistance mechanism; no denominator,no,no
+7075024,exclude,none,cell-mediated immunity study; no diagnostic content,no,no
+7337977,maybe,L2,serologic radioimmunoassay diagnostic accuracy vs Widal; reference unclear,no,no
+6207249,exclude,none,narrative review Vi antigen pathogenesis; no positivity,no,no
+32003431,exclude,none,whole-genome phylogenetics AMR; no diagnostic content,no,no
+9381882,exclude,none,non-eligible language,no,yes
+41125003,exclude,none,systematic review meta-analysis TCV effectiveness,yes,no
+20980563,exclude,none,single case report traveller; no denominator,no,no
+8513812,maybe,L2,serologic EIA diagnostic accuracy vs controls for typhoid,no,no
+39478859,exclude,none,anti-Vi ELISA immunogenicity assay; not diagnostic,no,no
+8037575,exclude,none,non-eligible language,no,yes
+25630831,exclude,none,molecular detection method on spiked blood; no clinical positivity,no,no
+2180234,include,L3,Ty21a vaccine trial; bacteriologically-confirmed cases and attack rates,no,no
+16256051,exclude,none,descriptive epidemiology AMR confirmed cases; no positivity denominator,no,no
+26642717,include,multiple,culture Widal PCR sensitivity specificity in suspected typhoid,no,no
+32700668,exclude,none,systematic review meta-analysis WASH risk factors,yes,no
+12399042,exclude,none,AMR mechanism characterization; no positivity or accuracy,no,no
+41802737,exclude,none,single case report pregnancy; no denominator,no,no
+9588236,include,L2,clinical laboratory features predictive value vs blood culture,no,no
+7810382,include,L2,Widal test specificity and cut-off re-evaluation,no,no
+24399384,exclude,none,plasmid quinolone resistance mechanism; no diagnostic positivity,no,no
+1906719,exclude,none,carriage follow-up guideline comparison; no acute diagnosis,no,no
+15218662,exclude,none,non-eligible language,no,yes
+21628817,exclude,none,azithromycin MIC susceptibility testing; no diagnostic content,no,no
+33424833,exclude,none,vaccine plasma-cell immunology; no positivity,no,no
+14865370,exclude,none,phage-typing lysotypes; no diagnostic or positivity content,no,no
+19382666,include,L2,clinical laboratory findings sensitivity specificity PPV vs culture,no,no
+37697804,exclude,none,genomic AMR meta-analysis of Typhi genomes,yes,no
+31633858,exclude,none,systematic review hospital bloodstream Salmonella prevalence,yes,no
+7567290,exclude,none,antibiotic treatment trial; culture-confirmed cases only,no,no
+22695383,maybe,L3,typhoid outbreak investigation; suspected cases; microbiologic support,no,no
+2417786,include,L2,Widal test sensitivity specificity accuracy for typhoid,no,no
+10981830,maybe,L1,confirmed-case series; blood versus stool culture diagnostic yield,no,no
+1259398,exclude,none,antibiotic treatment small series; no diagnostic accuracy,no,no
+6436114,exclude,none,brucellosis serology; Widal incidental; other disease,no,no
+35999186,exclude,none,genomic surveillance sequencing AMR; no diagnostic accuracy,no,no
+31138366,exclude,none,single case report traveller pregnancy; no denominator,no,no
+7463473,exclude,none,opsonizing antibody immunology; no diagnostic content,no,no
+17596250,exclude,none,risk-factor case-control study; water exposures; no accuracy,no,no
+3595753,exclude,none,antibiotic susceptibility surveillance; no diagnostic accuracy,no,no
+1495127,include,L2,Widal accuracy vs bacteriologically proven typhoid cases,no,no
+31781100,exclude,none,vaccine antibody correlates only; no positivity or accuracy,no,no
+31665782,exclude,none,systematic worldwide outbreak review; chase references,yes,no
+19174300,include,L3,outbreak reports perforation cases and culture-confirmed counts,no,no
+33431734,exclude,none,single case report; no denominator,no,no
+35272630,exclude,none,single case report; no denominator,no,no
+30504956,exclude,none,AMR susceptibility case series; no suspected denominator,no,no
+27605393,maybe,L2,molecular assay vs culture-confirmed; small proof-of-principle,no,no
+3040049,exclude,none,plasmid molecular biology; resistance mechanism,no,no
+8342245,include,L3,epidemic; 216 of 242 blood-culture positive,no,no
+10795752,exclude,none,chronic typhoid carrier special population; gallbladder cancer,no,no
+36746655,exclude,none,environmental wastewater detection methods; not clinical,no,no
+2363299,exclude,none,vaccine immunogenicity only; no diagnostic content,no,no
+14239839,exclude,none,antibody characterization immunology; no diagnostic accuracy,no,no
+15025323,include,L3,hospital surveillance; 254 of 4378 culture positive,no,no
+36931192,maybe,L2,nanobioprobe serodiagnostic; sensitivity reported on sera,no,no
+1844287,include,L2,ELISA and Widal accuracy vs typhoid patients,no,no
+34357814,include,L3,suspected typhoid; 189 of 2138 culture positive,no,no
+34479478,exclude,none,confirmed cases clinical review; no positivity denominator,no,no
+31665780,exclude,none,surveillance monitoring methodology; no positivity results,no,no
+2890805,include,L3,Vi vaccine trial; culture-confirmed cases by arm,no,no
+16572247,exclude,none,single case report; no denominator,no,no
+41327441,exclude,none,genomics genotyping tool; AMR determinants only,no,no
+23593253,exclude,none,vaccine immunogenicity comparison only; no diagnostic content,no,no
+13236152,exclude,none,non-eligible language,no,yes
+21857055,exclude,none,single case report; no denominator,no,no
+9296095,exclude,none,in vitro antibiotic susceptibility; no diagnostic content,no,no
+2621357,include,L2,modified Widal accuracy vs bacteriologically positive cases,no,no
+12830419,maybe,L3,MSM outbreak; confirmed and probable case counts,no,no
+34370659,exclude,none,phylogenomics and AMR surveillance; isolates only,no,no
+40346656,exclude,none,genomics AMR dashboard; no diagnostic content,no,no
+6507731,exclude,none,household transmission carrier study; no diagnostic accuracy,no,no
+25931197,include,multiple,Widal accuracy and culture positivity among febrile,no,no
+40341334,exclude,none,toxin pathogenesis; blood-brain barrier mechanism,no,no
+1620817,exclude,none,small MDR cluster; no suspected denominator,no,no
+16500779,exclude,none,single case report; no denominator,no,no
+8929638,exclude,none,endotoxin biomarker pathophysiology; no culture accuracy,no,no
+6873471,maybe,L2,ELISA discriminates typhoid from febrile controls,no,no
+888819,exclude,none,descriptive surveillance isolates; no positivity denominator,no,no
+29559573,exclude,none,commentary editorial; no data,no,no
+23790418,exclude,none,chronic gallbladder carriage special population,no,no
+2759925,exclude,none,antibiotic treatment outcomes; no diagnostic counts,no,no
+4518350,exclude,none,single imported case; resistance mechanism,no,no
+8427032,exclude,none,surface protein immunology; no diagnostic accuracy,no,no
+35012347,exclude,none,toxin structural molecular biology,no,no
+24713900,exclude,none,antimicrobial susceptibility trends; isolates only,no,no
+9666004,include,L2,TUBEX serologic test accuracy vs typhoid cases,no,no
+37101111,exclude,none,single case report; resistance only,no,no
+23609512,exclude,none,returned travellers AMR treatment; special population,no,no
+41863782,exclude,none,seroincidence seroepidemiology; no culture or case-definition,no,no
+24291468,exclude,none,proteomics of chronic typhoid carriers; no diagnostic counts,no,no
+3611308,include,L1,latex agglutination detects S typhi in blood culture; accuracy,no,no
+33347558,include,L3,reports 22479 suspected and 760 confirmed typhoid cases,no,no
+8405309,include,L3,school outbreak; 54 cases blood/stool culture-confirmed,no,no
+30250245,exclude,none,typhoid toxin secretion mechanism; molecular biology,no,no
+7334709,exclude,none,carrier detection via sewage surveillance; carrier-only,no,no
+31481113,exclude,none,WGS population structure of isolates; genomics only,no,no
+29709977,exclude,none,relapse strain molecular typing; no positivity,no,no
+7497349,include,L3,typhoid outbreak; blood culture positive 7 of 9,no,no
+6792214,exclude,none,serologic assay comparison in vaccinees; immunogenicity only,no,no
+33057330,exclude,none,treatment outcomes in confirmed XDR typhoid; no positivity,no,no
+30952553,exclude,none,vaccine candidate immunogenicity in mice; no diagnostics,no,no
+7665677,exclude,none,PFGE genetic diversity of isolates; molecular typing,no,no
+31556496,exclude,none,non-eligible language,no,yes
+7007413,include,L1,ELISA serodiagnosis evaluated against culture-confirmed enteric fever,no,no
+1030560,maybe,L1,hypertonic sucrose effect on S typhi blood-culture recovery; title-only,no,no
+17347563,exclude,none,vaccine antigen-delivery narrative; no diagnostic content,no,no
+17264451,exclude,none,RCT treatment in culture-proven typhoid; no accuracy,no,no
+15928444,exclude,none,clinical profile and antibiotic sensitivity; no positivity denominator,no,no
+10573337,exclude,none,typhoid spondylitis case series; no denominator,no,no
+37945130,exclude,none,WGS ceftriaxone-resistance mechanisms; few isolates; genomics,no,no
+3375787,exclude,none,non-eligible language,no,yes
+21914192,exclude,none,host-response transcriptional profiling; molecular biology,no,no
+7520382,include,L1,Vi latex agglutination sensitivity 98.4% specificity 100% vs culture,no,no
+30298811,exclude,none,qualitative community perceptions study; no diagnostic content,no,no
+3837121,maybe,L2,clinical feature frequencies in culture-confirmed typhoid; possible definition relevance,no,no
+40058502,exclude,none,genomic epidemiology of isolates; genomics only,no,no
+26928826,exclude,none,CD8 T-cell immune responses; immunology only,no,no
+21628808,exclude,none,narrative review of MDR typhoid,no,no
+21045376,exclude,none,single pediatric case report; no denominator,no,no
+26555890,exclude,none,comparative genomics drug-target identification; genomics only,no,no
+16449839,exclude,none,culture-positive clinical profile and AMR; no accuracy,no,no
+23162127,exclude,none,Vi antigen B-cell immunology in mice,no,no
+8821644,exclude,none,live vaccine strain seroconversion in volunteers; immunogenicity only,no,no
+39254668,exclude,none,population genomics of Vi capsule locus; genomics,no,no
+40844743,include,L3,2950 suspected; 95 (3.22%) S typhi blood-culture positive,no,no
+34418032,exclude,none,typhoid carrier detection via duodenal culture; carrier-only,no,no
+1997425,exclude,none,respiratory antibody response to oral vaccine; immunogenicity only,no,no
+17297206,exclude,none,ciprofloxacin treatment efficacy trial; no diagnostic accuracy,no,no
+8815078,exclude,none,PFGE molecular analysis of isolates; molecular typing,no,no
+30951565,exclude,none,typhoid toxin intracellular transport; molecular biology,no,no
+3238473,include,L1,whole-blood vs clot culture isolation rates for S typhi,no,no
+23279226,exclude,none,travel-associated typhoid case review; returned-travellers,no,no
+18452661,exclude,none,quinolone-resistance frequency among isolates; AMR only,no,no
+1493986,exclude,none,ciprofloxacin dose RCT in confirmed typhoid; treatment only,no,no
+1697603,exclude,none,monoclonal antibody production; no diagnostic accuracy,no,no
+6853689,include,L1,anti-Vi ELISA detects 52% patients vs 2.3% controls,no,no
+448063,exclude,none,nosocomial S typhi spread; case report no denominator,no,no
+31284613,exclude,none,WASH environmental risk-factor case-control; no diagnostics,no,no
+15471142,exclude,none,single case report typhoid endocarditis; no denominator,no,no
+20140635,exclude,none,PCR method development; analytical sensitivity only; no culture comparison,no,no
+40434987,exclude,none,AMR genomics carrier study; no diagnostic positivity,no,no
+31778097,exclude,none,meta-analysis TUBEX test accuracy; chase references,yes,no
+21146460,exclude,none,vaccine immunogenicity B-memory cells; no positivity,no,no
+17917624,exclude,none,neonatal sepsis etiology; not typhoid-specific positivity,no,no
+31963643,exclude,none,narrative review travel typhoid,no,no
+2523,exclude,none,LPS biochemistry; molecular biology,no,no
+7362179,exclude,none,AMR resistance mechanism; no diagnostic content,no,no
+1441735,exclude,none,vaccine sIgA sample processing; not diagnosis,no,no
+11944186,exclude,none,genomics narrative review,no,no
+39891051,exclude,none,anti-Vi antibody immunity correlate; not diagnostic accuracy,no,no
+12382369,exclude,none,non-eligible language,no,yes
+1232715,maybe,L1,blood culture media for S typhi cultivation; possible yield,no,no
+42160545,exclude,none,antibiotic susceptibility patterns; no positivity denominator,no,no
+15635006,include,L1,nested PCR vs blood culture and Widal; diagnostic accuracy,no,no
+2691709,include,L1,serologic tests sens spec PPV vs culture-confirmed typhoid,no,no
+8250628,exclude,none,MDR plasmid; AMR mechanism,no,no
+31144715,exclude,none,WASH water risk-factor case-control,no,no
+28577141,exclude,none,biosensor method development; analytical detection only,no,no
+23842500,exclude,none,typhoid toxin structure pathogenesis,no,no
+12071068,exclude,none,treatment efficacy study; no diagnostic positivity,no,no
+11853291,include,L3,waterborne typhoid outbreak; 5 of 10 hemoculture positive,no,no
+41027415,include,L3,S Typhi outbreak cluster; 3 confirmed; 305 screened,no,no
+8891547,maybe,L3,typhoid outbreaks; lab findings; positivity counts unclear,no,no
+7282189,exclude,none,non-eligible language,no,yes
+1047600,exclude,none,case report; AMR transmissible resistance,no,no
+16412678,exclude,none,chronic carrier serologic screening; carrier-only population,no,no
+11022422,exclude,none,non-eligible language,no,yes
+15814044,exclude,none,ofloxacin treatment RCT; no diagnostic accuracy,no,no
+37228010,include,multiple,febrile patients; blood culture 6.4% positive; Widal vs culture,no,no
+25010129,exclude,none,non-eligible language,no,yes
+11961854,exclude,none,case report; in vivo drug resistance,no,no
+2010905,exclude,none,MDR plasmid; AMR mechanism,no,no
+20439919,exclude,none,Vi polysaccharide molecular immunology,no,no
+7975830,exclude,none,bacterial acid tolerance; vaccine strain biology,no,no
+6851444,exclude,none,non-eligible language,no,yes
+9496458,exclude,none,chronic carriage gallbladder cancer; carrier-only population,no,no
+34837784,exclude,none,in-silico toxin inhibitor; molecular biology,no,no
+26466790,exclude,none,military typhoid epidemiology by ICD codes; no positivity,no,no
+12866820,maybe,L3,suspected enteric fever blood cultures; serotype distribution; denominator unclear,no,no
+29150208,exclude,none,Vi vaccine development; mouse immunogenicity,no,no
+17017411,exclude,none,case report infant typhoid; no denominator,no,no
+8620915,exclude,none,AMR prevalence during epidemic; no positivity,no,no
+40393644,exclude,none,multi-omics mouse pathogenesis; molecular biology,no,no
+2462154,exclude,none,porin gene cloning; molecular biology,no,no
+31374013,exclude,none,case report; typhoid complication management,no,no
+34794677,exclude,none,narrative review salmonellosis enteric fever,no,no
+10506405,maybe,L3,Ty21a vaccine efficacy trial; attack rates implied,no,no
+12666454,exclude,none,non-eligible language,no,yes
+34131667,exclude,none,antimicrobial resistance trends; no positivity,no,no
+25790017,exclude,none,travel-associated confirmed case series; cost and recognition focus,no,no
+35364283,exclude,none,AMR patterns; in-silico quinolone resistance mechanism,no,no
+35767580,exclude,none,whole-genome phylogenetics; no diagnostic content,no,no
+23857386,exclude,none,PCR primer development; analytical not clinical accuracy,no,no
+30060197,exclude,none,travel-associated confirmed pediatric case series,no,no
+34384540,include,L3,vaccine trial; culture-confirmed typhoid incidence by arm,no,no
+19535839,exclude,none,antibody immunoblot; perforation pathogenesis,no,no
+8488717,exclude,none,phase 1 vaccine; immunogenicity only,no,no
+24820472,exclude,none,quinolone resistance; gyrA mechanism study,no,no
+11944708,include,L1,serologic test accuracy; reports sensitivity specificity PPV,no,no
+38073124,exclude,none,clinical and AMR profile; no accuracy or positivity,no,no
+26001081,exclude,none,regulatory T-cell immunology; challenge model,no,no
+2702777,exclude,none,cellular immunity assay; not disease diagnosis,no,no
+2345018,exclude,none,immune responses after vaccination; immunology,no,no
+41573761,include,L3,typhoid outbreak; cases detected and culture-confirmed,no,no
+29184606,exclude,none,knowledge attitude practice; hygiene sanitation only,no,no
+16476168,exclude,none,antibiogram and seasonality; AMR only,no,no
+4095599,exclude,none,vaccine antibody responses; immunogenicity only,no,no
+38081842,exclude,none,mathematical fuzzy model; no diagnostic content,no,no
+31447308,exclude,none,humanized-mouse genomics; virulence not human diagnosis,no,no
+3307243,exclude,none,non-eligible language,no,yes
+16274504,exclude,none,confirmed case series; hepatitis feature and typing,no,no
+2412272,exclude,none,narrative review; control strategies,no,no
+37427642,exclude,none,single case report; no denominator,no,no
+35818097,exclude,none,single case report; no denominator,no,no
+31551082,exclude,none,single case report; no denominator,no,no
+10722125,exclude,none,AMR surveillance of isolates; no positivity denominator,no,no
+31958059,exclude,none,typhoid toxin secretion; molecular biology,no,no
+6389350,exclude,none,recombinant vaccine construction; molecular biology,no,no
+1988518,exclude,none,vaccine humoral response; immunogenicity only,no,no
+24448337,exclude,none,narrative review; asthma trigger,no,no
+5926506,exclude,none,non-eligible language,no,yes
+39414800,exclude,none,genomics of blaTEM resistance genes,no,no
+26566275,exclude,none,meta-analysis of typhoid diagnostic accuracy; chase refs,yes,no
+1641594,exclude,none,antibiotic therapy study; no diagnostic counts,no,no
+21303511,include,L1,Widal test accuracy; sensitivity and specificity reported,no,no
+21997942,exclude,none,relapse risk factors; no diagnostic accuracy,no,no
+6132187,exclude,none,outbreak data for pathogenesis and host genetics,no,no
+20511368,exclude,none,SNP assay for fluoroquinolone resistance mutations,no,no
+19741294,exclude,none,anti-Vi antibody response; immunology not diagnosis,no,no
+3001134,exclude,none,DNA probe development; molecular biology,no,no
+377856,exclude,none,non-eligible language,no,yes
+41156578,exclude,none,whole-genome sequencing; drug-resistance genes,no,no
+39606745,exclude,none,carrier gallstone genomics; carrier special population,no,no
+21914415,exclude,none,single case report; no denominator,no,no
+38913735,maybe,L3,surveillance cohort; culture-confirmed typhoid incidence and clustering,no,no
+26381602,exclude,none,nanoparticle PCR strain typing; molecular biology,no,no
+1609547,exclude,none,phase 1 vaccine; immunogenicity only,no,no
+26414023,exclude,none,impedance biosensor development; analytical detection,no,no
+462071,exclude,none,non-eligible language,no,yes
+14960797,exclude,none,AMR chloramphenicol susceptibility of isolates; no diagnostic positivity,no,no
+41839908,exclude,none,genomics and AMR characterization; no diagnostic content,no,no
+8784573,exclude,none,molecular strain typing of epidemic; no positivity,no,no
+34714686,exclude,none,vaccine Vi antibody immunogenicity only; no positivity,no,no
+9776392,exclude,none,outer membrane protein characterization; molecular biology,no,no
+25144185,exclude,none,host protein network pathogenesis; molecular biology,no,no
+127815,exclude,none,antibiotic treatment trial; no diagnostic positivity,no,no
+9848684,maybe,L1,PCR detection of S. typhi in blood; method,no,no
+25504040,exclude,none,genome evolution and pseudogenisation; pure genomics,no,no
+8994789,exclude,none,narrative review of MDR strains; no diagnostic content,no,no
+7681853,exclude,none,polysaccharide conjugate characterization; molecular immunochemistry,no,no
+614382,maybe,L1,bone marrow culture efficacy enteric fever; no abstract,no,no
+37845201,exclude,none,XDR outbreak importation risk modeling; no positivity,no,no
+40354029,exclude,none,single case report; genomics and AMR,no,no
+2916092,exclude,none,national surveillance epidemiology; no positivity or definition,no,no
+7105490,exclude,none,cellular and humoral immunity study; no diagnostic accuracy,no,no
+25880671,exclude,none,in vitro honey antibacterial activity study,no,no
+849559,exclude,none,outbreak treatment experience; no positivity or attack rate,no,no
+6725988,maybe,L3,foodborne typhoid outbreak 80 cases; source investigation,no,no
+23336199,exclude,none,incidence with AMR and PFGE typing; no positivity,no,no
+1582465,include,L3,institutional outbreak; attack rate 95 of 1965,no,no
+16269342,exclude,none,pili-binding peptide inhibitor; molecular biology,no,no
+34582469,exclude,none,XDR resistance genes; molecular AMR basis,no,no
+21085575,maybe,L3,hospital blood-culture-confirmed enteric fever burden study,no,no
+51141,exclude,none,antibiotic treatment RCT; no diagnostic positivity,no,no
+28606647,maybe,L1,multiplex PCR detects S. typhi in blood,no,no
+22535903,maybe,L2,clinical profile of 136 culture-proven enteric fever,no,no
+29616895,exclude,none,WGS ceftriaxone-resistance plasmid; molecular AMR,no,no
+28785823,maybe,L3,pediatric blood-culture isolation rate; AMR trends,no,no
+36284974,maybe,L3,30 suspected typhoid; 20 culture-positive; integron AMR,no,no
+3781607,maybe,L1,bone marrow culture diagnosis enteric fever; no abstract,no,no
+21924383,exclude,none,chronic carrier liver isolation; carriage study,no,no
+9698106,exclude,none,GroEL epitope mapping; molecular biology,no,no
+6968979,exclude,none,AMR susceptibility testing of isolates; no positivity,no,no
+33999000,exclude,none,morbidity and mortality of confirmed typhoid; no positivity,no,no
+8406706,exclude,none,MDR severity and treatment outcomes; not diagnostic features,no,no
+2504837,exclude,none,non-eligible language,no,yes
+2807550,exclude,none,vaccine strain construction; molecular biology,no,no
+29649855,exclude,none,bacterial ghost vaccine immunology in mice,no,no
+38281499,include,L3,phase 3 TCV trial; blood-culture-confirmed cases by arm,no,no
+32146451,exclude,none,ESBL and XDR AMR characterization; no positivity,no,no
+4602828,exclude,none,AMR of epidemic strains; R factors,no,no
+34111088,exclude,none,rapid ceftriaxone-resistance test; not typhoid diagnosis,no,no
+2598731,exclude,none,ofloxacin treatment trial; no diagnostic positivity,no,no
+33085725,exclude,none,gallbladder carriage genomics; carrier population,no,no
+7355351,maybe,L3,point-source typhoid outbreak 69 cases; epidemiologic profile,no,no
+25486292,include,L3,epidemic; 2570 confirmed and suspected case-patients,no,no
+40306520,maybe,L2,antigen aptasensor discriminates typhoid patients; preliminary clinical,no,no
+30452445,exclude,none,cost-effectiveness modeling of RDT; economic only,no,no
+18227598,maybe,L3,blood-culture yield 629 from 25953; ciprofloxacin resistance,no,no
