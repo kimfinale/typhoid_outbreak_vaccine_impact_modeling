@@ -62,6 +62,27 @@ Every primary-evidence study is labeled: **hospital-referred** (inpatient / tert
   unstratifiable, it is **kept in the overall summary + prevalence surface but excluded from the
   hospital-vs-community contrast**, with the reason recorded. No ad hoc adjudication later.
 
+### 4.1 Sampling-representativeness of the cultured subset (pre-committed) — the key positivity modifier
+
+Positivity is computed among the **cultured subset**, and `positivity / Se_BC` recovers the PPV of the
+*full* suspected definition **only if culturing was representative among suspected cases**. `Se_BC`
+corrects for the test *missing* true cases; it does **not** correct for *who was selected to be tested*.
+So every positivity observation is additionally labeled by how its cultured subset was chosen
+(extraction field `sampling_representativeness`, with the verbatim description recorded):
+
+- **reference tier — ALL suspected cultured:** positivity is the direct definition-level PPV × Se_BC.
+- **high — random / systematic (e.g., "every k-th case") / consecutive** sampling of suspected cases:
+  treated as representative.
+- **low — convenience / clinician-selected / sicker-first / failing-antimalarials / unreported:**
+  positivity is expected **biased upward** (tested subset enriched for true typhoid) and **cannot be
+  de-biased analytically**.
+
+Rules (pre-committed): (i) `sampling_representativeness` is an extracted variable and a **covariate/
+stratifier** in the positivity model; (ii) the **primary analysis restricts to reference + high tiers**,
+with low-tier studies added only in a sensitivity analysis (and reported separately) to show the
+direction/size of the selection bias; (iii) studies culturing **all** suspected are the reference-quality
+tier for the outbreak/community PPV. This mirrors Wiens 2023's sampling-quality (high/low) handling.
+
 ## 5. "Overall PPV" definition (pre-commit ONE — Wiens-style)
 
 **Overall = the pooled transportable ingredients (definition Se/Sp, positivity) with PPV always shown as a
@@ -131,12 +152,15 @@ state this downgrade as **pre-specified** (in `CLINICAL_LAYER_DECISION.md`).
   transportable-Se / local-PPV split.
 - **Recovery gate FIRST** (reuse `run_phase1_recovery.R` pattern): coverage/bias/convergence over
   replicates; respect PASS/FAIL.
-- **Positivity synthesis (spine):** per-setting `π`/`φ` with a study random effect; optional
-  **conditional-dependence** sensitivity (Wang–Lin–Nelson 2020; Dendukuri & Joseph 2001).
+- **Positivity synthesis (spine):** per-setting `π`/`φ` with a study random effect, adjusting for
+  Se_BC and including **`sampling_representativeness`** (§4.1) as a covariate; **primary fit restricted
+  to reference + high representativeness tiers.** Optional **conditional-dependence** sensitivity
+  (Wang–Lin–Nelson 2020; Dendukuri & Joseph 2001).
 - **Clinical Se/Sp:** bivariate (Reitsma 2005) / HSROC (Rutter & Gatsonis 2001) **iff K cleared**; else
   the fallback surface.
 - **PPV × prevalence × definition surface** (reuse `ppv_spectrum.R`) with empirical anchors overlaid.
-- **Sensitivity:** conditional dependence; Sp-prior relaxation; blood-volume sweep (3–10 mL); the
+- **Sensitivity:** add low-representativeness studies (quantify the upward selection bias vs the primary
+  reference+high fit); conditional dependence; Sp-prior relaxation; blood-volume sweep (3–10 mL); the
   endemic-Widal-specificity caveat for any serologic-tier PPV; overlap-swap.
 - Report divergences, max R-hat, min ESS; regenerate all figures from code.
 
