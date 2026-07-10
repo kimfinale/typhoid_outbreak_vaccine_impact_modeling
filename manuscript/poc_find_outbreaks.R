@@ -1,0 +1,6 @@
+setwd(Sys.getenv("RENEWAL_ROOT", "."))
+ts <- read.csv("data/Typhoid_Outbreak_Time_Series_2000_2022_Timeseries.csv", stringsAsFactors = FALSE)
+ids <- unique(trimws(ts[[1]]))
+cat("total outbreaks in tf dataset:", length(ids), "\n\n")
+cat("=== all tf outbreak study IDs ===\n")
+for (x in ids) cat("  ", x, "\n")

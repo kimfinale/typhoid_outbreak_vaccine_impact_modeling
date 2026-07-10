@@ -36,3 +36,5 @@ manuscript/data/batches/_*.csv
 manuscript/data/batches/_*.txt
 manuscript/data/ts_batches/
 manuscript/data/ts_recent_pool.csv
+manuscript/data/pdfs/
+manuscript/data/*.png
