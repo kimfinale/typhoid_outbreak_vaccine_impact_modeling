@@ -1,0 +1,101 @@
+# Assemble the self-contained catch-up HTML (embeds figures as base64).
+#   Rscript manuscript/build_summary_html.R <out.html>
+setwd(Sys.getenv("RENEWAL_ROOT", "."))
+out <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(out)) out <- "manuscript/summary.html"
+fig <- "manuscript/figures"
+b64 <- function(f) jsonlite::base64_enc(readBin(f, "raw", file.info(f)$size))
+img <- function(f, alt) sprintf('<img src="data:image/png;base64,%s" alt="%s">', b64(file.path(fig, f)), alt)
+
+par <- read.csv("latent_class_ppv/tables/final_parameters.csv", check.names = FALSE)
+gp <- function(nm) { r <- par[par$param == nm, ]; sprintf("%.2f <span class=ci>(%.2f–%.2f)</span>", r$med, r$`lo.5.`, r$`hi.95.`) }
+
+css <- '
+:root{--paper:#FBFAF7;--card:#FFFFFF;--ink:#1A1D1E;--muted:#5B6566;--line:#E6E2D9;
+--accent:#0E6E78;--accent-soft:#E1EEEF;--amber:#B85C1A;
+--serif:"Charter","Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;}
+@media (prefers-color-scheme:dark){:root{--paper:#14171A;--card:#1B1F22;--ink:#ECEEEA;--muted:#9AA6A7;
+--line:#2C3234;--accent:#54B7C2;--accent-soft:#16302F;--amber:#E0904E;}}
+:root[data-theme="light"]{--paper:#FBFAF7;--card:#FFFFFF;--ink:#1A1D1E;--muted:#5B6566;--line:#E6E2D9;
+--accent:#0E6E78;--accent-soft:#E1EEEF;--amber:#B85C1A;}
+:root[data-theme="dark"]{--paper:#14171A;--card:#1B1F22;--ink:#ECEEEA;--muted:#9AA6A7;
+--line:#2C3234;--accent:#54B7C2;--accent-soft:#16302F;--amber:#E0904E;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:56px 24px 80px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:600;font-size:2.5rem;line-height:1.1;margin:0 0 12px;text-wrap:balance}
+h2{font-family:var(--serif);font-weight:600;font-size:1.6rem;margin:0 0 6px;text-wrap:balance}
+.lede{font-size:1.12rem;color:var(--muted);max-width:64ch;margin:0 0 8px}
+.rail{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:32px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .n{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+section{margin-top:56px;border-top:1px solid var(--line);padding-top:36px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+figure{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;overflow:hidden}
+figure img{width:100%;height:auto;display:block;border-radius:8px}
+figcaption{font-size:.94rem;color:var(--muted);margin-top:12px;padding:0 4px}
+figcaption b{color:var(--ink);font-weight:600}
+.tbl-wrap{overflow-x:auto;margin:22px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+caption{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:8px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.ci{color:var(--muted);font-size:.86em}
+.note{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-top:20px;font-size:.94rem}
+.note b{color:var(--accent)}
+footer{margin-top:56px;border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:.85rem}
+code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:1px 6px;border-radius:5px}
+'
+
+html <- paste0('<div class="wrap">',
+'<p class="eyebrow">Typhoid · diagnostics + vaccine impact</p>',
+'<h1>PPV of the clinical case definition &amp; outbreak-response immunization</h1>',
+'<p class="lede">A results catch-up: Bayesian latent-class estimates of typhoid diagnostic accuracy and the positive predictive value (PPV) of clinical case definitions, propagated into a renewal-equation model of reactive vaccination impact.</p>',
+'<div class="rail">',
+'<div class="stat"><div class="n">0.52–0.68</div><div class="l">Blood-culture Se (2–10 mL)</div></div>',
+'<div class="stat"><div class="n">0.90</div><div class="l">Bone-marrow Se</div></div>',
+'<div class="stat"><div class="n">0.23–0.65</div><div class="l">Community PPV π</div></div>',
+'<div class="stat"><div class="n">~43%</div><div class="l">ORI true reduction (base)</div></div>',
+'<div class="stat"><div class="n">~4×</div><div class="l">Suspected overcount vs true</div></div>',
+'</div>',
+
+'<section><p class="kicker">Part 1</p><h2>PPV &amp; culture accuracy</h2>',
+'<p class="lede">Blood culture is insensitive and volume-dependent; bone marrow is the better (imperfect) reference. A paired latent-class model separates <em>transportable</em> test accuracy from <em>local</em> PPV.</p>',
+'<figure>', img("fig1a_culture_accuracy.png", "culture accuracy"),
+'<figcaption><b>Blood-culture sensitivity rises with cultured volume</b> (0.52 &rarr; 0.68 from 2 to 10 mL), well below bone-marrow sensitivity (~0.90); specificity is pinned near 1.0. Orange points are the model estimates at 2/5/10 mL with 90% CrIs; grey points are Antillón 2018 study-level observations.</figcaption></figure>',
+'<figure>', img("fig1b_ppv_by_setting.png", "ppv by setting"),
+'<figcaption><b>PPV is not a constant &mdash; it depends on setting.</b> Hospital-referred patients (φ, green) yield PPVs of 0.66–0.99; community/outbreak surveillance (π, purple) yields 0.23–0.65. The same clinical definition means very different things in different places.</figcaption></figure>',
+'<figure>', img("fig1c_ppv_spectrum.png", "ppv spectrum"),
+'<figcaption><b>PPV surface across case definitions and prevalence.</b> Syndromic definitions (bare fever, WHO suspected) cap specificity low, so their PPV stays modest except at high prevalence; adding serology or a prediction rule lifts PPV sharply.</figcaption></figure>',
+'<div class="tbl-wrap"><table><caption>Table 1 &mdash; Latent-class diagnostic accuracy (median, 90% CrI)</caption>',
+'<thead><tr><th>Parameter</th><th>Estimate</th></tr></thead><tbody>',
+'<tr><td>Blood-culture sensitivity @ 2 mL</td><td>', gp("Se_BC_2mL"), '</td></tr>',
+'<tr><td>Blood-culture sensitivity @ 5 mL</td><td>', gp("Se_BC_5mL"), '</td></tr>',
+'<tr><td>Blood-culture sensitivity @ 10 mL</td><td>', gp("Se_BC_10mL"), '</td></tr>',
+'<tr><td>Bone-marrow sensitivity</td><td>', gp("Se_BM"), '</td></tr>',
+'<tr><td>Blood-culture specificity</td><td>', gp("Sp_BC"), '</td></tr>',
+'<tr><td>Volume slope α<sub>1</sub> (logit per log-mL)</td><td>', gp("alpha1"), '</td></tr>',
+'</tbody></table></div></section>',
+
+'<section><p class="kicker">Part 2</p><h2>Outbreak-response immunization (ORI)</h2>',
+'<p class="lede">Outbreak surveillance counts <em>suspected</em> cases. Under an additive model <code>S(t) = I(t) + B(t)</code>, only the true typhoid signal I(t) responds to vaccination &mdash; the non-typhoid background B(t) does not.</p>',
+'<figure>', img("fig2a_suspected_vs_true.png", "suspected vs true"),
+'<figcaption><b>Observed suspected cases vs model-predicted true typhoid.</b> Grey is the suspected surveillance curve; red is the de-backgrounded true typhoid I(t). Where PPV is low (Kabwama, Aye: π≈ 0.23–0.26) most of the curve is non-typhoid background; where it is high (Neil: π = 0.65) most is true typhoid.</figcaption></figure>',
+'<figure>', img("fig2b_ori_impact_grid.png", "ori impact grid"),
+'<figcaption><b>Reactive vaccination impact is dominated by timing.</b> Pooled true-typhoid reduction falls from ~80% when protection arrives in week 1–2 to ~35% by week 12; higher coverage helps, but a late campaign at 90% still underperforms an early one at 65%.</figcaption></figure>',
+'<figure>', img("fig2c_cases_averted_grid.png", "cases averted"),
+'<figcaption><b>True typhoid cases averted</b> across the same timing × coverage grid, summed over the developing-country outbreak cohort.</figcaption></figure>',
+'<div class="note"><b>The surveillance-dilution result.</b> Because the vaccine acts only on true typhoid, the reduction a surveillance system <em>observes</em> in suspected counts is diluted by roughly π. A campaign that truly cuts typhoid 34% in Kampala (Kabwama, π=0.23) shows only an ~8% drop in suspected cases; in Kasese (Neil, π=0.65) a true 97% reads as 63%. Ignoring PPV overcounts averted cases nearly 4× (cohort: 8,498 suspected-naive vs 2,330 true typhoid).</div>',
+'</section>',
+
+'<footer>Latent-class PPV model (paired blood/bone-marrow culture; volume-anchored Se) &middot; renewal-equation ORI model with PPV posterior propagation (additive S=I+B regime). Estimates are advisory / proof-of-concept; the ORI cohort is the 13 resolution-eligible outbreaks from the 2000–2022 time-series dataset. Background B modeled constant &mdash; a data-derived B(t) is a one-function swap.</footer>',
+'</div>')
+
+writeLines(paste0("<style>", css, "</style>", html), out)
+cat("wrote", out, "(", round(file.info(out)$size/1024), "KB )\n")
