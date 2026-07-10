@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+21,Hechaichi 2023 (Tunisia),Tunisia,2016,community,187,NA,74,"suspected: >=1 of torpor/diarrhea/constipation/vomiting/abdominal pain; confirmed: S.Typhi isolation from blood/bone marrow/bowel fluid/stool; probable: epi-link to confirmed","selective_testing","Confirmed via multiple specimen types not only blood culture"

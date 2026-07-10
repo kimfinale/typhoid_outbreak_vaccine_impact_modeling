@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+19,"Bhunia 2009 (South Dumdum)",India,2007,population-surveillance,103,4,1,"Fever >=1 week (national syndromic definition), ward-1 resident","foodborne_pointsource|selective_testing|surveillance_program|small_lt20",

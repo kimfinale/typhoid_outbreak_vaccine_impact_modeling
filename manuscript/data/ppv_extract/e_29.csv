@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+29,Singla 2013 (subdivision India),India,2009,hospital-referred,NA,NA,18,BC+ S. Typhi in Ram Darbar residents (retrospective epi-link),confirmed_only|selective_testing|hospital_referred|small_lt20,27 total BC+ isolates in lab window; 18 epi-linked to outbreak area

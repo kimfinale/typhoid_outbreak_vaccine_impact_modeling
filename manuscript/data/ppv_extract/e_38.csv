@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+38,Hancuh 2023 (Kenya),Kenya,NA,population-surveillance,NA,NA,NA,NA,surveillance_program,"Kenya only in 44-country high-incidence list; no case counts reported"

@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+10,Kabwama 2017 (Kampala),Uganda,2015,population-surveillance,10230,364,56,"Suspected: fever>=37.5C >=3d + headache + abdominal pain + neg malaria test/failed antimalarial tx + >=2 of (diarrhea, nausea/vomiting, constipation, fatigue); Confirmed: blood culture yielding S. Typhi",selective_testing|surveillance_program,NA

@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+22,Mamo 2018 (Ofla Ethiopia),Ethiopia,2016,community,98,0,0,"suspected: gradual/steady fever, chills, malaise, headache, +/- abdominal pain/constipation/diarrhea; study 'confirmed'=Widal O>=1/160, not culture","selective_testing","No blood culture done; only 9/98 tested via Widal serology (antibiotics prevented culture)"

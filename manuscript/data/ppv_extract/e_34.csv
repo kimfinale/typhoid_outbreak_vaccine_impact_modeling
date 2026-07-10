@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+34,von Kalckreuth 2016 (TSAP),multi-country Africa,2011,population-surveillance,NA,NA,NA,"Fever: tympanic/axillary >=38.0C or >=37.5C (outpatients); or >=38.0C/>=37.5C or reported fever <=72h (inpatients)",surveillance_program,"Methods-only paper (13 sites/10 countries); no aggregate suspected/tested/confirmed counts given"

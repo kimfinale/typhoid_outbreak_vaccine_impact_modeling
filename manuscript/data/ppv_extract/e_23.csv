@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+23,"Michel 2005 (Cote d'Ivoire troops)","Cote d'Ivoire",2001,population-surveillance,24,6,5,"rectal temp >=38.5C + chill/headache/GI/neuro sx; confirmed=BC or seroconversion","foodborne_pointsource|selective_testing|surveillance_program",NA

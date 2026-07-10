@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+18,"Limpitikul 2014 (Songkhla)",Thailand,2009-2011,hospital-referred,NA,NA,368,"children <15y, blood-culture-confirmed S. Typhi (BD Phoenix system)",foodborne_pointsource|confirmed_only|hospital_referred,NA

@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+11,"N'Cho 2019 (Harare 2017-18)",Zimbabwe,2017-2018,hospital-referred,583,286,74,"Fever + >=1 of headache/malaise/abdominal pain/vomiting/diarrhea/cough/constipation; confirmed = Typhi from blood/stool/rectal swab culture","selective_testing|hospital_referred","Hospital cohort subset (Oct-Dec 2017); full outbreak had 3187 suspected/191 confirmed"

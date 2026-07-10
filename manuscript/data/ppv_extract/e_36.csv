@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+36,"Meiring 2021 (STRATAA)","multi-country",2016,"population-surveillance","12082","12082","624","Fever >=48-72h or temp >=38.0C, presenting to study facility in census area","surveillance_program","Overall 3-site total; confirmed=S Typhi only (excludes 108 S Paratyphi A, 16 Typhimurium)"

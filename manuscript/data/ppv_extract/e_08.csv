@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+08,Aye 2004 (Madaya Myanmar),Myanmar,2000,mixed-facility,49,22,3,"Suspected: fever>=7d + >=1 of constipation/abdominal pain/diarrhoea/bloody diarrhoea/malaena",selective_testing|surveillance_program|hospital_referred,"Culture done on 22/49 suspected (subset already diazo/widal positive); 3 culture-confirmed"

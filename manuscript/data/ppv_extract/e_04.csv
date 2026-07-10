@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+04,Thriemer 2012 (Pemba),Tanzania,2009,population-surveillance,3105,2209,46,"Fever (tympanic >=37.5C) at OPD or history of fever if admitted, age >2 months",surveillance_program;multi_hospital;low_malaria_area,"Three-hospital fever surveillance, Pemba Zanzibar, 2009-2010; S. Typhi leading isolate."

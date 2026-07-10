@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+39,"Voysey 2020 (under-detection)",Nepal,2017,mixed-facility,2392,1615,32,"fever >=2 days or current temp >=38C (trial eligibility, not WHO 3-day)","surveillance_program;trial_cohort;methodological;paratyphi_excluded_from_confirmed","Methodological paper: TyVAC-Nepal trial passive surveillance, imputation-adjusted under-detection, not outbreak"

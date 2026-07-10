@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+17,Srinivasan 2022 (Vellore children),India,2019,population-surveillance,NA,NA,51,"Fever >=3 days (cohort surveillance definition), blood-culture confirmed S. Typhi",surveillance_program|confirmed_only,"SEFI active cohort surveillance; only confirmed count (51) reported, no suspected/tested denominators"

@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+40,"Andrews 2018 (Nepal)",Nepal,2013,mixed-facility,4309,4309,87,">72-hour history of fever, acute febrile illness","surveillance_program","4 peri-urban/rural facilities; S. Typhi only, excludes 22 S. Paratyphi"

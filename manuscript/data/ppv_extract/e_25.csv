@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+25,Katz 2002 (Florida),USA,1998-1999,hospital-referred,17,16,15,"Confirmed=febrile illness (onset after 31 Oct 1998) + stool/blood/urine culture positive for S. Typhi by state central lab; probable=same but positive at any other lab","foodborne_pointsource|high_income_country|surveillance_program|hospital_referred|small_lt20",NA

@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+20,Brainard 2018 (DRC),Democratic Republic of the Congo,2011,population-surveillance,1430,NA,NA,"MOPH line-list: fever >=38C >3d + digestive disorder (diarrhea/constipation/abdominal pain) + negative malaria test; confirmed = S. Typhi isolated from blood/bone marrow/duodenal fluid",selective_testing|surveillance_program,"Only 50 blood/stool samples cultured of 1430 line-list cases; confirmed count not reported"

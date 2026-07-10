@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+28,Misra 2005 (India MDR),India,2000,hospital-referred,150,150,93,"Clinical enteric fever (fever >8d ± hepatosplenomegaly/abdominal pain/diarrhoea), incl. BC/Widal-negative","foodborne_pointsource|hospital_referred","Abstract states 92(63%) BC+; body text states 93(62%)/150; used body text value"

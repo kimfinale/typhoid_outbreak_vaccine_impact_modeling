@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+15,Muehlen 2007 (domestic outbreak),Germany,2004,community,6,6,4,"Suspected: fever>=38.5C >=3d since 1 May 2004; Probable: +positive serology (Widal/ELISA); Confirmed: S. Typhi from blood/stool culture",foodborne_pointsource|high_income_country|small_lt20,NA

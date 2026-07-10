@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+37,"Srikantiah 2006 (Egypt)",Egypt,2002,population-surveillance,1815,1815,90,"age >=1y, temp >38C, plus (fever >2d no cause OR clinical suspected typhoid)","surveillance_program;multi_tier_sampling","5-tier provider surveillance; 18% cultures contaminated"

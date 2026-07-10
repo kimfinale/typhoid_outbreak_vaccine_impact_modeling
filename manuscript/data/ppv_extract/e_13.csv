@@ -1,0 +1,2 @@
+idx,study,country,outbreak_year,setting,suspected,tested_bc,confirmed_bc,case_definition,flags,notes
+13,"Muti 2014 (Dzivaresekwa)",Zimbabwe,2011,population-surveillance,1078,NA,24,"fever >3 days with malaise, headache, vomiting, diarrhea/constipation, cough","surveillance_program|selective_testing","Confirmed cases from stool/urine/blood combined, not blood-culture-specific"
