@@ -83,6 +83,38 @@ with low-tier studies added only in a sensitivity analysis (and reported separat
 direction/size of the selection bias; (iii) studies culturing **all** suspected are the reference-quality
 tier for the outbreak/community PPV. This mirrors Wiens 2023's sampling-quality (high/low) handling.
 
+### 4.2 Case-definition classification (pre-committed) — the PPV-spectrum axis
+
+Suspected-case definitions are heterogeneous and non-standardized (Khaliq 2021), and their **breadth
+drives specificity and hence PPV** (broad C1/C2 vs serology-tier C5 differ by ~0.6 in specificity — see
+`latent_class_ppv/PPV_SPECTRUM.md`). Each study's clinical/suspected definition is classified into a
+pre-committed class **and** coded on discriminating features (verbatim wording recorded).
+
+**Primary class (syndromic-breadth spectrum, broad → strict):**
+- **C1 Bare fever** — fever alone (± duration), no required additional feature.
+- **C2 Fever + ≥1 typhoid symptom** — WHO-suspected style (fever ± duration + ≥1 GI/abdominal/systemic).
+- **C3 Fever + multiple required symptoms** — stricter syndromic (e.g., fever ≥3 d + headache +
+  abdominal pain + ≥2 GI).
+- **C4 Syndromic + malaria-exclusion** — C2/C3 plus negative malaria test and/or antimalarial
+  non-response (endemic-Africa tightening).
+- **C5 Probable (syndromic + serology)** — fever + a positive rapid serology (Widal/TUBEX/Typhidot).
+
+**Non-syndromic types (classified but handled SEPARATELY — not on the suspected-PPV spectrum):**
+- **D Perforation / surgical series** — cases defined by intestinal perforation/peritonitis (severity-
+  filtered, e.g., Muyembe); excluded from the suspected-definition PPV, reported separately.
+- **X Confirmed-only** — "cases" are culture-confirmed by construction (no suspected denominator for a
+  PPV, e.g., Qamar/Yousafzai XDR counts); contributes to the culture layer, not the suspected-PPV estimand.
+
+**Coded discriminating features (reproducible stringency proxy):** fever-duration threshold
+(none / ≥3 d / ≥7 d); number of required additional symptoms (0 / 1 / ≥2); malaria-exclusion (Y/N);
+serologic tier (Y/N); entry point (self-referral vs screened). These map each definition onto the
+PPV-surface specificity axis.
+
+**Use (pre-committed):** `definition_class` is a **stratifier/covariate** in the positivity/PPV model and
+the **primary axis of the PPV × prevalence surface**; positivity is **not pooled across classes** without
+accounting for class. Ambiguous/unclassifiable definitions are flagged for human adjudication
+(`data/EXTRACTION_FLAGS.md`), not silently binned.
+
 ## 5. "Overall PPV" definition (pre-commit ONE — Wiens-style)
 
 **Overall = the pooled transportable ingredients (definition Se/Sp, positivity) with PPV always shown as a
@@ -153,9 +185,10 @@ state this downgrade as **pre-specified** (in `CLINICAL_LAYER_DECISION.md`).
 - **Recovery gate FIRST** (reuse `run_phase1_recovery.R` pattern): coverage/bias/convergence over
   replicates; respect PASS/FAIL.
 - **Positivity synthesis (spine):** per-setting `π`/`φ` with a study random effect, adjusting for
-  Se_BC and including **`sampling_representativeness`** (§4.1) as a covariate; **primary fit restricted
-  to reference + high representativeness tiers.** Optional **conditional-dependence** sensitivity
-  (Wang–Lin–Nelson 2020; Dendukuri & Joseph 2001).
+  Se_BC and including **`definition_class`** (§4.2) and **`sampling_representativeness`** (§4.1) as
+  covariates; positivity is **not pooled across definition classes** without accounting for class;
+  **primary fit restricted to reference + high representativeness tiers.** Optional
+  **conditional-dependence** sensitivity (Wang–Lin–Nelson 2020; Dendukuri & Joseph 2001).
 - **Clinical Se/Sp:** bivariate (Reitsma 2005) / HSROC (Rutter & Gatsonis 2001) **iff K cleared**; else
   the fallback surface.
 - **PPV × prevalence × definition surface** (reuse `ppv_spectrum.R`) with empirical anchors overlaid.
