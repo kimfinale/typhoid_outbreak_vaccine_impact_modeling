@@ -1,0 +1,6 @@
+"site","Npop","endemic_inc","recur","mean_ob_true","outbreak_averted","inc_source","lt_total","lt_endemic","lt_recur","ratio_lt_vs_outbreak"
+"Kampala (Kabwama)",5e+05,150,0.2,1000,2058,"GBD-approx Uganda",5372.26460607508,4611.52634003212,760.738266042966,2.6
+"Harare (Poncin campaign)",373027,50,1,1300,1300,"recurrence-dominated (Poncin: annual since 2010)",6091.61461997472,1146.81589069544,4944.79872927928,4.7
+"Vellore (SEFI)",150000,1977,0,0,80,"SEFI 1977/100k (measured)",18233.975148487,18233.975148487,0,227.9
+"Fiji Northern (Scobie)",130000,42,0.2,200,300,"Scobie 33-52/100k (measured)",487.866770762931,335.719117554338,152.147653208593,1.6
+"Songkhla (Limpitikul)",120000,1.8,0.1,300,400,"Limpitikul 1.8/100k (measured)",127.391935765737,13.2811958592925,114.110739906445,0.3
