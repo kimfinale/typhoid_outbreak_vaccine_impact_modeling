@@ -1,2 +1,2 @@
 idx,study,region,background_incidence,outbreak_frequency,endemicity,seasonality,notes
-16,Poncin 2018,"Lusaka, Zambia",NA,NA,NA,NA,"Paper is about CHOLERA (Vibrio cholerae), not typhoid; no typhoid content in text. All fields NA."
+16,Poncin 2022 (Harare 2019 TCV campaign),"Harare, Zimbabwe (9 high-density suburbs)",NA,"seasonal outbreaks ANNUALLY since 2010 (documented 2012, 2016-17, 2017-18); pre-campaign Oct2017-Jun2018 >4300 cases; Aug2018-Feb2019 1967 cases (75% in targeted suburbs)","annual rainy-season epidemics","rainy season Oct-Apr","CORRECTED via web (PMC9379662): TCV outbreak-response campaign Feb-Mar2019, 373027 targeted, 85.4% coverage (72.4% under-5, 97.1% 5-15y); NO long-term impact follow-up. Zotero file was a cholera paper"

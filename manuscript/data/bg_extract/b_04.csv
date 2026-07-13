@@ -1,2 +1,2 @@
 idx,study,region,background_incidence,outbreak_frequency,endemicity,seasonality,notes
-04,Davis 2018,"Harare, Zimbabwe",NA,NA,NA,NA,"MISFILED: PDF is N'cho 2019 Oct2017-Feb2018 Harare outbreak report, not the cited Davis 2018 Oct2016-Mar2017 paper (ref 2 here)."
+04,Davis 2018 (Harare 2016-17),"Harare, Zimbabwe",NA,"Oct2016-Mar2017 outbreak 860 cases (780 suspected/80 confirmed/4 deaths); part of recurrent annual Harare series","epidemic-prone urban; recurrent","rainy season Oct-Apr","CORRECTED via web (MMWR mm6711a7, PMC5868204, PMID 29565843); Zotero file was misfiled as N'Cho 2019"
