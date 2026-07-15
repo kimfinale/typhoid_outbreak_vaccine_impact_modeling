@@ -52,14 +52,37 @@ paired 2×2 identifies blood-culture sensitivity without a gold standard (S5).
 | Guerra-Caceres 1979 | Lima, Peru | 5 | 26 | 0 | 31 | 3 | 60 |
 | Vallenas 1985 | Lima, Peru | 3 | 9 | 10 | 24 | ⚑ 15 | 58 |
 
-**Data-quality flags that must be reported, not buried:**
+All counts are transcribed from **Mogasale et al. (2016) Table 3**; the primary papers were
+not re-read. Verification against that table (2026-07) resolved one flag and sharpened two.
 
-- **Hirsowitz 1951** reports no blood volume; imputed at the sample median (3 mL).
-- **Gasem 1995** cultured 3 *and* 10 mL; **Wain 2008** cultured 5 *and* 15 mL. Each enters
-  once, at the lower volume. Because these studies span the volume range that identifies
-  the volume slope, this choice is not innocuous (S8).
-- **Vallenas 1985**: extraction returned `d = 0`, but `a+b+c = 43` against 58 tested implies
-  `d = 15`. **The imputed value is used and remains unverified against the source.** ⚑
+**Vallenas 1985 — `d = 15` is correct; Mogasale's printed `d = 0` is a typo in the source.**
+Provable from their own arithmetic: (i) every other study's cells sum exactly to its
+"tested by both" N, while Vallenas gives 9+10+24+0 = 43 against 58 tested; (ii) their totals
+row prints Σd = 91, but they report 635 tested and 529 detected (= Σ(a+b+c)), requiring
+Σd = 106; (iii) 106 − 91 = 15, exactly the Vallenas shortfall. The error is invisible in
+their analysis because `ProCase_BC = (a+b)/(a+b+c)` never uses `d` — but `d` identifies **φ**
+here, so it matters to us. Primary source for a belt-and-braces check: *Pediatr Infect Dis*
+1985;4:496–8.
+
+**Gasem 1995 (B: "3 and 10 ml") and Wain 2008 (B: "5 and 15 ml") — cells are pooled across
+both volumes in the source and cannot be split without the primary papers.** Each currently
+enters at the *lower* volume. **This biases α₁ downward with a known sign:** both studies
+have among the highest raw sensitivities in the set (0.65, 0.78), so attributing high
+sensitivity to low volume flattens the slope. Mogasale note that Wain's 15 mL arm reached
+sensitivity "comparable to that of the bone marrow culture". Primaries: *Trop Geogr Med*
+1995;47:164–7; *J Infect Dev Ctries* 2008;2:469–74.
+
+**Hirsowitz 1951** — volume recorded as "NP" (not presented) in the source; imputed at the
+sample median (3 mL). The primary is a one-page report (*BMJ* 1951;1:862) and may never
+state it.
+
+**⚑ Culture media is an unmodelled confounder, plausibly larger than the volume effect.**
+Mogasale report Luria-Bertani broth recovering 44/54 (0.81) against Difco Oxgall/Selenite F
+19/43 (0.44) — a wider spread than our entire fitted volume range (0.52 → 0.68). Those are
+Gasem 2002 (LB, 9 mL; our highest-sensitivity study) and Vallenas (oxgall, 3 mL; among our
+lowest). **Volume and media are confounded across these ten studies, and α₁ may be partly
+capturing a media effect.** With 10 studies both cannot be separated; this should be stated
+as a limitation rather than modelled.
 
 ### S2.2 Community and surveillance positivity (local PPV)
 
@@ -228,9 +251,19 @@ ESS = 1756.** (`fit_diagnostics.csv`)
 | τ (heterogeneity) | 0.484 | 0.247 – 0.861 |
 
 Blood culture at a routine 5 mL draw detects **≈ 62%** of true typhoid; bone marrow ≈ 90%.
-α₁ excludes zero: sensitivity rises with volume, ≈ 0.52 → 0.68 from 2 to 10 mL. Se_BC @5 mL
-(0.617) is concordant with Mogasale et al.'s pooled 0.61 (95% CI 0.52–0.70), an external
-check the model was not fitted to reproduce.
+α₁ excludes zero: sensitivity rises with volume, ≈ 0.52 → 0.68 from 2 to 10 mL.
+
+**Coherence with the source review.** Mogasale et al. analyse these same ten studies with a
+*composite reference* (positive on blood **or** bone marrow), obtaining `ProCase_BC` = 0.61
+(95% CI 0.52–0.70) and `ProCase_BMC` = 0.96 (0.93–0.99). This is **not** external validation
+— it is the same data under a different estimator — and the informative contrast is
+`ProCase_BMC` **0.96 vs our Se_BM 0.90**. A composite reference misses cases positive on
+neither test and therefore *overstates* both sensitivities, as Mogasale concede
+("the composite reference standard may have still missed some typhoid fever cases … the
+proportion of S. Typhi detected could be an overestimation"). The latent-class model, which
+estimates against latent true status rather than a composite, corrects downward — in the
+predicted direction and by a plausible magnitude. That agreement of *sign and size* is the
+check; numerical similarity of 0.61 and 0.617 is not, and the two are different estimands.
 
 ### S7.2 PPV by ascertainment (local)
 
@@ -314,10 +347,15 @@ are materially unchanged.**
    culture technique, prior antibiotic use, and bacterial load may differ.
 4. **Prior antimicrobial use is not modelled** and plausibly lowers Se_BC in outbreak
    settings — which would bias π *downward*, making the reported PPVs conservative.
-5. **Conditional independence** of blood and bone marrow given true status is assumed. If
-   the tests are positively correlated (both fail in low-bacteraemia patients), Se_BC is
-   overstated and π understated.
-6. **One imputed cell** (Vallenas 1985 `d = 15`) remains unverified. ⚑
+5. **Conditional independence** of blood and bone marrow given true status is assumed, and
+   **the source review explicitly warns it may fail** — Mogasale note that bone marrow "might
+   have been collected in a later stage … or after antibiotic prescription", and that
+   "those who were tested negative for blood culture might have been sampled for bone marrow,
+   which would create a blood culture sensitivity underestimation bias." If sampling was
+   conditional on the blood result, the paired 2×2 is not a random draw and both Se_BC and
+   φ are biased. This is the model's least testable assumption.
+6. **Volume is confounded with culture media and era** (S2.1); α₁ is not a clean volume
+   effect.
 7. **The strata contrast is confounded with geography and era**: outbreak studies are
    African/Asian community responses; surveillance studies are largely Asian programmes.
    The OR should be read as outbreak-vs-surveillance *ascertainment*, not as a clean
