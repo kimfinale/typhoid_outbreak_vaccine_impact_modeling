@@ -20,11 +20,15 @@ C:\Users\jonghoon.kim\Zotero\storage\<8-CHAR-KEY>\<Author> - <Year> - <Title…>
   (Walters / Polonsky / Imanishi each cover two outbreaks).
 
 **Caveats when using the Zotero PDFs:**
-- **Verify the content matches the filename** — misfilings happen, but the library is now
-  clean as of 2026-07-16. Previously-flagged items are all **resolved**: Davis 2018 was
-  corrected by JK; **Poncin is two separate, correctly-linked papers** (one cholera, one
-  typhoid — not a misfiling); Valenciano 2000 was corrected. Confirm title/topic on open,
-  but do not assume these three are still bad.
+- **Verify the content matches the filename** — always, on open. Status as of 2026-07-16:
+  Davis 2018 **fixed** by JK; **Poncin is two separate, correctly-linked papers** (cholera +
+  typhoid — never a misfiling). But **Valenciano 2000 is STILL WRONG in both copies**
+  (`JEMF2WZ7`, `AW7IPIVI`): both contain Borgdorff 2001 on *M. tuberculosis*. **The cause is
+  publisher-side, so re-downloading cannot fix it** — Valenciano is *Am J Epidemiol*
+  **152**(10):934–9 and Borgdorff is **154**(10):934–43 (same journal, same issue, same start
+  page, different volume), and OUP's URL `academic.oup.com/aje/article/152/10/934/55560`
+  serves the Borgdorff PDF. Two independent downloads (UQ 2015, IVI 2024) are identically
+  wrong. Obtain by DOI or print/scan.
 - Filenames also state location only loosely — confirm against the paper. Known fix:
   **Neil 2012 is Kasese, Uganda** (intestinal-perforation epidemic), not DRC.
 - **Counts need the specimen checked, not just the number.** Neil 2012 is **19/54 blood
