@@ -21,14 +21,15 @@ C:\Users\jonghoon.kim\Zotero\storage\<8-CHAR-KEY>\<Author> - <Year> - <Title…>
 
 **Caveats when using the Zotero PDFs:**
 - **Verify the content matches the filename** — always, on open. Status as of 2026-07-16:
-  Davis 2018 **fixed** by JK; **Poncin is two separate, correctly-linked papers** (cholera +
-  typhoid — never a misfiling). But **Valenciano 2000 is STILL WRONG in both copies**
-  (`JEMF2WZ7`, `AW7IPIVI`): both contain Borgdorff 2001 on *M. tuberculosis*. **The cause is
-  publisher-side, so re-downloading cannot fix it** — Valenciano is *Am J Epidemiol*
-  **152**(10):934–9 and Borgdorff is **154**(10):934–43 (same journal, same issue, same start
-  page, different volume), and OUP's URL `academic.oup.com/aje/article/152/10/934/55560`
-  serves the Borgdorff PDF. Two independent downloads (UQ 2015, IVI 2024) are identically
-  wrong. Obtain by DOI or print/scan.
+  Davis 2018 **fixed**; **Poncin is two separate, correctly-linked papers** (cholera + typhoid
+  — never a misfiling); **Valenciano 2000 fixed — use `ED36QT97`** (verified: AJE 152(10):934–9,
+  floating restaurant, Seine). **Do NOT use `JEMF2WZ7` or `AW7IPIVI`** — both still contain
+  Borgdorff 2001 on *M. tuberculosis* and should be deleted. The cause was publisher-side:
+  Valenciano is AJE **152**(10):934–9, Borgdorff is **154**(10):934–43 (same journal, issue and
+  start page, different volume), and OUP's URL `academic.oup.com/aje/article/152/10/934/55560`
+  serves the Borgdorff PDF — so two independent downloads a decade apart were identically wrong.
+  A working copy exists, so this class of error is recoverable, but **never trust a same-journal
+  same-page PDF without opening it**.
 - Filenames also state location only loosely — confirm against the paper. Known fix:
   **Neil 2012 is Kasese, Uganda** (intestinal-perforation epidemic), not DRC.
 - **Counts need the specimen checked, not just the number.** Neil 2012 is **19/54 blood
