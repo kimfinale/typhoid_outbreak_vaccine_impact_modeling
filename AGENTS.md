@@ -121,7 +121,11 @@ supplement under `papers/`.
 Always confirm the title, population, location, specimen type, numerator, and denominator inside
 the paper. Do not trust filenames alone. Known traps:
 
-- `storage/U68ZE8ZZ/Davis et al. - 2018 ...Typhoid...Harare.pdf` is actually a yellow-fever paper.
+- Davis 2018 vs N'Cho 2019 (verified 2026-07-17): the correct MMWR copies are `EDH27L72` (Davis
+  2018, Harare 2016-2017) and `RAYYTM4G` (N'Cho 2019, Harare 2017-2018). `CTL54YK3`, labelled
+  "Davis 2018", actually contains the N'Cho 2019 paper, and `U68ZE8ZZ` is a yellow-fever paper.
+  Never cite `CTL54YK3` or `U68ZE8ZZ` as Davis; do not trust a Davis/N'Cho filename without opening
+  the PDF.
 - Neil 2012 concerns Kasese, Uganda, not the Democratic Republic of the Congo.
 - Distinguish blood-culture counts from stool, bone-marrow, serology, TUBEX, or unlabeled cultures.
 - Record whether counts refer to specimens, tested patients, unique confirmed patients, or all
@@ -150,9 +154,11 @@ as positive/tested. The corrected PPV anchors are:
 - Neil 2012: `tested = 54`, `confirmed = 19`; positivity is **19/54**, not 25/63.
 - Kabwama 2017: `tested = 364`, `confirmed = 56`; positivity is **56/364**, not 51/364.
 
-The active stage-1 PPV input is
-`latent_class_ppv/data/community_surveillance_ppv.csv`. Do not infer that a saved posterior is
-current merely because the CSV is correct; compare timestamps or regenerate the fit.
+The active stage-1 PPV model input is
+`latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv` (community layer);
+`latent_class_ppv/data/community_surveillance_ppv.csv` now supplies blood volumes to the audit
+build. Do not infer that a saved posterior is current merely because the CSV is correct; compare
+timestamps or regenerate the fit.
 
 ## Scientific interpretation rules
 

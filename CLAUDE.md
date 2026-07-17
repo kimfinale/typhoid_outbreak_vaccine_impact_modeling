@@ -224,7 +224,8 @@ These are the errors that actually recur in this project:
   selection, geography, era, and lab practice all differ.
 - **Match interval labels to computation.** Stage 1 commonly reports 90% CrIs; the current stage-2
   runner uses 2.5th/97.5th percentiles, i.e. 95% CrIs.
-- Active stage-1 PPV input: `latent_class_ppv/data/community_surveillance_ppv.csv`.
+- Active stage-1 PPV model input: `latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv`
+  (community layer); `community_surveillance_ppv.csv` now supplies blood volumes to the audit build.
 - For load-bearing claims, check the primary paper even when an extracted table exists. If a cell is
   **reconstructed** rather than reported, label it so and document the arithmetic and uncertainty.
 
