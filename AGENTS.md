@@ -36,6 +36,9 @@ disrupt uncommitted work; report the condition and ask the user how to proceed.
 ### During editing
 
 - Work on one task only and make minimal, focused changes.
+- During ongoing commands, analyses, or renders, post a brief user-facing progress update at least
+  once every 60 seconds so that the user can tell the task is still active. Report the current
+  stage, consequential findings, or what is still running; do not send empty status messages.
 - Modify only the files named in the pre-edit scope unless a newly discovered dependency is required;
   explain any scope expansion before making it.
 - Preserve existing style and avoid formatting-only rewrites.
