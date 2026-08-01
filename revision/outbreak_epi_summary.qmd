@@ -1,0 +1,51 @@
+---
+title: "Table 1. Epidemiologic features and transmission classification of the modeled typhoid outbreaks"
+format:
+  docx:
+    toc: false
+    reference-doc: _landscape_ref.docx
+execute:
+  echo: false
+  warning: false
+---
+
+```{r}
+d <- read.csv("outbreak_epi_summary.csv", check.names = FALSE, stringsAsFactors = FALSE)
+sym <- function(x) c("–", "◐", "●")[x + 1]   # 0 none / 1 contributory / 2 primary
+t1 <- data.frame(
+  `Outbreak` = d$outbreak,
+  `Location, country` = paste0(d$location, ", ", d$country),
+  `Period` = d$period,
+  `Suspected` = d$suspected,
+  `BC confirmed` = d$bc_confirmed,
+  `Vehicle / source` = d$vehicle,
+  `Point-source` = sym(d$pt_source),
+  `Environmental (water)` = sym(d$env_water),
+  `Person-to-person` = sym(d$p2p),
+  `theta (mode)` = sprintf("%.2f (%s)", d$theta_cs, d$mode),
+  `Resolution` = d$resolution,
+  `Model` = d$model,
+  `Independence group` = d$indep_group,
+  check.names = FALSE)
+knitr::kable(t1)
+```
+
+**Route indicators:** ● primary/strong · ◐ contributory · – not evidenced.
+**θ** = inferred common-source fraction (source-decomposition); 1 − θ = propagated (person-to-person).
+**Model:** resolution-eligible outbreaks use one additive renewal-with-source recursion;
+θ allocates baseline true typhoid between source and propagated components rather than weighting
+completed static and renewal outcomes. Monthly/fortnightly resolution → static only (renewal
+$R_t$ is unidentifiable below μ_g/Δ ≈ 2).
+**Independence:** 19 reported series correspond to **~12 independent epidemics**; the Kasese-Uganda
+(Neil + Walters ×2), Harare 2011–12 (Polonsky ×2 + Muti + Imanishi ×2) and Hyderabad-XDR
+(Qamar + Yousafzai) groups each collapse multiple reports of one epidemic, and Muyembe-Tamfum 2009
+is excluded from incidence modeling as a delayed intestinal-perforation (complications) series.
+
+\newpage
+
+## Table 1b. Classifying evidence (per outbreak)
+
+```{r}
+t2 <- data.frame(Outbreak = d$outbreak, `Classifying evidence` = d$evidence, check.names = FALSE)
+knitr::kable(t2)
+```

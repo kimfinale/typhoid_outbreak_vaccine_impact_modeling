@@ -66,7 +66,8 @@ run_scenarios <- function(prep, cfg, amr_props,
   w <- gi_from_config(cfg, mean_days = gi_mean_days)
   params <- build_param_sets(cfg)
   ndraw <- nrow(params)
-  # PPV (pi) draws per (study, draw); additive regime de-backgrounds the curve.
+  # PPV (pi) draws per (study, draw); the additive OBSERVATION regime allocates
+  # suspected incidence into true typhoid plus a fixed other-febrile residual.
   pim <- if (!is.null(pi_post))
     build_pi_matrix(pi_post, names(prep$series), ndraw, seed = cfg$seed + 777L) else NULL
   additive <- !is.null(pim) && identical(ppv_regime, "additive")
@@ -103,7 +104,7 @@ run_scenarios <- function(prep, cfg, amr_props,
       te <- t_eff_weeks(tau, params$immuno_delay[i], params$campaign_duration[i], cfg$step_days)
       te_int <- max(round(te), 1L); occurred <- te <= tail_guard
 
-      # ADDITIVE regime models TRUE typhoid I(t)=S(t)-B(t); else models suspected S(t).
+      # ADDITIVE observation regime models TRUE typhoid T(t) from S(t)=T(t)+F(t).
       pi_i    <- if (!is.null(pim)) pim[i, sid] else NA_real_
       inc_i   <- if (additive) ppv_true_incidence(inc, pi_i) else inc
       s_tot_i <- if (additive) sum(inc_i) else m$tot_cases

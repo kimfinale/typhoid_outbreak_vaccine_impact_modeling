@@ -41,8 +41,10 @@ prior reduce but do not remove this; only the *ordinal* contrast survives.
    spatial clustering, secondary attack, remediation) in `source_decomposition/` Stream A
    identifies the mode that curve shape cannot.
 2. Use this model, if at all, as an **ordinal** cross-check (the rank of theta), not for
-   theta point estimates or the impact bracket. The static<->renewal bracket should use the
-   article theta bands (as in `source_decomposition/`), with theta treated as a range.
+   theta point estimates. In the primary impact analysis, article-informed theta ranges allocate
+   source and propagated incidence inside the additive renewal recursion
+   (`source_decomposition/`). The former post hoc static-versus-renewal weighting is retained only
+   as a structural comparator.
 3. A fundamentally different design — a fully latent-infection state-space model that does
    not condition Lambda on observed incidence — *might* improve level identification but is a
    much larger build with its own priors-do-the-work risks; not pursued here.

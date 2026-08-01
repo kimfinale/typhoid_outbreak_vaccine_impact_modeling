@@ -1,8 +1,9 @@
 # =============================================================================
-# Config for the transmission-mode classification & source decomposition.
-# Classify each outbreak common-source (static correct) vs propagated (renewal
-# correct) vs mixed, assign a source fraction theta, and run the static<->renewal
-# bracket at theta. Reuses the renewal/static/DALY engines.
+# Transmission-mode classification and additive renewal-with-source analysis.
+# The primary counterfactual adds exogenous/source and propagated true-typhoid
+# incidence inside one renewal recursion. Theta is a structural source fraction,
+# not a weight applied to completed static and renewal outcomes. The historical
+# theta-weighted calculation is retained only as a paired comparator.
 # =============================================================================
 
 seed: 123
@@ -13,19 +14,21 @@ paths:
   figures: "source_decomposition/figures"
   outputs: "source_decomposition/outputs"
 
-# Incubation-period distribution for the common-source (Stream B) fit.
-# Typhoid incubation ~10-14 d (BMC Infect Dis 2018 subgroup means 9.7-21.2 d).
+# Incubation-period distribution for the observed-curve common-source diagnostic.
+# This diagnostic is suggestive only and does not identify the source fraction.
 incubation:
   mean_days: 12
   sd_days: 6
-  mean_days_range: [10, 14]      # for the theta_data interval
+  mean_days_range: [10, 14]
 
-# Base vaccination scenario for the decomposition bracket.
+# Base vaccination scenario for the additive-versus-weighted comparison.
 scenario:
   tau_weeks: 8
   coverage: 0.80
 
-# theta range by classified mode (source fraction; 1 = pure common-source).
+# Descriptive ranges by paper-classified mode. Curated per-outbreak ranges in
+# stream_A_classification.csv are primary; curve diagnostics may widen them but
+# do not move the paper-derived point value.
 theta_by_mode:
   A_common_source: [0.7, 1.0]
   C_mixed:         [0.3, 0.7]

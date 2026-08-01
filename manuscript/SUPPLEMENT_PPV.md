@@ -376,20 +376,32 @@ The multiplicative alternative (`I(t) = π·S(t)`) is rejected: it assumes non-t
 scales with the outbreak, whereas background fever is precisely what does *not* respond to
 a typhoid epidemic. Implementation: `renewal/R/ppv.R::ppv_true_incidence`.
 
+At a second additive level, true typhoid is separated into background/common-source and
+propagated incidence:
+
+```
+I(t) = X(t) + P(t)
+P(t) = R_P(t) * sum_s w(s) I(t-s)
+```
+
+Vaccination reduces both `X(t)` and `P(t)` directly, and averted propagated cases also
+reduce subsequent infectiousness. The structural source fraction θ allocates baseline
+incidence inside this recursion. It no longer weights two completed outcomes; the earlier
+`θ·static + (1−θ)·renewal` calculation is retained only as a historical comparator.
+
 Consequences, verified in the pipeline:
 
 - Case counts scale with π; **deaths do not** (deaths are observed, not derived), so YLD
   scales with π while YLL is π-invariant.
-- The **percentage reduction is π-invariant** where numerator and denominator both scale —
-  which is why the headline effectiveness result is robust to PPV, while absolute burden is
-  not.
-
-⚑ **Recommended change.** `renewal/R/ppv.R` currently constructs the π hyper-distribution
-ad hoc: it takes logit-normal moments across the three anchor medians. Stage 2 already
-produces `π_new_out` — the model's own posterior predictive for an unobserved outbreak,
-which is exactly the estimand required, and which propagates gradient and heterogeneity
-uncertainty properly (0.338, 90% CrI 0.063–0.806) rather than through moments of three
-point estimates.
+- Under the primary additive observation model, the other-febrile denominator is fixed, so
+  PPV need not cancel from percentage reductions. π-invariance applies only to the
+  multiplicative sensitivity model.
+- In paired base-case simulations, the additive source-plus-propagated model reduced true
+  typhoid by 25.6%, versus 25.9% under the historical θ-weighted calculation; the paired
+  difference was −0.5 percentage points (95% simulation interval −2.4 to 0.7).
+- `renewal/R/ppv.R` now uses fitted `mu_pi` and `sigma_pi` draws to generate the model's
+  posterior predictive PPV for unanchored outbreaks; the earlier ad hoc moment construction
+  is no longer used.
 
 ## Open items
 
@@ -400,6 +412,6 @@ point estimates.
 | 3 | Restate exclusion rule as `positivity ≥ Se_BC` | S2.2 |
 | 4 | Fix/delete stale `stratum` column (misassigns Voysey) | S2.3 |
 | 5 | Run α₁ prior-sensitivity refit | S8 |
-| 6 | Switch `ppv.R` to `π_new_out` | S10 |
+| 6 | ~~Switch `ppv.R` to fitted posterior-predictive PPV~~ — completed | S10 |
 | 7 | State Lewis 2005 exclusion in the paper | S2.2 |
 | 8 | Add `(1−π)(1−Sp)` to stage 2, or report the ≈6.9 OR as a sensitivity | S8 |

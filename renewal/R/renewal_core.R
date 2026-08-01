@@ -88,6 +88,92 @@ renewal_counterfactual <- function(incidence, w, tau, t_eff, pi, psi_T,
   list(incidence_v = vax, Rt = Rt, Rt_vax = Rt_vax, c_t = c_t)
 }
 
+# --- ADDITIVE renewal-with-source counterfactual -----------------------------
+# This is the transmission-level additive model. Observed TRUE-typhoid incidence
+# T_t is decomposed INSIDE the renewal equation as
+#
+#   T_t = X_t + P_t,
+#   P_t = R_t^P * sum_s w_s T_{t-s},
+#
+# where X_t is exogenous/background-source typhoid and P_t is propagated
+# transmission. `source_fraction` (theta) partitions renewal-identifiable
+# incidence: X_t=theta*T_t and P_t=(1-theta)*T_t when Lambda_t>0. If Lambda_t=0,
+# a positive T_t cannot have arisen through the renewal term, so it is treated as
+# an exogenous seed (X_t=T_t, P_t=0). This seed rule preserves the observed
+# baseline exactly, including after gaps in incidence.
+#
+# Under vaccination q_t = 1-c(t)*coverage*psi_T. Direct protection acts on both
+# acquisition routes, X_t^v=q_t*X_t and
+# P_t^v=q_t*R_t^P*sum_s w_s*T_{t-s}^v. Only P_t feeds back recursively, while all
+# true cases (whatever their source) contribute to later infectiousness.
+additive_source_counterfactual <- function(
+    incidence, w, tau, t_eff, coverage, psi_T, source_fraction,
+    c_shape = c("step", "ramp")) {
+  c_shape <- match.arg(c_shape)
+  incidence <- as.numeric(incidence)
+  Tn <- length(incidence)
+  if (!Tn || any(!is.finite(incidence)) || any(incidence < 0))
+    stop("incidence must be a non-negative finite vector")
+  if (!is.numeric(source_fraction) ||
+      !(length(source_fraction) %in% c(1L, Tn)))
+    stop("source_fraction must be a scalar or have one value per incidence interval")
+  theta_t <- rep(as.numeric(source_fraction), length.out = Tn)
+  if (any(!is.finite(theta_t)) || any(theta_t < 0 | theta_t > 1))
+    stop("source_fraction must lie in [0,1]")
+  if (!is.finite(coverage) || !is.finite(psi_T) ||
+      coverage < 0 || coverage > 1 || psi_T < 0 || psi_T > 1)
+    stop("coverage and psi_T must lie in [0,1]")
+
+  lambda_obs <- total_infectiousness(incidence, w)
+  identifiable <- lambda_obs > 0
+  source_obs <- ifelse(identifiable, theta_t * incidence, incidence)
+  propagated_obs <- incidence - source_obs
+  Rt_prop <- ifelse(identifiable, propagated_obs / lambda_obs, NA_real_)
+
+  c_t <- protected_fraction(Tn, tau, t_eff, c_shape)
+  q_t <- 1 - c_t * coverage * psi_T
+  source_v <- source_obs
+  propagated_v <- propagated_obs
+  incidence_v <- incidence
+  K <- length(w)
+
+  for (t in seq_len(Tn)) {
+    if (c_t[t] <= 0) next
+    source_v[t] <- q_t[t] * source_obs[t]
+    if (identifiable[t]) {
+      s_max <- min(K, t - 1L)
+      lambda_v <- if (s_max >= 1L)
+        sum(w[1:s_max] * incidence_v[t - (1:s_max)]) else 0
+      propagated_v[t] <- q_t[t] * Rt_prop[t] * lambda_v
+    } else {
+      # With no prior infectiousness the baseline policy assigns all incidence
+      # to the exogenous seed, hence propagated_obs[t] is exactly zero.
+      propagated_v[t] <- q_t[t] * propagated_obs[t]
+    }
+    incidence_v[t] <- source_v[t] + propagated_v[t]
+  }
+
+  total <- sum(incidence)
+  list(
+    incidence_v = incidence_v,
+    source_obs = source_obs,
+    propagated_obs = propagated_obs,
+    source_v = source_v,
+    propagated_v = propagated_v,
+    Rt_prop = Rt_prop,
+    lambda_obs = lambda_obs,
+    identifiable = identifiable,
+    seed = !identifiable & incidence > 0,
+    c_t = c_t,
+    q_t = q_t,
+    source_fraction = theta_t,
+    source_fraction_realized = if (total > 0) sum(source_obs) / total else NA_real_,
+    baseline_error = max(abs(source_obs + propagated_obs - incidence)),
+    counterfactual_balance_error =
+      max(abs(source_v + propagated_v - incidence_v))
+  )
+}
+
 # --- Impact measures ---------------------------------------------------------
 # A = sum_t (I_t^obs - I_t^v);  rho = 100 * A / sum_t I_t^obs
 impact_measures <- function(incidence_obs, incidence_v) {

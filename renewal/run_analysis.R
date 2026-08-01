@@ -28,6 +28,14 @@ source("renewal/R/figures.R")
 source("renewal/R/ppv.R")            # PPV (pi) posterior propagation
 
 cfg <- yaml::read_yaml("renewal/config.yml")
+ppv_draws_override <- Sys.getenv("PPV_DRAWS_OVERRIDE", "")
+tables_override <- Sys.getenv("RENEWAL_TABLES_OVERRIDE", "")
+figures_override <- Sys.getenv("RENEWAL_FIGURES_OVERRIDE", "")
+outputs_override <- Sys.getenv("RENEWAL_OUTPUTS_OVERRIDE", "")
+if (nzchar(ppv_draws_override)) cfg$ppv$draws <- ppv_draws_override
+if (nzchar(tables_override)) cfg$paths$tables <- tables_override
+if (nzchar(figures_override)) cfg$paths$figures <- figures_override
+if (nzchar(outputs_override)) cfg$paths$outputs <- outputs_override
 set.seed(cfg$seed)
 cat("=== Renewal analysis — Phase 1 ===\n")
 cat("Seed:", cfg$seed, "| Sobol n:", cfg$n_sobol,
@@ -40,8 +48,9 @@ if (!is.null(pi_post)) {
   cat(sprintf("PPV propagation: ENABLED (%d posterior draws; anchored: %s).\n",
               pi_post$ndraw, paste(pi_post$anchor, collapse = ", ")))
   cat(sprintf("  community pi typical = %.2f [%.2f, %.2f] (median inv_logit(mu) across draws)\n\n",
-              plogis(median(pi_post$mu)), plogis(quantile(pi_post$mu, .025)),
-              plogis(quantile(pi_post$mu, .975))))
+              plogis(median(pi_post$mu_pi)),
+              plogis(quantile(pi_post$mu_pi, .025)),
+              plogis(quantile(pi_post$mu_pi, .975))))
 } else cat("PPV propagation: DISABLED (raw suspected-case impact).\n\n")
 
 dir.create(cfg$paths$tables,  recursive = TRUE, showWarnings = FALSE)

@@ -2,6 +2,7 @@
 
 *Draft Methods and Results sections. Numbers are drawn from the current fitted outputs
 (`latent_class_ppv/tables/final_parameters.csv`, `final_pi_community.csv`,
+`source_decomposition/tables/tab_additive_vs_theta_weighted_pooled.csv`,
 `renewal/tables/tab_ppv_effect.csv`, `revision/tables/outbreak_allocation_brackets_production.csv`,
 `revision/tables/clause_model/`). Stage-1 latent-class intervals are 90% credible intervals (CrI);
 counts are written positive/tested.*
@@ -93,21 +94,29 @@ across $s\in\{0.25,0.5,1.0\}$.
 
 ### 2.z Renewal-equation model of outbreak-response vaccine impact
 
-Vaccine impact is estimated with a semi-mechanistic **renewal-equation** model in which indirect
-(transmission) effects **emerge** from feedback rather than being imposed as a fixed parameter. For
-each outbreak we reconstruct the instantaneous reproduction number from the incidence $I_t$ (under the
-primary additive observation model this is the PPV-de-backgrounded true-typhoid series; Section 2.w)
-using the Cori estimator, $R_t = I_t / \Lambda_t$, where $\Lambda_t = \sum_{u\ge 1} w_u I_{t-u}$
-is the total infectiousness and $w$ is the discretised generation interval (Gamma, mean 14 days,
-CV 0.6; weekly time step). Outbreak-response immunisation reduces transmission multiplicatively from
-the protection week $t_{\text{eff}}$ onward, $R_t \to R_t\,(1 - c\,\psi_T)$, with coverage
-$c = 0.80$, transmission efficacy $\psi_T \in [0.6\psi,\ \psi]$, and direct efficacy $\psi = 0.83$;
-the counterfactual epidemic is then propagated forward through the same renewal recursion, so that
-averted infections include both directly and indirectly protected cases. Base-case protection is
-reached at week $t_{\text{eff}} = 13$ (an 8-week campaign-request delay plus a 14-day campaign and a
-21-day immunity-onset lag), reflecting realistic operational timing. Of the 19 reconstructed
-outbreaks, the 13 with sufficient temporal resolution ($\mu_g/\Delta \ge 2$) enter the renewal
-analysis.
+Vaccine impact is estimated with a two-level **additive renewal-equation** model. First, suspected
+febrile incidence is decomposed as $S_t=T_t+F_t$, where $T_t$ is true symptomatic typhoid and $F_t$
+is other febrile illness (Section 2.w). Second, true typhoid is decomposed *inside the transmission
+recursion* as
+
+$$T_t=X_t+P_t,\qquad P_t=R_t^P\Lambda_t,\qquad
+\Lambda_t=\sum_{u\ge1}w_uT_{t-u},$$
+
+where $X_t$ is background/common-source typhoid and $P_t$ is propagated typhoid. A
+paper-informed structural source fraction $\theta$ allocates renewal-identifiable baseline
+incidence between $X_t$ and $P_t$; incidence with no prior infectiousness is retained as an
+exogenous seed. Under ORI, with remaining susceptibility $q_t=1-c_t\kappa\psi_T$, the
+counterfactual is $X_t^v=q_tX_t$ and
+$P_t^v=q_tR_t^P\sum_{u\ge1}w_uT_{t-u}^v$. Thus both typhoid components receive direct protection,
+whereas only propagated cases generate transmission feedback. The other-febrile component $F_t$
+is held fixed.
+
+This additive recursion replaces the former post hoc calculation
+$A_\theta=\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}}$. We retain that weighted version only as
+a paired historical comparator, using identical PPV, efficacy, coverage, timing, generation
+interval, and $\theta$ draws. Base-case coverage is 0.80, direct efficacy has mean 0.83, and
+protection follows an 8-week campaign-request delay plus campaign and immunity-onset lags. Of the
+19 reconstructed outbreaks, the 13 with sufficient temporal resolution enter the renewal analysis.
 
 ### 2.w From true to observed impact: the PPV bridge and its weekly-allocation robustness
 
@@ -200,14 +209,20 @@ their PPV modestly (0.28 or 0.40 vs the pooled 0.31) and does not change the agg
 
 ### 3.z Vaccine impact: large true reduction, small surveillance-visible reduction
 
-Across the renewal-eligible outbreaks, outbreak-response immunisation at realistic timing averts on
-the order of **1,570 true typhoid infections**, a **≈30% reduction in true typhoid** burden
-(pooled median 29.8%). The same intervention reduces the **surveillance-visible (suspected)** count
-by only **≈6%** (6.3%). The gap is the PPV bridge in action: because the vaccine cannot avert the
+Across the renewal-eligible outbreaks, the primary additive source-plus-propagated model at
+realistic timing averts a pooled median **1,846 true typhoid cases** (95% simulation interval
+644–3,742), a **25.6% reduction in true typhoid**. The same intervention reduces the
+**surveillance-visible (suspected)** count by only **7.0%**. The gap is the PPV bridge in action:
+because the vaccine cannot avert the
 non-typhoid febrile background, and because PPV is low (population ≈0.31, and lower still in the
 large outbreaks that dominate the pooled denominator), the true reduction is diluted roughly
-**five-fold** by the time it reaches routine surveillance. A programme that genuinely averts a third
-of typhoid cases will register as a single-digit percentage dip in a suspected-case time series.
+four-fold by the time it reaches routine surveillance.
+
+The historical $\theta$-weighted calculation gave **25.9%** true reduction. The paired additive
+minus historical difference was **−0.5 percentage points** (95% simulation interval −2.4 to 0.7)
+and **−37 cases** (−212 to 52). The close pooled result masks outbreak-specific differences because
+placing source and propagated cases inside one shared recursion can shift impact in either direction;
+the weighted formula is therefore a useful audit comparator but not a mechanistic substitute.
 
 ### 3.w Robustness to weekly allocation and to operational timing
 
@@ -220,13 +235,15 @@ the counterfactual holds the non-typhoid background fixed, suspected reduction e
 reduction in every allocation, so the allocation choice moves the magnitude of the envelope but never
 the observed-to-true ratio.
 
-The envelope sits below the 29.8% headline true reduction for a concrete, reportable reason:
+The allocation envelope and the additive source analysis answer different structural questions, so
+their ranges should not be interpreted as nested uncertainty intervals. Production timing remains a
+concrete, reportable constraint:
 **production timing** — an 8-week request delay plus campaign and immunity-onset lags — places
 protection at week 13, after three short outbreaks (including two of the larger ones) have already
 ended, so those contribute essentially no averted cases. Faster deployment is the single largest
 lever on realised impact. Whichever timing and allocation are assumed, however, both the primary
-renewal engine (29.8% true → 6.3% observed) and the allocation-bracket analysis (16–23% true →
-4–6% observed) agree on the load-bearing message: **the reduction in true typhoid is several times
+additive renewal-with-source engine (25.6% true → 7.0% observed) and the allocation-bracket
+analysis (16–23% true → 4–6% observed) agree on the load-bearing message: **the reduction in true typhoid is several times
 larger than the reduction a suspected-case surveillance system will record, and PPV is the factor
 that separates them.** This has a direct programmatic implication — evaluations that judge
 outbreak-response immunisation on suspected-case counts will systematically understate its true

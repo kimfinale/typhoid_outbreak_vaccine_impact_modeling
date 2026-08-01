@@ -81,7 +81,8 @@ MODE_COL <- c(A = "#D55E00", C = "#9467BD", B = "#0072B2")
 cv <- ggplot(out, aes(article_theta, M1_theta_med, colour = mode_paper)) +
   geom_abline(slope = 1, intercept = 0, colour = "grey60") +
   geom_errorbar(aes(ymin = M1_theta_lo, ymax = M1_theta_hi), width = 0.01, alpha = 0.6) +
-  geom_errorbarh(aes(xmin = article_theta_lo, xmax = article_theta_hi), height = 0.01, alpha = 0.6) +
+  geom_errorbar(aes(xmin = article_theta_lo, xmax = article_theta_hi),
+                orientation = "y", width = 0.01, alpha = 0.6) +
   geom_point(size = 2.5) +
   ggrepel::geom_text_repel(aes(label = study_id), size = 2.6, max.overlaps = 20) +
   scale_colour_manual(values = MODE_COL, name = "Article mode") +
@@ -95,7 +96,8 @@ ggsave(file.path(cfg$paths$figures, "fig_theta_convergent_validity.png"), cv, wi
 mu_grand <- plogis(M1$summary("mu_theta")$median)
 shr <- ggplot(out %>% mutate(study_id = reorder(study_id, M1_theta_med)), aes(M1_theta_med, study_id)) +
   geom_vline(xintercept = mu_grand, linetype = "dashed", colour = "grey50") +
-  geom_errorbarh(aes(xmin = M1_theta_lo, xmax = M1_theta_hi), height = 0.3, colour = "#0072B2") +
+  geom_errorbar(aes(xmin = M1_theta_lo, xmax = M1_theta_hi),
+                orientation = "y", width = 0.3, colour = "#0072B2") +
   geom_point(colour = "#0072B2", size = 2) +
   geom_point(aes(x = article_theta), colour = "black", shape = 4, size = 2) +
   labs(x = "theta", y = NULL, title = "Partial pooling of theta (M1 neutral)",
@@ -120,23 +122,11 @@ for (o in seq_len(min(4, length(sids)))) {
          pp, width = 6, height = 4, dpi = 300)
 }
 
-# --- Impact bracket propagating M1 theta uncertainty -------------------------
-amr <- load_amr_props(rcfg)
-scn <- run_scenarios(prep, rcfg, amr, coverage = 0.80, delays = 8)
-summ <- summarise_draws(scn)
-pct <- summ %>% filter(tau == 8, vacc_cov == 0.80) %>%
-  select(study_id, model, pct_reduction_median) %>%
-  tidyr::pivot_wider(names_from = model, values_from = pct_reduction_median)
-th_draws_M1 <- as_draws_matrix(M1$draws("theta"))
-brk <- do.call(rbind, lapply(seq_along(sids), function(o) {
-  ps <- pct$static[pct$study_id == sids[o]]; pr <- pct$renewal[pct$study_id == sids[o]]
-  if (length(ps) == 0) return(NULL)
-  v <- th_draws_M1[, o] * ps + (1 - th_draws_M1[, o]) * pr
-  data.frame(study_id = sids[o], pct_static = ps, pct_renewal = pr,
-             pct_theta_med = median(v), pct_theta_lo = quantile(v, 0.05),
-             pct_theta_hi = quantile(v, 0.95))
-}))
-write.csv(brk, tabf("tab_impact_bracket.csv"), row.names = FALSE)
+# Do not convert theta into a post hoc weighted static-plus-renewal impact.
+# If the identifiability gate ever passes, posterior theta draws must be passed
+# to the additive source counterfactual in renewal/R/renewal_core.R, where source
+# and propagated incidence share one renewal recursion. The historical weighting
+# is retained only in source_decomposition/ as a labeled comparator.
 
 M1$save_object(outf("fit_M1.rds")); M2$save_object(outf("fit_M2.rds"))
 writeLines(capture.output(sessionInfo()), outf("sessionInfo.txt"))

@@ -1,0 +1,690 @@
+---
+title: "Supplementary Methods and Results: Adjustment for the Positive Predictive Value of Suspected Typhoid Case Definitions"
+subtitle: "Supporting the outbreak-response immunization impact analysis"
+author: ""
+date: last-modified
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme: cosmo
+    embed-resources: true
+  docx:
+    toc: false
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+root <- if (file.exists("../latent_class_ppv/README.md")) ".." else "."
+path <- function(...) file.path(root, ...)
+
+required <- c(
+  "latent_class_ppv/data/mogasale2016_paired_bc_bmc_seed.csv",
+  "latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv",
+  "latent_class_ppv/tables/final_parameters.csv",
+  "latent_class_ppv/tables/final_phi_hospital.csv",
+  "latent_class_ppv/tables/final_pi_community.csv",
+  "latent_class_ppv/tables/final_selection_outbreak.csv",
+  "latent_class_ppv/tables/fit_diagnostics.csv",
+  "latent_class_ppv/tables/volume_sensitivity.csv",
+  "latent_class_ppv/tables/selection_prior_sensitivity.csv",
+  "latent_class_ppv/tables/ppv_renewal_denominator_frame_audit.csv",
+  "renewal/tables/tab_ppv_effect.csv",
+  "renewal/tables/tab_ppv_selection_sensitivity.csv",
+  "source_decomposition/tables/tab_additive_vs_theta_weighted_pooled.csv",
+  "source_decomposition/tables/tab_additive_validation.csv")
+missing <- required[!file.exists(vapply(required, path, character(1)))]
+if (length(missing)) stop("Missing PPV supplement inputs: ", paste(missing, collapse = ", "))
+
+hist <- read.csv(path("latent_class_ppv/data/mogasale2016_paired_bc_bmc_seed.csv"),
+                 check.names = FALSE, stringsAsFactors = FALSE)
+community_audit <- read.csv(path("latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv"),
+                      check.names = FALSE, stringsAsFactors = FALSE)
+pars <- read.csv(path("latent_class_ppv/tables/final_parameters.csv"), check.names = FALSE)
+phi <- read.csv(path("latent_class_ppv/tables/final_phi_hospital.csv"), check.names = FALSE)
+pi_est <- read.csv(path("latent_class_ppv/tables/final_pi_community.csv"), check.names = FALSE)
+selection_est <- read.csv(path("latent_class_ppv/tables/final_selection_outbreak.csv"), check.names = FALSE)
+diag <- read.csv(path("latent_class_ppv/tables/fit_diagnostics.csv"), check.names = FALSE)
+volsens <- read.csv(path("latent_class_ppv/tables/volume_sensitivity.csv"), check.names = FALSE)
+selection_sens <- read.csv(path("latent_class_ppv/tables/selection_prior_sensitivity.csv"), check.names = FALSE)
+denominator_audit <- read.csv(path("latent_class_ppv/tables/ppv_renewal_denominator_frame_audit.csv"), check.names = FALSE)
+ppv_effect <- read.csv(path("renewal/tables/tab_ppv_effect.csv"), check.names = FALSE)
+ppv_selection_sens <- read.csv(path("renewal/tables/tab_ppv_selection_sensitivity.csv"), check.names = FALSE)
+source_comparison <- read.csv(
+  path("source_decomposition/tables/tab_additive_vs_theta_weighted_pooled.csv"),
+  check.names = FALSE)
+source_validation <- read.csv(
+  path("source_decomposition/tables/tab_additive_validation.csv"),
+  check.names = FALSE)
+
+fmt <- function(x, d = 2) formatC(x, format = "f", digits = d)
+interval <- function(m, l, h, d = 2) paste0(fmt(m, d), " [", fmt(l, d), ", ", fmt(h, d), "]")
+kable <- function(x, caption = NULL, ...) knitr::kable(x, caption = caption, ...)
+
+hist$blood_volume_used_mL <- hist$blood_vol_mL
+hist$blood_volume_used_mL[is.na(hist$blood_volume_used_mL)] <-
+  median(hist$blood_vol_mL, na.rm = TRUE)
+hist$n_check <- rowSums(hist[, c("a_BCpos_BMpos", "b_BCpos_BMneg",
+                                 "c_BCneg_BMpos", "d_BCneg_BMneg")])
+stopifnot(all(hist$n_check == hist$n_tested_both))
+
+included <- community_audit$include_for_main_ppv_model %in% c(TRUE, "TRUE", "True")
+community_tight <- data.frame(
+  study = community_audit$study[included],
+  country = community_audit$location[included],
+  year = community_audit$outbreak_year[included],
+  suspected = community_audit$superseded_summary_suspected[included],
+  tested = community_audit$audited_blood_tested[included],
+  confirmed_cx = community_audit$audited_blood_positive[included],
+  positivity = community_audit$observed_positivity[included],
+  stringsAsFactors = FALSE)
+stopifnot(identical(community_tight$study, pi_est$study))
+```
+
+# S1. Purpose and estimand
+
+The outbreak time series used in the outbreak-response immunization (ORI) analysis contain
+predominantly **suspected** typhoid cases. Suspected-case definitions are designed for sensitive
+outbreak detection and may include patients with other febrile illnesses. Consequently, not every
+reported suspected case represents vaccine-preventable *Salmonella enterica* serovar Typhi
+infection.
+
+We define the positive predictive value (PPV) of the suspected clinical case definition in setting
+$o$ as
+
+$$
+\pi_o = P(D=1 \mid C=1, o),
+$$
+
+where $D=1$ denotes latent true typhoid and $C=1$ denotes satisfaction of the study's suspected-case
+definition. This quantity is the prevalence of true typhoid among suspected cases, not the PPV of
+blood culture. It is setting-dependent because it reflects the local ratio of typhoid to other
+febrile illnesses, the breadth of the clinical definition, care-seeking, and surveillance practice.
+
+The purpose of this analysis was to propagate uncertainty in $\pi_o$ into estimates of absolute true
+typhoid cases averted, morbidity, treatment costs, and cases averted per vaccine dose. This targeted
+evidence synthesis was constructed as an observation model for the ORI analysis. It was **not** a
+systematic review of all typhoid clinical case definitions; a broader PRISMA-DTA review is planned as
+a separate study.
+
+# S2. Evidence inputs
+
+## S2.1 Paired blood- and bone-marrow-culture studies
+
+Blood culture is highly specific but incompletely sensitive, so culture positivity alone cannot be
+equated with the PPV of a clinical definition. We used nine historic studies, consolidated from
+Mogasale et al. (2016), in which the same suspected patients received both blood culture and
+bone-marrow culture. These studies supplied the four joint outcomes BC+BM+, BC+BM-, BC-BM+, and
+BC-BM-. Together they included `r sum(hist$n_tested_both)` paired observations.
+
+```{r}
+#| label: tbl-paired-evidence
+#| tbl-cap: "Paired blood- and bone-marrow-culture evidence used in the latent-class model."
+paired_show <- data.frame(
+  Study = hist$study,
+  Location = hist$location,
+  `BC+ BM+` = hist$a_BCpos_BMpos,
+  `BC+ BM-` = hist$b_BCpos_BMneg,
+  `BC- BM+` = hist$c_BCneg_BMpos,
+  `BC- BM-` = hist$d_BCneg_BMneg,
+  N = hist$n_tested_both,
+  `Blood volume used (mL)` = fmt(hist$blood_volume_used_mL, 1),
+  check.names = FALSE)
+kable(paired_show)
+```
+
+Blood volume was not reported for Hirsowitz (1951) and was imputed at the median of the reported
+study volumes (4 mL). Gasem (1995) cultured 3 mL and 10 mL blood volumes, but its available
+aggregate $2\times2$ table could not be separated by volume, so the consolidated analysis used 3
+mL. Wain (2008) reported separate paired comparisons for 5 mL and 15 mL blood cultures; the analysis
+used its 5 mL comparison. Vallenas (1985) was excluded because its primary report supplied
+only marginal blood- and bone-marrow-culture yields, while the joint cells reported by Mogasale et
+al. were internally inconsistent with those marginals and did not establish a defensible
+both-negative cell. The remaining volume decisions were treated as data-quality limitations rather
+than known without error.
+
+## S2.2 Blood-volume information
+
+The prior for the effect of blood volume on blood-culture sensitivity was informed by the
+meta-regression of Antillón et al. (2018), which demonstrated increasing sensitivity with cultured
+blood volume. The model used a Normal(0.36, 0.15) prior for the log-volume slope. The Antillón
+study-level observations informed this slope prior rather than entering the paired-test likelihood
+as independent patients.
+
+## S2.3 Community outbreak observations
+
+The community layer estimates the positive predictive value of the clinical *suspected*-case
+definition — the probability $\pi_o = P(\text{true typhoid}\mid\text{suspected})$ among all
+suspected cases in outbreak $o$ — because the renewal impact model scales suspected-case incidence
+curves rather than culture-confirmed counts. Admissibility for this estimand, rather than culture
+positivity itself, governed selection: a report had to provide a syndromic suspected-case
+denominator, a blood-culture-specific tested count drawn from that denominator, and a
+blood-culture-positive count.
+
+Candidate outbreaks were pooled from two systematic reviews of typhoid outbreaks. Koh et al. (2025)
+contributed its outbreaks with usable time series together with reports it had excluded for lacking
+time-series data, which we re-screened specifically for PPV eligibility; Appiah et al. (2020)
+contributed further records not already represented. After de-duplication at the publication level
+this yielded 107 candidate outbreak records. Primary full texts were audited where retrievable;
+review tables, indexed abstracts, and existing project extractions were used for the remainder, and
+records whose structure could not be resolved were held pending rather than assumed eligible.
+
+A record entered the primary community model only if it satisfied all of: (1) a suspected-case count
+defined by a clinical case definition independently of culture result, rather than a confirmed-case
+or isolate series; (2) a blood-culture-specific tested count, not pooled across blood, stool, urine,
+or bone marrow; (3) a blood-culture-positive count from the same cultured subset; and (4) outbreak
+independence, that is, a single observation per epidemic. Small samples were retained where the
+denominator and the culture-selection mechanism were sound, with uncertainty propagated through the
+binomial likelihood rather than removed by a fixed sample-size threshold. Small records were placed
+in sensitivity analysis or excluded when they also had unresolved or inferred denominators, unclear
+specimen scope, or poorly characterized culture selection.
+
+```{r}
+#| label: tbl-community-selection
+#| tbl-cap: "Selection of community outbreak observations for PPV estimation."
+sel_role <- community_audit$ppv_model_role
+community_selection <- data.frame(
+  Stage = c(
+    "Candidate outbreak records (Koh 2025 review + no-time-series re-screen + Appiah 2020)",
+    "Excluded from PPV modeling",
+    "Retained for sensitivity analysis only",
+    "Awaiting primary-source retrieval",
+    "Included in the primary community PPV model"),
+  n = c(nrow(community_audit),
+        sum(sel_role == "exclude from PPV modeling"),
+        sum(sel_role == "sensitivity analysis only"),
+        sum(sel_role == "not yet: source reconstruction or retrieval required"),
+        sum(included)),
+  check.names = FALSE)
+kable(community_selection)
+```
+
+Exclusions fell into recurring classes: confirmed-only or culture-defined case series with no
+independent syndromic denominator; pooled-specimen or non-blood tested denominators, for which
+positivity does not equal blood-culture PPV; hospital, phase-specific, or severity-gated frames whose
+estimand differs from all suspected outbreak cases; and off-target records such as genomic
+isolate-characterization or water-sanitation survey papers carrying no testing flow. A full-text
+reconstruction audit of the records whose summary counts were ambiguous confirmed that none yielded
+an admissible blood-culture-specific triple—the dominant failure modes being pooled-specimen
+confirmation and absent tested denominators. Qamar (2018) yielded a flagged pair retained for
+sensitivity analysis; Al-Sanouri (2008) remained excluded because its tested denominator was inferred
+rather than reported. Five records remained pending source reconstruction or retrieval.
+
+The 107 records resolved to 103 independence groups. Three duplicate families accounted for the
+difference: the Limpitikul 2014 period-1, period-2, and total records; the two Baddam 2012 records; and
+the overlapping N'Cho 2019 and Poncin 2022 reports of the 2017--2018 Harare outbreak. All Limpitikul
+and Baddam observations were excluded. For Harare, N'Cho supplied the only compatible
+blood-culture-tested denominator and was retained; Poncin lacked a corresponding tested denominator
+and was excluded from the likelihood. Where the primary paper permitted, blood-culture counts were
+corrected at extraction to their blood-specific values—for example, Neil 2012 as 19/54 rather than
+the pooled 25/63, and Kabwama 2017 as 56/364 rather than a stale 51/364.
+
+```{r}
+#| label: tbl-community-evidence
+#| tbl-cap: "Community outbreak evidence used to estimate suspected-case-definition PPV."
+comm_show <- merge(
+  community_tight[, c("study", "country", "year", "suspected", "tested", "confirmed_cx", "positivity")],
+  pi_est[, c("study", "pi_med", "pi_lo", "pi_hi")], by = "study", sort = FALSE)
+comm_show <- comm_show[match(community_tight$study, comm_show$study), ]
+comm_table <- data.frame(
+  Study = comm_show$study,
+  Country = comm_show$country,
+  Year = comm_show$year,
+  Suspected = comm_show$suspected,
+  Cultured = comm_show$tested,
+  `Culture positive` = comm_show$confirmed_cx,
+  `Observed positivity` = fmt(comm_show$positivity, 3),
+  `Latent true-typhoid PPV, median [90% CrI]` =
+    interval(comm_show$pi_med, comm_show$pi_lo, comm_show$pi_hi, 2),
+  check.names = FALSE)
+kable(comm_table)
+```
+
+The eight included outbreaks span three verification-adjustment grades — four major (Aye 2004,
+Neil 2012, Kabwama 2017, N'Cho 2019), one moderate (Makungo 2020), and three negligible or low
+(Hu 2022, Dhadwal 2008, Swaddiwudhipong 2001) — reflecting how far each cultured subset departs from
+a random sample of all suspected cases. Six derive from the Koh 2025 review; Dhadwal 2008 and
+Swaddiwudhipong 2001 were recovered from its no-time-series re-screen. Because blood volume was not
+reported in any of the eight, the primary fit assumed 5 mL and varied this assumption from 3 to
+10 mL as its principal structural sensitivity.
+
+Two limitations are quantified rather than assumed. The verification-adjustment grade enters a
+selection sub-model whose magnitude is prior-dominated (Section S5.4), and the suspected-case
+denominator is not always the same population as the renewal time-series curve it scales, as
+reported in the denominator-frame alignment table (Section S5). One retained anchor carries a
+specimen caveat: N'Cho 2019's 74/286 is reported as "cultures processed," not disaggregated to
+blood culture, under a blood, stool, or rectal-swab confirmation definition. It is retained as a
+genuine tested and positive pair within its 583-patient hospital frame, with a leave-N'Cho-out
+sensitivity analysis to bound its influence.
+
+# S3. Latent-class model
+
+## S3.1 Blood-culture sensitivity
+
+For paired study $s$, blood-culture sensitivity was modeled as
+
+$$
+\operatorname{logit}(Se_{BC,s}) = \alpha_0 + \alpha_1\log(V_s) + \tau u_s,
+\qquad u_s\sim\operatorname{Normal}(0,1),
+$$
+
+where $V_s$ is blood volume, $\alpha_0$ is the sensitivity level, $\alpha_1$ is the volume slope,
+and $\tau$ is residual between-study heterogeneity. Bone-marrow sensitivity ($Se_{BM}$) was
+estimated rather than fixed, acknowledging that bone marrow is a better but imperfect reference.
+
+## S3.2 Paired-test likelihood
+
+Let $\phi_s=P(D=1\mid C=1,s)$ be the latent true-typhoid prevalence among the hospital-referred
+suspected patients in paired study $s$. Under conditional independence of blood and bone-marrow
+culture given latent disease status, the four cell probabilities were
+
+$$
+\begin{aligned}
+p_{++} &= \phi_s Se_{BC,s}Se_{BM} +(1-\phi_s)(1-Sp_{BC})(1-Sp_{BM}),\\
+p_{+-} &= \phi_s Se_{BC,s}(1-Se_{BM}) +(1-\phi_s)(1-Sp_{BC})Sp_{BM},\\
+p_{-+} &= \phi_s (1-Se_{BC,s})Se_{BM} +(1-\phi_s)Sp_{BC}(1-Sp_{BM}),\\
+p_{--} &= \phi_s (1-Se_{BC,s})(1-Se_{BM}) +(1-\phi_s)Sp_{BC}Sp_{BM}.
+\end{aligned}
+$$
+
+The observed four-cell vector followed a multinomial distribution. The paired layer identifies the
+sensitivity of both cultures and the study-specific hospital PPV without treating either culture as
+a perfect gold standard.
+
+## S3.3 Community likelihood
+
+For community outbreak $o$, let $N_o$ be all suspected cases, $n_o$ the number cultured, and $k_o$
+the number culture-positive. PPV among all suspected cases was modeled hierarchically:
+
+$$
+\operatorname{logit}(\pi_o)=\mu_\pi+\sigma_\pi z_o,\qquad z_o\sim\operatorname{Normal}(0,1).
+$$
+
+To represent preferential verification, $q_{1o}$ and $q_{0o}$ denote the probabilities of culture
+among true-typhoid and non-typhoid suspected cases. Their log-odds difference was
+
+$$
+\delta_o=\operatorname{logit}(q_{1o})-\operatorname{logit}(q_{0o})
+=\mu_\delta+\beta_{bias}B_o+\sigma_\delta z_{\delta o},
+$$
+
+where $B_o\in\{0,1,2\}$ is the prespecified audit grade for low, moderate, or major verification
+concern. Counts $(k_o,n_o-k_o,N_o-n_o)$ followed a multinomial distribution for culture-positive,
+culture-negative, and untested suspected cases. Thus, both testing fraction and positivity inform
+the model, while true cases may be preferentially cultured. Structured priors remain necessary
+because selection and population PPV are not identified by these counts alone.
+
+## S3.4 Priors and computation
+
+```{r}
+#| label: tbl-priors
+#| tbl-cap: "Priors used in the final latent-class model."
+priors <- data.frame(
+  Parameter = c("Blood-culture intercept, alpha0", "Log-volume slope, alpha1",
+                "Between-study Se SD, tau", "Bone-marrow sensitivity",
+                "Culture specificities", "Hospital PPV, phi_s",
+                "Population logit-PPV mean, mu_pi", "Between-outbreak PPV SD, sigma_pi",
+                "Baseline selection, mu_delta", "Bias-grade slope, beta_bias",
+                "Residual selection SD, sigma_delta", "Non-typhoid testing logit, logit(q0)"),
+  Prior = c("Normal(0, 1.5)", "Normal(0.36, 0.15)", "half-Normal(0, 1)",
+            "Beta(12, 2)", "Beta(200, 1)", "Beta(1, 1)",
+            "Normal(logit(0.25), 1)", "half-Normal(0, 0.8)", "Normal(0, 0.5)",
+            "Normal+(0.5, 0.4)", "half-Normal(0, 0.5)",
+            "Normal(logit observed testing fraction, 1)"),
+  Rationale = c("Weakly informative sensitivity level", "Antillon-informed volume effect",
+                "Residual sensitivity heterogeneity", "High but imperfect sensitivity",
+                "A positive culture is highly specific", "Local paired-study prevalence",
+                "Weakly informative population PPV", "Genuine between-outbreak PPV variation",
+                "No baseline enrichment favored", "Higher audit concern permits enrichment",
+                "Unmeasured selection heterogeneity", "Anchors testing to observed coverage"),
+  check.names = FALSE)
+kable(priors)
+```
+
+The model was fitted in Stan using four chains, 1,500 warm-up iterations and 1,500 retained
+iterations per chain, seed 2026, target acceptance probability 0.98, and maximum tree depth 12.
+Posterior summaries are medians and 90% credible intervals (CrIs).
+Structural selection sensitivities used two chains with 800 warm-up and 800 retained iterations per
+chain. Their maximum $\widehat R$ was `r fmt(max(selection_sens$max_rhat), 3)`; the main four-chain
+fit's maximum $\widehat R$ is reported separately below.
+
+# S4. Model validation and diagnostics
+
+The final fit produced `r diag$divergences` divergent transitions; the maximum rank-normalized
+$\widehat R$ was `r fmt(diag$max_rhat, 3)`, and the minimum bulk effective sample size was
+`r fmt(diag$min_ess_bulk, 0)`. These diagnostics indicated satisfactory sampling.
+
+Simulation studies evaluated recovery of the shared sensitivity parameters and local PPVs. The
+identifiable parameters were recovered with the generating values inside their 90% CrIs under the
+tested design. A single-test demonstration reproduced the expected PPV--sensitivity ridge: PPV and
+blood-culture sensitivity were individually weakly identified, while their product was precise.
+The paired-test layer removed this ridge. An earlier severity offset was not identified because the
+paired blood/bone-marrow evidence came from hospital populations and no comparable paired evidence
+exists for ambulatory disease. The final model therefore omitted a severity term and transferred
+blood-culture sensitivity through observed or assumed blood volume plus residual heterogeneity.
+
+In a stress test, data generated with positive conditional dependence between blood and
+bone-marrow culture but fitted under independence increased estimated blood-culture sensitivity by
+approximately 0.08 and decreased PPV by approximately 0.08. Conditional independence is therefore a
+directional limitation: shared culture failure, for example after antibiotic exposure, could make
+the primary model overestimate sensitivity and underestimate PPV.
+
+# S5. Results
+
+## S5.1 Culture accuracy
+
+```{r}
+#| label: tbl-accuracy-results
+#| tbl-cap: "Posterior estimates of culture-accuracy parameters."
+labels <- c(
+  Se_BC_2mL = "Blood-culture sensitivity at 2 mL",
+  Se_BC_5mL = "Blood-culture sensitivity at 5 mL",
+  Se_BC_10mL = "Blood-culture sensitivity at 10 mL",
+  Se_BM = "Bone-marrow-culture sensitivity",
+  Sp_BC = "Blood-culture specificity",
+  alpha1 = "Log-volume slope",
+  tau = "Between-study SD")
+acc <- pars[match(names(labels), pars$param), ]
+acc_table <- data.frame(
+  Parameter = unname(labels),
+  `Median [90% CrI]` = interval(acc$med, acc[[3]], acc[[4]], 2),
+  check.names = FALSE)
+kable(acc_table)
+```
+
+At the assumed 5 mL community blood volume, blood culture detected an estimated 0.65 of latent true
+typhoid infections. Sensitivity increased with cultured volume, while estimated bone-marrow
+sensitivity was approximately 0.92. Thus, raw culture positivity materially underestimated the
+proportion of suspected patients with true typhoid.
+
+```{r}
+#| label: fig-se-volume
+#| fig-cap: "Posterior blood-culture sensitivity by cultured blood volume. The line and band show the posterior median and 90% CrI; points show raw paired-study detection proportions."
+#| out-width: "85%"
+knitr::include_graphics(path("latent_class_ppv/figures/fig_final_se_volume.png"))
+```
+
+## S5.2 Hospital and community PPV
+
+Hospital-referred PPVs across the nine paired studies ranged from `r fmt(min(phi$phi_med), 2)` to
+`r fmt(max(phi$phi_med), 2)` (median `r fmt(median(phi$phi_med), 2)`). Community outbreak PPV was
+heterogeneous across `r nrow(pi_est)` audited, independence-checked observations, ranging from
+`r fmt(min(pi_est$pi_med), 2)` to `r fmt(max(pi_est$pi_med), 2)`. These are local estimates and
+should not be interpreted as a universal PPV for typhoid surveillance. In particular, N'Cho 2019
+is the sole diagnostic-yield observation retained from the 2017--2018 Harare outbreak; Poncin 2022
+summarizes overlapping historical counts but supplies no blood-culture-tested denominator.
+
+```{r}
+#| label: fig-ppv-setting
+#| fig-cap: "Posterior PPV of the suspected clinical definition in hospital-referred and community outbreak populations. PPVs are study-specific; intervals are 90% CrIs."
+#| out-width: "90%"
+knitr::include_graphics(path("latent_class_ppv/figures/fig_final_ppv.png"))
+```
+
+The fitted population median PPV was
+`r interval(pars$med[pars$param == "pi_population_median"], pars$lo.5.[pars$param == "pi_population_median"], pars$hi.95.[pars$param == "pi_population_median"])`,
+and the genuine between-outbreak logit-scale SD was
+`r interval(pars$med[pars$param == "sigma_pi"], pars$lo.5.[pars$param == "sigma_pi"], pars$hi.95.[pars$param == "sigma_pi"])`.
+The audit-grade selection coefficient was positive:
+`r interval(pars$med[pars$param == "beta_bias"], pars$lo.5.[pars$param == "beta_bias"], pars$hi.95.[pars$param == "beta_bias"])`.
+This should not be interpreted as data-driven evidence for enrichment: the selection hyperparameters
+changed little from their priors, unlike the clearly updated between-outbreak PPV SD.
+
+```{r}
+#| label: tbl-selection
+#| tbl-cap: "Posterior culture-selection probabilities among true and non-typhoid suspected cases."
+selection_table <- data.frame(
+  Study=selection_est$study,
+  `Selection log-OR, median [90% CrI]`=interval(selection_est$delta_med, selection_est$delta_lo, selection_est$delta_hi),
+  `P(cultured | non-typhoid)`=interval(selection_est$q0_med, selection_est$q0_lo, selection_est$q0_hi),
+  `P(cultured | true typhoid)`=interval(selection_est$q1_med, selection_est$q1_lo, selection_est$q1_hi),
+  check.names=FALSE)
+kable(selection_table)
+```
+
+```{r}
+#| label: tbl-hospital-ppv
+#| tbl-cap: "Study-specific hospital PPV estimates from the paired-test layer."
+phi_table <- data.frame(
+  Study = phi$study,
+  `Blood volume used (mL)` = fmt(phi$vol_mL, 1),
+  `PPV, median [90% CrI]` = interval(phi$phi_med, phi$phi_lo, phi$phi_hi, 2),
+  check.names = FALSE)
+kable(phi_table)
+```
+
+## S5.3 Sensitivity to assumed outbreak blood volume
+
+```{r}
+#| label: tbl-volume-sensitivity
+#| tbl-cap: "Community PPV sensitivity to assumed blood volume in outbreak surveillance."
+vs_table <- data.frame(
+  `Assumed blood volume (mL)` = volsens$assumed_blood_volume_mL,
+  Study = volsens$study,
+  `Blood-culture sensitivity` = fmt(volsens$Se_BC_median, 2),
+  `PPV median` = fmt(volsens$pi_median, 2),
+  check.names = FALSE)
+kable(vs_table)
+```
+
+Increasing assumed blood volume raised estimated blood-culture sensitivity and correspondingly
+lowered inferred PPV. The direction was expected from the approximate identity
+$\text{positivity}\approx\pi Se_{BC}$; the qualitative separation between hospital and community
+settings was unchanged.
+
+## S5.4 Sensitivity to selection assumptions
+
+The selection decomposition was examined under no enrichment; skeptical, base, and permissive
+enrichment priors; binary rather than ordinal audit grades; and no grade effect. These are structural
+sensitivity analyses, not data-supported model rankings.
+
+```{r}
+#| label: tbl-selection-sensitivity
+#| tbl-cap: "Sensitivity of inferred PPV and ORI impact to selection priors and audit-grade coding."
+ss_one <- selection_sens[!duplicated(selection_sens$scenario), ]
+ss_major <- selection_sens[selection_sens$study == "Kabwama 2017", c("scenario", "deflation_med")]
+ss <- merge(ss_one, ss_major, by="scenario", suffixes=c("", "_major"))
+ss <- merge(ss, ppv_selection_sens, by="scenario")
+scenario_labels <- c(no_enrichment="No enrichment", skeptical="Skeptical priors",
+                     base="Base priors", permissive="Permissive priors",
+                     binary_grade="Binary grade", no_grade="No grade effect")
+ss_table <- data.frame(
+  Scenario=unname(scenario_labels[ss$scenario]),
+  `Population PPV median`=fmt(ss$pi_population_med, 2),
+  `Predictive PPV, median [90% interval]`=interval(ss$pi_new_med, ss$pi_new_lo, ss$pi_new_hi),
+  `Kabwama population/tested PPV ratio`=fmt(ss$deflation_med_major, 2),
+  `True cases averted`=fmt(ss$true_cases_averted, 0),
+  `Observed suspected-case reduction (%)`=fmt(ss$observed_pct_reduction, 1),
+  check.names=FALSE)
+kable(ss_table)
+```
+
+Across these assumptions, estimated true cases averted ranged from
+`r fmt(min(ppv_selection_sens$true_cases_averted), 0)` to
+`r fmt(max(ppv_selection_sens$true_cases_averted), 0)`. This spread is consequential and is driven
+by the analyst-specified enrichment prior and grade encoding; the data do not select among these
+scenarios.
+
+# S6. Propagation into the ORI analysis
+
+Posterior PPV draws were propagated jointly with vaccine-effectiveness and campaign-timing draws.
+All `r nrow(pi_est)` audited anchors use their study-specific $\pi_o$ posterior when the ORI dataset
+contains the same study identifier. For outbreaks without direct PPV data, the current implementation
+draws an outbreak-specific value from the fitted logit-normal population distribution using each
+draw's $\mu_\pi$ and $\sigma_\pi$. This propagates genuine fitted between-outbreak heterogeneity.
+Preferential selection
+into blood culture is represented jointly through the tested, test-negative, test-positive, and
+untested counts, conditional on the prespecified audit bias grade.
+
+The testing-frame denominator used to estimate an anchor's PPV is not necessarily the same
+population or time window as the renewal incidence curve. The audit below makes that transport step
+explicit. A numerical mismatch is not repaired by the selection model and is not included in the
+selection-prior sensitivity range.
+
+```{r}
+#| label: tbl-denominator-frame-audit
+#| tbl-cap: "Alignment of Stan suspected-case testing frames with canonical renewal time-series totals."
+denom_table <- data.frame(
+  Study=denominator_audit$study,
+  `Stan testing frame`=denominator_audit$stan_testing_frame_n,
+  `Canonical curve total`=ifelse(is.na(denominator_audit$renewal_curve_sum), "No matching curve",
+                                 fmt(denominator_audit$renewal_curve_sum, 0)),
+  `Used in renewal model`=ifelse(denominator_audit$renewal_model_included, "Yes", "No"),
+  Alignment=denominator_audit$frame_alignment,
+  check.names=FALSE)
+kable(denom_table)
+```
+
+Two observation regimes are available:
+
+1. **Multiplicative regime:** $I_t=\pi S_t$, where $S_t$ is suspected incidence and $I_t$ is latent
+   true typhoid incidence. With constant $\pi$, percentage reduction and reconstructed transmission
+   are invariant, while absolute cases, YLDs, costs, and cases per dose are scaled by $\pi$.
+2. **Additive-background regime:** $S_t=I_t+B_t$, where the non-typhoid febrile background is assumed
+   constant over the outbreak. The implementation sets $B=(1-\pi)\overline S$, truncates negative
+   $I_t$, and renormalizes the true-typhoid curve to sum to $\pi\sum_tS_t$. Vaccination acts on $I_t$
+   only, so background illness dilutes the percentage change observable in suspected surveillance.
+
+The current ORI configuration uses the additive-background regime. At a second additive level, true
+typhoid is decomposed as $I_t=X_t+P_t$, where $X_t$ is background/common-source typhoid and
+$P_t=R_t^P\sum_{u\ge1}w_uI_{t-u}$ is propagated typhoid. Under vaccination, the remaining
+susceptibility multiplier $q_t$ acts on both components:
+$X_t^v=q_tX_t$ and
+$P_t^v=q_tR_t^P\sum_{u\ge1}w_uI_{t-u}^v$. Other febrile illness remains fixed, whereas propagated
+typhoid additionally declines through transmission feedback.
+
+The former calculation
+$A_\theta=\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}}$ averages completed outcomes
+and is retained only as a historical comparator. In the primary model, the source fraction
+$\theta$ allocates baseline true-typhoid incidence *within* the shared additive recursion; it is
+informed by field-epidemiologic source classification because its level was not identifiable from
+curve shape alone.
+
+Because the other-febrile background curve is not directly observed, the multiplicative
+observation regime should be reported as a structural sensitivity analysis. Deaths attributed to
+typhoid were not multiplied by PPV; deaths/YLLs were treated as already disease-specific, whereas
+non-fatal case counts, YLDs, treatment costs, and AMR case counts were adjusted.
+
+```{r}
+#| label: tbl-ppv-effect
+#| tbl-cap: "Effect of PPV adjustment in the current ORI base-case run."
+effect_table <- data.frame(
+  Quantity = c("Summed per-outbreak median cases averted",
+               "Pooled true-typhoid percentage reduction",
+               "Pooled percentage reduction observable in suspected surveillance"),
+  `Without PPV adjustment` = c(
+    fmt(ppv_effect$suspected_naive[1], 0),
+    paste0(fmt(ppv_effect$suspected_naive[2], 1), "%"),
+    "Not applicable"),
+  `With PPV adjustment` = c(
+    fmt(ppv_effect$true_typhoid[1], 0),
+    paste0(fmt(ppv_effect$true_typhoid[2], 1), "%"),
+    paste0(fmt(ppv_effect$true_typhoid[3], 1), "%")),
+  check.names = FALSE)
+kable(effect_table)
+```
+
+PPV adjustment reduced the estimated absolute vaccine-preventable burden substantially. Under the
+additive observation model, it also distinguished the reduction in latent true typhoid from the
+smaller change expected in all-cause suspected-case surveillance.
+
+In paired base-case simulations, the additive source-plus-propagated model averted
+`r fmt(source_comparison$additive_cases_median, 0)` true-typhoid cases
+(`r fmt(source_comparison$additive_cases_p025, 0)`--`r fmt(source_comparison$additive_cases_p975, 0)`)
+and reduced true typhoid by `r fmt(source_comparison$additive_true_pct_median, 1)`%. The historical
+$\theta$-weighted version reduced true typhoid by
+`r fmt(source_comparison$historical_weighted_true_pct_median, 1)`%. The paired difference was
+`r fmt(source_comparison$delta_true_pp_median, 1)` percentage points
+(`r fmt(source_comparison$delta_true_pp_p025, 1)` to
+`r fmt(source_comparison$delta_true_pp_p975, 1)`). The primary model produced a
+`r fmt(source_comparison$additive_observed_pct_median, 1)`% reduction in suspected-case
+surveillance. All `r nrow(source_validation)` prespecified mass-balance, endpoint, non-negativity,
+and pairing checks passed.
+
+# S7. Assumptions and limitations
+
+1. **Targeted evidence base.** The model used a deliberately selected evidence set suitable for the
+   ORI observation model, not a completed systematic review of clinical-definition accuracy or
+   positivity. Numerical estimates should be updated when the planned systematic evidence synthesis
+   is complete.
+2. **Community anchors.** `r nrow(pi_est)` independence-checked outbreak observations directly
+   informed community PPV. The predictive distribution remains sensitive to case-definition and
+   testing-selection heterogeneity across these studies.
+3. **Representativeness of cultured patients.** The selection layer adjusts for preferential
+   culture of true cases using testing fractions and audit bias grades, but this structure is
+   **prior-dominated**: the available aggregate counts do not identify population PPV separately
+   from enrichment into culture. Results remain sensitive to its priors and grade coding, as the
+   reported structural sensitivity sweep demonstrates, and to unmeasured selection factors
+   such as severity, antibiotics, laboratory capacity, and clinician judgment.
+4. **Blood volume.** Community blood volume was assumed rather than observed. The 3--10 mL sensitivity
+   analysis quantifies this uncertainty but cannot replace outbreak-specific collection volumes.
+5. **Denominator-frame transport.** Several local PPV anchors use a suspected-case testing frame
+   that differs from the canonical renewal curve in population, time window, or total count. The
+   1,511--2,277 selection-prior range conditions on those frame choices and therefore does not
+   quantify this additional uncertainty. N'Cho is especially consequential (583 in the hospital
+   testing frame versus 2,744 cases in the canonical curve).
+6. **Conditional independence.** Shared blood- and bone-marrow-culture failure could cause the model
+   to overestimate sensitivity and underestimate PPV.
+7. **Historic data quality.** One blood volume was imputed, two studies combined multiple volumes,
+   and one both-negative cell was reconstructed from the reported total.
+8. **Definition heterogeneity.** Clinical definitions differed across studies. The present model
+   estimates setting-specific PPV but does not yet include definition stringency as a covariate.
+9. **Background structure.** The additive observation regime assumes a constant non-typhoid
+   background. Seasonal or outbreak-correlated alternative febrile illness would violate this
+   assumption.
+10. **Ratio versus absolute outcomes.** Under multiplicative scaling, PPV affects absolute burden but
+   cancels from percentage reductions and reconstructed $R_t$. Under the additive regime it also
+   changes epidemic shape and observed percentage reduction, making its structural assumptions more
+   consequential.
+11. **Source-fraction structure.** The source fraction is externally informed and represents an
+    allocation of true-typhoid incidence inside the renewal recursion, not an identified causal
+    decomposition. The paired historical weighted result is a structural comparator rather than an
+    uncertainty bound.
+
+# S8. Reproducibility
+
+The final latent-class model is implemented in `latent_class_ppv/stan/model_final.stan` and fitted by
+`latent_class_ppv/run_final.R`. The fit uses seed 2026 and writes posterior draws, parameter tables,
+diagnostics, sensitivity tables, and figures under `latent_class_ppv/outputs`,
+`latent_class_ppv/tables`, and `latent_class_ppv/figures`. The ORI propagation is implemented in
+`renewal/R/ppv.R` and `renewal/R/renewal_core.R`, configured in `renewal/config.yml`, and compared
+with the historical weighted formulation by `source_decomposition/run_source_decomposition.R`.
+
+To reproduce the PPV fit and this supplement from the repository root:
+
+```text
+Rscript latent_class_ppv/run_final.R
+Rscript renewal/run_analysis.R
+Rscript source_decomposition/run_source_decomposition.R
+Rscript revision/run_selection_sensitivity.R
+quarto render revision/ppv_supplement.qmd --to html
+quarto render revision/ppv_supplement.qmd --to docx --output ppv_supplement_selection_sensitivity.docx
+Move-Item ppv_supplement_selection_sensitivity.docx revision/ppv_supplement_selection_sensitivity.docx -Force
+```
+
+The canonical DOCX deliverable is `revision/ppv_supplement_selection_sensitivity.docx`.
+`revision/ppv_supplement.docx` is a superseded locked artifact and should not be distributed.
+
+# References
+
+Antillón M, Saad NJ, Baker S, Pollard AJ, Pitzer VE. The relationship between blood sample volume
+and diagnostic sensitivity of blood culture for typhoid and paratyphoid fever: a systematic review
+and meta-analysis. *Journal of Infectious Diseases*. 2018;218(Suppl 4):S255--S267.
+
+Arora P, Thorlund K, Brenner DR, Andrews JR. Comparative accuracy of typhoid diagnostic tools: a
+Bayesian latent-class network analysis. *PLoS Neglected Tropical Diseases*. 2019;13:e0007303.
+
+Dendukuri N, Joseph L. Bayesian approaches to modeling the conditional dependence between multiple
+diagnostic tests. *Biometrics*. 2001;57:158--167.
+
+Hui SL, Walter SD. Estimating the error rates of diagnostic tests. *Biometrics*.
+1980;36:167--171.
+
+Mogasale V, Ramani E, Mogasale VV, Park JY, Wierzba TF. What proportion of *Salmonella Typhi* cases
+are detected by blood culture? A systematic literature review. *Annals of Clinical Microbiology and
+Antimicrobials*. 2016;15:32.

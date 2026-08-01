@@ -1,12 +1,12 @@
 ---
-title: "Transmission-mode classification & source decomposition"
-subtitle: "Common-source (static) vs propagated (renewal) vs mixed — and the static↔renewal bracket"
+title: "Additive source and propagated-transmission renewal model"
+subtitle: "Two additive levels, with the former theta-weighted calculation retained as a structural comparator"
 date: today
 format:
   html:
     toc: true
+    toc-depth: 2
     embed-resources: true
-    df-print: kable
 execute:
   echo: false
   warning: false
@@ -14,82 +14,197 @@ execute:
 ---
 
 ```{r setup}
-library(knitr); library(dplyr)
+library(knitr)
+library(dplyr)
 root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
-tab <- function(n) read.csv(file.path(root, "source_decomposition/tables", n), check.names = FALSE)
-fig <- function(n) file.path(root, "source_decomposition/figures", paste0(n, ".png"))
+tab <- function(n) read.csv(
+  file.path(root, "source_decomposition/tables", n),
+  check.names = FALSE)
+fig <- function(n) file.path(
+  root, "source_decomposition/figures", paste0(n, ".png"))
+mode <- tab("tab_transmission_mode.csv")
+cmp <- tab("tab_additive_vs_theta_weighted.csv")
+pooled <- tab("tab_additive_vs_theta_weighted_pooled.csv")
+validation <- tab("tab_additive_validation.csv")
+fmt <- function(x, d = 1) formatC(x, digits = d, format = "f")
 ```
 
-## Question
+## Summary
 
-The static model is correct for **common-source** outbreaks (a water/food source drives
-incidence; transmission is non-reproductive) and the renewal model for **propagated**
-(person-to-person) outbreaks. We classify each of the 13 weekly-resolvable outbreaks,
-assign a source fraction θ (1 = pure common-source → static; 0 = pure propagated →
-renewal), and report impact as the **static↔renewal bracket** with a θ point estimate.
+The primary analysis uses **additive models at two different levels**.
 
-Two evidence streams are triangulated: **A — paper evidence** (full-text reading of each
-primary report against a fixed rubric) and **B — curve-shape diagnostics** computed from the
-incidence series (common-source fit + propagation signals).
+1. **Observation level:** observed suspected febrile incidence is the sum of
+   latent true typhoid and other febrile illness,
 
-## Headline
+   $$
+   S_t = T_t + F_t.
+   $$
 
-```{r modefig, fig.cap="Paper-based transmission mode of the 13 renewal outbreaks."}
+   A posterior PPV draw fixes the cumulative true-typhoid burden,
+   $\sum_tT_t=\pi\sum_tS_t$. The non-typhoid component $F_t=S_t-T_t$ is held
+   fixed under typhoid vaccination.
+
+2. **Transmission level:** true-typhoid incidence is the sum of exogenous or
+   background-source incidence and propagated incidence,
+
+   $$
+   T_t = X_t + P_t,\qquad
+   P_t = R_t^P\sum_{s\ge1}w_sT_{t-s}.
+   $$
+
+   The source fraction $\theta$ partitions baseline renewal-identifiable
+   incidence into $X_t=\theta T_t$ and $P_t=(1-\theta)T_t$. Positive incidence
+   with zero prior infectiousness is necessarily an exogenous seed and is
+   assigned to $X_t$ regardless of $\theta$.
+
+This formulation places the two transmission components **inside one renewal
+recursion**. It replaces the former calculation that averaged two completed
+outcomes,
+
+$$
+A_{\mathrm{weighted}}
+=\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}}.
+$$
+
+That historical calculation remains below only as a paired structural
+comparator.
+
+## Vaccine counterfactual
+
+Let $q_t=1-c(t)\kappa\psi_T$, where $\kappa$ is coverage, $\psi_T$ is
+transmission-relevant vaccine efficacy, and $c(t)$ is the protected fraction.
+The additive counterfactual is
+
+$$
+\begin{aligned}
+X_t^v &= q_tX_t,\\
+P_t^v &= q_tR_t^P\sum_{s\ge1}w_sT_{t-s}^v,\\
+T_t^v &= X_t^v+P_t^v,\\
+S_t^v &= T_t^v+F_t.
+\end{aligned}
+$$
+
+Direct protection therefore applies to typhoid acquisition from both source
+and propagated routes. Indirect protection emerges only through the modified
+history in the propagated term. All true cases, including exogenous seeds,
+contribute to subsequent infectiousness.
+
+## Transmission-mode evidence and identifiability
+
+The paper-derived classification remains primary because a single incidence
+curve cannot reliably distinguish a source pulse from propagated transmission.
+The observed-curve diagnostic is retained only as a suggestive cross-check and
+may widen, but does not move, the paper-derived point value of $\theta$.
+
+```{r modefig, fig.cap="Paper-based transmission mode of the renewal-eligible outbreaks."}
 knitr::include_graphics(fig("fig_mode_distribution"))
 ```
 
-Reading the actual reports **revises the optimistic seeded demonstration**: most of these
-outbreaks are **mixed** (an identified water source *and* documented onward transmission /
-resurgence), several are explicitly described by their authors as "propagated" (Muti,
-Qamar, Yousafzai), and one is clearly propagated (Neil 2012, Kasese — no source implicated,
-~19-month multi-strain epidemic). Only a few are clean common-source (Lewis 2005, with
-S. Typhi isolated and PFGE-matched to the tap; Michel 2005, a food point-source [excluded
-from the pipeline]). **Implication: the dataset is *not* source-dominated — so the
-static↔renewal bracket (not a pure-static claim) is the defensible framing.**
-
-## Classification & cross-validation
-
 ```{r modetab}
-kable(tab("tab_transmission_mode.csv") |>
-        dplyr::select(study_id, mode_paper, theta_paper_lo, theta_paper_hi,
-                      theta_data, agreement, final_theta, confidence, citation),
-      digits = 2, caption = "Stream A (paper) vs Stream B (data) source fraction theta.")
+kable(
+  mode |>
+    select(
+      study_id, mode_paper, theta_paper_lo, theta_paper_hi,
+      theta_data, agreement, final_theta, confidence, citation),
+  digits = 2,
+  caption = paste(
+    "Paper evidence and observed-curve diagnostic.",
+    "The paper-derived midpoint is the primary source fraction."))
 ```
 
-```{r xval, fig.cap="Cross-validation of theta: paper (Stream A) vs data (Stream B)."}
-if (file.exists(fig("fig_theta_crossvalidate"))) knitr::include_graphics(fig("fig_theta_crossvalidate"))
+```{r xval, fig.cap="Paper-derived versus observed-curve source-fraction diagnostics."}
+if (file.exists(fig("fig_theta_crossvalidate")))
+  knitr::include_graphics(fig("fig_theta_crossvalidate"))
 ```
 
-**Identifiability caveat.** A single incidence curve cannot definitively separate a
-common-source pulse (convolved with the incubation period) from propagation — they can
-produce identical curves (the same non-identifiability the manuscript notes). Stream B is
-therefore *suggestive*, and the paper evidence (Stream A) is the primary classifier.
+## Simulation comparison with theta weighting
 
-## The static↔renewal bracket
+The additive and weighted calculations were evaluated on identical paired
+draws: the same PPV, vaccine efficacy, campaign timing, coverage, generation
+interval, and source fraction were used in both calculations. The exact
+historical comparator retains the static model's fixed indirect-effectiveness
+term $\eta=0.17$. A second, mechanism-matched comparator sets $\eta=0$ so that
+its endpoints agree with the additive model: $\theta=0$ is pure renewal and
+$\theta=1$ is direct-only static impact.
 
-```{r bracket, fig.cap="Per-outbreak bracket: renewal (theta=0) to static (theta=1) with the theta point."}
-knitr::include_graphics(fig("fig_decomposition_bracket"))
+Across the `r pooled$n_outbreaks` renewal-eligible outbreaks, the aggregate
+true-typhoid reduction was `r fmt(pooled$additive_true_pct_median)`% under the
+additive recursion and
+`r fmt(pooled$historical_weighted_true_pct_median)`% under the historical
+theta-weighted calculation. The paired difference was
+`r sprintf("%+.1f", pooled$delta_true_pp_median)` percentage points
+(`r fmt(pooled$delta_true_pp_p025)` to
+`r fmt(pooled$delta_true_pp_p975)` across paired uncertainty draws). Aggregate
+true cases averted were `r fmt(pooled$additive_cases_median, 0)` versus
+`r fmt(pooled$historical_weighted_cases_median, 0)`.
+
+```{r comparison-figure, fig.cap="Primary additive recursion versus the historical theta-weighted calculation. Blue horizontal bars show the structural range obtained from each outbreak's source-fraction bounds; they are not credible intervals."}
+knitr::include_graphics(fig("fig_additive_vs_theta_weighted"))
 ```
 
-```{r dectab}
-kable(tab("tab_decomposition.csv") |>
-        dplyr::select(study_id, final_theta, pct_renewal, pct_static, pct_theta),
-      digits = 1, caption = "% cases averted: renewal endpoint, static endpoint, and theta point (tau=8, 80%).")
+```{r difference-figure, fig.cap="Paired percentage-point difference between the additive and historical weighted formulations."}
+knitr::include_graphics(fig("fig_additive_difference"))
 ```
 
-The decomposition satisfies `averted(theta) = theta·static + (1-theta)·renewal`, validated so
-that θ=1 reproduces the static model and θ=0 the renewal model to machine precision.
+```{r comparison-table}
+cmp_show <- cmp |>
+  transmute(
+    Outbreak = study_id,
+    `theta` = theta,
+    `PPV` = ppv_median,
+    `Additive %` = pct_additive_median,
+    `Historical weighted %` = pct_theta_weighted_historical_median,
+    `Mechanism-matched weighted %` = pct_theta_weighted_matched_median,
+    `Paired difference, percentage points` =
+      delta_true_pp_vs_historical_median,
+    `Observed suspected % (additive)` =
+      observed_pct_additive_median)
+kable(
+  cmp_show, digits = 1,
+  caption = paste(
+    "Per-outbreak medians at campaign week 8 and 80% coverage.",
+    "Zeros indicate that effective protection occurred after the modeled",
+    "outbreak tail under the prespecified timing rule."))
+```
+
+The aggregate difference is small, but that does not imply equivalence for
+individual outbreaks. The additive recursion allows source-generated cases to
+seed later propagated cases and lets vaccination interrupt that coupled
+process. The weighted calculation instead treats the source and propagated
+outcomes as independent completed branches. The difference can therefore be
+larger, and can change sign, for particular epidemic shapes and response times.
+
+## Validation
+
+```{r validation}
+kable(validation, digits = 12)
+```
+
+All checks must pass before the driver writes a completed result. They cover:
+
+- $S_t=T_t+F_t$ and cumulative PPV conservation;
+- $T_t=X_t+P_t$ at baseline and under vaccination;
+- non-negative components and no vaccine-induced increase in incidence;
+- the $\theta=1$ direct-only endpoint;
+- exact reproduction of both frozen weighted formulas; and
+- uniqueness of all paired simulation keys.
+
+The source-fraction range is a **structural sensitivity interval**, not a
+posterior credible interval. PPV and vaccine-parameter intervals describe
+posterior or sampled uncertainty conditional on that structural choice.
 
 ## Limitations
 
-- Stream A depends on report completeness; several reports are short (MMWR notes) or are
-  genomic/clinical papers thin on transmission mode (Hendriksen, Muyembe) → low confidence.
-- **Davis 2018** is read from the real MMWR (the Zotero copy was misfiled): waterborne
-  common-source (boreholes 13/18 fecal-contaminated; cases clustered around boreholes;
-  declined after WASH) → mode A.
-- The protocol's outbreak list (Supp. Table 1) and the analysis dataset differ slightly
-  (it lists Michel 2005, which the pipeline excludes, and omits Lewis 2005, which the
-  pipeline includes); both are reconciled here.
-- Stream B's θ is heuristic given the identifiability limit; θ is treated as a bracket with
-  sensitivity, not a point parameter.
-```
+- The temporal allocation of true typhoid is derived from a flat-background
+  candidate followed by non-negative truncation and PPV-conserving
+  renormalisation. The resulting residual $F_t$ is fixed under vaccination but
+  is not generally perfectly flat.
+- A constant outbreak-level $\theta$ partitions renewal-identifiable incidence.
+  Time-varying contamination or route-specific vaccine effects would require
+  additional data.
+- Source fractions are based primarily on field-investigation evidence. The
+  hierarchical renewal-with-source analysis failed its prespecified
+  identifiability gate, so curve-derived posterior source fractions are not
+  substituted here.
+- Stream B is computed from the observed suspected curve and is only a
+  diagnostic; it is not a fitted decomposition of latent true-typhoid incidence.

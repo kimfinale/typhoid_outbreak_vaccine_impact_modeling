@@ -1,7 +1,7 @@
 # Hierarchical Bayesian renewal-with-source model (source fraction θ)
 
-Estimates each outbreak's **source fraction θ_o** (1 = pure common-source → static
-model; 0 = pure propagated → renewal model) by fitting a hierarchical
+Attempts to estimate each outbreak's **source fraction θ_o** (1 = source-dominated;
+0 = propagated-dominated) by fitting a hierarchical
 renewal-with-source model to all outbreaks jointly (partial pooling), in
 **R + Stan (cmdstanr)**. Tests honestly whether epidemic-curve *shape* recovers the
 transmission mode that field investigators establish — without baking the article
@@ -34,10 +34,10 @@ mu[o,t] = s[o,t]  +  R_tr[o] · Λ[o,t]
      estimates; the article classification is primary, the model a loose check.
 2. **Phase 2 — real-data fits** (only if gate passes): M1 **neutral** + M2 **article-
    informed**, 4 chains, full diagnostics (R̂ < 1.01, ESS, divergences), PPCs.
-3. **Phase 3 — comparison:** M1 posterior θ vs the article θ band (convergent validity);
-   rank concordance; τ_θ (how much outbreaks share); impact bracket propagating θ
-   uncertainty. Agreement under M1 = genuine; agreement only under M2 = θ wasn't
-   identified (an informative negative result).
+3. **Phase 3 — comparison, if the gate passes:** M1 posterior θ vs the article θ band
+   (convergent validity), rank concordance, and τ_θ (pooling). Any impact analysis must
+   allocate source and propagated incidence inside the additive renewal recursion.
+   The earlier post hoc θ-weighted static-plus-renewal bracket is historical only.
 
 ## Why this differs from `uncertainty/`'s Bayesian model
 That module's self-contained MCMC reconstructs R_t (no source term). This is a

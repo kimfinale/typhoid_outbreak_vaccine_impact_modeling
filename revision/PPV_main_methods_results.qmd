@@ -1,0 +1,160 @@
+---
+title: "Main-manuscript Methods and Results: PPV adjustment"
+subtitle: "Draft text and proposed main figures"
+format:
+  html:
+    toc: true
+    theme: cosmo
+    embed-resources: true
+  docx: default
+---
+
+# Methods
+
+## Adjustment for the positive predictive value of suspected cases
+
+The outbreak time series used in the outbreak-response immunization (ORI) model comprised suspected
+cases meeting study-specific clinical definitions. We therefore defined the relevant positive
+predictive value (PPV) as the probability of latent true typhoid among all suspected cases in an
+outbreak, $\pi_o=P(D=1\mid C=1,o)$, rather than the proportion positive among patients selected for
+blood culture. Blood-culture positivity is an imperfect proxy for this estimand because blood culture
+has incomplete, volume-dependent sensitivity and patients selected for culture may differ from those
+not tested.
+
+We estimated blood-culture sensitivity and outbreak-specific PPV jointly in a Bayesian latent-class
+model. The culture-accuracy layer included nine historical studies (577 patients) in which blood and
+bone-marrow cultures were performed in the same patients. Joint outcomes—blood positive/bone-marrow
+positive, blood positive/bone-marrow negative, blood negative/bone-marrow positive, and negative by
+both—were modeled with a multinomial likelihood conditional on latent disease status. Blood-culture
+sensitivity in study $s$ was modeled as
+
+$$
+\operatorname{logit}(Se_{BC,s})=\alpha_0+\alpha_1\log(V_s)+\tau u_s,
+\qquad u_s\sim N(0,1),
+$$
+
+where $V_s$ was cultured blood volume and $\tau$ represented residual between-study heterogeneity.
+The prior for the log-volume slope was informed by the Antillón et al. meta-regression. Blood- and
+bone-marrow-culture specificities were assigned priors concentrated near one, while bone-marrow
+sensitivity was estimated rather than treated as a perfect reference standard. Vallenas (1985) was
+excluded because the joint cells reported in the source review were inconsistent with the primary
+paper's marginal yields and did not identify a defensible both-negative cell.
+
+Community PPV evidence was assembled from 107 candidate outbreak records identified through the Koh
+et al. and Appiah et al. outbreak reviews. Eight independent outbreaks supplied a clinically defined
+suspected-case denominator, a blood-culture-specific tested count drawn from that denominator, and a
+blood-culture-positive count from the same tested subset. The audit classified 80 records as
+ineligible, retained 14 for sensitivity analyses, and held five pending source reconstruction or
+retrieval. Counts were corrected to blood-specific values where supported by primary reports,
+including 19/54 for Neil (2012) and 56/364 for Kabwama (2017).
+
+Population PPV was modeled hierarchically:
+
+$$
+\operatorname{logit}(\pi_o)=\mu_\pi+\sigma_\pi z_o,
+\qquad z_o\sim N(0,1).
+$$
+
+To allow preferential verification, $q_{1o}$ and $q_{0o}$ denoted the probabilities of culture among
+true-typhoid and non-typhoid suspected cases. Their log-odds difference was modeled as
+
+$$
+\operatorname{logit}(q_{1o})-\operatorname{logit}(q_{0o})
+=\mu_\delta+\beta_{bias}B_o+\sigma_\delta z_{\delta o},
+$$
+
+where the prespecified audit grade $B_o$ was coded 0, 1, or 2 for negligible/low, moderate, or major
+verification concern. Culture-positive, culture-negative, and untested counts followed a
+three-category multinomial likelihood. Because aggregate testing counts do not separately identify
+population PPV and preferential selection, the selection component was interpreted as
+prior-dependent and evaluated under six structural assumptions: no enrichment, skeptical, base, and
+permissive priors, binary rather than ordinal grades, and no grade effect.
+
+Models were fitted in Stan using four chains, 1,500 warm-up and 1,500 retained iterations per chain,
+seed 2026, target acceptance probability 0.98, and maximum tree depth 12. We report posterior medians
+and 90% credible intervals (CrIs). The main fit had no divergent transitions, maximum $\widehat R$ of
+1.004, and minimum bulk and tail effective sample sizes of 1,704 and 1,631, respectively.
+
+## Propagation into the ORI model
+
+The complete PPV posterior, rather than posterior medians, was propagated jointly with vaccine
+efficacy and campaign-timing uncertainty. ORI outbreaks matching a PPV study identifier received
+draws from their local $\pi_o$ posterior. For outbreaks without a direct anchor, each iteration drew
+an outbreak-specific PPV from the fitted logit-normal population distribution conditional on that
+iteration's $\mu_\pi$ and $\sigma_\pi$.
+
+The primary analysis used an additive observation model, $S_t=I_t+B_t$, where $S_t$ was observed
+suspected incidence, $I_t$ was latent true-typhoid incidence, and $B_t$ was a constant non-typhoid
+febrile background. For each PPV draw, $B=(1-\pi)\bar S$ was subtracted from the suspected curve,
+negative values were truncated, and the resulting curve was renormalized so that
+$\sum_t I_t=\pi\sum_t S_t$. The vaccine acted only on $I_t$.
+
+At a second additive level, true typhoid was represented as $I_t=X_t+P_t$, with
+background/common-source typhoid $X_t$ and propagated typhoid
+$P_t=R_t^P\sum_{u\ge1}w_uI_{t-u}$. Vaccination reduced both components directly, whereas only
+propagated cases generated feedback through the renewal recursion. The source fraction $\theta$
+allocated baseline incidence inside that shared recursion. The former post hoc calculation
+$\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}}$ was retained only as a paired historical
+comparator, using the same PPV-adjusted curve and parameter draws. We distinguished the percentage reduction in
+latent true typhoid from the smaller percentage reduction observable in all-cause suspected-case
+surveillance. Typhoid-attributed deaths were treated as disease-specific and were not multiplied by
+PPV; non-fatal cases, years lived with disability, treatment costs, and antimicrobial-resistance case
+counts were PPV-adjusted.
+
+# Results
+
+## Culture sensitivity and outbreak PPV
+
+Estimated blood-culture sensitivity increased from 0.56 (90% CrI 0.46–0.66) at 2 mL to 0.65
+(0.56–0.73) at 5 mL and 0.72 (0.62–0.80) at 10 mL. Estimated bone-marrow-culture sensitivity was
+0.92 (0.90–0.94). These results imply that observed blood-culture positivity systematically
+understates the proportion of suspected patients with true typhoid.
+
+Community PPV was strongly heterogeneous. Study-specific posterior medians ranged from 0.10 for
+Dhadwal (2008) to 0.86 for Hu (2022). The fitted median PPV for a typical outbreak was 0.31 (90% CrI
+0.16–0.52), with a between-outbreak logit-scale standard deviation of 1.35 (0.85–2.03). The
+audit-grade selection coefficient was positive (median 0.39, 90% CrI 0.05–0.94), but the selection
+hyperparameters remained substantially prior-dependent and were not interpreted as empirical proof
+of preferential culture.
+
+![Observed blood-culture positivity, PPV among cultured suspects, and selection-adjusted PPV among all suspected cases. Points show posterior medians and horizontal bars show 90% CrIs; observed positivity is plotted without an interval.](figures/fig_main_ppv_evidence.png){#fig-main-ppv-evidence width=95%}
+
+Figure @fig-main-ppv-evidence separates three quantities that are often conflated. Correcting only
+for imperfect blood-culture sensitivity raises the estimated PPV among cultured patients, while the
+selection model can lower the corresponding PPV among all suspected cases when true typhoid is
+preferentially cultured. The difference was largest in outbreaks assigned major verification
+concern, although intervals remained wide.
+
+## Effect on estimated ORI impact
+
+In the base-case two-level additive analysis, ORI averted a pooled median 1,846 true typhoid cases
+(95% simulation interval 644–3,742), corresponding to a 25.6% reduction in latent true typhoid and
+a 7.0% reduction observable in suspected-case surveillance. The historical $\theta$-weighted
+calculation gave 25.9%; the paired additive-minus-weighted difference was −0.5 percentage points
+(−2.4 to 0.7) or −37 cases (−212 to 52). The similar pooled estimates mask larger
+outbreak-specific differences and do not make the two formulations mechanistically equivalent.
+
+In a separate observation-layer sensitivity using the pure-renewal propagation workflow, selection
+assumptions changed estimated true cases averted from 1,511 to 2,277, while the true-typhoid
+percentage reduction remained between 29.8% and 30.7% and the apparent suspected-case reduction
+ranged from 5.5% to 8.9%. These values quantify PPV-selection sensitivity conditional on that
+propagation workflow; they are not uncertainty limits for the primary source-plus-propagated model.
+
+![Two-level additive ORI model versus the historical theta-weighted calculation. Panel A compares true typhoid cases averted using paired inputs and 95% simulation intervals. Panel B contrasts reductions in latent true typhoid with reductions observable in suspected-case surveillance.](figures/fig_main_ppv_impact.png){#fig-main-ppv-impact width=100%}
+
+Four of eight direct PPV anchors matched renewal time series. Their diagnostic-testing frames were
+not always numerically or temporally identical to the corresponding incidence curves; the largest
+mismatch was N'Cho (2019), whose hospital testing frame contained 583 suspected patients while the
+canonical outbreak curve summed to 2,744 cases. This transport step, together with the
+prior-dependence of preferential verification and the assumption of a constant non-typhoid
+background, remains an important limitation of the adjusted impact estimates.
+
+# Proposed figure placement
+
+- **Main Figure:** Figure @fig-main-ppv-impact. It communicates the manuscript-level policy result:
+  suspected-case surveillance can substantially overstate absolute vaccine-preventable burden while
+  understating the relative effect observable after vaccination.
+- **Main or extended-data figure:** Figure @fig-main-ppv-evidence. It makes the diagnostic argument
+  visually explicit and prevents readers from interpreting blood-culture positivity as PPV.
+- **Supplement:** retain the blood-volume sensitivity curve and detailed hospital/community PPV
+  forest plot, which are important for validation but less direct for the main ORI narrative.

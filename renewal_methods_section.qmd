@@ -1,0 +1,375 @@
+---
+title: "Methods — Semi-mechanistic model of typhoid outbreak-response immunization"
+format:
+  html:
+    embed-resources: true
+  docx: default
+---
+
+# Methods — Semi-mechanistic (generation-interval) model of typhoid outbreak response immunization
+
+*Draft Methods section for the revised manuscript. Equations are written in LaTeX and
+render in Quarto/pandoc (→ Word, PDF, or HTML). Citation keys in square brackets are
+keyed to the reference list at the end; two references flagged "[verify]" need their
+author lists confirmed against the source.*
+
+---
+
+## 1. Choice of model structure
+
+The impact of outbreak response immunization (ORI) can be evaluated with models spanning a
+spectrum of mechanistic detail. At one extreme, a **static model** (our Equation 2 [Halloran
+1991]) rescales the observed incidence curve by a fixed proportion after the vaccine takes
+effect; it makes no representation of transmission. At the other extreme, a **fully mechanistic
+compartmental model** (e.g., a susceptible–exposed–infectious–carrier–recovered structure with
+an environmental reservoir [Pitzer 2014; Watson 2015]) represents the transmission process
+explicitly. Between these lies the **renewal-equation (generation-interval) framework**
+[Wallinga 2004; Cori 2013; Champredon 2018], which represents transmission through a single
+time-varying reproduction number and the generation-interval distribution, without committing
+to a specific compartmental mechanism.
+
+We adopt the renewal framework as the dynamic complement to our static primary analysis, for
+four reasons specific to the data and the pathogen.
+
+**(i) A single outbreak does not identify a mechanistic model.** Each outbreak trajectory
+carries roughly four pieces of information — the initial growth rate, the timing and height of
+the peak, and the rate of decline. A mechanistic typhoid model of the type required to represent
+this disease faithfully (direct and environmental transmission, a chronic-carrier reservoir, and
+age structure) contains on the order of ten to twenty parameters, together with unobserved
+initial conditions. Fitting such a model to one outbreak requires fixing almost all parameters
+from external literature and estimating only one or two; the resulting "fit" is then largely a
+restatement of the priors rather than an inference from the data. The renewal equation extracts
+the same growth-and-decline information non-parametrically, through the reconstructed
+reproduction number $R_t$, and requires only the generation-interval distribution as a
+transmission assumption.
+
+**(ii) The classic typhoid non-identifiability is not resolved by adding mechanism.** From
+incidence data alone, the reporting fraction, the initial susceptible fraction, and the
+transmission rate are jointly non-identifiable: they trade off to produce identical epidemic
+curves [Watson 2015]. A mechanistic model does not resolve this confounding; it relocates it into
+the prior distributions. The renewal approach sidesteps it: $R_t$ absorbs the product of the
+transmission rate and the susceptible fraction, and — because the proportional impact measures
+are invariant to a time-constant reporting fraction (Section 5) — the percent-case-reduction
+estimand does not require the reporting fraction to be known.
+
+**(iii) An outbreak is the wrong regime for an endemic-equilibrium model.** Published mechanistic
+typhoid models are calibrated to endemic, multi-year, age-stratified incidence with steady-state
+carrier and environmental reservoirs [Pitzer 2014; Phillips 2020]. An outbreak — frequently a
+transient, point-source waterborne event with an attack rate of approximately 1% (Results) — is
+precisely the regime in which the endemic-equilibrium structure is least constrained by the data
+and most prone to misspecification. The low attack rate is informative: it implies that
+susceptible depletion over the outbreak is negligible ($S(t)/N \approx \text{const}$), so the
+observed decline in transmission reflects the public-health response (chlorination, WASH, source
+remediation) rather than depletion of susceptibles. This is the regime in which the principal
+added value of a compartmental model — its nonlinear depletion dynamics — is smallest, and in
+which the renewal equation is most accurate.
+
+**(iv) The renewal equation is the mechanistic model, reduced.** This is the central point.
+Champredon, Dushoff and Earn [Champredon 2018] proved that the renewal equation produces
+**identical dynamics** to an Erlang-distributed SEIR (and SIR) compartmental model when the
+generation-interval distribution used in the renewal equation is the intrinsic generation
+interval implied by the model — namely, the convolution of the latent-period and
+infectious-period distributions [Svensson 2007; Champredon 2015]. The renewal framework is
+therefore not an alternative to mechanistic modeling but its formal reduction in the regime our
+data occupy: the compartmental structure that one outbreak cannot identify is integrated out,
+while the transmission dynamics that the data *can* inform are retained in $R_t$. Choosing the
+renewal model is thus a statement about the information content of the data, not a concession of
+rigor — and for the present comparative, multi-outbreak analysis it places the model at the
+appropriate level of complexity.
+
+Applying nineteen separate mechanistic models would, in addition, require nineteen sets of
+largely unidentifiable parameter choices, undermining the comparability that motivates the study.
+The renewal procedure is identical across outbreaks, with all between-outbreak heterogeneity
+captured transparently by the reconstructed $R_t$ trajectories.
+
+A consequence of the resolution analysis (Supplementary Methods) is that the renewal model is
+applied only to outbreaks whose reporting interval $\Delta$ is short relative to the generation
+interval $\mu_g$. The instantaneous reproduction number is identifiable from incidence only when
+the generation interval spans several observation steps; when $\Delta \gtrsim \mu_g$, successive
+transmission generations collapse into a single reporting interval and $R_t$ degenerates to a
+ratio of consecutive counts that conflates generations. With a typhoid generation interval of
+about two weeks (Section 4), this criterion ($\mu_g/\Delta \gtrsim 2$) is met by the outbreaks
+reporting daily and weekly incidence ($n=13$) and fails for those reporting monthly incidence;
+the renewal analysis is therefore restricted to the former, while the static analysis, which is
+robust to reporting resolution, is applied to all outbreaks.
+
+---
+
+## 2. The two-level additive renewal model
+
+We use additive models at two distinct levels. At the **observation level**, reported suspected
+febrile cases $S_t$ are the sum of true symptomatic typhoid cases $T_t$ and other febrile cases
+$F_t$:
+
+$$
+S_t = T_t + F_t,\qquad
+\frac{\sum_t T_t}{\sum_t S_t}=\pi ,
+$$
+
+where $\pi$ is the positive predictive value (PPV) of the suspected-case definition. The primary
+allocation estimates a non-negative approximately flat other-febrile background, truncates it
+where necessary, and renormalizes $T_t$ so its cumulative fraction is exactly $\pi$. The resulting
+$F_t=S_t-T_t$ is held fixed under vaccination. Thus vaccination changes true typhoid, not unrelated
+febrile illness; the percentage reduction in suspected cases is consequently diluted when PPV is
+low.
+
+At the **transmission level**, true typhoid incidence is itself the additive sum of exogenous
+background or common-source incidence $X_t$ and propagated incidence $P_t$:
+
+$$
+T_t = X_t + P_t,\qquad
+P_t = R_t^{P}\Lambda_t,\qquad
+\Lambda_t=\sum_{s=1}^{t-1}w_sT_{t-s}.
+$$
+
+Both components are true typhoid and therefore both contribute to later infectiousness
+$\Lambda_t$. The sequence $\{w_s\}_{s\ge1}$ is the discretized generation-interval probability
+mass function ($\sum_{s\ge1}w_s=1$). The structural source fraction $\theta$ is used to allocate
+renewal-identifiable baseline incidence within this additive recursion,
+$X_t=\theta T_t$ and $P_t=(1-\theta)T_t$, with
+$R_t^P=P_t/\Lambda_t$. When $\Lambda_t=0$ but $T_t>0$, incidence is necessarily treated as an
+exogenous seed ($X_t=T_t$, $P_t=0$). This seed rule preserves baseline mass and avoids discarding
+the first generation.
+
+**Generation-interval discretization.** The continuous generation-interval density is taken to be
+gamma-distributed with mean $\mu_g$ and standard deviation $\sigma_g$ (Section 4), with
+cumulative distribution $G$. It is discretized to the reporting interval $\Delta$ as
+
+$$
+w_s \;=\; \frac{G(s\Delta) - G\big((s-1)\Delta\big)}{1 - G(0)}, \qquad s = 1, 2, \ldots,
+$$
+
+with $w_0 = 0$ (no transmission in zero elapsed time). For the production analysis we use the
+refined discretization of Cori et al. [Cori 2013], which accounts for infection times being
+distributed within, rather than at the edge of, each interval; for a two-week mean generation
+interval the choice of discretization has negligible effect on the results.
+
+This construction is self-consistent: $X_t+R_t^P\Lambda_t=T_t$ at baseline. EpiEstim estimates of
+$R_t$ are retained as a diagnostic cross-check, but the intervention recursion uses the exact
+baseline reconstruction above. Uncertainty in PPV, vaccine efficacy, coverage, campaign timing,
+generation interval, and $\theta$ is propagated with paired Sobol draws.
+
+---
+
+## 3. How the vaccine reduces the two typhoid components
+
+The ORI campaign is delivered at time $\tau$, and protection develops after the rollout and
+immunity-onset delay. Let $c(t)\in[0,1]$ be the protected fraction of the target population by time
+$t$, $\kappa$ the final coverage, and $\psi_T$ vaccine efficacy against symptomatic typhoid. The
+remaining susceptibility multiplier is
+
+$$
+q_t=1-c(t)\kappa\psi_T.
+$$
+
+Vaccination acts on both additive typhoid components because both represent vaccine-preventable
+typhoid:
+
+$$
+X_t^v=q_tX_t,\qquad
+P_t^v=q_tR_t^P\sum_{s=1}^{t-1}w_sT_{t-s}^v,\qquad
+T_t^v=X_t^v+P_t^v.
+$$
+
+The factor $q_t$ directly protects vaccinated people against background/common-source exposures
+and against propagated exposures. In addition, each propagated case averted reduces infectiousness
+in later intervals, generating indirect protection endogenously. No fixed indirect-effect
+parameter is imposed. The counterfactual suspected-case series is
+$S_t^v=T_t^v+F_t$; other febrile illness remains unchanged.
+
+**Impact measures.** Cumulative cases averted and the percent case reduction are
+
+$$
+A_T=\sum_t(T_t-T_t^v),\qquad
+\rho_T=\frac{A_T}{\sum_tT_t}\times100\%,\qquad
+\rho_S=\frac{A_T}{\sum_tS_t}\times100\%.
+$$
+
+The same true-typhoid cases averted feed the disability-adjusted-life-year and cost calculations.
+
+---
+
+## 4. Generation-interval parameterization
+
+The generation-interval distribution is the only transmission assumption the renewal model
+requires, and it is the principal source of structural uncertainty; we therefore parameterize it
+explicitly from the natural history of typhoid and subject it to sensitivity analysis.
+
+Under the compartmental interpretation, the intrinsic generation interval is the convolution of
+the latent period (infection to onset of infectiousness) and the infectious-period profile
+(weighted by the intensity of onward transmission) [Svensson 2007; Champredon 2015; Champredon
+2018]. For typhoid these components are characterized as follows. The **latent period is short**:
+*S.* Typhi can be shed in stool within approximately 24 hours of infection [Marudaiappan 2021,
+verify]. The **incubation period** (infection to symptom onset), which governs when cases are
+detected rather than when they transmit, has a usual range of 8–14 days, with a plausible range of
+3–60 days; a systematic review and meta-analysis estimated subgroup mean incubation periods of
+9.7–21.2 days [BMC Infect Dis 2018, doi:10.1186/s12879-018-3391-3, verify]. **Onward transmission**
+occurs across the acute and early convalescent phases, during which shedding is highest; in a
+household study of culture-confirmed paediatric cases, shedding persisted for a median of
+approximately 11 days (range 3–61) and secondary shedding was detected in about 20% of case
+households [Marudaiappan 2021, verify]. A small fraction of cases (roughly 1–4%) become chronic
+carriers and contribute a long right tail to the distribution, although carriage contributes
+principally to endemic maintenance rather than to the dynamics of a single outbreak.
+
+Combining a short latent period with an infectious profile concentrated in the symptomatic acute
+phase yields a base-case mean generation interval of approximately **two weeks**. This is
+consistent with, and bounded above by, the **four-week generation interval** adopted in
+endemic typhoid time-series SIR models [Phillips 2020]. Because direct empirical estimates of the
+typhoid generation interval are scarce, we adopt a gamma distribution with a base-case mean of
+$\mu_g = 14$ days and explore $\mu_g \in [7, 28]$ days (1–4 weeks) in sensitivity analysis, with
+the standard deviation set to give a coefficient of variation of approximately 0.6 to reflect the
+substantial individual variation in incubation and shedding.
+
+| Natural-history component | Value (range) | Source |
+|---|---|---|
+| Latent period (infection → shedding) | ~1 day | Marudaiappan 2021 [verify] |
+| Incubation period (infection → symptoms) | 8–14 d usual; subgroup means 9.7–21.2 d | BMC Infect Dis 2018 [verify]; CDC |
+| Acute/convalescent shedding (onward transmission) | median ~11 d (3–61) | Marudaiappan 2021 [verify] |
+| Chronic carriage (right tail) | ~1–4% of cases | shedding/carriage reviews |
+| **Generation interval, base case** | **mean 14 d (gamma, CV ≈ 0.6)** | derived (this study) |
+| Generation interval, sensitivity range | mean 7–28 d (1–4 wk) | bounded above by Phillips 2020 |
+
+---
+
+## 5. Comparison with the historical weighted and fully mechanistic models
+
+The models differ in *what the vaccine acts on*, where source contributions enter, and how
+indirect protection arises. These differences are summarized in Table M1.
+
+**Static model (Equation 2).** The static model multiplies true typhoid incidence after
+$t^\ast$ by a fixed factor $1-P$, where $P$ combines direct and externally specified indirect
+effects under the Halloran formulation [Halloran 1991]:
+
+$$
+T_t^{\mathrm{static}} = T_t\big[\,1 - \mathbb{1}(t\ge t^\ast)\,P\,\big],
+\qquad
+P = 1 - (1-\eta)(1-\kappa\psi_T),
+\qquad
+A^{\mathrm{static}} = P\!\!\sum_{t\ge t^\ast}\! T_t.
+$$
+
+The indirect effectiveness $\eta$ enters as an **exogenous constant**, independent of coverage and
+of epidemic phase; the shape of the post-intervention curve is held fixed and only its height is
+scaled; and there is **no transmission feedback** — averting a case in one interval does not
+reduce incidence in the next. The static model thus measures a one-shot reduction of the
+true-typhoid curve.
+
+**Additive renewal-with-source model (primary).** The primary model applies the direct vaccine
+effect to both $X_t$ and $P_t$ and allows only $P_t$ to compound through transmission feedback.
+This is not a numerical blend of two completed counterfactuals: the components interact inside
+one recursion because all earlier true typhoid cases contribute to $\Lambda_t$.
+
+**Historical $\theta$-weighted model (comparison only).** Earlier analyses instead computed a
+static counterfactual and a pure-renewal counterfactual separately and averaged their impact:
+
+$$
+A_{\mathrm{weighted}}
+=\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}}.
+$$
+
+That expression is retained solely to quantify the effect of changing model structure. It is not
+the primary analysis because it combines outcomes after simulation and therefore does not preserve
+the additive incidence identity $T_t=X_t+P_t$ or the shared infectiousness history. Paired
+simulations use the same PPV, timing, coverage, efficacy, generation interval, and $\theta$ draws,
+so their difference isolates the structural change.
+
+In the paired base-case simulation across 13 renewal-eligible outbreaks, the additive model
+reduced true typhoid by 25.6%, compared with 25.9% under the historical weighted calculation.
+The additive-minus-weighted difference was -0.5 percentage points (95% simulation interval -2.4
+to 0.7), or -37 cases (-212 to 52). Although the pooled estimates were close, outbreak-specific
+differences were larger and could occur in either direction because the shared recursion changes
+the timing of feedback.
+
+**Fully mechanistic model.** A representative compartmental structure for typhoid tracks
+susceptible ($S$), exposed ($E$), infectious ($I$), chronic-carrier ($C$) and recovered ($R$)
+populations together with an environmental reservoir ($W$):
+
+$$
+\begin{aligned}
+\dot S &= \mu(N-S) - \lambda(t)\,S, &
+\dot E &= \lambda(t)\,S - (\sigma+\mu)E, &
+\dot I &= \sigma E - (\gamma+\mu) I, \\
+\dot C &= \theta\gamma I - \mu C, &
+\dot R &= (1-\theta)\gamma I - \mu R, &
+\dot W &= \xi\,(I + \rho_C C) - \delta_W W,
+\end{aligned}
+$$
+
+with force of infection combining direct and environmental routes,
+$\lambda(t) = \beta_I I/N + \beta_W\, W/(K_W + W)$. In this model the vaccine moves a fraction
+$\kappa\psi_T$ of $S$ into the immune class (and could, in principle, additionally reduce shedding $\xi$
+or carrier formation $\theta$), and indirect protection emerges mechanistically and
+route-specifically. The cost of this fidelity is the parameter set
+$\{\beta_I, \beta_W, \sigma, \gamma, \theta, \rho_C, \xi, \delta_W, K_W\}$, the initial conditions
+$\{S_0, E_0, I_0, C_0, W_0\}$, and the reporting fraction — far exceeding what a single outbreak
+can identify (Section 1). By the equivalence of [Champredon 2018], in the low-depletion limit with
+the intrinsic generation interval set to the convolution of the $E$ and $I$ sojourn-time
+distributions, this system reduces exactly to the renewal model of Section 2.
+
+**Table M1. Comparison of the modelling approaches.**
+
+| Property | Static | Historical weighted comparator | Additive renewal-with-source (primary) | Full mechanistic SEIR–carrier |
+|---|---|---|---|---|
+| Quantity modelled | true-typhoid cases, rescaled | weighted completed impacts | $T_t=X_t+P_t$ inside one recursion | compartmental flows $S,E,I,C,R,W$ |
+| Vaccine acts on | cases after $t^\ast$ | static and pure-renewal arms separately | both source and propagated typhoid; feedback through propagated cases | susceptibles; optionally shedding/carriage |
+| Indirect protection | exogenous fixed $\eta$ | inherited from separate arms | endogenous, coverage- and phase-dependent | endogenous, route-specific |
+| Transmission feedback | none | only in pure-renewal arm | yes, within additive recursion | yes, nonlinear |
+| Source contribution | not separated | post hoc weight $\theta$ | additive incidence component $X_t$ | explicit source processes |
+| Other febrile illness | held fixed | held fixed in paired comparison | held fixed | outside transmission system |
+| Identifiable from one outbreak? | no fitting | $\theta$ externally classified | $R_t^P$ reconstructed conditional on external $\theta$ | generally no |
+
+---
+
+## 6. Limitations of the renewal approach
+
+The first additive level assumes that non-typhoid febrile illness is unaffected by ORI and uses an
+approximately flat allocation in time; PPV identifies the cumulative amount of true typhoid but
+not its week-specific allocation. At the second level, $\theta$ is externally informed by outbreak
+source classification because curve shape alone did not identify its level reliably. The
+generation-interval kernel is a reduced-form summary of propagated transmission routes and does
+not represent route-specific vaccine effects. Holding $R_t^P$ fixed under the counterfactual does
+not re-inflate transmission to credit susceptibles preserved by vaccination; at the low attack
+rates observed this depletion feedback is second-order. The model also does not mechanistically
+represent chronic-carrier dynamics or a persistent environmental reservoir. Finally, renewal
+analysis is restricted to outbreaks reported at a resolution fine relative to the generation
+interval.
+
+---
+
+## References
+
+*(Verify author lists and complete page ranges in your reference manager; the two entries marked
+[verify] were located by source but should have their authorship confirmed.)*
+
+- **[Halloran 1991]** Halloran ME, Haber M, Longini IM, Struchiner CJ. Direct and indirect effects
+  in vaccine efficacy and effectiveness. *Am J Epidemiol.* 1991;133(4):323–331.
+- **[Wallinga 2004]** Wallinga J, Teunis P. Different epidemic curves for severe acute respiratory
+  syndrome reveal similar impacts of control measures. *Am J Epidemiol.* 2004;160(6):509–516.
+- **[Fraser 2007]** Fraser C. Estimating individual and household reproduction numbers in an
+  emerging epidemic. *PLoS One.* 2007;2(8):e758.
+- **[Wallinga 2007]** Wallinga J, Lipsitch M. How generation intervals shape the relationship
+  between growth rates and reproductive numbers. *Proc R Soc B.* 2007;274(1609):599–604.
+- **[Svensson 2007]** Svensson Å. A note on generation times in epidemic models. *Math Biosci.*
+  2007;208(1):300–311.
+- **[Cori 2013]** Cori A, Ferguson NM, Fraser C, Cauchemez S. A new framework and software to
+  estimate time-varying reproduction numbers during epidemics. *Am J Epidemiol.*
+  2013;178(9):1505–1512.
+- **[Champredon 2015]** Champredon D, Dushoff J. Intrinsic and realized generation intervals in
+  infectious-disease transmission. *Proc R Soc B.* 2015;282(1821):20152026.
+- **[Champredon 2018]** Champredon D, Dushoff J, Earn DJD. Equivalence of the Erlang-distributed
+  SEIR epidemic model and the renewal equation. *SIAM J Appl Math.* 2018;78(6):3258–3278.
+  doi:10.1137/18M1186411.
+- **[Pitzer 2014]** Pitzer VE, Bowles CC, Baker S, Kang G, Balaji V, Farrar JJ, Grenfell BT.
+  Predicting the impact of vaccination on the transmission dynamics of typhoid in South Asia: a
+  mathematical modeling study. *PLoS Negl Trop Dis.* 2014;8(1):e2642.
+- **[Phillips 2020]** Phillips MT, Owers KA, Grenfell BT, Pitzer VE. Changes in historical typhoid
+  transmission across 16 U.S. cities, 1889–1931: quantifying the impact of investments in water
+  and sewer infrastructures. *PLoS Negl Trop Dis.* 2020;14(4):e0007828.
+- **[Watson 2015]** Watson CH, Edmunds WJ. A review of typhoid fever transmission dynamic models
+  and economic evaluations of vaccination. *Vaccine.* 2015;33(Suppl 3):C42–C54.
+- **[BMC Infect Dis 2018, verify]** Incubation period of typhoidal salmonellosis: a systematic
+  review and meta-analysis of outbreaks and experimental studies occurring over the last century.
+  *BMC Infect Dis.* 2018;18:464. doi:10.1186/s12879-018-3391-3.
+- **[Marudaiappan 2021, verify]** *S.* Typhi shedding and household transmission by children with
+  blood culture-confirmed typhoid fever in Vellore, South India. *J Infect Dis.* 2021
+  (PMC8892528).

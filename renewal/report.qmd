@@ -1,6 +1,6 @@
 ---
-title: "Renewal-equation (R_t) model of typhoid ORI: results"
-subtitle: "Dynamic complement to the static proportional-reduction model"
+title: "Renewal-equation model of typhoid outbreak-response immunization"
+subtitle: "Additive observation and transmission-source formulations"
 date: today
 format:
   html:
@@ -16,116 +16,208 @@ execute:
 ---
 
 ```{r setup}
-library(knitr); library(dplyr)
+library(knitr)
+library(dplyr)
 root <- Sys.getenv("RENEWAL_ROOT", normalizePath(".."))
-tab <- function(n) read.csv(file.path(root, "renewal/tables", n), check.names = FALSE)
-fig <- function(n) file.path(root, "renewal/figures", paste0(n, ".png"))
+tab <- function(n) read.csv(
+  file.path(root, "renewal/tables", n), check.names = FALSE)
+fig <- function(n) file.path(
+  root, "renewal/figures", paste0(n, ".png"))
+src_tab <- function(n) read.csv(
+  file.path(root, "source_decomposition/tables", n),
+  check.names = FALSE)
+src_fig <- function(n) file.path(
+  root, "source_decomposition/figures", paste0(n, ".png"))
 res <- readRDS(file.path(root, "renewal/outputs/results.rds"))
+have_source_results <- file.exists(
+  file.path(
+    root, "source_decomposition/tables",
+    "tab_additive_vs_theta_weighted_pooled.csv"))
+if (have_source_results) {
+  source_pooled <- src_tab("tab_additive_vs_theta_weighted_pooled.csv")
+  source_cmp <- src_tab("tab_additive_vs_theta_weighted.csv")
+  source_validation <- src_tab("tab_additive_validation.csv")
+}
+fmt <- function(x, d = 1) formatC(x, digits = d, format = "f")
 ```
 
-## Summary
+## Model overview
 
-This report compares two models of typhoid outbreak-response immunization (ORI)
-impact on an identical set of `r length(unique(res$summ_grid$study_id))`
-daily/weekly outbreaks and identical Sobol parameter draws:
+The analysis uses additive models at two distinct levels.
 
-- **Static** (manuscript Eq. 2): a fixed proportional reduction with an exogenous
-  indirect-effectiveness term η = 17 %.
-- **Renewal** (this work): the vaccine reduces transmission (R_t), and herd
-  protection **emerges endogenously** from forward propagation — no η is supplied.
+### Level 1: true typhoid versus other febrile illness
 
-The only quantity that differs between the models is how cases-averted is computed;
-DALY and cost calculations are shared (reused from `R/2-functions.R`).
+Observed suspected incidence is
 
-## 1. Which outbreaks qualify (resolution rule)
+$$
+S_t=T_t+F_t,
+$$
 
-The renewal model is identifiable only where the generation interval spans several
-reporting intervals (μ_g/Δ ≳ 2). Monthly series collapse ~95 % of GI mass into one
-reporting bin and are excluded; daily/weekly series qualify.
+where $T_t$ is latent true-typhoid incidence and $F_t$ is other febrile illness
+meeting the suspected-case definition. For each posterior PPV draw,
+$\sum_tT_t=\pi\sum_tS_t$. The residual $F_t=S_t-T_t$ is held fixed under
+vaccination, so the vaccine cannot avert non-typhoid fever.
+
+### Level 2: source versus propagated typhoid transmission
+
+True-typhoid incidence is
+
+$$
+T_t=X_t+P_t,\qquad
+P_t=R_t^P\Lambda_t,\qquad
+\Lambda_t=\sum_{s\ge1}w_sT_{t-s},
+$$
+
+where $X_t$ is exogenous or background-source typhoid and $P_t$ is propagated
+typhoid. If $\theta$ is the source fraction, it partitions baseline
+renewal-identifiable incidence inside this equation. It is **not** used to
+average completed static and renewal outcomes.
+
+With $q_t=1-c(t)\kappa\psi_T$, the vaccination counterfactual is
+
+$$
+X_t^v=q_tX_t,\qquad
+P_t^v=q_tR_t^P\sum_{s\ge1}w_sT_{t-s}^v,\qquad
+T_t^v=X_t^v+P_t^v.
+$$
+
+Direct protection acts on typhoid acquisition from both routes. Indirect
+protection emerges through the propagated term's modified history. Positive
+incidence with no prior infectiousness is treated as an exogenous seed.
+
+## Renewal eligibility and baseline reproduction
+
+The renewal model is used only when the generation interval spans at least two
+reporting intervals. Monthly series are therefore excluded from the dynamic
+analysis.
 
 ```{r resolution}
 kable(tab("tab_resolution.csv"))
 ```
 
-## 2. Self-consistency
-
-With ψ = 0 the renewal counterfactual must reproduce the observed curve exactly
-(the observed outbreak *is* the baseline).
+With vaccine efficacy set to zero, forward propagation must reproduce the
+observed baseline.
 
 ```{r selfconsistency}
 kable(tab("tab_selfconsistency.csv"), digits = 16)
 ```
 
-## 3. Base case (τ = 8 wk, π = 0.80): static vs renewal
+## Pure-renewal and static reference results
 
-```{r forest, fig.cap="Per-outbreak % cases averted, static vs renewal."}
+The standard renewal run remains useful as the $\theta=0$ propagated endpoint
+and for timing, coverage, and generation-interval sensitivities. The static
+model remains a reference calculation. It is not mixed with renewal outputs to
+form the primary source-decomposed estimate.
+
+```{r forest, fig.cap="Per-outbreak percentage reduction under the static and pure-renewal reference calculations."}
 knitr::include_graphics(fig("fig_forest_pctreduction"))
 ```
 
 ```{r pooled}
-kable(res$pooled %>% filter(tau == 8), digits = 1,
-      caption = "Pooled and population-weighted % reduction at base case.")
+kable(
+  res$pooled |> filter(tau == 8),
+  digits = 1,
+  caption = "Static and pure-renewal reference summaries at the base timing.")
 ```
 
-## 4. Reconstructed R_t
-
-```{r rt, fig.cap="Exact reconstruction (black) vs EpiEstim 95% CrI (blue)."}
+```{r rt, fig.cap="Exact reconstruction and EpiEstim cross-check."}
 knitr::include_graphics(fig("fig_Rt_panels"))
 ```
 
-## 5. Amplification by response timing
-
-The renewal/static ratio of cases averted exceeds 1 for early response (several
-transmission generations remain) and converges to 1 for late response.
-
-```{r amp, fig.cap="Renewal / static cases-averted ratio vs ORI delay."}
+```{r timing, fig.cap="Pure-renewal versus static cases averted across response timing."}
 knitr::include_graphics(fig("fig_amplification_vs_delay"))
 ```
 
-## 6. Effective indirect VE (η_eff)
+## Additive transmission result versus theta weighting
 
-The fixed indirect VE the static formula would need to reproduce the renewal total
-reduction. η_eff > 17 % means the fixed assumption under-credits the emergent herd effect.
-
-```{r etaeff, fig.cap="η_eff per outbreak vs the assumed 17%."}
-knitr::include_graphics(fig("fig_eta_eff"))
+```{r source-result}
+if (!have_source_results) {
+  cat(paste(
+    "Source-comparison outputs are absent. Run",
+    "`Rscript source_decomposition/run_source_decomposition.R`,",
+    "then render this report again."))
+} else {
+  cat(paste0(
+    "Across ", source_pooled$n_outbreaks,
+    " renewal-eligible outbreaks, the aggregate true-typhoid reduction was ",
+    fmt(source_pooled$additive_true_pct_median), "% under the additive recursion and ",
+    fmt(source_pooled$historical_weighted_true_pct_median),
+    "% under the historical theta-weighted calculation. The paired difference was ",
+    sprintf("%+.1f", source_pooled$delta_true_pp_median),
+    " percentage points (",
+    fmt(source_pooled$delta_true_pp_p025), " to ",
+    fmt(source_pooled$delta_true_pp_p975), ")."))
+}
 ```
 
-```{r etatab}
-kable(tab("tab_eta_eff.csv"), digits = 2)
+The historical comparator is frozen as
+
+$$
+A_{\mathrm{weighted}}
+=\theta A_{\mathrm{static}}+(1-\theta)A_{\mathrm{renewal}},
+$$
+
+including its original fixed static indirect-effectiveness term
+$\eta=0.17$. A second mechanism-matched comparator uses $\eta=0$ to isolate
+the difference between adding components inside the recursion and averaging
+completed outcomes.
+
+```{r source-figure, fig.cap="Primary additive source-plus-propagated recursion versus the historical theta-weighted outcome calculation."}
+if (have_source_results)
+  knitr::include_graphics(src_fig("fig_additive_vs_theta_weighted"))
 ```
 
-## 7. Policy grid and impact summary
-
-```{r policy, fig.cap="Impact metrics by delay × coverage, renewal vs static."}
-if (file.exists(fig("fig_policy_grid"))) knitr::include_graphics(fig("fig_policy_grid"))
+```{r source-difference, fig.cap="Paired percentage-point difference between the additive and historical weighted formulations."}
+if (have_source_results)
+  knitr::include_graphics(src_fig("fig_additive_difference"))
 ```
 
-```{r impact}
-kable(tab("tab_impact_summary.csv"), digits = 1,
-      caption = "Impact summary (mirrors Supplementary Table 2, with renewal column).")
+```{r source-table}
+if (have_source_results) {
+  kable(
+    source_cmp |>
+      transmute(
+        Outbreak = study_id,
+        theta = theta,
+        `Additive %` = pct_additive_median,
+        `Historical weighted %` =
+          pct_theta_weighted_historical_median,
+        `Difference, percentage points` =
+          delta_true_pp_vs_historical_median,
+        `Observed suspected % (additive)` =
+          observed_pct_additive_median),
+    digits = 1)
+}
 ```
 
-## 8. Sensitivity analyses
+The pooled difference is smaller than the differences for some individual
+outbreaks. The additive recursion permits source-generated cases to seed later
+propagated cases; the weighted calculation instead treats the two outcomes as
+independent branches. Differences can therefore vary in magnitude and sign
+with epidemic shape and intervention timing.
 
-```{r gi, fig.cap="GI mean sensitivity (renewal % reduction)."}
+## Sensitivity analyses
+
+```{r gi, fig.cap="Generation-interval sensitivity for the pure-renewal endpoint."}
 knitr::include_graphics(fig("fig_gi_sensitivity"))
 ```
 
-```{r psit, fig.cap="Transmission-VE (ψ_T) sensitivity (renewal % reduction)."}
+```{r psit, fig.cap="Transmission-efficacy sensitivity for the pure-renewal endpoint."}
 knitr::include_graphics(fig("fig_psiT_sensitivity"))
 ```
 
-## 9. Example counterfactual curves
+## Validation and interpretation
 
-```{r curves, fig.cap="Observed vs static and renewal counterfactuals."}
-knitr::include_graphics(fig("fig_curves_examples"))
+```{r source-validation}
+if (have_source_results)
+  kable(source_validation, digits = 12)
 ```
 
-## Assumptions
+The source-fraction range is a structural sensitivity range, not a posterior
+credible interval. PPV and vaccine-parameter intervals are conditional on that
+structural assignment. Curve shape alone did not identify source fractions in
+the prespecified hierarchical gate, so paper evidence remains primary.
 
-- Incidence = `total_cases` (relabeled `suspected_cases`, as in `R/1-data.R`).
-- GI gamma, base mean 14 d (CV ≈ 0.6), first weekly bin zeroed then renormalized.
-- ψ = 0.83 (matches the static Sobol pipeline); ψ_T = ψ base, floor 0.6·ψ.
-- Direct effect only in the renewal model; herd protection emerges from propagation.
-```
+The Level-1 allocation begins with excess above a flat other-febrile candidate,
+then applies non-negative truncation and PPV-conserving renormalisation.
+Therefore the final fixed residual $F_t$ is not generally perfectly flat.
