@@ -1,0 +1,5 @@
+﻿analysis_stratum,n_observations,blood_positive_total,blood_tested_total,crude_pooled_blood_culture_positivity,unweighted_mean_study_positivity,median_study_positivity,minimum_study_positivity,maximum_study_positivity,verification_adjustment_grades,interpretation
+target_primary,7,1015,3581,0.283440380,0.210023731,0.166666667,0.054347826,0.351851852,major=4; negligible/low=3,Configured target-income inputs for the next controlled PPV refit.
+target_sensitivity_only,16,514,1384,0.371387283,0.425088706,0.391203704,0.094594595,0.837606838,not applicable=16,"Target-income observations reserved for structural, selection, small-study, phase, or overlap sensitivity analyses."
+expanded_setting_sensitivity_only,3,36,106,0.339622642,0.460628619,0.500000000,0.107692308,0.774193548,not applicable=3,Human-approved observations outside the FY2027 target income setting.
+all_target_approved,23,1529,4965,0.307955690,0.359634148,0.310496795,0.054347826,0.837606838,major=4; negligible/low=3; not applicable=16,All human-approved target-income observations; not a single coherent primary-likelihood estimand.
