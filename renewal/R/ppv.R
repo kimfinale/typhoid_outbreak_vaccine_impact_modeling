@@ -22,7 +22,8 @@
 load_pi_posterior <- function(path = "latent_class_ppv/outputs/final_draws.rds",
                               anchor = NULL,
                               pi_table = "latent_class_ppv/tables/final_pi_community.csv",
-                              audit_path = "latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv") {
+                              audit_path = "latent_class_ppv/data/merged_outbreak_ppv_modeling_audit.csv",
+                              crosswalk_path = "latent_class_ppv/data/ppv_to_timeseries_crosswalk.csv") {
   if (!file.exists(path)) { warning("PPV draws not found: ", path); return(NULL) }
   if (is.null(anchor)) {
     if (!file.exists(pi_table)) stop("PPV study-order table not found: ", pi_table)
@@ -49,11 +50,39 @@ load_pi_posterior <- function(path = "latent_class_ppv/outputs/final_draws.rds",
   pim <- as.matrix(dm[, cols]); colnames(pim) <- anchor
   mu_pi <- as.numeric(dm[, "mu_pi"])
   sigma_pi <- as.numeric(dm[, "sigma_pi"])
+  crosswalk <- data.frame(
+    ori_study_id = character(), ppv_source_study = character(),
+    match_basis = character(), notes = character(),
+    stringsAsFactors = FALSE)
+  if (file.exists(crosswalk_path)) {
+    crosswalk <- read.csv(crosswalk_path, check.names = FALSE,
+                          stringsAsFactors = FALSE)
+    required <- c("ori_study_id", "ppv_source_study", "match_basis", "notes")
+    missing <- setdiff(required, names(crosswalk))
+    if (length(missing)) {
+      stop("PPV-to-time-series crosswalk lacks columns: ",
+           paste(missing, collapse = ", "))
+    }
+    crosswalk <- crosswalk[, required, drop = FALSE]
+    crosswalk$ori_study_id <- trimws(crosswalk$ori_study_id)
+    crosswalk$ppv_source_study <- trimws(crosswalk$ppv_source_study)
+    if (any(!nzchar(crosswalk$ori_study_id)) ||
+        any(!nzchar(crosswalk$ppv_source_study)) ||
+        anyDuplicated(crosswalk$ori_study_id)) {
+      stop("PPV-to-time-series crosswalk has blank or duplicate study identifiers")
+    }
+    missing_sources <- setdiff(unique(crosswalk$ppv_source_study), anchor)
+    if (length(missing_sources)) {
+      stop("PPV crosswalk source absent from fitted anchors: ",
+           paste(missing_sources, collapse = ", "))
+    }
+  }
   list(pi_anchor = pim, mu_pi = mu_pi, sigma_pi = sigma_pi,
        # Backward-compatible aliases for scripts written before the fitted
        # hyperparameters were exposed explicitly.
        mu = mu_pi, sigma = sigma_pi,
-       anchor = anchor, ndraw = nrow(pim), supports_unanchored_prediction = TRUE)
+       anchor = anchor, crosswalk = crosswalk,
+       ndraw = nrow(pim), supports_unanchored_prediction = TRUE)
 }
 
 # Per-(study, scenario-draw) pi matrix [ndraw x length(study_ids)].
@@ -64,14 +93,27 @@ build_pi_matrix <- function(post, study_ids, ndraw, seed = 20240201L) {
   idx <- ((seq_len(ndraw) - 1L) %% post$ndraw) + 1L
   M <- matrix(NA_real_, nrow = ndraw, ncol = length(study_ids),
               dimnames = list(NULL, study_ids))
+  source_study <- setNames(rep(NA_character_, length(study_ids)), study_ids)
+  crosswalk <- post$crosswalk
+  if (is.null(crosswalk)) {
+    crosswalk <- data.frame(ori_study_id = character(),
+                            ppv_source_study = character(),
+                            stringsAsFactors = FALSE)
+  }
   set.seed(seed)
   for (s in study_ids) {
-    if (s %in% post$anchor) {
-      M[, s] <- post$pi_anchor[idx, s]
+    source <- if (s %in% post$anchor) s else {
+      j <- match(s, crosswalk$ori_study_id)
+      if (is.na(j)) NA_character_ else crosswalk$ppv_source_study[j]
+    }
+    source_study[s] <- source
+    if (!is.na(source)) {
+      M[, s] <- post$pi_anchor[idx, source]
     } else {
       M[, s] <- plogis(stats::rnorm(ndraw, post$mu_pi[idx], post$sigma_pi[idx]))
     }
   }
+  attr(M, "ppv_source_study") <- source_study
   M
 }
 

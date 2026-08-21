@@ -1,0 +1,21 @@
+﻿question_id,domain,signaling_question,allowed_answers,answer_key
+q1_1,Participants,Was a single-gate design used?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q1_2,Participants,Were participants recruited prospectively?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q1_3,Participants,Were participants selected consecutively or randomly?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q1_4,Participants,Were included participants representative of the intended-use population?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q2_1,Index test,Was the index test conducted and interpreted according to recommended instructions?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q2_2,Index test,Were index-test results interpreted without knowledge of the target-condition assessment?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q2_3,Index test,Was the same information available as would be available in practice?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q2_4,Index test,"If a threshold was used, was it standard or prespecified?",Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_1,Target condition,Was the reference standard adequate to identify the target condition?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_2,Target condition,Was the target condition assessed in all participants?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_3,Target condition,Was the target condition assessed in the same way in all participants?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_4,Target condition,Was incorporation of the index test into the target-condition assessment avoided?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_5,Target condition,Was the target-condition assessment conducted and interpreted according to recommended instructions?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_6,Target condition,Was the target-condition assessment interpreted without knowledge of the index-test result?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_7,Target condition,"If a threshold was used, was it standard or prespecified?",Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q3_8,Target condition,Was the interval between index test and target-condition assessment appropriate?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q4_1,Analysis,Were all recruited participants included in the analysis?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q4_2,Analysis,Were missing data handled appropriately?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q4_3,Analysis,Did the unit of analysis match the ideal test-accuracy trial?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information
+q4_4,Analysis,Were accuracy estimates calculated appropriately?,Y; PY; PN; N; NI,Y=yes; PY=probably yes; PN=probably no; N=no; NI=no information

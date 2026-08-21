@@ -54,6 +54,33 @@ check("Observation endpoint: pi=1 assigns all suspected incidence to typhoid",
       max(abs(obs_all_typhoid$true_typhoid - S_obs)) < 1e-12 &&
         max(abs(obs_all_typhoid$other_febrile)) < 1e-12)
 
+# --- PPV anchor crosswalk: report aliases share the intended local posterior --
+anchor_draws <- matrix(c(0.20, 0.30, 0.40), ncol = 1,
+                       dimnames = list(NULL, "Yousafzai 2021"))
+post_crosswalk <- list(
+  pi_anchor = anchor_draws,
+  mu_pi = rep(qlogis(0.25), 3), sigma_pi = rep(0.2, 3),
+  anchor = "Yousafzai 2021", ndraw = 3,
+  crosswalk = data.frame(
+    ori_study_id = c("Qamar 2018", "Yousafzai 2019"),
+    ppv_source_study = rep("Yousafzai 2021", 2),
+    stringsAsFactors = FALSE))
+mapped_pi <- build_pi_matrix(
+  post_crosswalk,
+  c("Qamar 2018", "Yousafzai 2019", "Yousafzai 2021", "Unanchored 2020"),
+  ndraw = 3, seed = 17)
+check("PPV crosswalk: Qamar uses the Yousafzai 2021 local posterior",
+      identical(as.numeric(mapped_pi[, "Qamar 2018"]),
+                as.numeric(anchor_draws[, "Yousafzai 2021"])))
+check("PPV crosswalk: related report aliases share posterior draws",
+      identical(as.numeric(mapped_pi[, "Qamar 2018"]),
+                as.numeric(mapped_pi[, "Yousafzai 2019"])))
+check("PPV crosswalk: direct anchor retains its local posterior",
+      identical(as.numeric(mapped_pi[, "Yousafzai 2021"]),
+                as.numeric(anchor_draws[, "Yousafzai 2021"])))
+check("PPV crosswalk: unlinked outbreak remains posterior-predictive",
+      is.na(attr(mapped_pi, "ppv_source_study")[["Unanchored 2020"]]))
+
 # --- Additive transmission model: T = X + P inside one recursion ------------
 add0 <- additive_source_counterfactual(
   inc, w, tau = 8, t_eff = 8, coverage = 0.8, psi_T = 0,

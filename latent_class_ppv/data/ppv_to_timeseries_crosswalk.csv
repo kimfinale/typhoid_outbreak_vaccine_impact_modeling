@@ -1,0 +1,7 @@
+ori_study_id,ppv_source_study,match_basis,notes
+Aye 2004,Aye 2004,same_report,Direct report match.
+Neil 2012,Neil 2012,same_report,Direct report match.
+Kabwama 2017,Kabwama 2017,same_report,Direct report match.
+Qamar 2018,Yousafzai 2021,same_outbreak_family,Use the preferred all-S. Typhi PPV observation for the Hyderabad XDR epidemic family.
+Yousafzai 2019,Yousafzai 2021,same_outbreak_family,Use the preferred all-S. Typhi PPV observation for the Hyderabad XDR epidemic family.
+Yousafzai 2021,Yousafzai 2021,same_report_and_family,Direct report and epidemic-family match.
